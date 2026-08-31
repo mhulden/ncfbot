@@ -1,3 +1,5 @@
+<img src="./mrmanatee2.png" alt="Mr. Manatee" width="100">
+
 # NCF Bot
 
 A clean-room, public-information assistant for New College of Florida, designed for current students, faculty (including faculty advisors), and outsiders such as prospective students, families, alumni, visitors, and community members.
