@@ -1,0 +1,20 @@
+{
+  "id": "test-auth-url",
+  "resource_file": "resources/students/academic-model.md",
+  "title": "Auth URL Test",
+  "audiences": ["students"],
+  "topics": ["registration"],
+  "sources": [
+    {
+      "canonical_url": "https://myncf.ncf.edu/login/dashboard",
+      "publisher": "MyNCF",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T12:00:00Z",
+      "public_access_verified": false
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-08-01",
+  "notes": "This fixture tests that auth-signal URLs are rejected by the fetch tool."
+}

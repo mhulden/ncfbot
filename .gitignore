@@ -1,1 +1,46 @@
-PUBLICBOT-PLANS/
+# === ncfbot Agent 5: source pipeline gitignore ===
+
+# Raw download cache — never commit fetched page bodies or PDFs.
+# Resource authors work from authored Markdown summaries, not raw downloads.
+.cache/
+.cache/sources/
+
+# Converted source text (untrusted evidence; stays local)
+.cache/converted/
+
+# Virtual environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Credentials, cookies, tokens — never commit
+*.env
+.env
+*.cookie
+cookies.txt
+*.token
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# pytest and coverage artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Generated manifests are committed; raw intermediate files are not
+# (generated/ outputs that ARE committed are listed explicitly in CONTRIBUTING.md)
