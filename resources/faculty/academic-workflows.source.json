@@ -1,0 +1,170 @@
+{
+  "id": "faculty-academic-workflows",
+  "resource_file": "resources/faculty/academic-workflows.md",
+  "title": "Public Faculty Academic Workflows",
+  "audiences": [
+    "faculty"
+  ],
+  "topics": [
+    "evaluations",
+    "grading",
+    "contracts",
+    "contract-certification",
+    "tutorials",
+    "isp",
+    "thesis",
+    "baccalaureate-exam",
+    "academic-integrity",
+    "accommodations"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/08/4.1001-Student-Assessment-Policy.pdf",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:14Z",
+      "last_modified": "2025-08-24T17:08:15Z",
+      "effective_from": "2025-08-13",
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f0351b842211643ffa7d8543476ed2244615110f8d40f9cc41528205b89826c4",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:14Z",
+      "last_modified": "2026-06-08T17:20:51Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "ea51c5581ff3d74083995283d55f6766eff485cfa408a81bfa1e981f65aab8da",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://docs.google.com/document/d/18Wl5R61YKbjP0_izenKc1b6CrHsWDBbQaUbywPkqdmE/edit",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:23Z",
+      "last_modified": null,
+      "effective_from": "2023-08-01",
+      "effective_through": null,
+      "academic_year": "2023-2024",
+      "sha256": "449202f824e73642d3bcfc15c199327de135dd77ca2054a970bdecd0dbefe086",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/resources-for-advisors-and-students/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:46Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d19d26c31d2cce4170a5ba3b5e094f09eb1a2b329cb6679a5a872d583f898348",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:47Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "54ad5ab1fdb5a3e655e7f111f04c5840d7ce667cd9bbff5820fbf83eea62877f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academic-honor-code-policy-guidlines/",
+      "publisher": "New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:20:59Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "0b467e75531f85a33239056c2529790cf2296797b791041feba346eb0705bfa7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2021/12/Plagiarism-booklet-web-1.pdf",
+      "publisher": "New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:16Z",
+      "last_modified": "2024-04-29T23:05:47Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "b58ec6249fb6a286a13426af684cbdde01ad6e37e08e364d9a9e16acd298afde",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/faculty-resources/",
+      "publisher": "Accessible Learning Center, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:48Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "d4977c8feb082b33632773d6eea7897eca997d41904a38b2fd6fa37255f66a76",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/",
+      "publisher": "Accessible Learning Center, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:16:07Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "9c17e471c66e4d0b7b46766fb19479fc46930af0128206366b0920423adce77d",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/academic-learning-compacts/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "program",
+      "retrieved_at": "2026-08-31T17:18:19Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "9a94c37177b341bc9dae5545403b568b29a5f65a0b98028173028259f16b2004",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/provost/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:44Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "9d25b0ee8423cb6a2e55bcba303ee4f695a838044c100449443844bb7142a7dd",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-contract-isp/",
+      "publisher": "New College of Florida Undergraduate Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:18:21Z",
+      "last_modified": "2026-02-02T16:39:16Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "308a314e9719b098ceb29cd2de135d13d2cab098f901bb44bef309486621ba26",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-08-31",
+  "notes": "Four conflicts recorded in the resource text: (1) evaluation designations under NCF Policy 4.1001 (Fall 2025) supersede the August 2023 Faculty Handbook description; (2) the policy's designation names and the Quick Reference Guide's Banner codes are not mapped to each other by any public source; (3) the Guide's Last Date of Attendance requirement for Unsatisfactory does not appear in the policy; (4) the Handbook's two-course teaching load is described there as an accepted norm, not a college-wide rule. The Honor Code reporting form sits behind the NCF Portal and is not publicly verifiable. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence."
+}

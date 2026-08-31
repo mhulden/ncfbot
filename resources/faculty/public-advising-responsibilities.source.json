@@ -1,0 +1,118 @@
+{
+  "id": "faculty-public-advising-responsibilities",
+  "resource_file": "resources/faculty/public-advising-responsibilities.md",
+  "title": "Public Faculty Advising and Sponsor Responsibilities",
+  "audiences": [
+    "faculty"
+  ],
+  "topics": [
+    "advising",
+    "sponsorship",
+    "contracts",
+    "academic-standing",
+    "financial-aid-boundary",
+    "transfer-credit"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/resources-for-advisors-and-students/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:46Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d19d26c31d2cce4170a5ba3b5e094f09eb1a2b329cb6679a5a872d583f898348",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:47Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "54ad5ab1fdb5a3e655e7f111f04c5840d7ce667cd9bbff5820fbf83eea62877f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/degree-requirements/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:47Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "d655d5165afff4cbce667ef3c0856bbe8e51dc5d205dcd52ac640705fc71913f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/civic-literacy-resources/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:18:18Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "09ecdeb3cc8fee5891e961888a907d427ece1f8a18013c2395fc79b2f6d0838d",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/provost/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:44Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "9d25b0ee8423cb6a2e55bcba303ee4f695a838044c100449443844bb7142a7dd",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://docs.google.com/document/d/18Wl5R61YKbjP0_izenKc1b6CrHsWDBbQaUbywPkqdmE/edit",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:23Z",
+      "last_modified": null,
+      "effective_from": "2023-08-01",
+      "effective_through": null,
+      "academic_year": "2023-2024",
+      "sha256": "449202f824e73642d3bcfc15c199327de135dd77ca2054a970bdecd0dbefe086",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/08/Advising-Handbook-Final.pdf",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:12Z",
+      "last_modified": "2025-08-08T20:04:30Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "e26da47e10755b5531ba661fb8d649c12e104267347a0eac0860c05ac8abe608",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/financial-aid/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:41:37Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "a8ed76ef726e99e089c97fd3c41d54289e205b3a201b91f92db53cab9f8b1b28",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2027-01-15",
+  "notes": "The Advising Handbook 2025-2026 PDF is publicly reachable but is published as page images with no extractable text layer; nothing in this resource is attributed to it. The Faculty Handbook is dated August 2023 and predates NCF Policy 4.1001; where they conflict on evaluation designations the policy controls, and that conflict is recorded in faculty-academic-workflows. The Provost's Office staff roster is internally inconsistent: at least one staff card links to a different person's directory entry."
+}

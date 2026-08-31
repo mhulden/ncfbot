@@ -1,0 +1,166 @@
+{
+  "id": "faculty-deadlines-and-systems",
+  "resource_file": "resources/faculty/deadlines-and-systems.md",
+  "title": "Faculty-Side Public Deadlines and Systems",
+  "audiences": [
+    "faculty"
+  ],
+  "topics": [
+    "deadlines",
+    "registration",
+    "overrides",
+    "systems",
+    "authenticated-systems",
+    "reporting"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:14Z",
+      "last_modified": "2026-06-08T17:20:51Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "ea51c5581ff3d74083995283d55f6766eff485cfa408a81bfa1e981f65aab8da",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/10/Override-Instructions_SP26.pdf",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:13Z",
+      "last_modified": "2025-10-23T15:02:41Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "e18ebfde991f40c06b291e10daef9f8ba7afa94a62e0184124bece5021cb71ed",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/10/Faculty-Self-Service_Banner-9_r6.pptx",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:18:13Z",
+      "last_modified": "2025-10-23T15:00:41Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "30d6392a30e1ccd2dca52b535b7932c82c2bed93f0ea57291a6de968cdf4ca73",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://docs.google.com/document/d/18Wl5R61YKbjP0_izenKc1b6CrHsWDBbQaUbywPkqdmE/edit",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:23Z",
+      "last_modified": null,
+      "effective_from": "2023-08-01",
+      "effective_through": null,
+      "academic_year": "2023-2024",
+      "sha256": "449202f824e73642d3bcfc15c199327de135dd77ca2054a970bdecd0dbefe086",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/resources-for-advisors-and-students/",
+      "publisher": "Office of the Provost, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:46Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d19d26c31d2cce4170a5ba3b5e094f09eb1a2b329cb6679a5a872d583f898348",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academics/academic-calendar/",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:18:17Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f574dcb0a556259d9dc964b86b89fb9b969cdfa6f90d1b62de11c6d2d424ede4",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:50Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "ff1ac107511849956d418791c2780d556a04352951aaafd9b00feeb7c085e7e9",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/academic-calendars-catalogs/",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:15:51Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "6ee177fac7dbdd0fe2dd58c581598e7ecf4de55641e1df6a950ab69bd1d96fa6",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/class-schedule-registration/",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:15:51Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "d547f7d1cbeb20a73cadc6fee29678d0175fa409e55ddd37fb2d0aed24cae50b",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/08/4.1001-Student-Assessment-Policy.pdf",
+      "publisher": "Office of the Registrar, New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:18:14Z",
+      "last_modified": "2025-08-24T17:08:15Z",
+      "effective_from": "2025-08-13",
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f0351b842211643ffa7d8543476ed2244615110f8d40f9cc41528205b89826c4",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://cm.maxient.com/reportingform.php?NewCollegeofFlorida&layout_id=2",
+      "publisher": "Title IX and Civil Rights Compliance, New College of Florida (Maxient)",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:23:25Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "6ab9bee1cebb8caf3dcdb26425d379781ba69dbf3563015d63e30707ca70e6e7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://cm.maxient.com/reportingform.php?NewCollegeofFlorida&layout_id=10",
+      "publisher": "Student Support Team, New College of Florida (Maxient)",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:23:25Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "896055703ed1e8f7d2af692bec64d74794031934d15243d0d6cc4435537a7082",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2027-01-15",
+  "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence."
+}
