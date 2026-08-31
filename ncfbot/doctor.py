@@ -136,6 +136,9 @@ def _check_resources(base: Path, issues: list[Issue]) -> None:
         relative_parts = markdown.relative_to(resources_dir).parts
         if relative_parts and relative_parts[0] in {"inventory", "generated"}:
             continue
+        if markdown.relative_to(resources_dir).as_posix() == "shared/source-policy.md":
+            # Project source-use governance, not an institutional fact.
+            continue
         sidecar = markdown.with_name(markdown.stem + ".source.json")
         if not sidecar.is_file():
             issues.append(Issue("error", "source-sidecars", f"missing sidecar for {markdown.relative_to(base)}"))
@@ -143,7 +146,7 @@ def _check_resources(base: Path, issues: list[Issue]) -> None:
         title_match = re.search(r"(?m)^#\s+(.+?)\s*$", markdown_text)
         if not title_match:
             issues.append(Issue("error", "resource-markdown", f"missing top-level title: {markdown.relative_to(base)}"))
-        if not re.search(r"(?im)^Verified through:\s*\d{4}-\d{2}-\d{2}\s*$", markdown_text):
+        if not re.search(r"(?im)^\*{0,2}Verified through:\s*\d{4}-\d{2}-\d{2}\*{0,2}\s*$", markdown_text):
             issues.append(Issue("error", "resource-markdown", f"missing Verified through date: {markdown.relative_to(base)}"))
         headings = re.findall(r"(?m)^#{1,6}\s+(.+?)\s*$", markdown_text)
         if not headings or headings[-1].strip().lower() != "sources":

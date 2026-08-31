@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 from ncfbot.evaluation import duplicate_case_ids, read_cases, run_evaluation, validate_case
@@ -41,4 +42,5 @@ def test_deterministic_cross_cutting_assertions_pass():
     assert report["failed"] == 0
     assert report["case_count"] >= 40
     assert report["repository_revision"] != "unknown"
-    assert report["resource_manifest_hash"] is None
+    manifest_hash = report["resource_manifest_hash"]
+    assert manifest_hash is None or re.fullmatch(r"[0-9a-f]{64}", manifest_hash)

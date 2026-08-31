@@ -12,7 +12,22 @@ license = { text = "MIT" }
 dependencies = []
 
 [project.optional-dependencies]
-test = ["pytest>=8"]
+test = [
+  "pytest>=8",
+  "requests>=2.31",
+  "jsonschema>=4.20",
+  "beautifulsoup4>=4.12",
+  "lxml>=5",
+  "pdfminer.six>=20231228",
+]
+dev = [
+  "pytest>=8",
+  "requests>=2.31",
+  "jsonschema>=4.20",
+  "beautifulsoup4>=4.12",
+  "lxml>=5",
+  "pdfminer.six>=20231228",
+]
 
 [project.scripts]
 ncfbot = "ncfbot.__main__:main"

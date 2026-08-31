@@ -114,12 +114,13 @@ def test_doctor_catches_incomplete_archive(tmp_path):
     assert any("marks term incomplete" in issue.message for issue in report.issues)
 
 
-def test_doctor_reports_unmerged_upstream_files_clearly():
-    report = run_doctor(ROOT)
+def test_doctor_reports_missing_upstream_files_clearly(tmp_path):
+    (tmp_path / "PLAN-distributed.md").write_text("synthetic incomplete repository\n", encoding="utf-8")
+    report = run_doctor(tmp_path)
     assert not report.ok
     messages = {issue.message for issue in report.issues}
     assert "missing required file: skills/students.md" in messages
-    assert "missing resources/generated/manifest.json" in messages
+    assert "missing resources directory" in messages
 
 
 def test_default_checks_are_offline(tmp_path):
