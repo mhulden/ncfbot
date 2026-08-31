@@ -39,9 +39,9 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "enum": ["students", "faculty", "outside", "shared"]
+        "enum": ["students", "faculty", "outside"]
       },
-      "description": "Which audiences this resource primarily serves. Use 'shared' for cross-role content."
+      "description": "Which audiences this resource primarily serves. Resources under resources/shared/ serve multiple audiences; list all that apply."
     },
     "topics": {
       "type": "array",
@@ -64,6 +64,11 @@
           "publisher",
           "authority_type",
           "retrieved_at",
+          "last_modified",
+          "effective_from",
+          "effective_through",
+          "academic_year",
+          "sha256",
           "public_access_verified"
         ],
         "additionalProperties": false,
@@ -100,7 +105,6 @@
           },
           "last_modified": {
             "type": ["string", "null"],
-            "format": "date-time",
             "description": "HTTP Last-Modified value if returned by the server, else null."
           },
           "effective_from": {
@@ -113,13 +117,12 @@
           },
           "academic_year": {
             "type": ["string", "null"],
-            "pattern": "^[0-9]{4}-[0-9]{4}$|^null$",
-            "description": "Applicable academic year in YYYY-YYYY format, e.g. '2024-2025', or null."
+            "description": "Applicable academic year in YYYY-YYYY format, e.g. '2024-2025', or null if not applicable."
           },
           "sha256": {
             "type": ["string", "null"],
             "pattern": "^[0-9a-f]{64}$",
-            "description": "Lowercase hex SHA-256 digest of the retrieved source body. Null only before first verified fetch; must be populated after fetch_sources.py runs."
+            "description": "Lowercase hex SHA-256 digest of the retrieved source body. Must be null before the first fetch; must be populated (non-null) after fetch_sources.py runs successfully."
           },
           "public_access_verified": {
             "type": "boolean",
@@ -130,8 +133,8 @@
     },
     "status": {
       "type": "string",
-      "enum": ["current", "historical", "superseded", "deferred", "rejected"],
-      "description": "Lifecycle state of this resource. 'current' = actively maintained and applicable. 'historical' = describes a past period. 'superseded' = replaced by a newer resource. 'deferred' = not yet authored. 'rejected' = excluded; see notes."
+      "enum": ["current", "historical", "superseded"],
+      "description": "Lifecycle state of this resource. 'current' = actively maintained and applicable. 'historical' = describes a past period only. 'superseded' = replaced by a newer resource; retain for provenance."
     },
     "volatility": {
       "type": "string",

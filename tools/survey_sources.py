@@ -232,10 +232,16 @@ def parse_sitemap(
     tag = root.tag.lower()
     candidates = []
 
+    # Detect whether the document uses the standard sitemap namespace
+    ns_uri = SITEMAP_NS["sm"]
+    has_ns = root.tag.startswith("{" + ns_uri + "}")
+    sm_pfx = "sm:" if has_ns else ""
+    ns_arg = SITEMAP_NS if has_ns else {}
+
     # Sitemap index — recurse into child sitemaps
     if "sitemapindex" in tag:
-        for sitemap_el in root.findall("sm:sitemap", SITEMAP_NS) or root.findall("sitemap"):
-            loc_el = sitemap_el.find("sm:loc", SITEMAP_NS) or sitemap_el.find("loc")
+        for sitemap_el in root.findall(f"{sm_pfx}sitemap", ns_arg):
+            loc_el = sitemap_el.find(f"{sm_pfx}loc", ns_arg)
             if loc_el is not None and loc_el.text:
                 child_url = loc_el.text.strip()
                 candidates.extend(
@@ -244,9 +250,9 @@ def parse_sitemap(
 
     # Regular urlset
     elif "urlset" in tag:
-        for url_el in root.findall("sm:url", SITEMAP_NS) or root.findall("url"):
-            loc_el = url_el.find("sm:loc", SITEMAP_NS) or url_el.find("loc")
-            lastmod_el = url_el.find("sm:lastmod", SITEMAP_NS) or url_el.find("lastmod")
+        for url_el in root.findall(f"{sm_pfx}url", ns_arg):
+            loc_el = url_el.find(f"{sm_pfx}loc", ns_arg)
+            lastmod_el = url_el.find(f"{sm_pfx}lastmod", ns_arg)
             if loc_el is None or not loc_el.text:
                 continue
             page_url = loc_el.text.strip()

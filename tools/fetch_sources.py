@@ -164,8 +164,9 @@ def make_session() -> requests.Session:
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,application/xml,application/pdf;q=0.9,*/*;q=0.8",
     })
-    # Never send cookies or credentials
-    s.cookies.clear()
+    # Disable cookie storage entirely — never accumulate or resend cookies
+    s.cookies = requests.cookies.RequestsCookieJar()
+    s.max_redirects = 5
     return s
 
 
@@ -209,19 +210,34 @@ def fetch_url(
 
     time.sleep(RATE_LIMIT_SECONDS)
 
+    # Follow redirects manually so every hop is validated before proceeding
+    current_url = url
     try:
-        resp = session.get(url, timeout=REQUEST_TIMEOUT, allow_redirects=True, stream=True)
+        resp = session.get(
+            current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=False
+        )
+        hops = []
+        while resp.is_redirect and len(hops) < 5:
+            next_url = resp.headers.get("Location", "")
+            # Resolve relative redirects
+            next_url = urllib.parse.urljoin(current_url, next_url)
+            hops.append(current_url)
+            # Validate the redirect destination before following
+            hop_err = validate_url(next_url)
+            if hop_err:
+                result["error"] = f"redirect to blocked URL ({hop_err}): {next_url}"
+                log.warning("REDIRECT BLOCKED %s → %s (%s)", url, next_url, hop_err)
+                return result
+            current_url = next_url
+            resp = session.get(
+                current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=False
+            )
+        # Re-request final URL with streaming for body read
+        resp = session.get(current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=True)
     except requests.RequestException as exc:
         result["error"] = str(exc)
         log.warning("FETCH ERROR %s: %s", url, exc)
         return result
-
-    # Check for auth redirect
-    for r in resp.history:
-        if looks_like_auth(r.url):
-            result["error"] = f"auth redirect detected: {r.url}"
-            log.warning("AUTH REDIRECT %s → %s", url, r.url)
-            return result
 
     # Content-type check
     ct = resp.headers.get("Content-Type", "").split(";")[0].strip().lower()
@@ -317,11 +333,9 @@ def main() -> None:
         type=Path,
         help="Fetch approved URLs from a single .source.json sidecar",
     )
-    group.add_argument(
-        "--url",
-        type=str,
-        help="Fetch a single URL directly (must pass allowlist checks)",
-    )
+    # --url removed: bypassed the sidecar approval gate. All fetches must flow
+    # through a .source.json with public_access_verified: true. To fetch a new
+    # URL, add it to a sidecar first, then run --sidecar.
     parser.add_argument(
         "--force",
         action="store_true",
@@ -344,9 +358,7 @@ def main() -> None:
     session = make_session()
     results = []
 
-    if args.url:
-        urls = [args.url]
-    elif args.sidecar:
+    if args.sidecar:
         urls = urls_from_sidecar(args.sidecar)
         if not urls:
             log.warning("No approved URLs found in %s", args.sidecar)

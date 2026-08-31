@@ -175,12 +175,14 @@ def check_duplicate_ids(sidecars: list[tuple[Path, dict]]) -> list[str]:
 def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
     """
     Build a combined machine-readable manifest of all corpus sources.
-    Written to resources/generated/source-manifest.json.
-    No agent hand-maintains this file — it is always regenerated.
+    Shape matches integration-contracts.md: top-level metadata + resources array.
+    Written to resources/generated/manifest.json by the caller ONLY when all
+    validations pass — never written over a valid manifest with partial/invalid data.
+    No agent hand-maintains this file — always regenerate via validate_sources.py.
     """
-    entries = []
+    resources = []
     for path, data in sidecars:
-        entries.append({
+        resources.append({
             "id": data.get("id"),
             "resource_file": data.get("resource_file"),
             "title": data.get("title"),
@@ -189,15 +191,19 @@ def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
             "status": data.get("status"),
             "volatility": data.get("volatility"),
             "review_after": data.get("review_after"),
-            "source_count": len(data.get("sources", [])),
+            "source_urls": [
+                s.get("canonical_url")
+                for s in data.get("sources", [])
+                if s.get("canonical_url")
+            ],
             "sidecar_path": str(path),
         })
 
     return {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "tool": "validate_sources.py",
-        "total_resources": len(entries),
-        "entries": entries,
+        "total_resources": len(resources),
+        "resources": resources,
     }
 
 
@@ -268,15 +274,6 @@ def main() -> None:
             for e in dup_errors:
                 log.error("CORPUS: %s", e)
 
-    # Manifest
-    if args.manifest and loaded:
-        manifest = build_manifest(loaded)
-        args.manifest.parent.mkdir(parents=True, exist_ok=True)
-        with args.manifest.open("w", encoding="utf-8") as f:
-            json.dump(manifest, f, indent=2)
-            f.write("\n")
-        log.info("Manifest written → %s (%d entries)", args.manifest, len(loaded))
-
     # Report
     total = len(sidecar_paths)
     failed = len(all_errors)
@@ -290,10 +287,24 @@ def main() -> None:
             print(f"\n  {file}")
             for e in errs:
                 print(f"    - {e}")
+        if args.manifest:
+            log.warning(
+                "Manifest NOT written — validation failed. Fix errors first to avoid "
+                "replacing a valid manifest with partial/invalid data."
+            )
         sys.exit(1)
-    else:
-        print("All sidecars valid.")
-        sys.exit(0)
+
+    # Manifest — only written when all validations passed
+    if args.manifest and loaded:
+        manifest = build_manifest(loaded)
+        args.manifest.parent.mkdir(parents=True, exist_ok=True)
+        with args.manifest.open("w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2)
+            f.write("\n")
+        log.info("Manifest written → %s (%d resources)", args.manifest, len(loaded))
+
+    print("All sidecars valid.")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
