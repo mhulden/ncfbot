@@ -1,7 +1,7 @@
 # Source Pipeline Architecture
 
-**Owner:** Agent 5  
-**Version:** 1.0  
+**Owner:** Agent 5
+**Version:** 1.0
 **Last updated:** 2026-08-31
 
 This document describes the NCFBot public-source discovery, fetching, conversion,
@@ -45,7 +45,7 @@ authorship is required between the conversion and validation stages.
 **Purpose:** Discover candidate URLs from robots.txt and sitemaps without downloading
 page bodies.
 
-**Inputs:** robots.txt at `www.ncf.edu`; optionally `resources/inventory/survey-config.json`  
+**Inputs:** robots.txt at `www.ncf.edu`; optionally `resources/inventory/survey-config.json`
 **Outputs:** `resources/inventory/survey-candidates.jsonl`, `resources/inventory/survey-summary.md`
 
 **What it does:**
@@ -80,7 +80,7 @@ python tools/survey_sources.py --dry-run   # no network, tests output structure
 
 **Purpose:** Download page bodies for approved sources only.
 
-**Inputs:** `.source.json` sidecars (reads `canonical_url` where `public_access_verified: true`)  
+**Inputs:** `.source.json` sidecars (reads `canonical_url` where `public_access_verified: true`)
 **Outputs:** `.cache/sources/<sha256-prefix>/<hash>.body` + `<hash>.meta.json`
 
 **What it does:**
@@ -112,7 +112,7 @@ python tools/fetch_sources.py --all --dry-run # show what would be fetched
 
 **Purpose:** Convert cached HTML or PDF bodies to readable text for resource authors.
 
-**Inputs:** `.cache/sources/<hash>.body` + `.meta.json`  
+**Inputs:** `.cache/sources/<hash>.body` + `.meta.json`
 **Outputs:** `.cache/converted/<hash-prefix>.md` or `.txt` (gitignored)
 
 **What it does:**
@@ -144,7 +144,7 @@ python tools/convert_sources.py --all --out .cache/converted
 **Purpose:** Validate all `.source.json` sidecars against the JSON schema and check
 cross-references. Optionally build a combined corpus manifest.
 
-**Inputs:** `schemas/source-record.schema.json`; all `*.source.json` files under `resources/`  
+**Inputs:** `schemas/source-record.schema.json`; all `*.source.json` files under `resources/`
 **Outputs:** Pass/fail report; optionally `resources/generated/source-manifest.json`
 
 **Checks performed:**
@@ -179,7 +179,7 @@ Exit code 0 = all pass; 1 = failures found.
 or HTTP errors for approved source URLs.
 
 **Inputs:** All `*.source.json` files; cached `.meta.json` files (offline); live HEAD
-requests (network mode)  
+requests (network mode)
 **Outputs:** Issue report to stdout
 
 **Offline checks:**

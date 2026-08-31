@@ -158,6 +158,23 @@ def write_cache(url: str, body: bytes, meta: dict) -> Path:
 # Fetcher
 # ---------------------------------------------------------------------------
 
+class _NoCookiePolicy:
+    """Cookie policy that rejects every cookie — prevents storage and resending."""
+    def set_ok(self, cookie, request):
+        return False
+    def return_ok(self, cookie, request):
+        return False
+    def domain_return_ok(self, domain, request):
+        return False
+    def path_return_ok(self, path, request):
+        return False
+    is_blocking = True
+    is_liberal = False
+    netscape = True
+    rfc2965 = False
+    hide_cookie2 = False
+
+
 def make_session() -> requests.Session:
     s = requests.Session()
     s.headers.update({
@@ -165,7 +182,9 @@ def make_session() -> requests.Session:
         "Accept": "text/html,application/xhtml+xml,application/xml,application/pdf;q=0.9,*/*;q=0.8",
     })
     # Disable cookie storage entirely — never accumulate or resend cookies
-    s.cookies = requests.cookies.RequestsCookieJar()
+    jar = requests.cookies.RequestsCookieJar()
+    jar.set_policy(_NoCookiePolicy())
+    s.cookies = jar
     s.max_redirects = 5
     return s
 
@@ -210,33 +229,39 @@ def fetch_url(
 
     time.sleep(RATE_LIMIT_SECONDS)
 
-    # Follow redirects manually so every hop is validated before proceeding
+    # Follow redirects manually, validating every hop and the final destination
     current_url = url
+    hops: list[str] = []
     try:
-        resp = session.get(
-            current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=False
-        )
-        hops = []
-        while resp.is_redirect and len(hops) < 5:
-            next_url = resp.headers.get("Location", "")
-            # Resolve relative redirects
-            next_url = urllib.parse.urljoin(current_url, next_url)
-            hops.append(current_url)
-            # Validate the redirect destination before following
-            hop_err = validate_url(next_url)
+        while True:
+            hop_err = validate_url(current_url)
             if hop_err:
-                result["error"] = f"redirect to blocked URL ({hop_err}): {next_url}"
-                log.warning("REDIRECT BLOCKED %s → %s (%s)", url, next_url, hop_err)
+                result["error"] = f"redirect to blocked URL ({hop_err}): {current_url}"
+                log.warning("REDIRECT BLOCKED %s → %s (%s)", url, current_url, hop_err)
                 return result
-            current_url = next_url
+            is_final = len(hops) >= 5
             resp = session.get(
-                current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=False
+                current_url,
+                timeout=REQUEST_TIMEOUT,
+                allow_redirects=False,
+                stream=is_final,
             )
-        # Re-request final URL with streaming for body read
-        resp = session.get(current_url, timeout=REQUEST_TIMEOUT, allow_redirects=False, stream=True)
+            if resp.is_redirect and not is_final:
+                next_url = resp.headers.get("Location", "")
+                next_url = urllib.parse.urljoin(current_url, next_url)
+                hops.append(current_url)
+                current_url = next_url
+            else:
+                break
     except requests.RequestException as exc:
         result["error"] = str(exc)
         log.warning("FETCH ERROR %s: %s", url, exc)
+        return result
+
+    # Auth check on the final landed URL
+    if looks_like_auth(resp.url if hasattr(resp, "url") else current_url):
+        result["error"] = f"auth signal in final URL: {current_url}"
+        log.warning("AUTH URL %s", current_url)
         return result
 
     # Content-type check

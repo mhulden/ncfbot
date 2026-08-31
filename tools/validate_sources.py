@@ -28,6 +28,7 @@ from typing import Any
 try:
     import jsonschema
     from jsonschema import Draft202012Validator
+    from jsonschema.validators import validator_for
 except ImportError:
     raise SystemExit(
         "Missing dependency: pip install jsonschema\n"
@@ -58,7 +59,10 @@ def load_schema() -> dict:
 
 
 def make_validator(schema: dict) -> Draft202012Validator:
-    return Draft202012Validator(schema)
+    # Enable format validation (date-time, date, uri) so invalid timestamps
+    # and malformed URLs are caught at schema-validation time.
+    format_checker = jsonschema.FormatChecker()
+    return Draft202012Validator(schema, format_checker=format_checker)
 
 
 # ---------------------------------------------------------------------------
@@ -172,16 +176,20 @@ def check_duplicate_ids(sidecars: list[tuple[Path, dict]]) -> list[str]:
 # Manifest generation
 # ---------------------------------------------------------------------------
 
+MANIFEST_SCHEMA_VERSION = "1"
+
+
 def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
     """
     Build a combined machine-readable manifest of all corpus sources.
     Shape matches integration-contracts.md: top-level metadata + resources array.
+    Sorted by resource ID for deterministic diffs.
     Written to resources/generated/manifest.json by the caller ONLY when all
     validations pass — never written over a valid manifest with partial/invalid data.
     No agent hand-maintains this file — always regenerate via validate_sources.py.
     """
     resources = []
-    for path, data in sidecars:
+    for path, data in sorted(sidecars, key=lambda x: x[1].get("id", "")):
         resources.append({
             "id": data.get("id"),
             "resource_file": data.get("resource_file"),
@@ -191,15 +199,18 @@ def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
             "status": data.get("status"),
             "volatility": data.get("volatility"),
             "review_after": data.get("review_after"),
+            "notes": data.get("notes", ""),
             "source_urls": [
                 s.get("canonical_url")
                 for s in data.get("sources", [])
                 if s.get("canonical_url")
             ],
-            "sidecar_path": str(path),
+            "sidecar_file": str(path),
+            "record": data,
         })
 
     return {
+        "schema_version": MANIFEST_SCHEMA_VERSION,
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "tool": "validate_sources.py",
         "total_resources": len(resources),

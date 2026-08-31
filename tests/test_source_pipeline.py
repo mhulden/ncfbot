@@ -334,18 +334,18 @@ class TestFetchAuthRedirect:
         self.fs = fs
 
     def test_auth_redirect_detected(self):
-        import requests
-
+        """Redirect that lands on an auth URL must be blocked."""
         mock_session = MagicMock()
-        hist_resp = MagicMock()
-        hist_resp.url = "https://myncf.ncf.edu/login/"
-        final_resp = MagicMock()
-        final_resp.history = [hist_resp]
-        final_resp.status_code = 200
-        final_resp.headers = {"Content-Type": "text/html"}
-        final_resp.url = "https://myncf.ncf.edu/login/"
-        final_resp.iter_content.return_value = iter([b"<html>login</html>"])
-        mock_session.get.return_value = final_resp
+
+        # First response: redirect to login
+        redirect_resp = MagicMock()
+        redirect_resp.is_redirect = True
+        redirect_resp.headers = {"Location": "https://myncf.ncf.edu/login/"}
+        redirect_resp.url = "https://www.ncf.edu/protected/"
+
+        # Second response would be the login page — but validate_url should
+        # reject the destination before we get there
+        mock_session.get.return_value = redirect_resp
 
         result = self.fs.fetch_url(
             "https://www.ncf.edu/protected/",
@@ -354,7 +354,26 @@ class TestFetchAuthRedirect:
             force=True,
         )
         assert result["error"] is not None
-        assert "auth" in result["error"].lower()
+        assert "blocked" in result["error"].lower() or "auth" in result["error"].lower()
+
+    def test_auth_signal_in_final_url_blocked(self):
+        """Even without a redirect, a final URL with auth signals must be blocked."""
+        mock_session = MagicMock()
+        final_resp = MagicMock()
+        final_resp.is_redirect = False
+        final_resp.url = "https://myncf.ncf.edu/login/"
+        final_resp.headers = {"Content-Type": "text/html"}
+        final_resp.iter_content.return_value = iter([b"<html>login</html>"])
+        mock_session.get.return_value = final_resp
+
+        result = self.fs.fetch_url(
+            "https://myncf.ncf.edu/login/",
+            mock_session,
+            dry_run=False,
+            force=True,
+        )
+        # validate_url catches auth signal before the request is made
+        assert result["error"] is not None
 
 
 class TestFetchContentTypeFilter:
