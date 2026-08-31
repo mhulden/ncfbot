@@ -5,14 +5,19 @@ the faculty and staff hub, directories, faculty governance notices, Registrar,
 library and educational technology, IT, the Accessible Learning Center, teaching and
 writing support, research administration, and the Regulations Manual. This file maps
 entry points and says what each one actually gives you. Deadlines and system
-mechanics are in `resources/faculty/deadlines-and-systems.md`; office ownership for
-non-academic questions is in `resources/shared/office-routing.md`.
+mechanics are in `resources/faculty/deadlines-and-systems.md`.
 
 **Verified through: 2026-08-31**
 
-**Audience:** faculty. **Volatility:** the URLs and office descriptions below are
-stable; the named individuals and phone numbers are annual-volatility facts and are
-kept to the minimum needed for routing.
+**Audience:** faculty. **Volatility:** the URLs and the descriptions of what each page
+offers faculty are stable; office holders change annually.
+
+> **Contacts are not repeated here.** `resources/shared/office-routing.md`
+> (`shared-office-routing`) is the canonical location for every phone number, email
+> alias, room, and set of office hours, and for which office owns which task. This file
+> covers only what each page gives a *faculty member* and whether its deeper material is
+> public or behind myNCF. Cite the routing resource for a contact rather than copying one
+> into an answer.
 
 ---
 
@@ -49,9 +54,8 @@ actually get:
 | Faculty Travel Info. | Intranet procurement purchasing information | No |
 | Civic Literacy Study Guide | Library LibGuides link | Reachable, not verified in this corpus |
 
-The Provost's Office also lists office contact — phone (941) 487-4203, `provost@ncf.edu`,
-College Hall, Monday to Friday 9:00 a.m. to 5:00 p.m. — and publishes its team with
-titles. As of 2026-08-31 the page lists a Provost and Vice President of Academic
+The Provost's Office also publishes its office contact — see `shared-office-routing`
+— and its team with titles. As of 2026-08-31 the page lists a Provost and Vice President of Academic
 Affairs, an Associate Provost for Academic and Faculty Affairs, an Associate Provost
 for Student Academic Affairs, a Director of Teaching and Learning, and a Director of
 Academic Operations and Special Projects. Prefer the office alias over a personal
@@ -112,8 +116,8 @@ Confidential committee deliberations are out of scope entirely; see
 
 ## Registrar
 
-`https://www.ncf.edu/departments/registrar/` — (941) 487-4230, `registrar@ncf.edu`,
-Palmer D, Monday to Friday 8:00 a.m. to 5:00 p.m. Sub-pages that matter to faculty:
+`https://www.ncf.edu/departments/registrar/` — contact details in `shared-office-routing`.
+Sub-pages that matter to faculty:
 Academic Calendars and Catalogs, Class Schedule and Registration, Transcripts and
 Records, and Veterans and Military-Affiliated Student Services.
 
@@ -127,11 +131,9 @@ rather than reading a schedule page by hand.
 
 ## Library, educational technology, and the Academic Resource Center
 
-- **Jane Bancroft Cook Library** — `https://www.ncf.edu/departments/jane-bancroft-cook-library/`,
-  (941) 487-4411, `library@ncf.edu`, Library 100. Public sub-pages cover research
-  support, services, and research librarians.
-- **Educational Technology Services (ETS)** — `https://www.ncf.edu/departments/educational-technology-services/`,
-  (941) 487-4306, `edtech@ncf.edu`, Library 120, Monday to Friday 8:00 a.m. to 5:00 p.m.
+- **Jane Bancroft Cook Library** — `https://www.ncf.edu/departments/jane-bancroft-cook-library/`.
+  Public sub-pages cover research support, services, and research librarians.
+- **Educational Technology Services (ETS)** — `https://www.ncf.edu/departments/educational-technology-services/`.
   ETS is a unit within the library and is the public entry point for Canvas
   administration and assistance, AV equipment checkout for classroom and educational
   project use, AV support for ISP, tutorial, thesis, baccalaureate exam, and guest
@@ -141,19 +143,17 @@ rather than reading a schedule page by hand.
   outside shops, AV for non-academic events to Campus Space Scheduling, marketing
   posters to the USF Print Center, and classroom furniture or whiteboard issues to
   Physical Plant.
-- **Academic Resource Center (ARC)** — `https://www.ncf.edu/departments/academic-resource-center/`,
-  941-487-4742, Library 119. A physical tutoring location; the page states that
+- **Academic Resource Center (ARC)** — `https://www.ncf.edu/departments/academic-resource-center/`.
+  A physical tutoring location; the page states that
   scheduling and the tutoring partner run through tiles on the myNCF portal, so the
   booking workflow itself is not public.
 
 ## Accessible Learning Center
 
-`https://www.ncf.edu/departments/advocacy-accessibility/` — (941) 487-4844,
-`aalc@ncf.edu`, Hamilton Classroom 005. The faculty-specific page is
+`https://www.ncf.edu/departments/advocacy-accessibility/` — contacts, rooms, and testing
+hours in `shared-office-routing`. The faculty-specific page is
 `/departments/advocacy-accessibility/faculty-resources/` and the testing page is
-`/departments/advocacy-accessibility/testing-and-classroom-accommodations/`
-(`testingcenter@ncf.edu`, same phone; testing by appointment Monday to Friday 9:00
-a.m. to 4:30 p.m., earliest exam start 9:00 a.m., latest 3:00 p.m., HCL 5).
+`/departments/advocacy-accessibility/testing-and-classroom-accommodations/`.
 
 The faculty page carries real operating rules — refer accommodation requests to the
 ALC, never deny an accommodation without consulting ALC staff first, respect
@@ -187,9 +187,9 @@ intranet and are not public. The accommodation rules themselves are summarized i
 ## Research administration
 
 `https://www.ncf.edu/departments/research-programs-services/` — Office of Research
-Programs and Services, `orps@ncf.edu`, with a separate `IRB@ncf.edu` address. This is
-the public entry point for sponsored programs, active awards, and the Institutional
-Review Board. The public "Report a Problem" page routes research non-compliance —
+Programs and Services, the public entry point for sponsored programs, active awards, and
+the Institutional Review Board. It publishes a separate address for the IRB; both are in
+`shared-office-routing`. The public "Report a Problem" page routes research non-compliance —
 ethical standards, federal regulations, other laws, institutional policies — to the
 IRB. Do not describe IRB submission mechanics; they are not public in this corpus.
 
@@ -221,14 +221,13 @@ grievances?" is yes — the regulation is public — while the *internal procedu
 committee's deliberations, and any individual case* remain out of scope. Distinguish
 those two things every time.
 
-The same office publishes a general contact route: Office of the General Counsel,
-941-487-4877, `generalcounsel@ncf.edu`.
+The same office publishes a general contact route; see `shared-office-routing`.
 
 ## Human Resources: public surface only
 
-`https://www.ncf.edu/departments/human-resources/` — (941) 487-5020, `hr@ncf.edu`,
-Palmer D. The public page covers the HR mission, employment and open positions, and
-employee benefits. It does not publish individual compensation, personnel review
+`https://www.ncf.edu/departments/human-resources/` — contact details in
+`shared-office-routing`. The public page covers the HR mission, employment and open
+positions, and employee benefits. It does not publish individual compensation, personnel review
 procedure, or leave adjudication. Route salary, benefits enrollment, leave, and
 employment-status questions to HR directly and say plainly that the answer is not in
 public sources. Public regulations 3-4001, 3-4008, 3-4009, and 3-4015 exist for

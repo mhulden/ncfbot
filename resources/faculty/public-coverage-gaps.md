@@ -10,6 +10,10 @@ public.
 
 **Audience:** faculty, and any role asking a faculty-side question.
 
+> **Contacts live in one place.** This file names the office that owns a question; the
+> phone number, email alias, room, and hours for that office are in
+> `resources/shared/office-routing.md` (`shared-office-routing`), which is canonical.
+>
 > **The phrase to use.** When a question falls in this file, say the workflow is
 > **not available in approved public sources**, name the office or authenticated
 > system that owns it, and give whatever public framing does exist. Do not guess at
@@ -35,15 +39,15 @@ name the system and the step, and must stop there.
 | Faculty question | Public status | Route to |
 |---|---|---|
 | Is my advisee on academic probation? What is their standing? | Not public — individual record | Office of the Registrar; the student may check their own record |
-| Did my advisee's aid get restored? Do they still qualify? | Not public — individual determination | Financial Aid / Enrollment Services (`ncfinaid@ncf.edu`, (941) 487-5006) |
+| Did my advisee's aid get restored? Do they still qualify? | Not public — individual determination | Financial Aid / Enrollment Services |
 | Show me my advisee's grades, evaluations, or transcript | Not public — protected record, and the bot must not request it | Faculty view it in Banner / Navigate 360 after login; the bot does not access records |
 | What exactly does the Registrar Forms page on the intranet contain? | Not public — every intranet path returns a login page | Office of the Registrar, or the Provost's Office Academic Forms link after login |
 | Step-by-step inside SES for entering a narrative evaluation | Not public — SES requires SSO | The Provost's Quick Reference Guide names the path (SES → My Course Schedule → term → course); details after login |
 | Exact Banner screens for contract certification this term | Partly public — the Guide names the path; screens are not | Office of the Registrar |
 | How do I submit an Honor Code allegation? | Partly public — the route (Maxient tile in the NCF Portal) is published; the form is behind the portal | Office of the Provost; upload the signed Student and Instructor Resolution Form via the portal tile |
 | Grant a record-specific override, retroactive add, or late registration for a named student | Not public — an individual action | Office of the Registrar. The override *mechanism* is published; the outcome for a student is not |
-| Petition the Provost for a late contract, late add, or post-deadline renegotiation | Partly public — the Handbook says the petition exists and is granted only in exceptional circumstances; the form and criteria are not published | Office of the Provost, (941) 487-4203, `provost@ncf.edu` |
-| My salary, merit increase, or contract terms | Not public for an individual. Framework only: Regulations 3-4001, 3-4012, and the Handbook's merit-salary statement | Human Resources, (941) 487-5020, `hr@ncf.edu` |
+| Petition the Provost for a late contract, late add, or post-deadline renegotiation | Partly public — the Handbook says the petition exists and is granted only in exceptional circumstances; the form and criteria are not published | Office of the Provost |
+| My salary, merit increase, or contract terms | Not public for an individual. Framework only: Regulations 3-4001, 3-4012, and the Handbook's merit-salary statement | Human Resources |
 | Benefits enrollment, leave balances, workers' compensation | Not public for an individual | Human Resources; Environmental Health and Safety for workers' compensation |
 | Tenure, promotion, retention, or post-tenure review for a person | Not public. Framework only: Regulation 4-8001 (post-tenure review) is a public PDF, and the August 2023 Handbook describes the RPT process and timetables | Office of the Provost and Human Resources; Regulation 4-8001 for the published rule |
 | Personnel file contents, evaluations of an employee, disciplinary history | Not public — Regulation 3-4015 governs limited-access personnel records | Human Resources |
@@ -53,9 +57,9 @@ name the system and the step, and must stop there.
 | Is there a collective bargaining agreement, and what does it say? | Not verified in this corpus. Regulation 3-4009 states grievance rules are subject to any applicable collective bargaining agreement, which implies one may exist for some units | Human Resources |
 | The 2025-2026 Advising Handbook says what about X? | The PDF is public but is published as page images with no extractable text | Read the PDF directly, or ask the Provost's Office |
 | Faculty writing plans, writing-enhanced course criteria, thesis support for faculty | Not public — intranet community pages | Writing Program, `/departments/writing-program/` |
-| ALC "Fast Facts for Faculty" and the ALC faculty FAQ | Not public — both link to the intranet | Accessible Learning Center, (941) 487-4844, `aalc@ncf.edu` |
+| ALC "Fast Facts for Faculty" and the ALC faculty FAQ | Not public — both link to the intranet | Accessible Learning Center |
 | Baccalaureate exam resources and announcements | Not public — the advising page's link requires myNCF | Office of the Registrar or the Provost's Office |
-| IRB submission mechanics and forms | Not public in this corpus | Office of Research Programs and Services, `orps@ncf.edu` / `IRB@ncf.edu` |
+| IRB submission mechanics and forms | Not public in this corpus | Office of Research Programs and Services |
 | Course offerings, seats, waitlist status | Out of scope for this file | Agent 6's course tools; live status requires a fresh public lookup |
 | Absolute deadline dates for a named term | Out of scope for this file | Official academic calendar and Agent 2's `resources/shared/academic-calendar.md` |
 | Degree requirements by catalog year | Out of scope for this file | Agent 2's catalog resources and the Registrar |
