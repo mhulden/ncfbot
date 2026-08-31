@@ -1,0 +1,142 @@
+{
+  "id": "students-academic-model",
+  "resource_file": "resources/students/academic-model.md",
+  "title": "The New College Academic Model",
+  "audiences": [
+    "students"
+  ],
+  "topics": [
+    "contracts",
+    "units-credits",
+    "evaluation",
+    "academic-standing",
+    "advising",
+    "grading"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-contract-isp/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "308a314e9719b098ceb29cd2de135d13d2cab098f901bb44bef309486621ba26",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/registration/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "7c6ec582f80e5a5c37424dbb66cc092c5ad4c4c14363919816b262f60cc3eeb8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/grading-policy/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "55a910a5bb3cbffba1f5eca25409c0af062b144b1eae48fa994e36226bc45ed7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-standing/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "b6fcfb7ae3b53c1cef851e5d5b0940451be8d9922187af98ded736a3cf39ec74",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/degree-graduation-requirements/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "8816549a61264eef560c330d548797b048aaa65d90506de8a88932d4c79b2803",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/financial-aid-programs/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "ecd4e803db737f13c35bf2492796337a5061b27dd6313d43a718e55ba00d3211",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/leave-absence/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "c5112eb550c91c48e158cf1127c7fd518fd5f25cdbfea59b15446cc0e2f53da8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/graduate/academic-regulations/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "334e526af1ea74bd4db668892365f5efff65ac8687713401009ebb685f0c74c7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "e74cee4c42dfe051f88c9d4294e8fafe4ce800fe5b39bf5f60dde8b3b6aa2b0d",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d667f181985bbbd9b73e4202beeea07ea6be7ee15708d1b2518ed16a8af6c3d1",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-30",
+  "notes": "Public sources use both 'Student Academic Standing Committee' and 'Student Academic Status Committee' for SASC; the resource records the inconsistency without resolving it. Detailed advising guidance is behind MyNCF login and is recorded as a coverage gap. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}

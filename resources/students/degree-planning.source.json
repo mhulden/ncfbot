@@ -1,0 +1,156 @@
+{
+  "id": "students-degree-planning",
+  "resource_file": "resources/students/degree-planning.md",
+  "title": "Degree Planning and Graduation Requirements",
+  "audiences": [
+    "students"
+  ],
+  "topics": [
+    "graduation",
+    "general-education",
+    "area-of-concentration",
+    "thesis",
+    "baccalaureate-exam",
+    "transfer-credit",
+    "graduate-programs",
+    "catalog-year"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/degree-graduation-requirements/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "8816549a61264eef560c330d548797b048aaa65d90506de8a88932d4c79b2803",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/general-education/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "7cd2b6e3110a8ac389a76a83714b538ed2f39dc3fe76e862cc7e47215086344b",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/area-of-concentration/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "9d48ea0c0093ef69c516373b158614d0b84c3a5fad21bb4615d19eaf08709e97",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/minors-certificates/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "cf1536a148e52a78f502757afe6a074221f5ee3dd9de2d6bcb5710686939046f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/senior-project-thesis/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "4b9b246004213f8bb864303fdf5f3e1f2c2cb9b2dd44a18a5c1a4f7553837b50",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/baccalaureate-exam/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "966293af3c22a7726464a7312256b97e74722a5702eef08e5d3288e4c3cd0e70",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/transfer-policy/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d973db2e33de19e77f3c7803d84881fdfb08453ec4a322baa3272f04a2e3ea26",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-contract-isp/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "308a314e9719b098ceb29cd2de135d13d2cab098f901bb44bef309486621ba26",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/graduate/master-applied-data-science/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "3912683d3a9c5dc993aeaf4765e6ae25617b372ab9abb35dff0935f4159a3f19",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/graduate/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "f3b5c0c366ae60de2bdfe72d34652c97750047d2350831c5d0fb70bb235fde24",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academics/academic-calendar/",
+      "publisher": "New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": "6a8e7943ae41f769f90bea96f4307c0f0f5f62aa5c497c19ef5848510aba88a6",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-30",
+  "notes": "Two unresolved conflicts are documented: (1) the general education page states 36 credit hours while its itemized components as published appear to total 38; (2) the catalog anchors PAOC and thesis-prospectus milestones to contract number while the academic calendar anchors them to semester number with different dates. Neither is reconciled. No B.A. residency-unit figure is published, so none is asserted. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}

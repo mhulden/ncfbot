@@ -1,0 +1,179 @@
+{
+  "id": "students-financial-and-status-cautions",
+  "resource_file": "resources/students/financial-and-status-cautions.md",
+  "title": "Financial and Status Cautions",
+  "audiences": [
+    "students"
+  ],
+  "topics": [
+    "financial-aid",
+    "withdrawal",
+    "refunds",
+    "veterans-benefits",
+    "international-status",
+    "billing",
+    "graduation-holds"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/financial-aid-programs/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "ecd4e803db737f13c35bf2492796337a5061b27dd6313d43a718e55ba00d3211",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/withdrawal/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "13aadafc00d3c50297a9387854476f575eb7f1d89d9a56924bb87c2d1fc334eb",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/tuition-fee-assessment-refund-policies/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "5fe4be874b74f8dbe175e9f622c574b60cedf48df83955784224165aaee5acee",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/veteras-affair-education-benefits/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "0a28b5199edef28f66a1688d1ee97ac1fbd30c6634b1935ac12e197acf236db4",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/admission-undergraduate/international-student-admission/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "728e526aefdd748747cc89c4ec315c37340d7e2c81288fd20877021a8d0648b8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/off-campus-study/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "c0305be370b37b04fd46dc666472a9b68f9525c0c5de364b90937c3628932966",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/area-of-concentration/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "9d48ea0c0093ef69c516373b158614d0b84c3a5fad21bb4615d19eaf08709e97",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/senior-project-thesis/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "4b9b246004213f8bb864303fdf5f3e1f2c2cb9b2dd44a18a5c1a4f7553837b50",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/registration/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "7c6ec582f80e5a5c37424dbb66cc092c5ad4c4c14363919816b262f60cc3eeb8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/leave-absence/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "c5112eb550c91c48e158cf1127c7fd518fd5f25cdbfea59b15446cc0e2f53da8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/graduate/satisfactory-academic-progress-policy-financial-aid-purposes/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d9eadc376aeccb39f5d5e3a2a37bd1846b3611f8c2b6ca04fe16ba8d8866054f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academics/academic-calendar/",
+      "publisher": "New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": "6a8e7943ae41f769f90bea96f4307c0f0f5f62aa5c497c19ef5848510aba88a6",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/",
+      "publisher": "New College of Florida Office of the Registrar",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "b66ddd03f29be340cefb8aa882dc54afd1bb241916274c07478533322f920b9d",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-02-01",
+  "notes": "The undergraduate catalog references an external SAP policy rather than restating it, so undergraduate SAP rules are a coverage gap. The public international admission page states no F-1 full-time credit threshold, so none is asserted. Catalog refund language (100% through the second week) and calendar refund dates (25% deadlines) do not combine into a complete refund schedule and are not merged. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}
