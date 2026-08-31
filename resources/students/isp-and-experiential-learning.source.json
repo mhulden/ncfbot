@@ -1,0 +1,117 @@
+{
+  "id": "students-isp-and-experiential-learning",
+  "resource_file": "resources/students/isp-and-experiential-learning.md",
+  "title": "ISPs, Internships, and Off-Campus Study",
+  "audiences": [
+    "students"
+  ],
+  "topics": [
+    "isp",
+    "internships",
+    "study-abroad",
+    "off-campus-study",
+    "experiential-learning"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-contract-isp/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/off-campus-study/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-support-services/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/degree-graduation-requirements/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-standing/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/financial-aid-programs/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/study-abroad/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academics/academic-calendar/",
+      "publisher": "New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": null,
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2026-11-15",
+  "notes": "Off-campus-study declaration deadline conflict recorded (catalog Nov 1 / Apr 1 vs calendar 2026-11-02 / 2027-04-01). Tutorial and independent-reading procedures and a general internship registration procedure were not found in public sources and are recorded as coverage gaps rather than described. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}

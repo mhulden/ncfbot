@@ -1,0 +1,156 @@
+{
+  "id": "students-student-support",
+  "resource_file": "resources/students/student-support.md",
+  "title": "Student Support Services",
+  "audiences": [
+    "students"
+  ],
+  "topics": [
+    "advising",
+    "tutoring",
+    "writing-support",
+    "library",
+    "accessibility",
+    "career",
+    "health-wellbeing",
+    "student-affairs"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-support-services/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/advising/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/life-at-new/health-well-being/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/ceo/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/academics/writing-program/writing-resource-center/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/study-abroad/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/educational-technology-services/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/research-programs-services/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/",
+      "publisher": "New College of Florida Office of the Registrar",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/senior-project-thesis/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-30",
+  "notes": "Deliberately thin on high-risk contacts: crisis, counseling, Title IX and conduct contacts are canonical in Agent 3's resources/shared/sensitive-referrals.md and must not be duplicated here. The public Health & Well-being page published no phone, email or after-hours line as retrieved, and ALC staff emails were not readable, so none are asserted. The START Center link returned HTTP 404 on 2026-08-31. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "shared-academic-calendar",
+  "resource_file": "resources/shared/academic-calendar.md",
+  "title": "Academic Calendar (Public Dates)",
+  "audiences": [
+    "students",
+    "faculty",
+    "outside"
+  ],
+  "topics": [
+    "academic-calendar",
+    "deadlines",
+    "registration",
+    "isp",
+    "graduation"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/academics/academic-calendar/",
+      "publisher": "New College of Florida",
+      "authority_type": "calendar",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/academic-calendars-catalogs/",
+      "publisher": "New College of Florida Office of the Registrar",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/academic-calendar/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:10:00Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": null,
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2026-10-15",
+  "notes": "Undergraduate and graduate calendars are published separately and disagree on several dates; twelve apparent discrepancies are transcribed in the resource and are deliberately not repaired. The published catalog edition (2025-2026) lags the calendar year (2026-2027). sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+}
