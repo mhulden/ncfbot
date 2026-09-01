@@ -1,0 +1,84 @@
+{
+  "id": "shared-glossary",
+  "resource_file": "resources/shared/glossary.md",
+  "title": "New College Public Glossary",
+  "audiences": [
+    "students",
+    "faculty",
+    "outside"
+  ],
+  "topics": [
+    "glossary",
+    "terminology",
+    "area-of-concentration",
+    "independent-study-project",
+    "narrative-evaluation",
+    "catalog-year"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/area-of-concentration/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:45:21Z",
+      "last_modified": "2026-02-02T16:39:21Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "9d48ea0c0093ef69c516373b158614d0b84c3a5fad21bb4615d19eaf08709e97",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/about/accreditation/",
+      "publisher": "New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "1ec67bad956318a602e3a5d9714172c1da0d895ab6cb9ea49e4e0ed204f633e8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:45:20Z",
+      "last_modified": "2026-02-02T16:37:35Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d667f181985bbbd9b73e4202beeea07ea6be7ee15708d1b2518ed16a8af6c3d1",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/about/history/",
+      "publisher": "New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "96d5d4b79cd7f355213b46f2c951eb7d65a8e7c3ce9820cc5cc20a15bf264468",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/transcripts-records/",
+      "publisher": "New College of Florida Registrar",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": "2026-08-31T17:42:52Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "4279aef53f99fee5988e6b5adf43505bca33f15159cb23b69771cbff62ffca03",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-01",
+  "notes": "Definitions are orientation only. Catalog-year-specific academic procedures belong in the applicable academic resources; the newest catalog must not be assumed to govern an individual student."
+}

@@ -1,0 +1,56 @@
+{
+  "id": "outside-about-ncf",
+  "resource_file": "resources/outside/about-ncf.md",
+  "title": "About New College of Florida",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "about-ncf",
+    "history",
+    "accreditation",
+    "location"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/about/",
+      "publisher": "New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f5460236fd11010262996313d3d401205cc7060ac7d5516230b930f518340416",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/about/history/",
+      "publisher": "New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "96d5d4b79cd7f355213b46f2c951eb7d65a8e7c3ce9820cc5cc20a15bf264468",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/about/accreditation/",
+      "publisher": "New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "1ec67bad956318a602e3a5d9714172c1da0d895ab6cb9ea49e4e0ed204f633e8",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-01",
+  "notes": "Durable identity/history are summarized; leadership, rankings, enrollment and other volatile institutional claims are intentionally excluded and require fresh verification."
+}

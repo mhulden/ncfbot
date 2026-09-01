@@ -1,0 +1,47 @@
+{
+  "id": "outside-cost-and-aid",
+  "resource_file": "resources/outside/cost-and-aid.md",
+  "title": "Cost and Financial Aid Orientation",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "cost",
+    "tuition",
+    "fees",
+    "cost-of-attendance",
+    "financial-aid",
+    "scholarships",
+    "residency"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/first-year-students/tuition-fees/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:23Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": "6739b56e4cf2b359bf59197d9ae2964ad72a9b3a1cdc69f1a0872948d3607059",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/financial-aid/",
+      "publisher": "New College of Florida Financial Aid",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:23Z",
+      "last_modified": "2026-08-31T17:41:36Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "4bbbf7a11fc05509b52dbc4397c0d69dee1a40135914952afbb616a4f25e08b1",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-06-01",
+  "notes": "Published 2026-2027 undergraduate budget figures are estimates, not personalized bills or aid awards. Residency and individual eligibility are not determined by this resource."
+}

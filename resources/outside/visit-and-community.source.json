@@ -1,0 +1,83 @@
+{
+  "id": "outside-visit-and-community",
+  "resource_file": "resources/outside/visit-and-community.md",
+  "title": "Visits, Maps, Alumni, and Community Information",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "visit",
+    "campus-map",
+    "directions",
+    "alumni",
+    "transcripts",
+    "library",
+    "community-access"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/visit/",
+      "publisher": "New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:27Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "70a11dced17895dc0d7521b5c96e425eb60c52b7237abb48ffc5bd3b7233d615",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/campus-map/",
+      "publisher": "New College of Florida",
+      "authority_type": "directory",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "b26086990657ff7cbae723695478064c470408a95d9db12a9b5db3d215a9e8cb",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/alumni/",
+      "publisher": "New College Foundation & Alumni",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "bed202fa0ad3c678eba144725865f46e17b2edcac0b1d08cdaf73ba7b530d195",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/registrar/transcripts-records/",
+      "publisher": "New College of Florida Registrar",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": "2026-08-31T17:42:52Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "4279aef53f99fee5988e6b5adf43505bca33f15159cb23b69771cbff62ffca03",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/library/",
+      "publisher": "Jane Bancroft Cook Library, New College of Florida",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "635fb2587d5767821b9edc386dcab76a75bc0bfa6fc2c5386635c6d03583222c",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2026-12-15",
+  "notes": "Tour schedules, event capacity, parking/access details and library visitor rules are operationally volatile and should be freshly checked for a specific visit."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "outside-campus-life",
+  "resource_file": "resources/outside/campus-life.md",
+  "title": "Campus Life Orientation",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "campus-life",
+    "housing",
+    "dining",
+    "clubs",
+    "athletics",
+    "student-life"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/life-at-new/",
+      "publisher": "New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "c785cca6151bb26a68b443a99b72b54be0ae3891988ae75966f3b89aa4df8c6f",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/housing-residential-life/",
+      "publisher": "New College of Florida Housing & Residential Life",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:25Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "e73552eb7636ac2031baeecc84977d8e7d754beca542699d2e9b5b3340f051c7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/housing-residential-life/housing-room-rates-fees/",
+      "publisher": "New College of Florida Housing & Residential Life",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:25Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": "dc9687756f42b66045508c3570a941c5be8e8d1c4145ba2c5bdc4395152badf7",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/life-at-new/where-to-eat/",
+      "publisher": "New College of Florida Dining Services",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": "2026-08-31T17:43:11Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2026-2027",
+      "sha256": "96a4a80ae0004d354c76327acf51f3906ceb4e54a93ce05264949528717b6f38",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/life-at-new/what-to-do/clubs-organizations/",
+      "publisher": "New College of Florida",
+      "authority_type": "other",
+      "retrieved_at": "2026-08-31T17:45:26Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "05061e0ac5c073f87bd583e083bb282db8f48c342c26eeab096964842cc71fe0",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "term",
+  "review_after": "2027-01-05",
+  "notes": "Housing availability, room assignments, dining hours/meal plans, club activity and athletics offerings are operational or term-sensitive. Current availability is never guaranteed from this summary."
+}

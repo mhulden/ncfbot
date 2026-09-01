@@ -1,0 +1,80 @@
+{
+  "id": "outside-programs",
+  "resource_file": "resources/outside/programs.md",
+  "title": "Programs and Academic Offerings",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "programs",
+    "undergraduate-programs",
+    "graduate-programs",
+    "areas-of-concentration"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/programs/",
+      "publisher": "New College of Florida",
+      "authority_type": "program",
+      "retrieved_at": "2026-08-31T17:45:27Z",
+      "last_modified": "2026-08-31T17:45:26Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "2325092ec577c5600d97b7ad6ff65371d941a97eeca9a8e7bb746f757a2cf765",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/about/accreditation/",
+      "publisher": "New College of Florida",
+      "authority_type": "policy",
+      "retrieved_at": "2026-08-31T17:45:22Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "1ec67bad956318a602e3a5d9714172c1da0d895ab6cb9ea49e4e0ed204f633e8",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:45:21Z",
+      "last_modified": "2026-02-02T16:37:45Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "58ee32e4d18b87a57b629e396d74572aa41d60aa679e472da6cd37226dfd1411",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/graduate/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:45:21Z",
+      "last_modified": "2026-02-02T16:37:43Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "f3b5c0c366ae60de2bdfe72d34652c97750047d2350831c5d0fb70bb235fde24",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/graduate/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "e128977a67dfba04e96dc709e29444b214e764fe9efdd25b9d241e6c9549ffe4",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2026-12-15",
+  "notes": "Current Graduate Admissions lists Applied Data Science, Marine Mammal Science, and Educational Leadership. The accreditation page currently lists only the two older graduate programs, and the public 2025-2026 graduate catalog predates the 2026-2027 cycle. This coverage conflict should remain visible until official sources align."
+}

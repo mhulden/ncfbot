@@ -1,0 +1,94 @@
+{
+  "id": "outside-admissions",
+  "resource_file": "resources/outside/admissions.md",
+  "title": "Admissions Pathways",
+  "audiences": [
+    "outside"
+  ],
+  "topics": [
+    "admissions",
+    "first-year-admissions",
+    "transfer-admissions",
+    "international-admissions",
+    "graduate-admissions",
+    "admitted-students"
+  ],
+  "sources": [
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/first-year-students/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:23Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f79b83e6fe58713154ad248b4a507cfd0a668221dec7d974294828a0f1a46e17",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/transfer-students/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "f4f97f7c5963c4d035fe858137b64e458777f8e484de57e84f11c1fd686cd410",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/international-students/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "dd40979b0b8cd8d0b9dd00aa4ed123700ebb3f5fd10bdcc0ce9ed9b5dbaf25e2",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/graduate/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:24Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "e128977a67dfba04e96dc709e29444b214e764fe9efdd25b9d241e6c9549ffe4",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/admitted-students/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-08-31T17:45:23Z",
+      "last_modified": "2026-08-31T17:45:22Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "e94f1aa8041636a3be356b48c5ff7d8dfd7f17a5f7ce86fffb2c3d2f478afee1",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://catalog.ncf.edu/",
+      "publisher": "New College of Florida Academic Catalog",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T17:45:20Z",
+      "last_modified": "2026-02-02T16:37:35Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": "2025-2026",
+      "sha256": "d667f181985bbbd9b73e4202beeea07ea6be7ee15708d1b2518ed16a8af6c3d1",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2026-10-01",
+  "notes": "At verification, the central international admissions page showed a newer cycle than at least one international freshman subpage. Do not silently merge conflicting deadline tables; verify the applicant type/cycle and current central admissions source."
+}
