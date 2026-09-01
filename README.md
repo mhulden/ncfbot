@@ -1,4 +1,4 @@
-<img src="./mrmanatee2.png" alt="Mr. Manatee" width="100">
+<img src="./mrmanatee2.png" alt="Mr. Manatee" width="200">
 
 # NCF Bot
 
