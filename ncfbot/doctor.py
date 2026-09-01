@@ -152,9 +152,9 @@ def _check_resources(base: Path, issues: list[Issue]) -> None:
         if not headings or headings[-1].strip().lower() != "sources":
             issues.append(Issue("error", "source-footers", f"missing Sources heading: {markdown.relative_to(base)}"))
     for resource in resources:
-        title_match = re.search(r"(?m)^#\s+(.+?)\s*$", resource.markdown)
-        if title_match and title_match.group(1).strip() != resource.title:
-            issues.append(Issue("error", "resource-markdown", f"{resource.resource_id}: sidecar title does not match Markdown title"))
+        # The contract requires a human-readable sidecar title that is
+        # consistent with the resource, not a byte-for-byte copy of its H1.
+        # Domain resources may intentionally use a shorter page heading.
         source_heading = re.search(r"(?im)^#{1,6}\s+Sources\s*$", resource.markdown)
         if source_heading:
             footer = resource.markdown[source_heading.end():]

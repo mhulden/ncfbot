@@ -1,7 +1,7 @@
 # Agent 7 Integration Report
 
-Status: Agent 7 implementation complete; final combined integration is waiting on Agents 4–6
-Report date: 2026-08-31
+Status: Agent 7 implementation complete; final combined integration is waiting on Agents 5–6
+Report date: 2026-09-01
 Branch: `agent-7/integration-evaluation`
 
 ## Scope
@@ -12,13 +12,14 @@ No NCF institutional fact was added by Agent 7. The implementation uses syntheti
 
 ## Repository revisions reviewed
 
-- Current reviewed `main`: `0616cc2d508e3dcdb821f36365ded7a81ef1a893`
+- Current reviewed `main`: `5c7291c`
 - Agent 1 merge: `4c2d35f8e17b8f2e8aa95eb1dd05a6d0f5fc0e3f`
 - Agent 2 merge: `44dafc4`
 - Agent 3 merge: `6d3dcea`, including owner-requested follow-up `e1414f9`
-- Agent 7 work: four topic-focused commits recorded by the pull request
+- Agent 4 merge: `bb44e39`, including owner-requested follow-up `86a13ef`
+- Agent 7 work: five topic-focused commits recorded on this branch before this report update
 
-Agent 7 is rebased onto the merged Agent 1–3 work. Agent 4 pull request #4 and Agent 5 pull request #5 remain open. Agent 6 has no visible pull request or fork as of the report date.
+Agent 7 is rebased onto the merged and reviewed Agent 1–4 work. Agent 5 pull request #5 remains open. Agent 6 has no visible pull request or fork as of the report date.
 
 ## Implemented commands
 
@@ -46,13 +47,13 @@ python -m venv <temporary-directory>/venv
 <temporary-directory>/venv/bin/python -m pytest
 ```
 
-Result against merged Agents 1–3 on 2026-08-31: **20 passed**.
+Result against merged Agents 1–4 on 2026-09-01: **20 passed**.
 
 Additional command checks:
 
 - `python -m ncfbot route "How do I sponsor an ISP?"`: routed to `faculty`, with `sponsor an isp` shown as the transparent matched signal and no fabricated numeric confidence.
 - `python -m ncfbot search "withdrawal deadline" --audience students`: returned ranked current student/calendar evidence with status, applicability, review state, and official URLs.
-- `python -m ncfbot evaluate`: validated and ran **148 merged cases; 148 passed, 0 failed**.
+- `python -m ncfbot evaluate`: validated and ran **184 merged cases; 184 passed, 0 failed**.
 - Integration preview with the latest Agents 4 and 5 heads: **76 tests passed** and **184 evaluation cases passed, 0 failed**.
 - Agent 5 preview validation: **21/21 sidecars passed** and the corrected tool generated the contract-shaped manifest.
 - Agent 5 offline freshness preview: zero errors and three review-window warnings.
@@ -83,7 +84,6 @@ The evaluation export records its version, UTC timestamp, repository revision, r
 
 The following are integration blockers owned by other agents, not Agent 7 test exceptions:
 
-- Agent 4: pull request #4 remains open after the repository owner requested corrections to copied request-time `last_modified` values, cycle-labeled admissions coverage, and the current undergraduate program inventory.
 - Agent 5: the latest pull request #5 head passes the preview suite and fixes the reviewed sitemap, fetch-safety, schema, and manifest-shape blockers. It still must merge and generate/commit `resources/generated/manifest.json` after the final resource sidecars are present.
 - Agent 6: no pull request is visible. The course schema, public-term catalog, historical section archive, tools, tests, and course evaluations are absent.
 
@@ -93,13 +93,12 @@ Agent 1's README still labels the Agent 7 commands as reserved and says no packa
 
 ## Recommended follow-up sequence
 
-1. Agent 4 addresses the owner review and merges pull request #4.
-2. Agent 5 merges pull request #5, then regenerates and commits the combined manifest after all sidecars merge.
-3. Agent 6 submits and merges the complete course-data pull request.
-4. Rebase this branch again, run `doctor`, every offline test, source validation/freshness, current and historical course queries, and evaluation.
-5. Run optional source and Banner network smoke tests separately and record their dates/results.
-6. Coordinate the narrow README installation/command update with Agent 1.
-7. Exercise the thirteen final demonstration scenarios and add any evidence-backed regression cases.
+1. Agent 5 merges pull request #5, then regenerates and commits the combined manifest after all sidecars merge.
+2. Agent 6 submits and merges the complete course-data pull request.
+3. Rebase this branch again, run `doctor`, every offline test, source validation/freshness, current and historical course queries, and evaluation.
+4. Run optional source and Banner network smoke tests separately and record their dates/results.
+5. Coordinate the narrow README installation/command update with Agent 1.
+6. Exercise the thirteen final demonstration scenarios and add any evidence-backed regression cases.
 
 ## Public sources consulted
 
