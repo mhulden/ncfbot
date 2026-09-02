@@ -111,7 +111,8 @@ def _complete_synthetic_repository(root: Path) -> Path:
         "discovered_term_count": 1, "complete_term_count": 1, "incomplete_term_count": 0,
         "coverage": {"earliest_term_code": "202601", "latest_term_code": "202601"},
         "complete": True,
-        "terms": {"202601": {"status": "success", "complete": True, "record_count": 1, "expected_count": 1}},
+        "terms": {"202601": {"status": "success", "complete": True, "record_count": 1,
+                               "expected_count": 1, "sha256": hashlib.sha256(digest_body.encode()).hexdigest()}},
     }), encoding="utf-8")
     (courses / "current-sections.meta.json").write_text(json.dumps({
         "term_code": "202601", "status": "success", "complete": True,
@@ -162,6 +163,44 @@ def test_doctor_catches_corrupted_grouped_history(tmp_path):
     report = run_doctor(root)
     assert not report.ok
     assert any(issue.check == "course-history" for issue in report.issues)
+
+
+def test_doctor_catches_historical_term_hash_mismatch(tmp_path):
+    root = _complete_synthetic_repository(tmp_path)
+    path = root / "resources/courses/historical-sections.meta.json"
+    metadata = json.loads(path.read_text())
+    metadata["terms"]["202601"]["sha256"] = "0" * 64
+    path.write_text(json.dumps(metadata), encoding="utf-8")
+    report = run_doctor(root)
+    assert not report.ok
+    assert any("historical sha256 mismatch for term" in issue.message for issue in report.issues)
+
+
+def test_doctor_catches_semantically_stale_grouped_history(tmp_path):
+    root = _complete_synthetic_repository(tmp_path)
+    path = root / "resources/courses/course-history.json"
+    grouped = json.loads(path.read_text())
+    grouped["courses"][0]["titles"] = ["Fabricated title"]
+    path.write_text(json.dumps(grouped), encoding="utf-8")
+    report = run_doctor(root)
+    assert not report.ok
+    assert any("derived records do not match" in issue.message for issue in report.issues)
+
+
+def test_doctor_catches_fabricated_empty_grouped_course(tmp_path):
+    root = _complete_synthetic_repository(tmp_path)
+    path = root / "resources/courses/course-history.json"
+    grouped = json.loads(path.read_text())
+    grouped["courses"].append({
+        "subject": "ZZZ", "course_number": "9999", "course_display": "ZZZ 9999",
+        "titles": [], "terms": [], "instructors": [], "attributes": [],
+        "section_count": 0, "section_identities": [],
+    })
+    grouped["course_count"] += 1
+    path.write_text(json.dumps(grouped), encoding="utf-8")
+    report = run_doctor(root)
+    assert not report.ok
+    assert any("derived records do not match" in issue.message for issue in report.issues)
 
 
 def test_doctor_enforces_source_and_course_schemas(tmp_path):

@@ -329,6 +329,73 @@ def _rows_digest(records: list[dict[str, Any]]) -> str:
     return hashlib.sha256(body.encode()).hexdigest()
 
 
+def _unique(values: list[Any]) -> list[Any]:
+    result: list[Any] = []
+    for value in values:
+        if value not in result:
+            result.append(value)
+    return result
+
+
+def _grouped_course_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for record in records:
+        subject = str(record.get("subject") or "").strip().upper()
+        course_number = str(record.get("course_number") or "").strip().upper()
+        term_code = str(record.get("term_code") or "").strip()
+        crn = str(record.get("crn") or "").strip()
+        if not all((subject, course_number, term_code, crn)):
+            continue
+        grouped.setdefault((subject, course_number), []).append(record)
+
+    courses: list[dict[str, Any]] = []
+    for (subject, course_number), sections in sorted(grouped.items()):
+        sections.sort(key=lambda record: (str(record.get("term_code")), str(record.get("crn"))))
+        courses.append(
+            {
+                "subject": subject,
+                "course_number": course_number,
+                "course_display": next(
+                    (record.get("course_display") for record in sections if record.get("course_display")),
+                    f"{subject} {course_number}",
+                ),
+                "titles": _unique([record.get("title") for record in sections if record.get("title")]),
+                "terms": _unique(
+                    [
+                        {"term_code": record.get("term_code"), "term_label": record.get("term_label")}
+                        for record in sections
+                    ]
+                ),
+                "instructors": sorted(
+                    {
+                        name
+                        for record in sections
+                        for name in record.get("instructors", [])
+                        if isinstance(name, str) and name
+                    }
+                ),
+                "attributes": sorted(
+                    {
+                        value
+                        for record in sections
+                        for value in record.get("attributes", [])
+                        if isinstance(value, str) and value
+                    }
+                ),
+                "section_count": len(sections),
+                "section_identities": [
+                    {
+                        "term_code": record.get("term_code"),
+                        "crn": record.get("crn"),
+                        "section": record.get("section"),
+                    }
+                    for record in sections
+                ],
+            }
+        )
+    return courses
+
+
 def _coverage(data: Any) -> tuple[str | None, str | None]:
     value = data.get("coverage") if isinstance(data, dict) else None
     if not isinstance(value, dict):
@@ -418,6 +485,9 @@ def _check_courses(base: Path, issues: list[Issue]) -> None:
                 expected_count = term_meta.get("expected_count")
                 if isinstance(expected_count, int) and expected_count != term_counts.get(code, 0):
                     issues.append(Issue("error", "course-coverage", f"historical expected_count mismatch for term: {code}"))
+                term_records = [record for record in history if record.get("term_code") == code]
+                if term_meta.get("sha256") != _rows_digest(term_records):
+                    issues.append(Issue("error", "course-coverage", f"historical sha256 mismatch for term: {code}"))
 
     current_meta = _json(current_meta_path, issues, "course-current") if current_meta_path.is_file() else None
     if current_meta is None:
@@ -452,62 +522,8 @@ def _check_courses(base: Path, issues: list[Issue]) -> None:
             issues.append(Issue("error", "course-history", "course history summary counts do not match its inputs"))
         if _coverage(grouped) != expected_coverage:
             issues.append(Issue("error", "course-history", "course history coverage does not match the archive"))
-        archive_identity = {
-            (str(row.get("term_code")), str(row.get("crn"))): (row.get("subject"), row.get("course_number"), row.get("section"))
-            for row in history
-        }
-        archive_by_course: dict[tuple[Any, Any], list[dict[str, Any]]] = {}
-        for row in history:
-            archive_by_course.setdefault((row.get("subject"), row.get("course_number")), []).append(row)
-        grouped_identity: set[tuple[str, str]] = set()
-        course_keys: set[tuple[str, str]] = set()
-        for index, course in enumerate(grouped_courses):
-            if not isinstance(course, dict):
-                issues.append(Issue("error", "course-history", f"courses[{index}] must be an object"))
-                continue
-            key = (course.get("subject"), course.get("course_number"))
-            if not all(isinstance(value, str) and value for value in key) or key in course_keys:
-                issues.append(Issue("error", "course-history", f"courses[{index}] has an invalid or duplicate course key"))
-            course_keys.add(key)
-            if not isinstance(course.get("course_display"), str):
-                issues.append(Issue("error", "course-history", f"courses[{index}] has an invalid course_display"))
-            for field in ("titles", "instructors", "attributes"):
-                values = course.get(field)
-                if not isinstance(values, list) or not all(isinstance(value, str) for value in values) or len(values) != len(set(values)):
-                    issues.append(Issue("error", "course-history", f"courses[{index}].{field} must contain unique strings"))
-            terms = course.get("terms")
-            observed_terms = {
-                (row.get("term_code"), row.get("term_label")) for row in archive_by_course.get(key, [])
-            }
-            if not isinstance(terms, list) or not all(
-                isinstance(term, dict)
-                and isinstance(term.get("term_code"), str)
-                and isinstance(term.get("term_label"), str)
-                for term in terms
-            ):
-                issues.append(Issue("error", "course-history", f"courses[{index}].terms has an invalid shape"))
-            elif {(term["term_code"], term["term_label"]) for term in terms} != observed_terms:
-                issues.append(Issue("error", "course-history", f"courses[{index}].terms does not match the archive"))
-            identities = course.get("section_identities")
-            if not isinstance(identities, list) or course.get("section_count") != len(identities):
-                issues.append(Issue("error", "course-history", f"courses[{index}] section count is inconsistent"))
-                continue
-            for identity in identities:
-                if not isinstance(identity, dict):
-                    issues.append(Issue("error", "course-history", f"courses[{index}] has an invalid section identity"))
-                    continue
-                identity_key = (identity.get("term_code"), identity.get("crn"))
-                if not all(isinstance(value, str) and value for value in identity_key):
-                    issues.append(Issue("error", "course-history", f"courses[{index}] has an invalid section identity"))
-                    continue
-                if identity_key in grouped_identity:
-                    issues.append(Issue("error", "course-history", f"duplicate grouped section identity {identity_key[0]}/{identity_key[1]}"))
-                grouped_identity.add(identity_key)
-                archived = archive_identity.get(identity_key)
-                if archived != (key[0], key[1], identity.get("section")):
-                    issues.append(Issue("error", "course-history", f"grouped section does not match archive: {identity_key[0]}/{identity_key[1]}"))
-        if grouped_identity != set(archive_identity):
-            issues.append(Issue("error", "course-history", "grouped history section identities do not match the archive"))
+        if grouped_courses != _grouped_course_records(history):
+            issues.append(Issue("error", "course-history", "course history derived records do not match the archive"))
 
 
 def run_doctor(root: str | Path | None = None) -> DoctorReport:

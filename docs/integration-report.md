@@ -49,7 +49,7 @@ python -m venv <temporary-directory>/venv
 <temporary-directory>/venv/bin/python -m pytest
 ```
 
-Result from a fresh environment against merged Agents 1–6 on 2026-09-02: **118 passed**.
+Result from a fresh environment against merged Agents 1–6 on 2026-09-02: **118 passed**. Post-merge course-integrity regressions bring the final suite to **121 passed**.
 
 Additional command checks:
 
@@ -58,6 +58,7 @@ Additional command checks:
 - `python -m ncfbot evaluate`: validated and ran **217 merged cases; 217 passed, 0 failed**.
 - `python -m ncfbot doctor`: **passed** with no offline contract issues.
 - Review regressions confirm that `doctor` rejects incomplete historical metadata, inconsistent current snapshots, corrupted grouped history, schema-invalid provenance, and schema-invalid course rows.
+- Post-merge regressions also confirm exact per-term archive hashes and exact grouped-history derivation, including titles and the complete grouped course set.
 - Invalid source metadata now makes `evaluate` return a structured failed report instead of raising `SourceError`.
 - `python tools/validate_sources.py --all`: **21/21 sidecars passed**.
 - `python tools/check_freshness.py --offline`: zero errors and zero warnings.
