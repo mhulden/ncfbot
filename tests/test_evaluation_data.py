@@ -1,0 +1,70 @@
+import json
+import re
+from pathlib import Path
+
+from ncfbot.evaluation import duplicate_case_ids, read_cases, run_evaluation, validate_case
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_cross_cutting_corpus_is_large_and_valid():
+    cases, errors = read_cases(ROOT)
+    cross_cutting = [item for item in cases if item.path.name == "cross-cutting.jsonl"]
+    assert len(cross_cutting) >= 40
+    assert errors == []
+    assert duplicate_case_ids(cases) == []
+
+
+def test_schema_is_valid_json_and_names_contract_fields():
+    schema = json.loads((ROOT / "schemas/evaluation-case.schema.json").read_text())
+    assert schema["type"] == "object"
+    assert set(schema["required"]) == {
+        "id", "audience", "topic", "question", "expected_skill",
+        "expected_resource_ids", "must_include", "must_not_include",
+        "clarification_expected", "citation_required", "freshness_sensitive", "notes",
+    }
+
+
+def test_validator_rejects_unknown_fields():
+    case = {
+        "id": "valid-id", "audience": "students", "topic": "test", "question": "Question?",
+        "expected_skill": "skills/students.md", "expected_resource_ids": [], "must_include": [],
+        "must_not_include": [], "clarification_expected": False, "citation_required": False,
+        "freshness_sensitive": False, "notes": "", "surprise": True,
+    }
+    assert any("unknown field surprise" in error for error in validate_case(case))
+
+
+def test_deterministic_cross_cutting_assertions_pass():
+    report = run_evaluation(ROOT)
+    assert report["validation_errors"] == []
+    assert report["failed"] == 0
+    assert report["case_count"] >= 40
+    assert report["repository_revision"] != "unknown"
+    manifest_hash = report["resource_manifest_hash"]
+    assert manifest_hash is None or re.fullmatch(r"[0-9a-f]{64}", manifest_hash)
+
+
+def test_invalid_source_metadata_returns_structured_failed_report(tmp_path):
+    (tmp_path / "PLAN-distributed.md").write_text("test\n", encoding="utf-8")
+    schemas = tmp_path / "schemas"
+    schemas.mkdir()
+    for filename in ("source-record.schema.json", "evaluation-case.schema.json"):
+        (schemas / filename).write_text((ROOT / "schemas" / filename).read_text(), encoding="utf-8")
+    questions = tmp_path / "evaluations/questions"
+    questions.mkdir(parents=True)
+    questions.joinpath("cross-cutting.jsonl").write_text(
+        (ROOT / "evaluations/questions/cross-cutting.jsonl").read_text(), encoding="utf-8"
+    )
+    resources = tmp_path / "resources/students"
+    resources.mkdir(parents=True)
+    resources.joinpath("invalid.source.json").write_text(
+        json.dumps({"id": 7, "unexpected": True}), encoding="utf-8"
+    )
+
+    report = run_evaluation(tmp_path)
+
+    assert report["validation_errors"]
+    assert report["failed"] == 0
+    assert report["results"] == []

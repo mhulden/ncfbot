@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mhulden/ncfbot/schemas/evaluation-case.schema.json",
+  "title": "NCF Bot evaluation case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "audience",
+    "topic",
+    "question",
+    "expected_skill",
+    "expected_resource_ids",
+    "must_include",
+    "must_not_include",
+    "clarification_expected",
+    "citation_required",
+    "freshness_sensitive",
+    "notes"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "audience": {"enum": ["students", "faculty", "outside", "role-independent", "ambiguous"]},
+    "topic": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "question": {"type": "string", "minLength": 1},
+    "expected_skill": {"enum": ["skills/students.md", "skills/faculty.md", "skills/outside.md", null]},
+    "expected_resource_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "must_include": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "must_not_include": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "clarification_expected": {"type": "boolean"},
+    "citation_required": {"type": "boolean"},
+    "freshness_sensitive": {"type": "boolean"},
+    "notes": {"type": "string"}
+  }
+}

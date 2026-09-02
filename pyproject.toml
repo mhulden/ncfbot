@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ncfbot"
+version = "0.1.0"
+description = "Deterministic integration helpers for the NCF public-information bot"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema>=4.20",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8",
+  "requests>=2.31",
+  "beautifulsoup4>=4.12",
+  "lxml>=5",
+  "pdfminer.six>=20231228",
+]
+dev = [
+  "pytest>=8",
+  "requests>=2.31",
+  "beautifulsoup4>=4.12",
+  "lxml>=5",
+  "pdfminer.six>=20231228",
+]
+
+[project.scripts]
+ncfbot = "ncfbot.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["ncfbot*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
