@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "tool_version": "1.0.0",
+  "generated_at": "2026-08-31T18:24:25Z",
+  "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/term/termSelection?mode=search",
+  "source_endpoint": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/classSearch/getTerms",
+  "term_count": 26,
+  "coverage": {
+    "earliest_term_code": "201702",
+    "latest_term_code": "202608"
+  },
+  "terms": [
+    {
+      "code": "202608",
+      "description": "Fall 2026 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202605",
+      "description": "Summer 2026 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202602",
+      "description": "Spring 2026 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202508",
+      "description": "Fall 2025 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202505",
+      "description": "Summer 2025 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202502",
+      "description": "Spring 2025 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202408",
+      "description": "Fall 2024 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202405",
+      "description": "Summer 2024 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202402",
+      "description": "Spring 2024 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202308",
+      "description": "Fall 2023 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202305",
+      "description": "Summer 2023 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202302",
+      "description": "Spring 2023 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202208",
+      "description": "Fall 2022 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202202",
+      "description": "Spring 2022 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202108",
+      "description": "Fall 2021 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202102",
+      "description": "Spring 2021 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202008",
+      "description": "Fall 2020 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "202002",
+      "description": "Spring 2020 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201908",
+      "description": "Fall 2019 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201902",
+      "description": "Spring 2019 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201808",
+      "description": "Fall 2018 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201805",
+      "description": "Summer 2018 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201802",
+      "description": "Spring 2018 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201708",
+      "description": "Fall 2017 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201705",
+      "description": "Summer 2017 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    },
+    {
+      "code": "201702",
+      "description": "Spring 2017 (View Only)",
+      "discovered_at": "2026-08-31T18:24:25Z",
+      "view_only": true
+    }
+  ]
+}

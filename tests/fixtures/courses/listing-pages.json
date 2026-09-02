@@ -1,0 +1,35 @@
+[
+  {
+    "success": true,
+    "totalCount": 3,
+    "data": [
+      {
+        "term": "209908", "termDesc": "Fall 2099", "courseReferenceNumber": "90001",
+        "courseNumber": "1000", "courseDisplay": "1000", "subject": "SYN", "sequenceNumber": "001",
+        "courseTitle": "Synthetic Systems", "creditHourLow": 4, "maximumEnrollment": 20,
+        "enrollment": 10, "seatsAvailable": 10, "waitCapacity": 5, "waitCount": 0,
+        "waitAvailable": 5, "openSection": true, "faculty": [{"displayName": "Example, Ada"}],
+        "meetingsFaculty": [{"faculty": [], "meetingTime": {"monday": true, "wednesday": true, "beginTime": "0900", "endTime": "1020", "building": "LAB", "room": "1", "startDate": "08/20/2099", "endDate": "12/10/2099"}}],
+        "sectionAttributes": [{"description": "Synthetic Breadth"}]
+      },
+      {
+        "term": "209908", "termDesc": "Fall 2099", "courseReferenceNumber": "90002",
+        "courseNumber": "1000", "courseDisplay": "1000", "subject": "SYN", "sequenceNumber": "002",
+        "courseTitle": "Synthetic Systems", "creditHourLow": 4, "faculty": [{"displayName": "Example, Grace"}],
+        "meetingsFaculty": [], "sectionAttributes": []
+      }
+    ]
+  },
+  {
+    "success": true,
+    "totalCount": 3,
+    "data": [
+      {
+        "term": "209908", "termDesc": "Fall 2099", "courseReferenceNumber": "90003",
+        "courseNumber": "2008", "courseDisplay": "2008", "subject": "ART", "sequenceNumber": "001",
+        "courseTitle": "Fuzzy Codes Are Not Years", "creditHourLow": 2, "faculty": [],
+        "meetingsFaculty": [], "sectionAttributes": [{"description": "Studio"}]
+      }
+    ]
+  }
+]
