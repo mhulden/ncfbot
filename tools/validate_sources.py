@@ -9,7 +9,7 @@ and builds a generated combined manifest of the full corpus.
 Usage:
     python tools/validate_sources.py --all
     python tools/validate_sources.py --sidecar resources/students/academic-model.source.json
-    python tools/validate_sources.py --all --manifest resources/generated/source-manifest.json
+    python tools/validate_sources.py --all --manifest
 
 Exit codes:
     0 — all validations passed
@@ -19,8 +19,10 @@ Exit codes:
 import argparse
 import json
 import logging
+import os
 import re
 import sys
+import tempfile
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -98,31 +100,73 @@ def validate_sidecar(sidecar_path: Path, validator: Draft202012Validator) -> lis
     if errors:
         return errors  # No point continuing if schema is broken
 
-    # 3. resource_file exists
-    resource_path = Path(data["resource_file"])
+    # 3. resource_file is a safe neighboring resource path and exists
+    repository_root = Path.cwd().resolve()
+    resources_root = (repository_root / RESOURCES_DIR).resolve()
+    resource_path = (repository_root / data["resource_file"]).resolve()
+    expected_resource_path = sidecar_path.resolve().with_suffix("").with_suffix(".md")
+    try:
+        expected_resource_display = expected_resource_path.relative_to(repository_root)
+    except ValueError:
+        expected_resource_display = expected_resource_path
+    try:
+        resource_path.relative_to(resources_root)
+    except ValueError:
+        errors.append(f"resource_file escapes resources/: {data['resource_file']}")
+    if resource_path != expected_resource_path:
+        errors.append(
+            "resource_file must name the neighboring Markdown file: "
+            f"expected {expected_resource_display}"
+        )
     if not resource_path.exists():
         errors.append(f"resource_file not found on disk: {resource_path}")
     else:
-        # 5. Check Sources section in Markdown contains the sidecar URLs
+        # 5. Check the title and final Sources section against sidecar metadata
         md_text = resource_path.read_text(encoding="utf-8")
+        heading_matches = list(re.finditer(r"^#{1,6}\s+(.+?)\s*$", md_text, re.MULTILINE))
+        top_heading = next(
+            (
+                match.group(1).strip()
+                for match in heading_matches
+                if md_text[match.start():].startswith("# ")
+            ),
+            None,
+        )
+        if top_heading != data["title"]:
+            errors.append(
+                f"Sidecar title {data['title']!r} does not match Markdown H1 {top_heading!r}"
+            )
+
         sidecar_urls = {
             src["canonical_url"]
             for src in data.get("sources", [])
             if src.get("canonical_url")
         }
-        missing_in_md = []
-        for url in sidecar_urls:
-            if url not in md_text:
-                missing_in_md.append(url)
-        if missing_in_md:
-            for url in missing_in_md:
-                errors.append(
-                    f"Source URL in sidecar but missing from resource Markdown: {url}"
-                )
-
-        # Check Markdown has a Sources section
-        if not re.search(r"^##?\s+sources?\s*$", md_text, re.IGNORECASE | re.MULTILINE):
+        source_headings = [
+            match
+            for match in heading_matches
+            if match.group(1).strip().lower() in {"source", "sources", "official sources"}
+        ]
+        if not source_headings:
             errors.append("Resource Markdown missing a 'Sources' section heading")
+        else:
+            sources_heading = source_headings[-1]
+            later_headings = [
+                match.group(1).strip()
+                for match in heading_matches
+                if match.start() > sources_heading.start()
+            ]
+            if later_headings:
+                errors.append("Sources must be the final Markdown section")
+            footer = md_text[sources_heading.end():]
+            footer_urls = {
+                url.rstrip(".,;")
+                for url in re.findall(r"https://[^\s)>\]]+", footer)
+            }
+            for url in sorted(sidecar_urls - footer_urls):
+                errors.append(f"Source URL in sidecar but missing from Sources section: {url}")
+            for url in sorted(footer_urls - sidecar_urls):
+                errors.append(f"Source URL in Sources section but missing from sidecar: {url}")
 
         # Check Markdown has Verified through line
         if not re.search(r"verified through\s*:", md_text, re.IGNORECASE):
@@ -130,6 +174,17 @@ def validate_sidecar(sidecar_path: Path, validator: Draft202012Validator) -> lis
 
     # 6. sha256 populated
     for i, src in enumerate(data.get("sources", [])):
+        for field in ("retrieved_at", "last_modified"):
+            value = src.get(field)
+            if value is None:
+                continue
+            try:
+                parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            except ValueError:
+                errors.append(f"sources[{i}].{field} is not a valid UTC timestamp")
+            else:
+                if parsed.utcoffset() != timezone.utc.utcoffset(parsed):
+                    errors.append(f"sources[{i}].{field} must use UTC")
         if src.get("sha256") is None:
             errors.append(
                 f"sources[{i}].sha256 is null — run fetch_sources.py to populate"
@@ -240,11 +295,16 @@ def main() -> None:
     parser.add_argument(
         "--manifest",
         type=Path,
+        nargs="?",
+        const=MANIFEST_PATH,
         default=None,
-        help="Write a combined source manifest to this path (default: resources/generated/manifest.json)",
+        help="Write the complete combined manifest (default path: resources/generated/manifest.json)",
     )
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
+
+    if args.sidecar and args.manifest:
+        parser.error("--manifest requires --all; refusing to replace the corpus manifest from one sidecar")
 
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
@@ -309,9 +369,16 @@ def main() -> None:
     if args.manifest and loaded:
         manifest = build_manifest(loaded)
         args.manifest.parent.mkdir(parents=True, exist_ok=True)
-        with args.manifest.open("w", encoding="utf-8") as f:
-            json.dump(manifest, f, indent=2)
-            f.write("\n")
+        payload = (json.dumps(manifest, indent=2) + "\n").encode()
+        with tempfile.NamedTemporaryFile(dir=args.manifest.parent, delete=False) as handle:
+            temp_path = Path(handle.name)
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        try:
+            os.replace(temp_path, args.manifest)
+        finally:
+            temp_path.unlink(missing_ok=True)
         log.info("Manifest written → %s (%d resources)", args.manifest, len(loaded))
 
     print("All sidecars valid.")

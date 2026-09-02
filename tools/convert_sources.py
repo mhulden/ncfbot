@@ -25,8 +25,10 @@ import argparse
 import hashlib
 import json
 import logging
+import os
 import re
 import sys
+import tempfile
 from pathlib import Path
 from typing import Optional
 
@@ -68,6 +70,22 @@ def convert_html(body: bytes, source_url: str = "") -> str:
 
     soup = BeautifulSoup(body, "lxml")
 
+    def inline_markdown(tag) -> str:
+        parts = []
+        for child in tag.children:
+            name = getattr(child, "name", None)
+            if name is None:
+                parts.append(str(child))
+            elif name == "a":
+                label = child.get_text(" ", strip=True)
+                href = child.get("href", "")
+                parts.append(f"[{label}]({href})" if label and href else label)
+            elif name == "br":
+                parts.append("\n")
+            else:
+                parts.append(inline_markdown(child))
+        return re.sub(r"[ \t]+", " ", "".join(parts)).strip()
+
     # Remove non-content elements
     for tag in soup(["script", "style", "nav", "header", "footer",
                       "aside", "form", "noscript", "iframe", "svg", "button"]):
@@ -96,29 +114,32 @@ def convert_html(body: bytes, source_url: str = "") -> str:
 
         if name in ("h1", "h2", "h3", "h4", "h5", "h6"):
             level = int(name[1])
-            text = tag.get_text(" ", strip=True)
+            text = inline_markdown(tag)
             if text:
                 lines.append(f"\n{'#' * level} {text}\n")
         elif name == "p":
-            text = tag.get_text(" ", strip=True)
+            text = inline_markdown(tag)
             if text:
                 lines.append(f"\n{text}\n")
         elif name in ("ul", "ol"):
             for li in tag.find_all("li", recursive=False):
-                text = li.get_text(" ", strip=True)
+                text = inline_markdown(li)
                 if text:
                     lines.append(f"- {text}")
             lines.append("")
         elif name == "table":
             rows = tag.find_all("tr")
             for i, row in enumerate(rows):
-                cells = [td.get_text(" ", strip=True) for td in row.find_all(["th", "td"])]
+                cells = [
+                    inline_markdown(cell).replace("|", "\\|").replace("\n", "<br>")
+                    for cell in row.find_all(["th", "td"])
+                ]
                 lines.append("| " + " | ".join(cells) + " |")
                 if i == 0:
                     lines.append("| " + " | ".join(["---"] * len(cells)) + " |")
             lines.append("")
         elif name == "a":
-            text = tag.get_text(" ", strip=True)
+            text = inline_markdown(tag)
             href = tag.get("href", "")
             if text and href:
                 lines.append(f"[{text}]({href})")
@@ -128,7 +149,7 @@ def convert_html(body: bytes, source_url: str = "") -> str:
             for child in tag.children:
                 process(child)
         else:
-            text = tag.get_text(" ", strip=True)
+            text = inline_markdown(tag)
             if text:
                 lines.append(text)
 
@@ -160,18 +181,20 @@ def convert_pdf(body: bytes, source_url: str = "") -> str:
             with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
                 tmp.write(body)
                 tmp_path = tmp.name
-            result = subprocess.run(
-                ["pdftotext", "-layout", tmp_path, "-"],
-                capture_output=True, timeout=30,
-            )
-            if result.returncode != 0:
-                raise SystemExit(
-                    "pdftotext failed. Install poppler-utils or pdfminer.six:\n"
-                    "  pip install pdfminer.six\n"
-                    "  # or: apt install poppler-utils / brew install poppler"
+            try:
+                result = subprocess.run(
+                    ["pdftotext", "-layout", tmp_path, "-"],
+                    capture_output=True, timeout=30,
                 )
-            text = result.stdout.decode("utf-8", errors="replace")
-            Path(tmp_path).unlink(missing_ok=True)
+                if result.returncode != 0:
+                    raise SystemExit(
+                        "pdftotext failed. Install poppler-utils or pdfminer.six:\n"
+                        "  pip install pdfminer.six\n"
+                        "  # or: apt install poppler-utils / brew install poppler"
+                    )
+                text = result.stdout.decode("utf-8", errors="replace")
+            finally:
+                Path(tmp_path).unlink(missing_ok=True)
         except FileNotFoundError:
             raise SystemExit(
                 "PDF conversion requires pdfminer.six or poppler pdftotext.\n"
@@ -230,8 +253,11 @@ def convert_cached(
     if fmt is None:
         if "pdf" in ct:
             fmt = "pdf"
-        else:
+        elif ct.startswith("text/") or "html" in ct or "xhtml" in ct:
             fmt = "html"
+        else:
+            log.error("No converter is available for content-type: %s", ct or "unknown")
+            return None
 
     if fmt == "html":
         converted = convert_html(body, source_url)
@@ -246,7 +272,15 @@ def convert_cached(
     sha = meta.get("sha256", hashlib.sha256(body).hexdigest())
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / (sha[:16] + suffix)
-    out_path.write_text(converted, encoding="utf-8")
+    with tempfile.NamedTemporaryFile("w", dir=out_dir, encoding="utf-8", delete=False) as handle:
+        temp_path = Path(handle.name)
+        handle.write(converted)
+        handle.flush()
+        os.fsync(handle.fileno())
+    try:
+        os.replace(temp_path, out_path)
+    finally:
+        temp_path.unlink(missing_ok=True)
     log.info("Converted → %s (%d chars)", out_path, len(converted))
     return out_path
 
@@ -332,6 +366,7 @@ def main() -> None:
             body_path, meta = cache_entry_for_url(url)
             if body_path is None:
                 log.warning("No cache entry for %s — run fetch_sources.py first", url)
+                errors.append(url)
                 continue
             process(body_path, meta)
 
@@ -352,6 +387,7 @@ def main() -> None:
         print(f"Errors: {len(errors)}")
         for e in errors:
             print(f"  {e}")
+        raise SystemExit(1)
     print("\nREMINDER: All output is UNTRUSTED EVIDENCE.")
     print("Write original Markdown summaries — do not paste converted text directly into resources/.")
 

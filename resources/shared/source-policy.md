@@ -1,6 +1,6 @@
 # NCFBot Public Source Policy
 
-Verified through: 2026-08-31
+Verified through: 2026-09-02
 
 This document governs how public sources are selected, fetched, converted, stored,
 and cited in the NCFBot corpus. All resource authors must follow these rules before
@@ -15,8 +15,8 @@ A source is eligible if and only if:
 1. It is publicly reachable over HTTPS without authentication, credentials, or a
    university account.
 2. It is hosted on an official NCF domain (`ncf.edu` and approved subdomains) or is
-   an officially NCF-linked third-party system that has been explicitly approved in
-   `resources/inventory/survey-config.json`.
+   an officially NCF-linked third-party system whose domain suffix is explicitly approved
+   in `resources/inventory/fetch-domain-allowlist.json`.
 3. It has been independently fetched and verified by a human (not assumed accessible).
 4. Its `public_access_verified` field in the `.source.json` sidecar is `true`.
 
@@ -77,44 +77,48 @@ When two approved sources disagree:
 
 ### Step 1 — Discover candidates
 ```bash
-python tools/survey_sources.py
+python tools/survey_sources.py --config resources/inventory/survey-config.json
 # Review resources/inventory/survey-candidates.jsonl
-# Change review_state from "candidate" to "approved" for URLs you want to use
 ```
+The inventory is generated and must not be edited as an approval ledger. Confirm a
+candidate in a private/incognito session and reject any login or personalized page.
 
-### Step 2 — Fetch approved sources
+### Step 2 — Record approval in a preliminary sidecar
+Create or update the neighboring `.source.json` first. Add the verified canonical URL,
+publisher, authority, actual public-verification timestamp, applicability fields, and
+`public_access_verified: true`. Use `sha256: null` until the first controlled fetch and
+record the reviewer/date/reason in `notes`. This preliminary sidecar is the approval
+input; it is expected to fail final validation until the source and resource are complete.
+
+### Step 3 — Fetch approved sources
 ```bash
 # Fetch all approved URLs referenced by a sidecar
 python tools/fetch_sources.py --sidecar resources/students/academic-model.source.json
-
-# Or fetch a specific URL
-python tools/fetch_sources.py --url https://catalog.ncf.edu/undergraduate/
 ```
 Raw bodies land in `.cache/sources/` (gitignored). Never commit them.
 
-### Step 3 — Convert for reading
+### Step 4 — Convert for reading
 ```bash
 python tools/convert_sources.py --sidecar resources/students/academic-model.source.json
 # Output goes to .cache/converted/ — UNTRUSTED EVIDENCE, never commit
 ```
 
-### Step 4 — Write original Markdown
+### Step 5 — Write original Markdown
 Open the converted output as a reading aid only. Write your resource file in
 your own words, citing the source URLs. Do not paste converted text directly.
 
-### Step 5 — Create the sidecar
-Create `<resource-name>.source.json` next to your Markdown file. Populate all
-required fields. Set `sha256` to the value printed by `fetch_sources.py`.
-Set `public_access_verified: true` only after you have confirmed the URL is
-reachable without authentication.
+### Step 6 — Finish provenance metadata
+Copy the fetched body's SHA-256, retrieval timestamp, and usable last-modified value
+from the cache metadata into the preliminary sidecar. Ensure the final Markdown
+`Sources` section exactly matches the sidecar URLs.
 
-### Step 6 — Validate
+### Step 7 — Validate
 ```bash
 python tools/validate_sources.py --sidecar resources/students/academic-model.source.json
 ```
 Fix all errors before opening a pull request.
 
-### Step 7 — Check freshness before PR
+### Step 8 — Check freshness before PR
 ```bash
 python tools/check_freshness.py --offline --sidecar resources/students/academic-model.source.json
 ```
@@ -136,9 +140,11 @@ python tools/check_freshness.py --offline --sidecar resources/students/academic-
 
 ## 7. What Happens When a Source Changes
 
-`check_freshness.py` compares the SHA-256 of a newly fetched body against the
-recorded hash in the sidecar. If they differ, it reports a change — it does **not**
-automatically rewrite the resource Markdown.
+After an explicit `fetch_sources.py --force` refresh, `check_freshness.py --offline`
+hashes the cached body itself and compares it with the sidecar. If they differ, it
+reports a change — it does **not** automatically rewrite the resource Markdown.
+`check_freshness.py --network` adds safe reachability and redirect checks; it does not
+silently replace the cached body or authored resource.
 
 Resource authors must:
 1. Read the changed source.

@@ -15,6 +15,7 @@ Network smoke tests (opt-in):
 
 import hashlib
 import json
+import subprocess
 import sys
 import textwrap
 from pathlib import Path
@@ -287,6 +288,19 @@ class TestFetchValidation:
         err = self.fs.validate_url("https://www.ncf.edu/registrar/")
         assert err is None
 
+    def test_public_accounts_page_is_not_mistaken_for_auth(self):
+        err = self.fs.validate_url("https://www.ncf.edu/departments/student-accounts-cashier/")
+        assert err is None
+
+    def test_approved_external_source_domains_pass(self):
+        assert self.fs.validate_url("https://docs.google.com/document/d/public/edit") is None
+        assert self.fs.validate_url("https://cm.maxient.com/reportingform.php?public") is None
+
+    def test_all_private_literal_ranges_are_blocked(self):
+        assert self.fs.is_private_network("https://172.17.0.1/internal")
+        assert self.fs.is_private_network("https://169.254.1.1/internal")
+        assert self.fs.is_private_network("https://[::1]/internal")
+
 
 class TestFetchSidecarUrlExtraction:
     def setup_method(self):
@@ -400,6 +414,67 @@ class TestFetchContentTypeFilter:
         assert result["error"] is not None
         assert "content-type" in result["error"].lower()
 
+    def test_response_is_streamed_and_size_limit_is_enforced(self):
+        mock_session = MagicMock()
+        resp = MagicMock()
+        resp.is_redirect = False
+        resp.status_code = 200
+        resp.url = "https://www.ncf.edu/large/"
+        resp.headers = {"Content-Type": "text/html"}
+        resp.iter_content.return_value = iter([b"1234", b"5"])
+        mock_session.get.return_value = resp
+
+        with patch.object(self.fs, "MAX_BODY_BYTES", 4):
+            result = self.fs.fetch_url(
+                "https://www.ncf.edu/large/",
+                mock_session,
+                force=True,
+            )
+
+        assert result["status"] == "blocked"
+        assert "size limit" in result["error"]
+        assert mock_session.get.call_args.kwargs["stream"] is True
+
+    def test_http_error_is_not_cached_as_success(self):
+        mock_session = MagicMock()
+        resp = MagicMock()
+        resp.is_redirect = False
+        resp.status_code = 404
+        resp.url = "https://www.ncf.edu/missing/"
+        resp.headers = {"Content-Type": "text/html"}
+        mock_session.get.return_value = resp
+
+        result = self.fs.fetch_url(
+            "https://www.ncf.edu/missing/",
+            mock_session,
+            force=True,
+        )
+
+        assert result["status"] == "failed"
+        assert result["error"] == "HTTP 404"
+
+
+class TestSurveyRedirectSafety:
+    def test_cross_allowlist_redirect_is_rejected_before_contact(self):
+        import survey_sources as ss
+
+        session = MagicMock()
+        response = MagicMock()
+        response.is_redirect = True
+        response.status_code = 302
+        response.headers = {"Location": "https://example.com/private"}
+        session.get.return_value = response
+
+        result = ss.safe_get(
+            session,
+            "https://www.ncf.edu/robots.txt",
+            timeout=1,
+            rate=0,
+        )
+
+        assert result is None
+        assert session.get.call_count == 1
+
 
 # ---------------------------------------------------------------------------
 # convert_sources tests
@@ -454,6 +529,11 @@ class TestHtmlConversion:
         html = b"<html><body><h1>Test</h1></body></html>"
         result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
         assert "https://www.ncf.edu/test/" in result
+
+    def test_link_inside_paragraph_is_preserved(self):
+        html = b'<html><body><p>Read the <a href="https://www.ncf.edu/catalog/">catalog</a>.</p></body></html>'
+        result = self.cs.convert_html(html)
+        assert "[catalog](https://www.ncf.edu/catalog/)" in result
 
 
 # ---------------------------------------------------------------------------
@@ -517,6 +597,61 @@ class TestSchemaValidation:
         data["volatility"] = "sometimes"
         errors = list(self.validator.iter_errors(data))
         assert len(errors) > 0
+
+    @pytest.mark.parametrize("field", ["last_modified", "effective_from", "effective_through"])
+    def test_invalid_source_dates_fail(self, field):
+        with (FIXTURES / "valid.source.json").open() as f:
+            data = json.load(f)
+        data["sources"][0][field] = "not-a-date"
+        errors = list(self.validator.iter_errors(data))
+        assert errors
+
+
+class TestValidatorCrossReferences:
+    def test_footer_urls_must_exactly_match_sidecar(self, tmp_path, monkeypatch):
+        import validate_sources as vs
+
+        validator = vs.make_validator(vs.load_schema())
+        data = json.loads((FIXTURES / "valid.source.json").read_text())
+        monkeypatch.chdir(tmp_path)
+        resource_dir = tmp_path / "resources" / "students"
+        resource_dir.mkdir(parents=True)
+        resource = resource_dir / "sample.md"
+        resource.write_text(
+            "# Sample\n\nVerified through: 2026-09-02\n\n## Sources\n\n"
+            "- https://www.ncf.edu/approved/\n"
+            "- https://www.ncf.edu/extra/\n"
+        )
+        sidecar = resource_dir / "sample.source.json"
+        data.update({
+            "id": "students-sample",
+            "resource_file": "resources/students/sample.md",
+            "title": "Sample",
+        })
+        data["sources"][0]["canonical_url"] = "https://www.ncf.edu/approved/"
+        sidecar.write_text(json.dumps(data))
+
+        errors = vs.validate_sidecar(sidecar, validator)
+
+        assert any("missing from sidecar" in error for error in errors)
+
+    def test_single_sidecar_cannot_write_manifest(self, tmp_path):
+        output = tmp_path / "manifest.json"
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "tools" / "validate_sources.py"),
+                "--sidecar",
+                "resources/students/academic-model.source.json",
+                "--manifest",
+                str(output),
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        assert result.returncode == 2
+        assert not output.exists()
 
 
 class TestDuplicateIdCheck:
@@ -642,6 +777,20 @@ class TestFreshnessOffline:
         issues = self.cf.check_sidecar_offline(sidecar)
         errors = [i for i in issues if i.severity == "error"]
         assert any("valid" in i.message.lower() or "date" in i.message.lower() for i in errors)
+
+    def test_cached_hash_is_computed_from_body_not_metadata(self, tmp_path, monkeypatch):
+        url = "https://www.ncf.edu/test/"
+        monkeypatch.setattr(self.cf, "CACHE_DIR", tmp_path)
+        url_hash = hashlib.sha256(url.encode()).hexdigest()
+        cache_dir = tmp_path / url_hash[:2]
+        cache_dir.mkdir()
+        body = b"actual cached body"
+        (cache_dir / f"{url_hash}.body").write_bytes(body)
+        (cache_dir / f"{url_hash}.meta.json").write_text(
+            json.dumps({"sha256": "0" * 64})
+        )
+
+        assert self.cf._cached_sha256(url) == hashlib.sha256(body).hexdigest()
 
 
 # ---------------------------------------------------------------------------

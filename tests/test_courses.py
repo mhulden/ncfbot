@@ -81,6 +81,27 @@ class CourseTests(unittest.TestCase):
         with self.assertRaises(discover_public_terms.BannerError):
             session.bootstrap()
 
+    def test_banner_session_rejects_unapproved_https_host(self):
+        with self.assertRaises(ValueError):
+            discover_public_terms.BannerSession("https://example.com/banner")
+
+    def test_banner_redirect_handler_rejects_cross_origin(self):
+        handler = discover_public_terms.SameOriginRedirectHandler(
+            ("https", "banapps02.ncf.edu", None)
+        )
+        request = discover_public_terms.urllib.request.Request(
+            "https://banapps02.ncf.edu/start"
+        )
+        with self.assertRaises(urllib.error.HTTPError):
+            handler.redirect_request(
+                request,
+                None,
+                302,
+                "Found",
+                {},
+                "https://example.com/login",
+            )
+
     def test_results_pagination_and_section_identity(self):
         rows, metadata = fetch_public_courses.fetch_term(FakeListingClient(self.listing_pages), "209908", "Fall 2099", page_size=2)
         self.assertEqual(len(rows), 3)

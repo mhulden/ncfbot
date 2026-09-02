@@ -7,6 +7,7 @@ import argparse
 import http.cookiejar
 import json
 import os
+import re
 import sys
 import tempfile
 import time
@@ -17,16 +18,48 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
-TOOL_VERSION = "1.0.0"
+TOOL_VERSION = "1.0.1"
 SCHEMA_VERSION = "1.0"
 DEFAULT_BASE_URL = "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb"
 TERM_SELECTION_PATH = "/term/termSelection?mode=search"
 TERM_ENDPOINT_PATH = "/classSearch/getTerms"
 USER_AGENT = "ncfbot-course-data/1.0 (+https://github.com/mhulden/ncfbot)"
+MAX_RESPONSE_BYTES = 10 * 1024 * 1024
+PUBLIC_BANNER_HOST = "banapps02.ncf.edu"
 
 
 class BannerError(RuntimeError):
     """The public Banner service failed or returned an invalid response."""
+
+
+def is_auth_url(url: str) -> bool:
+    parsed = urllib.parse.urlparse(url)
+    tokens = {
+        token
+        for token in re.split(r"[^a-z0-9]+", f"{parsed.path} {parsed.fragment}".lower())
+        if token
+    }
+    return bool(tokens & {"login", "signin", "auth", "sso", "secure", "portal", "myncf"})
+
+
+class SameOriginRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Reject redirects away from the approved anonymous Banner origin."""
+
+    def __init__(self, origin: tuple[str, str, int | None]) -> None:
+        self.origin = origin
+
+    def redirect_request(self, request, file_pointer, code, message, headers, new_url):
+        parsed = urllib.parse.urlparse(new_url)
+        redirected_origin = (parsed.scheme.lower(), (parsed.hostname or "").lower(), parsed.port)
+        if redirected_origin != self.origin or is_auth_url(new_url):
+            raise urllib.error.HTTPError(
+                new_url,
+                code,
+                "public Banner redirect left the approved anonymous origin",
+                headers,
+                file_pointer,
+            )
+        return super().redirect_request(request, file_pointer, code, message, headers, new_url)
 
 
 def utc_now() -> str:
@@ -64,12 +97,22 @@ class BannerSession:
 
     def __init__(self, base_url: str = DEFAULT_BASE_URL, timeout: float = 30.0) -> None:
         parsed = urllib.parse.urlparse(base_url)
-        if parsed.scheme != "https" and parsed.hostname not in {"127.0.0.1", "localhost"}:
+        hostname = (parsed.hostname or "").lower()
+        is_local_test = hostname in {"127.0.0.1", "localhost"}
+        if parsed.username is not None or parsed.password is not None:
+            raise ValueError("Banner base URL must not contain credentials")
+        if hostname != PUBLIC_BANNER_HOST and not is_local_test:
+            raise ValueError(f"Banner base URL must use {PUBLIC_BANNER_HOST}")
+        if parsed.scheme != "https" and not is_local_test:
             raise ValueError("Banner base URL must use HTTPS")
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
+        self.origin = (parsed.scheme.lower(), hostname, parsed.port)
         self.cookie_jar = http.cookiejar.CookieJar()
-        self.opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self.cookie_jar))
+        self.opener = urllib.request.build_opener(
+            SameOriginRedirectHandler(self.origin),
+            urllib.request.HTTPCookieProcessor(self.cookie_jar),
+        )
         self.bootstrapped = False
 
     def url(self, path: str) -> str:
@@ -99,7 +142,21 @@ class BannerSession:
         try:
             request = urllib.request.Request(url, data=data, headers=headers)
             with self.opener.open(request, timeout=self.timeout) as response:
-                return response.read(), response.headers.get_content_type()
+                final = urllib.parse.urlparse(response.geturl())
+                final_origin = (final.scheme.lower(), (final.hostname or "").lower(), final.port)
+                if final_origin != self.origin or is_auth_url(response.geturl()):
+                    raise BannerError("public Banner response left the approved anonymous origin")
+                content_length = response.headers.get("Content-Length")
+                if content_length:
+                    try:
+                        if int(content_length) > MAX_RESPONSE_BYTES:
+                            raise BannerError("public Banner response exceeded the size limit")
+                    except ValueError:
+                        pass
+                body = response.read(MAX_RESPONSE_BYTES + 1)
+                if len(body) > MAX_RESPONSE_BYTES:
+                    raise BannerError("public Banner response exceeded the size limit")
+                return body, response.headers.get_content_type()
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
             raise BannerError(f"public Banner request failed for {url}: {exc}") from exc
 

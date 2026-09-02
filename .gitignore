@@ -1,5 +1,8 @@
 # === ncfbot Agent 5: source pipeline gitignore ===
 
+# Local planning proposals are manager-only inputs, never repository content.
+PUBLICBOT-PLANS/
+
 # Raw download cache — never commit fetched page bodies or PDFs.
 # Resource authors work from authored Markdown summaries, not raw downloads.
 .cache/

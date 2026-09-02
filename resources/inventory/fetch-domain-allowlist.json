@@ -1,0 +1,11 @@
+{
+  "schema_version": "1",
+  "reviewed_at": "2026-09-02",
+  "domains": [
+    "ncf.edu",
+    "docs.google.com",
+    "cm.maxient.com",
+    "getfortifyfl.com"
+  ],
+  "notes": "Explicit domain suffixes used only after a URL is approved in a resource sidecar. Redirect targets are revalidated before contact."
+}

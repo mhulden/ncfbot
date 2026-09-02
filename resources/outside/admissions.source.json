@@ -1,7 +1,7 @@
 {
   "id": "outside-admissions",
   "resource_file": "resources/outside/admissions.md",
-  "title": "Admissions Pathways",
+  "title": "Admissions",
   "audiences": [
     "outside"
   ],

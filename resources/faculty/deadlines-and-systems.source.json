@@ -161,6 +161,6 @@
   ],
   "status": "current",
   "volatility": "term",
-  "review_after": "2027-01-15",
+  "review_after": "2026-12-15",
   "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence."
 }

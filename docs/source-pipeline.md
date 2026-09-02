@@ -1,8 +1,8 @@
 # Source Pipeline Architecture
 
 **Owner:** Agent 5
-**Version:** 1.0
-**Last updated:** 2026-08-31
+**Version:** 1.1
+**Last updated:** 2026-09-02
 
 This document describes the NCFBot public-source discovery, fetching, conversion,
 validation, and freshness pipeline. Every factual resource in the corpus passes
@@ -20,7 +20,7 @@ Public Web
     ▼
 [survey_sources.py]   ← robots.txt + sitemaps → candidate JSONL (no bodies)
     │
-    ▼  (human review: approve / defer / reject candidates)
+    ▼  (human review creates a preliminary approved sidecar entry)
     │
 [fetch_sources.py]    ← approved URLs only → raw bodies in .cache/sources/
     │
@@ -50,8 +50,11 @@ page bodies.
 
 **What it does:**
 - Reads robots.txt to find sitemap URLs (does not guess paths)
-- Recursively parses sitemap indexes and urlsets
+- Recursively parses sitemap indexes and urlsets within response, depth, sitemap,
+  and candidate limits
 - Enforces an HTTPS domain allowlist (`*.ncf.edu` only by default)
+- Rejects cross-domain, authentication, private-network, and insecure redirects
+- Uses no cookies, credentials, environment proxy credentials, or authenticated state
 - Respects robots.txt Disallow rules
 - Auto-rejects URLs with authentication signals in the path
 - Classifies candidates by guessed topic and audience (heuristic, path-based only)
@@ -63,9 +66,12 @@ page bodies.
 - Automatically approve any URL
 - Bypass robots policy
 
-**After running:** Open `survey-candidates.jsonl` and change `review_state` from
-`"candidate"` to `"approved"` for URLs you intend to use as sources. Set it to
-`"deferred"` for URLs to revisit later or `"rejected"` with a `rejection_reason`.
+**After running:** Treat `survey-candidates.jsonl` as a generated inventory, not an
+approval ledger. Review a candidate in a private/incognito browser session. To approve
+it, add a preliminary source entry to the intended `.source.json` sidecar with the
+verified URL, actual verification time, `public_access_verified: true`, and
+`sha256: null`. Record the review decision in `notes`. The sidecar will not pass final
+validation until the source is fetched, hashed, and the resource is authored.
 
 **Command:**
 ```bash
@@ -81,6 +87,7 @@ python tools/survey_sources.py --dry-run   # no network, tests output structure
 **Purpose:** Download page bodies for approved sources only.
 
 **Inputs:** `.source.json` sidecars (reads `canonical_url` where `public_access_verified: true`)
+and `resources/inventory/fetch-domain-allowlist.json`
 **Outputs:** `.cache/sources/<sha256-prefix>/<hash>.body` + `<hash>.meta.json`
 
 **What it does:**
@@ -88,12 +95,14 @@ python tools/survey_sources.py --dry-run   # no network, tests output structure
 - Rejects private/local network targets (localhost, RFC-1918 ranges)
 - Rejects URLs with auth signals
 - Detects authentication redirects and stops
-- Enforces content-type allowlist (HTML, PDF, plain text only)
+- Enforces a narrow content-type allowlist (HTML, PDF, plain text, and approved
+  cached-only Office documents)
 - Enforces a 10 MB body size cap
 - Rate-limits requests (1.5 sec default)
 - Records SHA-256, retrieval timestamp, content-type, and redirect chain in `.meta.json`
 - Caches by URL hash — skips re-download unless `--force` is passed
 - Never sends cookies or credentials
+- Exits nonzero if any approved URL is blocked or fails
 
 **Cache location:** `.cache/sources/` (gitignored — never commit raw bodies)
 
@@ -101,7 +110,6 @@ python tools/survey_sources.py --dry-run   # no network, tests output structure
 ```bash
 python tools/fetch_sources.py --sidecar resources/students/academic-model.source.json
 python tools/fetch_sources.py --all
-python tools/fetch_sources.py --url https://catalog.ncf.edu/undergraduate/
 python tools/fetch_sources.py --all --force   # re-fetch even if cached
 python tools/fetch_sources.py --all --dry-run # show what would be fetched
 ```
@@ -128,7 +136,8 @@ python tools/fetch_sources.py --all --dry-run # show what would be fetched
 
 **Dependency note:** HTML conversion requires `beautifulsoup4 lxml`. PDF conversion
 requires `pdfminer.six` or system `pdftotext` (poppler). These are optional —
-the rest of the pipeline works without them.
+the rest of the pipeline works without them. Approved Office documents may be
+cached for hashing/provenance, but this tool intentionally does not convert them.
 
 **Command:**
 ```bash
@@ -145,27 +154,30 @@ python tools/convert_sources.py --all --out .cache/converted
 cross-references. Optionally build a combined corpus manifest.
 
 **Inputs:** `schemas/source-record.schema.json`; all `*.source.json` files under `resources/`
-**Outputs:** Pass/fail report; optionally `resources/generated/source-manifest.json`
+**Outputs:** Pass/fail report; optionally `resources/generated/manifest.json`
 
 **Checks performed:**
 - JSON schema conformance (all required fields, correct types)
-- `resource_file` exists on disk
-- All `canonical_url` values in the sidecar appear in the paired Markdown `Sources` section
-- Markdown has a `Sources` heading and a `Verified through:` line
+- `resource_file` is safe, exists, and is the Markdown file neighboring the sidecar
+- Sidecar title matches the Markdown H1
+- The final Markdown section is `Sources`, with URLs exactly matching the sidecar
+- Markdown has a `Verified through:` line
 - `sha256` is populated (warns if null)
 - `public_access_verified` is true
 - `review_after` is not already overdue
 - Duplicate sidecar IDs across the corpus (corpus-level check)
 
-**Manifest:** `--manifest resources/generated/source-manifest.json` produces a
-machine-readable index of all corpus sources. Agent 7's `doctor` and `search`
+**Manifest:** `--manifest` produces the atomic full-corpus index at
+`resources/generated/manifest.json`, the machine-readable index of all corpus
+sources. Agent 7's `doctor` and `search`
 commands consume this. Never hand-edit the manifest — regenerate it by running
-`validate_sources.py --all --manifest`.
+`validate_sources.py --all --manifest`. The tool refuses to build a manifest from
+a single-sidecar validation.
 
 **Command:**
 ```bash
 python tools/validate_sources.py --all
-python tools/validate_sources.py --all --manifest resources/generated/source-manifest.json
+python tools/validate_sources.py --all --manifest
 python tools/validate_sources.py --sidecar resources/students/academic-model.source.json
 ```
 
@@ -178,7 +190,7 @@ Exit code 0 = all pass; 1 = failures found.
 **Purpose:** Report overdue review dates, hash changes, and (optionally) redirect
 or HTTP errors for approved source URLs.
 
-**Inputs:** All `*.source.json` files; cached `.meta.json` files (offline); live HEAD
+**Inputs:** All `*.source.json` files; cached body files (offline); live HEAD
 requests (network mode)
 **Outputs:** Issue report to stdout
 
@@ -190,8 +202,9 @@ requests (network mode)
 - `public_access_verified` not set
 
 **Network checks (opt-in):**
+- Run all offline checks first
 - HEAD each approved URL; detect 404, 401/403, other 4xx/5xx
-- Detect auth redirects
+- Reject unsafe, private, cross-allowlist, and authentication redirects before following
 - Detect URL changes (canonical_url should be updated)
 
 **What it does NOT do:**
@@ -205,7 +218,7 @@ python tools/check_freshness.py --network
 python tools/check_freshness.py --offline --sidecar resources/students/academic-model.source.json
 ```
 
-Exit code 0 = no issues; 1 = issues found.
+Exit code 0 = no errors (warnings may be reported); 1 = one or more errors.
 
 ---
 
@@ -218,7 +231,7 @@ Every resource Markdown file must have a neighboring `<name>.source.json`. Requi
 | `id` | string (kebab-case) | Unique across corpus; stable once set |
 | `resource_file` | string (path) | `resources/path/name.md` |
 | `title` | string | Matches Markdown H1 |
-| `audiences` | array | `students`, `faculty`, `outside`, `shared` |
+| `audiences` | array | `students`, `faculty`, `outside` |
 | `topics` | array | Short slugs e.g. `["registration", "add-drop"]` |
 | `sources` | array | At least one entry |
 | `sources[].canonical_url` | string (HTTPS URI) | Must appear in Markdown Sources section |
@@ -227,7 +240,7 @@ Every resource Markdown file must have a neighboring `<name>.source.json`. Requi
 | `sources[].retrieved_at` | datetime | ISO 8601 UTC |
 | `sources[].sha256` | string or null | 64-char hex; populate after fetch |
 | `sources[].public_access_verified` | boolean | True only after human confirmation |
-| `status` | enum | `current`, `historical`, `superseded`, `deferred`, `rejected` |
+| `status` | enum | `current`, `historical`, `superseded` |
 | `volatility` | enum | `daily`, `term`, `annual`, `stable` |
 | `review_after` | date | ISO 8601 YYYY-MM-DD |
 | `notes` | string | Known conflicts or gaps; empty string if none |

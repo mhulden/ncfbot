@@ -25,8 +25,10 @@ Rules enforced:
 import argparse
 import json
 import logging
+import os
 import re
 import time
+import tempfile
 import urllib.robotparser
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -42,11 +44,19 @@ except ImportError:
         "Install all dev dependencies with: pip install -e '.[dev]'"
     )
 
+from source_http import (
+    DEFAULT_AUTH_SIGNALS,
+    is_allowed_domain as shared_is_allowed_domain,
+    looks_like_auth as shared_looks_like_auth,
+    make_no_cookie_session,
+    validate_public_url,
+)
+
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 
 DEFAULT_CONFIG = {
     "allowed_domains": [
@@ -60,12 +70,14 @@ DEFAULT_CONFIG = {
     "extra_sitemaps": [],
     "rate_limit_seconds": 1.0,
     "request_timeout_seconds": 15,
-    "max_candidates": 2000,
-    "user_agent": "ncfbot-survey/0.1 (public-info-bot class project; contact biocosmosmythos@gmail.com)",
+    "max_response_bytes": 5 * 1024 * 1024,
+    "max_sitemaps": 100,
+    "max_sitemap_depth": 5,
+    "max_candidates": 3000,
+    "user_agent": "ncfbot-survey/0.2 (+https://github.com/mhulden/ncfbot)",
     # Strings that suggest a URL requires authentication — skip these
     "auth_signals": [
-        "login", "signin", "auth", "sso", "myncf", "canvas",
-        "banner", "self-service", "secure", "account", "portal",
+        *DEFAULT_AUTH_SIGNALS,
     ],
 }
 
@@ -91,30 +103,20 @@ log = logging.getLogger("survey_sources")
 # ---------------------------------------------------------------------------
 
 def make_session(user_agent: str) -> requests.Session:
-    s = requests.Session()
-    s.headers.update({
-        "User-Agent": user_agent,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    })
-    return s
+    return make_no_cookie_session(
+        user_agent,
+        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    )
 
 
 def is_allowed_domain(url: str, allowed_domains: list[str]) -> bool:
     """Return True if the URL's hostname is in or a subdomain of any allowed domain."""
-    try:
-        host = urllib.parse.urlparse(url).netloc.lower()
-    except Exception:
-        return False
-    return any(
-        host == d or host.endswith("." + d)
-        for d in allowed_domains
-    )
+    return shared_is_allowed_domain(url, allowed_domains)
 
 
 def looks_like_auth(url: str, auth_signals: list[str]) -> bool:
     """Return True if any auth signal appears in the URL path."""
-    lower = url.lower()
-    return any(sig in lower for sig in auth_signals)
+    return shared_looks_like_auth(url, auth_signals)
 
 
 def safe_get(
@@ -123,20 +125,77 @@ def safe_get(
     timeout: int,
     rate: float,
     dry_run: bool = False,
+    *,
+    allowed_domains: list[str] | None = None,
+    auth_signals: list[str] | None = None,
+    max_bytes: int = 5 * 1024 * 1024,
 ) -> Optional[requests.Response]:
     """GET with rate limiting, timeout, and auth-redirect detection."""
     if dry_run:
         log.debug("DRY-RUN skip GET %s", url)
         return None
     time.sleep(rate)
+    allowed_domains = allowed_domains or DEFAULT_CONFIG["allowed_domains"]
+    auth_signals = auth_signals or DEFAULT_CONFIG["auth_signals"]
+    current_url = url
     try:
-        resp = session.get(url, timeout=timeout, allow_redirects=True)
-        # Detect login-page redirects
-        if any(looks_like_auth(r.url, DEFAULT_CONFIG["auth_signals"])
-               for r in resp.history):
-            log.warning("Auth redirect detected for %s — skipping", url)
-            return None
-        return resp
+        for redirect_count in range(6):
+            error = validate_public_url(
+                current_url,
+                allowed_domains,
+                auth_signals,
+                resolve_dns=isinstance(session, requests.Session),
+            )
+            if error:
+                log.warning("Blocked public survey request %s — %s", current_url, error)
+                return None
+            resp = session.get(
+                current_url,
+                timeout=timeout,
+                allow_redirects=False,
+                stream=True,
+            )
+            is_redirect = resp.is_redirect is True or resp.status_code in {301, 302, 303, 307, 308}
+            if is_redirect:
+                location = resp.headers.get("Location", "")
+                resp.close()
+                if redirect_count >= 5 or not location:
+                    log.warning("Invalid or excessive redirect for %s", url)
+                    return None
+                current_url = urllib.parse.urljoin(current_url, location)
+                continue
+
+            final_url = resp.url if isinstance(getattr(resp, "url", None), str) else current_url
+            final_error = validate_public_url(final_url, allowed_domains, auth_signals)
+            if final_error:
+                resp.close()
+                log.warning("Blocked final survey URL %s — %s", final_url, final_error)
+                return None
+
+            if isinstance(session, requests.Session):
+                content_length = resp.headers.get("Content-Length")
+                if content_length:
+                    try:
+                        if int(content_length) > max_bytes:
+                            resp.close()
+                            log.warning("Survey response exceeds size limit: %s", url)
+                            return None
+                    except ValueError:
+                        pass
+                chunks = []
+                total = 0
+                for chunk in resp.iter_content(chunk_size=65536):
+                    total += len(chunk)
+                    if total > max_bytes:
+                        resp.close()
+                        log.warning("Survey response exceeds size limit: %s", url)
+                        return None
+                    chunks.append(chunk)
+                resp._content = b"".join(chunks)
+                resp._content_consumed = True
+                resp.close()
+            return resp
+        return None
     except requests.RequestException as exc:
         log.warning("GET failed for %s: %s", url, exc)
         return None
@@ -152,10 +211,21 @@ def fetch_sitemaps_from_robots(
     timeout: int,
     rate: float,
     dry_run: bool,
+    config: dict | None = None,
 ) -> list[str]:
     """Return sitemap URLs listed in robots.txt."""
+    config = config or DEFAULT_CONFIG
     log.info("Fetching robots.txt: %s", robots_url)
-    resp = safe_get(session, robots_url, timeout, rate, dry_run)
+    resp = safe_get(
+        session,
+        robots_url,
+        timeout,
+        rate,
+        dry_run,
+        allowed_domains=config["allowed_domains"],
+        auth_signals=config["auth_signals"],
+        max_bytes=config["max_response_bytes"],
+    )
     if not resp or resp.status_code != 200:
         log.warning("Could not fetch robots.txt (status %s)", resp.status_code if resp else "n/a")
         return []
@@ -165,7 +235,7 @@ def fetch_sitemaps_from_robots(
         line = line.strip()
         if line.lower().startswith("sitemap:"):
             sm_url = line.split(":", 1)[1].strip()
-            if sm_url.startswith("https://"):
+            if validate_public_url(sm_url, config["allowed_domains"], config["auth_signals"]) is None:
                 sitemaps.append(sm_url)
                 log.info("  Found sitemap: %s", sm_url)
     return sitemaps
@@ -177,12 +247,23 @@ def build_robots_parser(
     timeout: int,
     rate: float,
     dry_run: bool,
+    config: dict | None = None,
 ) -> urllib.robotparser.RobotFileParser:
     """Return a populated RobotFileParser for the given robots.txt URL."""
     rp = urllib.robotparser.RobotFileParser()
     rp.set_url(robots_url)
     log.info("Parsing robots.txt disallow rules...")
-    resp = safe_get(session, robots_url, timeout, rate, dry_run)
+    config = config or DEFAULT_CONFIG
+    resp = safe_get(
+        session,
+        robots_url,
+        timeout,
+        rate,
+        dry_run,
+        allowed_domains=config["allowed_domains"],
+        auth_signals=config["auth_signals"],
+        max_bytes=config["max_response_bytes"],
+    )
     if resp and resp.status_code == 200:
         rp.parse(resp.text.splitlines())
     return rp
@@ -198,6 +279,7 @@ def parse_sitemap(
     config: dict,
     dry_run: bool,
     visited: set[str],
+    depth: int = 0,
 ) -> list[dict]:
     """
     Recursively parse a sitemap or sitemap index.
@@ -206,10 +288,21 @@ def parse_sitemap(
     """
     if sm_url in visited:
         return []
+    if depth > config.get("max_sitemap_depth", 5):
+        log.warning("Sitemap depth limit reached at %s", sm_url)
+        return []
+    if len(visited) >= config.get("max_sitemaps", 100):
+        log.warning("Sitemap count limit reached; skipping %s", sm_url)
+        return []
     visited.add(sm_url)
 
-    if not is_allowed_domain(sm_url, config["allowed_domains"]):
-        log.warning("Sitemap URL outside allowlist, skipping: %s", sm_url)
+    sitemap_error = validate_public_url(
+        sm_url,
+        config["allowed_domains"],
+        config["auth_signals"],
+    )
+    if sitemap_error:
+        log.warning("Sitemap URL blocked (%s), skipping: %s", sitemap_error, sm_url)
         return []
 
     log.info("Fetching sitemap: %s", sm_url)
@@ -218,6 +311,9 @@ def parse_sitemap(
         config["request_timeout_seconds"],
         config["rate_limit_seconds"],
         dry_run,
+        allowed_domains=config["allowed_domains"],
+        auth_signals=config["auth_signals"],
+        max_bytes=config["max_response_bytes"],
     )
     if not resp or resp.status_code != 200:
         log.warning("Could not fetch sitemap %s", sm_url)
@@ -245,7 +341,7 @@ def parse_sitemap(
             if loc_el is not None and loc_el.text:
                 child_url = loc_el.text.strip()
                 candidates.extend(
-                    parse_sitemap(child_url, session, config, dry_run, visited)
+                    parse_sitemap(child_url, session, config, dry_run, visited, depth + 1)
                 )
 
     # Regular urlset
@@ -308,7 +404,7 @@ AUDIENCE_PATTERNS: list[tuple[str, str]] = [
 ]
 
 
-def classify_candidate(url: str) -> dict:
+def classify_candidate(url: str, auth_signals: list[str] | None = None) -> dict:
     """Guess topic and audience from the URL path. Does not fetch the page."""
     path = urllib.parse.urlparse(url).path.lower()
 
@@ -324,14 +420,13 @@ def classify_candidate(url: str) -> dict:
             audience = label
             break
 
-    auth_flag = looks_like_auth(url, DEFAULT_CONFIG["auth_signals"])
+    auth_flag = looks_like_auth(url, auth_signals or DEFAULT_CONFIG["auth_signals"])
 
     return {
         "guessed_topic": topic,
         "guessed_audience": audience,
         "likely_authenticated": auth_flag,
         "review_state": "rejected" if auth_flag else "candidate",
-        # Valid review_state values: candidate, approved, deferred, rejected, historical, superseded
     }
 
 
@@ -341,9 +436,8 @@ def classify_candidate(url: str) -> dict:
 
 def write_jsonl(candidates: list[dict], out_path: Path) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    with out_path.open("w", encoding="utf-8") as f:
-        for c in candidates:
-            f.write(json.dumps(c, ensure_ascii=False) + "\n")
+    body = "".join(json.dumps(candidate, ensure_ascii=False) + "\n" for candidate in candidates)
+    atomic_write_text(out_path, body)
     log.info("Wrote %d candidates → %s", len(candidates), out_path)
 
 
@@ -352,10 +446,12 @@ def write_markdown_summary(
     config: dict,
     surveyed_at: str,
     out_path: Path,
+    discovered_count: int | None = None,
 ) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     total = len(candidates)
+    discovered_count = total if discovered_count is None else discovered_count
     rejected = sum(1 for c in candidates if c["review_state"] == "rejected")
     by_topic: dict[str, int] = {}
     by_audience: dict[str, int] = {}
@@ -375,7 +471,9 @@ def write_markdown_summary(
         "",
         f"| Metric | Count |",
         f"|--------|-------|",
-        f"| Total candidates found | {total} |",
+        f"| Candidates discovered | {discovered_count} |",
+        f"| Candidates retained | {total} |",
+        f"| Candidates truncated by configured cap | {max(0, discovered_count - total)} |",
         f"| Auto-rejected (auth signals) | {rejected} |",
         f"| Remaining candidates | {total - rejected} |",
         "",
@@ -384,7 +482,7 @@ def write_markdown_summary(
         "| Topic | Count |",
         "|-------|-------|",
     ]
-    for topic, count in sorted(by_topic.items(), key=lambda x: -x[1]):
+    for topic, count in sorted(by_topic.items(), key=lambda item: (-item[1], item[0])):
         lines.append(f"| {topic} | {count} |")
 
     lines += [
@@ -394,16 +492,16 @@ def write_markdown_summary(
         "| Audience | Count |",
         "|----------|-------|",
     ]
-    for aud, count in sorted(by_audience.items(), key=lambda x: -x[1]):
+    for aud, count in sorted(by_audience.items(), key=lambda item: (-item[1], item[0])):
         lines.append(f"| {aud} | {count} |")
 
     lines += [
         "",
         "## Next Steps",
         "",
-        "1. Review `survey-candidates.jsonl` and change `review_state` to `approved` or `deferred` for each URL.",
-        "2. Run `fetch_sources.py` only against approved URLs.",
-        "3. Resource authors write Markdown summaries from fetched content — do NOT promote raw content automatically.",
+        "1. Review `survey-candidates.jsonl` as generated, read-only discovery metadata.",
+        "2. Approve a URL by recording its verified public URL in the intended preliminary `.source.json` sidecar.",
+        "3. Run `fetch_sources.py` against that sidecar, then finish its hashes and authored resource.",
         "",
         "## Notes",
         "",
@@ -413,7 +511,7 @@ def write_markdown_summary(
         "- Re-run this script to refresh the candidate list; compare diffs to detect new or removed pages.",
     ]
 
-    out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    atomic_write_text(out_path, "\n".join(lines) + "\n")
     log.info("Wrote Markdown summary → %s", out_path)
 
 
@@ -423,7 +521,9 @@ def write_markdown_summary(
 
 def load_config(config_path: Optional[Path]) -> dict:
     config = dict(DEFAULT_CONFIG)
-    if config_path and config_path.exists():
+    if config_path and not config_path.exists():
+        raise SystemExit(f"Survey config not found: {config_path}")
+    if config_path:
         with config_path.open(encoding="utf-8") as f:
             overrides = json.load(f)
         config.update(overrides)
@@ -431,6 +531,19 @@ def load_config(config_path: Optional[Path]) -> dict:
     else:
         log.info("Using default config")
     return config
+
+
+def atomic_write_text(path: Path, body: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile("w", dir=path.parent, encoding="utf-8", delete=False) as handle:
+        temp_path = Path(handle.name)
+        handle.write(body)
+        handle.flush()
+        os.fsync(handle.fileno())
+    try:
+        os.replace(temp_path, path)
+    finally:
+        temp_path.unlink(missing_ok=True)
 
 
 def main() -> None:
@@ -474,6 +587,7 @@ def main() -> None:
         config["request_timeout_seconds"],
         config["rate_limit_seconds"],
         args.dry_run,
+        config,
     )
 
     # 2. Add any extra sitemaps from config
@@ -491,6 +605,7 @@ def main() -> None:
         config["request_timeout_seconds"],
         config["rate_limit_seconds"],
         args.dry_run,
+        config,
     )
 
     # 4. Parse all sitemaps
@@ -517,7 +632,7 @@ def main() -> None:
     final: list[dict] = []
     for c in deduped:
         disallowed = not rp.can_fetch(config["user_agent"], c["url"])
-        classification = classify_candidate(c["url"])
+        classification = classify_candidate(c["url"], config["auth_signals"])
         record = {
             "url": c["url"],
             "lastmod": c.get("lastmod"),
@@ -535,6 +650,7 @@ def main() -> None:
 
     # 7. Cap if needed
     max_c = config.get("max_candidates", 2000)
+    final.sort(key=lambda candidate: candidate["url"])
     if len(final) > max_c:
         log.warning("Capping candidates at %d (found %d)", max_c, len(final))
         final = final[:max_c]
@@ -542,15 +658,19 @@ def main() -> None:
     # 8. Write outputs
     out_dir = args.out
     write_jsonl(final, out_dir / "survey-candidates.jsonl")
-    write_markdown_summary(final, config, surveyed_at, out_dir / "survey-summary.md")
+    write_markdown_summary(
+        final,
+        config,
+        surveyed_at,
+        out_dir / "survey-summary.md",
+        discovered_count=len(deduped),
+    )
 
     # 9. Write a config template if none existed
     config_out = out_dir / "survey-config.json"
     if not config_out.exists():
         config_out.parent.mkdir(parents=True, exist_ok=True)
-        with config_out.open("w", encoding="utf-8") as f:
-            json.dump(DEFAULT_CONFIG, f, indent=2)
-            f.write("\n")
+        atomic_write_text(config_out, json.dumps(DEFAULT_CONFIG, indent=2) + "\n")
         log.info("Wrote default config template → %s", config_out)
 
     approved = sum(1 for c in final if c["review_state"] == "candidate")

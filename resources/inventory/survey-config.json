@@ -1,0 +1,26 @@
+{
+  "allowed_domains": [
+    "ncf.edu"
+  ],
+  "seed_robots_url": "https://www.ncf.edu/robots.txt",
+  "extra_sitemaps": [],
+  "rate_limit_seconds": 1.0,
+  "request_timeout_seconds": 15,
+  "max_response_bytes": 5242880,
+  "max_sitemaps": 100,
+  "max_sitemap_depth": 5,
+  "max_candidates": 3000,
+  "user_agent": "ncfbot-survey/0.2 (+https://github.com/mhulden/ncfbot)",
+  "auth_signals": [
+    "login",
+    "signin",
+    "auth",
+    "sso",
+    "myncf",
+    "canvas",
+    "self-service",
+    "secure",
+    "portal",
+    "myaccount"
+  ]
+}

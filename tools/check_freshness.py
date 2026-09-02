@@ -10,7 +10,7 @@ Usage:
     # Offline check (metadata only, no network)
     python tools/check_freshness.py --offline
 
-    # Network recheck (re-HEADs approved sources to detect redirects/changes)
+    # Network recheck (includes offline checks, then safely re-HEADs approved sources)
     python tools/check_freshness.py --network
 
     # Check a single sidecar
@@ -42,11 +42,11 @@ RESOURCES_DIR = Path("resources")
 CACHE_DIR = Path(".cache/sources")
 RATE_LIMIT_SECONDS = 1.5
 REQUEST_TIMEOUT = 15
-USER_AGENT = "ncfbot-freshness/0.1 (public-info-bot class project; contact biocosmosmythos@gmail.com)"
+USER_AGENT = "ncfbot-freshness/0.2 (+https://github.com/mhulden/ncfbot)"
 
 AUTH_SIGNALS = [
     "login", "signin", "auth", "sso", "myncf", "canvas",
-    "self-service", "secure", "account", "portal",
+    "self-service", "secure", "portal", "myaccount",
 ]
 
 
@@ -132,12 +132,34 @@ def check_sidecar_offline(sidecar_path: Path) -> list[Issue]:
         eff_from = src.get("effective_from")
         eff_through = src.get("effective_through")
         if eff_from and eff_through:
-            # Very rough check — just ensure from < through lexicographically for date strings
-            if eff_from > eff_through:
+            try:
+                effective_from = date.fromisoformat(eff_from)
+                effective_through = date.fromisoformat(eff_through)
+            except ValueError:
                 issues.append(Issue(
-                    "warning", sid, url,
-                    f"effective_from ({eff_from}) is after effective_through ({eff_through})"
+                    "error", sid, url,
+                    "effective_from/effective_through must be ISO dates when populated"
                 ))
+            else:
+                if effective_from > effective_through:
+                    issues.append(Issue(
+                        "error", sid, url,
+                        f"effective_from ({eff_from}) is after effective_through ({eff_through})"
+                    ))
+                if data.get("status") == "current" and effective_through < date.today():
+                    issues.append(Issue(
+                        "warning", sid, url,
+                        f"current resource source effective period ended on {eff_through}"
+                    ))
+        else:
+            for label, value in (("effective_from", eff_from), ("effective_through", eff_through)):
+                if value:
+                    try:
+                        date.fromisoformat(value)
+                    except ValueError:
+                        issues.append(Issue(
+                            "error", sid, url, f"{label} is not a valid ISO date: {value!r}"
+                        ))
 
         # public_access_verified
         if not src.get("public_access_verified"):
@@ -170,13 +192,15 @@ def check_sidecar_offline(sidecar_path: Path) -> list[Issue]:
 def _cached_sha256(url: str) -> Optional[str]:
     """Return the SHA-256 of the cached body for this URL, or None if not cached."""
     url_hash = hashlib.sha256(url.encode()).hexdigest()
-    meta_path = CACHE_DIR / url_hash[:2] / (url_hash + ".meta.json")
-    if not meta_path.exists():
+    body_path = CACHE_DIR / url_hash[:2] / (url_hash + ".body")
+    if not body_path.exists():
         return None
     try:
-        with meta_path.open(encoding="utf-8") as f:
-            meta = json.load(f)
-        return meta.get("sha256")
+        digest = hashlib.sha256()
+        with body_path.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(65536), b""):
+                digest.update(chunk)
+        return digest.hexdigest()
     except Exception:
         return None
 
@@ -202,37 +226,66 @@ def check_sidecar_network(sidecar_path: Path) -> list[Issue]:
         issues.append(Issue("error", sid, "", f"Could not parse sidecar: {exc}"))
         return issues
 
-    session = requests.Session()
-    session.headers["User-Agent"] = USER_AGENT
+    from fetch_sources import ALLOWED_DOMAINS
+    from source_http import make_no_cookie_session, validate_public_url
+
+    session = make_no_cookie_session(USER_AGENT, "text/html,application/pdf,*/*;q=0.5")
 
     for src in data.get("sources", []):
         if not src.get("public_access_verified"):
             continue
         url = src.get("canonical_url", "")
-        if not url or not url.startswith("https://"):
+        if not url:
+            continue
+
+        initial_error = validate_public_url(url, ALLOWED_DOMAINS, AUTH_SIGNALS)
+        if initial_error:
+            issues.append(Issue("error", sid, url, f"Blocked network check: {initial_error}"))
             continue
 
         time.sleep(RATE_LIMIT_SECONDS)
         try:
-            resp = session.head(url, timeout=REQUEST_TIMEOUT, allow_redirects=True)
-        except Exception as exc:
+            current_url = url
+            for redirect_count in range(6):
+                target_error = validate_public_url(
+                    current_url,
+                    ALLOWED_DOMAINS,
+                    AUTH_SIGNALS,
+                    resolve_dns=True,
+                )
+                if target_error:
+                    raise ValueError(f"redirect target blocked: {target_error}: {current_url}")
+                resp = session.head(
+                    current_url,
+                    timeout=REQUEST_TIMEOUT,
+                    allow_redirects=False,
+                )
+                is_redirect = resp.is_redirect is True or resp.status_code in {301, 302, 303, 307, 308}
+                if not is_redirect:
+                    break
+                location = resp.headers.get("Location", "")
+                resp.close()
+                if redirect_count >= 5 or not location:
+                    raise ValueError("invalid or excessive redirect chain")
+                current_url = urllib.parse.urljoin(current_url, location)
+            else:
+                raise ValueError("redirect limit exceeded")
+        except (requests.RequestException, ValueError) as exc:
             issues.append(Issue("error", sid, url, f"Network error: {exc}"))
             continue
 
-        # Auth redirect
-        for r in resp.history:
-            if any(sig in r.url.lower() for sig in AUTH_SIGNALS):
-                issues.append(Issue(
-                    "error", sid, url,
-                    f"Auth redirect detected: {r.url}"
-                ))
-                break
+        final_url = resp.url if isinstance(getattr(resp, "url", None), str) else current_url
+        final_error = validate_public_url(final_url, ALLOWED_DOMAINS, AUTH_SIGNALS)
+        if final_error:
+            resp.close()
+            issues.append(Issue("error", sid, url, f"Final URL blocked: {final_error}: {final_url}"))
+            continue
 
         # Final URL changed
-        if resp.url != url and resp.url.rstrip("/") != url.rstrip("/"):
+        if final_url != url and final_url.rstrip("/") != url.rstrip("/"):
             issues.append(Issue(
                 "warning", sid, url,
-                f"URL redirected to: {resp.url} — update canonical_url in sidecar"
+                f"URL redirected to: {final_url} — update canonical_url in sidecar"
             ))
 
         # 4xx/5xx
@@ -242,6 +295,7 @@ def check_sidecar_network(sidecar_path: Path) -> list[Issue]:
             issues.append(Issue("error", sid, url, f"HTTP {resp.status_code} — source now requires authentication"))
         elif resp.status_code >= 400:
             issues.append(Issue("warning", sid, url, f"HTTP {resp.status_code} — check source availability"))
+        resp.close()
 
     return issues
 
@@ -289,7 +343,7 @@ def main() -> None:
     all_issues: list[Issue] = []
 
     for path in sidecar_paths:
-        if args.offline:
+        if args.offline or args.network:
             all_issues.extend(check_sidecar_offline(path))
         if args.network:
             all_issues.extend(check_sidecar_network(path))

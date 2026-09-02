@@ -101,22 +101,28 @@
           "retrieved_at": {
             "type": "string",
             "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
             "description": "ISO 8601 UTC timestamp when this URL was independently fetched and verified, e.g. 2026-08-31T14:00:00Z."
           },
           "last_modified": {
             "type": ["string", "null"],
-            "description": "HTTP Last-Modified value if returned by the server, else null."
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+            "description": "HTTP Last-Modified value normalized to an ISO 8601 UTC timestamp if usable, else null."
           },
           "effective_from": {
             "type": ["string", "null"],
-            "description": "Date or term from which the source content is effective, e.g. '2024-08-26' or 'Fall 2024'. Null if unknown."
+            "format": "date",
+            "description": "ISO date from which the source content is effective. Null if unknown."
           },
           "effective_through": {
             "type": ["string", "null"],
-            "description": "Date or term through which the source content is effective. Null if ongoing or unknown."
+            "format": "date",
+            "description": "ISO date through which the source content is effective. Null if ongoing or unknown."
           },
           "academic_year": {
             "type": ["string", "null"],
+            "pattern": "^[0-9]{4}-[0-9]{4}$",
             "description": "Applicable academic year in YYYY-YYYY format, e.g. '2024-2025', or null if not applicable."
           },
           "sha256": {
