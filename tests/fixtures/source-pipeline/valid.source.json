@@ -1,0 +1,25 @@
+{
+  "id": "test-academic-model",
+  "resource_file": "resources/students/academic-model.md",
+  "title": "NCF Academic Model",
+  "audiences": ["students"],
+  "topics": ["academic-model", "contracts"],
+  "sources": [
+    {
+      "canonical_url": "https://catalog.ncf.edu/undergraduate/",
+      "publisher": "NCF Undergraduate Catalog 2024-2025",
+      "authority_type": "catalog",
+      "retrieved_at": "2026-08-31T12:00:00Z",
+      "last_modified": null,
+      "effective_from": "2024-08-26",
+      "effective_through": null,
+      "academic_year": "2024-2025",
+      "sha256": "a3f1c2d4e5b6a7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+      "public_access_verified": true
+    }
+  ],
+  "status": "current",
+  "volatility": "annual",
+  "review_after": "2027-08-01",
+  "notes": ""
+}

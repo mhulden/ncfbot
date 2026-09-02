@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source-record.schema.json",
+  "title": "NCFBot Source Sidecar Record",
+  "description": "Provenance metadata sidecar for every factual resource Markdown file in the ncfbot corpus. Each resource file must have a neighboring <name>.source.json that conforms to this schema.",
+  "type": "object",
+  "required": [
+    "id",
+    "resource_file",
+    "title",
+    "audiences",
+    "topics",
+    "sources",
+    "status",
+    "volatility",
+    "review_after",
+    "notes"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case identifier unique across the entire corpus. Never reuse or rename after other sidecars reference it."
+    },
+    "resource_file": {
+      "type": "string",
+      "pattern": "^resources/.+\\.md$",
+      "description": "Repo-relative path to the paired Markdown resource file, e.g. resources/students/academic-model.md"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable resource title matching the Markdown file's top-level heading."
+    },
+    "audiences": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["students", "faculty", "outside"]
+      },
+      "description": "Which audiences this resource primarily serves. Resources under resources/shared/ serve multiple audiences; list all that apply."
+    },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Short topic slugs used by the retrieval layer to filter resources, e.g. ['registration', 'add-drop']."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every public source consulted when authoring or updating this resource.",
+      "items": {
+        "type": "object",
+        "required": [
+          "canonical_url",
+          "publisher",
+          "authority_type",
+          "retrieved_at",
+          "last_modified",
+          "effective_from",
+          "effective_through",
+          "academic_year",
+          "sha256",
+          "public_access_verified"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "canonical_url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://",
+            "description": "Canonical HTTPS URL of the public source page or document."
+          },
+          "publisher": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Office, catalog, or body responsible for this source, e.g. 'NCF Registrar' or 'Undergraduate Catalog 2024-2025'."
+          },
+          "authority_type": {
+            "type": "string",
+            "enum": [
+              "catalog",
+              "calendar",
+              "policy",
+              "office",
+              "program",
+              "directory",
+              "news",
+              "other"
+            ],
+            "description": "Category of source authority. Determines default trust rank when sources conflict."
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 UTC timestamp when this URL was independently fetched and verified, e.g. 2026-08-31T14:00:00Z."
+          },
+          "last_modified": {
+            "type": ["string", "null"],
+            "description": "HTTP Last-Modified value if returned by the server, else null."
+          },
+          "effective_from": {
+            "type": ["string", "null"],
+            "description": "Date or term from which the source content is effective, e.g. '2024-08-26' or 'Fall 2024'. Null if unknown."
+          },
+          "effective_through": {
+            "type": ["string", "null"],
+            "description": "Date or term through which the source content is effective. Null if ongoing or unknown."
+          },
+          "academic_year": {
+            "type": ["string", "null"],
+            "description": "Applicable academic year in YYYY-YYYY format, e.g. '2024-2025', or null if not applicable."
+          },
+          "sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Lowercase hex SHA-256 digest of the retrieved source body. Must be null before the first fetch; must be populated (non-null) after fetch_sources.py runs successfully."
+          },
+          "public_access_verified": {
+            "type": "boolean",
+            "description": "True only if a human confirmed the URL is reachable without authentication or credentials. Never set true based on assumption."
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["current", "historical", "superseded"],
+      "description": "Lifecycle state of this resource. 'current' = actively maintained and applicable. 'historical' = describes a past period only. 'superseded' = replaced by a newer resource; retain for provenance."
+    },
+    "volatility": {
+      "type": "string",
+      "enum": ["daily", "term", "annual", "stable"],
+      "description": "How quickly the underlying facts are expected to change. Drives review_after scheduling and freshness warnings."
+    },
+    "review_after": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date (YYYY-MM-DD) after which this resource should be re-verified. check_freshness.py flags overdue records."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Known conflicts, coverage gaps, ambiguities, or empty string if none. Required field; do not omit even if empty."
+    }
+  }
+}
