@@ -36,7 +36,7 @@ def _write_resource(
             "last_modified": None,
             "effective_from": "2026-08-01",
             "effective_through": "2027-07-31",
-            "academic_year": "2026-27",
+            "academic_year": "2026-2027",
             "sha256": hashlib.sha256(source_body).hexdigest(),
             "public_access_verified": True,
         }],
@@ -78,7 +78,7 @@ def test_split_preserves_heading_path(tmp_path):
 def test_current_authoritative_evidence_outranks_historical(tmp_path):
     results = search("withdrawal deadline", _repo(tmp_path), audience="students", today=date(2026, 8, 31))
     assert [item.resource_id for item in results[:2]] == ["current-registration", "historical-registration"]
-    assert results[0].effective_period == "2026-27"
+    assert results[0].effective_period == "2026-2027"
     assert results[0].audiences == ("students",)
     assert results[0].topics == ("registration",)
     assert results[0].authority_types == ("calendar",)

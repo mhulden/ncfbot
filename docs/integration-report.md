@@ -49,7 +49,7 @@ python -m venv <temporary-directory>/venv
 <temporary-directory>/venv/bin/python -m pytest
 ```
 
-Result from a fresh environment against merged Agents 1–6 on 2026-09-02: **113 passed**.
+Result from a fresh environment against merged Agents 1–6 on 2026-09-02: **118 passed**.
 
 Additional command checks:
 
@@ -57,6 +57,8 @@ Additional command checks:
 - `python -m ncfbot search "withdrawal deadline" --audience students`: returned ranked current student/calendar evidence with status, applicability, review state, and official URLs.
 - `python -m ncfbot evaluate`: validated and ran **217 merged cases; 217 passed, 0 failed**.
 - `python -m ncfbot doctor`: **passed** with no offline contract issues.
+- Review regressions confirm that `doctor` rejects incomplete historical metadata, inconsistent current snapshots, corrupted grouped history, schema-invalid provenance, and schema-invalid course rows.
+- Invalid source metadata now makes `evaluate` return a structured failed report instead of raising `SourceError`.
 - `python tools/validate_sources.py --all`: **21/21 sidecars passed**.
 - `python tools/check_freshness.py --offline`: zero errors and zero warnings.
 - Current snapshot query for `CAI 3827`: returned one Fall 2026 section with snapshot timestamp and freshness labeling.

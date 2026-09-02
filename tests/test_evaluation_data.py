@@ -44,3 +44,27 @@ def test_deterministic_cross_cutting_assertions_pass():
     assert report["repository_revision"] != "unknown"
     manifest_hash = report["resource_manifest_hash"]
     assert manifest_hash is None or re.fullmatch(r"[0-9a-f]{64}", manifest_hash)
+
+
+def test_invalid_source_metadata_returns_structured_failed_report(tmp_path):
+    (tmp_path / "PLAN-distributed.md").write_text("test\n", encoding="utf-8")
+    schemas = tmp_path / "schemas"
+    schemas.mkdir()
+    for filename in ("source-record.schema.json", "evaluation-case.schema.json"):
+        (schemas / filename).write_text((ROOT / "schemas" / filename).read_text(), encoding="utf-8")
+    questions = tmp_path / "evaluations/questions"
+    questions.mkdir(parents=True)
+    questions.joinpath("cross-cutting.jsonl").write_text(
+        (ROOT / "evaluations/questions/cross-cutting.jsonl").read_text(), encoding="utf-8"
+    )
+    resources = tmp_path / "resources/students"
+    resources.mkdir(parents=True)
+    resources.joinpath("invalid.source.json").write_text(
+        json.dumps({"id": 7, "unexpected": True}), encoding="utf-8"
+    )
+
+    report = run_evaluation(tmp_path)
+
+    assert report["validation_errors"]
+    assert report["failed"] == 0
+    assert report["results"] == []

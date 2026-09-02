@@ -13,6 +13,7 @@ from typing import Any, Iterator
 
 from .retrieval import search
 from .router import route
+from .schema_validation import load_validator, schema_errors
 from .sources import load_resources, manifest_hash, repository_root
 
 REQUIRED_FIELDS = {
@@ -58,9 +59,15 @@ def iter_evaluation_files(root: str | Path | None = None) -> Iterator[Path]:
 
 
 def read_cases(root: str | Path | None = None) -> tuple[list[CaseLocation], list[str]]:
+    base = repository_root(root)
     cases: list[CaseLocation] = []
     errors: list[str] = []
-    for path in iter_evaluation_files(root):
+    schema_path = base / "schemas" / "evaluation-case.schema.json"
+    schema_validator = None
+    if schema_path.is_file():
+        schema_validator, schema_load_errors = load_validator(schema_path)
+        errors.extend(schema_load_errors)
+    for path in iter_evaluation_files(base):
         for line_number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if not raw.strip():
                 continue
@@ -69,7 +76,10 @@ def read_cases(root: str | Path | None = None) -> tuple[list[CaseLocation], list
             except json.JSONDecodeError as exc:
                 errors.append(f"{path}:{line_number}: invalid JSON: {exc.msg}")
                 continue
-            errors.extend(validate_case(data, f"{path}:{line_number}"))
+            label = f"{path}:{line_number}"
+            if schema_validator is not None:
+                errors.extend(schema_errors(schema_validator, data, label))
+            errors.extend(validate_case(data, label))
             if isinstance(data, dict):
                 cases.append(CaseLocation(path, line_number, data))
     return cases, errors
@@ -138,6 +148,7 @@ def run_evaluation(root: str | Path | None = None) -> dict[str, Any]:
     duplicates = duplicate_case_ids(cases)
     validation_errors.extend(f"duplicate evaluation id: {identifier}" for identifier in duplicates)
     resources, resource_errors = load_resources(base, strict=False)
+    validation_errors.extend(resource_errors)
     known_ids = {resource.resource_id for resource in resources}
     results: list[EvaluationResult] = []
     if not validation_errors:
@@ -179,7 +190,7 @@ def run_evaluation(root: str | Path | None = None) -> dict[str, Any]:
         "case_count": len(cases),
         "passed": sum(item.passed for item in results),
         "failed": sum(not item.passed for item in results),
-        "validation_errors": validation_errors + resource_errors,
+        "validation_errors": validation_errors,
         "by_audience": dict(sorted(by_audience.items())),
         "by_topic": dict(sorted(by_topic.items())),
         "cases": [

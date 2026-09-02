@@ -10,6 +10,8 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Iterator
 
+from .schema_validation import validate_against_schema
+
 VALID_STATUSES = {"current", "historical", "superseded"}
 VALID_VOLATILITY = {"daily", "term", "annual", "stable"}
 VALID_AUTHORITIES = {"catalog", "calendar", "policy", "office", "program", "directory", "news", "other"}
@@ -65,9 +67,14 @@ def validate_sidecar(data: Any, sidecar_path: Path | None = None) -> list[str]:
     """Return contract errors for one parsed provenance sidecar."""
 
     label = str(sidecar_path or "sidecar")
+    schema_root = repository_root(sidecar_path) if sidecar_path is not None else repository_root()
+    schema_path = schema_root / "schemas" / "source-record.schema.json"
+    schema_validation_errors = (
+        validate_against_schema(data, schema_path, label) if schema_path.is_file() else []
+    )
     if not isinstance(data, dict):
-        return [f"{label}: root must be an object"]
-    errors: list[str] = []
+        return schema_validation_errors + [f"{label}: root must be an object"]
+    errors: list[str] = list(schema_validation_errors)
     required_types = {
         "id": str,
         "resource_file": str,
