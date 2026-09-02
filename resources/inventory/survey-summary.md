@@ -1,9 +1,9 @@
 # NCFBot Public Source Survey
 
-**Surveyed:** 2026-09-02T15:19:26Z  
-**Tool version:** survey_sources.py 0.2.0  
-**Seed:** https://www.ncf.edu/robots.txt  
-**Allowed domains:** ncf.edu  
+**Surveyed:** 2026-09-02T15:19:26Z
+**Tool version:** survey_sources.py 0.2.0
+**Seed:** https://www.ncf.edu/robots.txt
+**Allowed domains:** ncf.edu
 
 ## Summary
 
