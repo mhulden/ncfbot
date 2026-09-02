@@ -1,7 +1,7 @@
 # Agent 7 Integration Report
 
-Status: Agent 7 implementation complete; final combined integration is waiting on Agents 5–6
-Report date: 2026-09-01
+Status: Ready for final integration review
+Report date: 2026-09-02
 Branch: `agent-7/integration-evaluation`
 
 ## Scope
@@ -12,14 +12,16 @@ No NCF institutional fact was added by Agent 7. The implementation uses syntheti
 
 ## Repository revisions reviewed
 
-- Current reviewed `main`: `5c7291c`
+- Current reviewed `main`: `1606dfa`
 - Agent 1 merge: `4c2d35f8e17b8f2e8aa95eb1dd05a6d0f5fc0e3f`
 - Agent 2 merge: `44dafc4`
 - Agent 3 merge: `6d3dcea`, including owner-requested follow-up `e1414f9`
 - Agent 4 merge: `bb44e39`, including owner-requested follow-up `86a13ef`
-- Agent 7 work: five topic-focused commits recorded on this branch before this report update
+- Agent 5 merge: `fa7dd42`, including reviewed fixes through `3f5f7e7`
+- Agent 6 merge: `0755203`
+- Agent 7 work: topic-focused commits recorded on this branch and rebased onto the revisions above
 
-Agent 7 is rebased onto the merged and reviewed Agent 1–4 work. Agent 5 pull request #5 remains open. Agent 6 has no visible pull request or fork as of the report date.
+Agent 7 is rebased onto the merged and reviewed Agent 1–6 work.
 
 ## Implemented commands
 
@@ -33,7 +35,7 @@ python -m ncfbot evaluate --export evaluation-run.json
 python -m ncfbot course -- <arguments for tools/query_courses.py>
 ```
 
-The `course` command is a pass-through to Agent 6's `tools/query_courses.py`. It returns a useful error until that file is merged. Direct use of Agent 6's documented command remains supported.
+The `course` command is a pass-through to Agent 6's `tools/query_courses.py`. Direct use of Agent 6's documented command remains supported.
 
 Search output is explicitly labeled as evidence rather than an official decision. Results include resource ID, heading path, inspectable score, effective period, review state, excerpt, and canonical public source URLs.
 
@@ -47,19 +49,22 @@ python -m venv <temporary-directory>/venv
 <temporary-directory>/venv/bin/python -m pytest
 ```
 
-Result against merged Agents 1–4 on 2026-09-01: **20 passed**.
+Result from a fresh environment against merged Agents 1–6 on 2026-09-02: **113 passed**.
 
 Additional command checks:
 
 - `python -m ncfbot route "How do I sponsor an ISP?"`: routed to `faculty`, with `sponsor an isp` shown as the transparent matched signal and no fabricated numeric confidence.
 - `python -m ncfbot search "withdrawal deadline" --audience students`: returned ranked current student/calendar evidence with status, applicability, review state, and official URLs.
-- `python -m ncfbot evaluate`: validated and ran **184 merged cases; 184 passed, 0 failed**.
-- Integration preview with the latest Agents 4 and 5 heads: **76 tests passed** and **184 evaluation cases passed, 0 failed**.
-- Agent 5 preview validation: **21/21 sidecars passed** and the corrected tool generated the contract-shaped manifest.
-- Agent 5 offline freshness preview: zero errors and three review-window warnings.
-- `python -m ncfbot doctor`: exited `1` and accurately reported the still-unmerged components.
+- `python -m ncfbot evaluate`: validated and ran **217 merged cases; 217 passed, 0 failed**.
+- `python -m ncfbot doctor`: **passed** with no offline contract issues.
+- `python tools/validate_sources.py --all`: **21/21 sidecars passed**.
+- `python tools/check_freshness.py --offline`: zero errors and zero warnings.
+- Current snapshot query for `CAI 3827`: returned one Fall 2026 section with snapshot timestamp and freshness labeling.
+- Historical archive query for `ANTH 2100`: returned four observations spanning Fall 2017 through Fall 2023 and stated the coverage window.
+- `python -m ncfbot course -- --course "CAI 3827" --format scan`: successfully exercised the packaged pass-through.
+- `git diff --check`: passed.
 
-Default tests make no network request and require no API key. Optional source-network and Banner smoke tests were not run. Agent 6's course tools and inputs are not available.
+Default tests make no network request and require no API key. Optional live source and Banner network smoke tests were not run because Version 1 acceptance is offline and the committed artifacts already carry dated retrieval evidence.
 
 ## Cross-cutting evaluation coverage
 
@@ -78,27 +83,21 @@ The 46 Agent 7 cases cover:
 - authenticated faculty workflow boundaries;
 - admissions, aid, institutional-voice, and no-evidence limits.
 
-The evaluation export records its version, UTC timestamp, repository revision, resource-manifest hash (or explicit `null` while Agent 5's manifest is absent), audience/topic summary, per-case checks, and failures. It is suitable for later human or model-answer scoring without requiring a model provider API.
+The evaluation export records its version, UTC timestamp, repository revision, resource-manifest hash, audience/topic summary, per-case checks, and failures. It is suitable for later human or model-answer scoring without requiring a model provider API.
 
-## Current health blockers
+## Known limitations
 
-The following are integration blockers owned by other agents, not Agent 7 test exceptions:
-
-- Agent 5: the latest pull request #5 head passes the preview suite and fixes the reviewed sitemap, fetch-safety, schema, and manifest-shape blockers. It still must merge and generate/commit `resources/generated/manifest.json` after the final resource sidecars are present.
-- Agent 6: no pull request is visible. The course schema, public-term catalog, historical section archive, tools, tests, and course evaluations are absent.
-
-Because Agent 6 is absent, current/historical course queries, archive-coverage verification, course evaluation, and the full demonstration checklist cannot be executed. The final `doctor` result cannot pass yet.
-
-Agent 1's README still labels the Agent 7 commands as reserved and says no package is available. Updating that cross-owned quick-start text requires Agent 1 coordination during the final integration pass; this branch does not change it unilaterally.
+- Search and routing are deterministic aids; they do not generate a final natural-language answer or make an official decision.
+- Current course records are timestamped snapshots. A current enrollment claim requires the separate public live-poll command and a successful fresh response.
+- The historical archive records the terms exposed by the public selector; absence within that coverage does not prove a course never existed.
+- Authenticated workflows and private records remain outside Version 1.
+- Optional network smoke checks were not run during this offline integration pass.
 
 ## Recommended follow-up sequence
 
-1. Agent 5 merges pull request #5, then regenerates and commits the combined manifest after all sidecars merge.
-2. Agent 6 submits and merges the complete course-data pull request.
-3. Rebase this branch again, run `doctor`, every offline test, source validation/freshness, current and historical course queries, and evaluation.
-4. Run optional source and Banner network smoke tests separately and record their dates/results.
-5. Coordinate the narrow README installation/command update with Agent 1.
-6. Exercise the thirteen final demonstration scenarios and add any evidence-backed regression cases.
+1. Run optional source and Banner network smoke tests separately when fresh network verification is desired, and record their dates/results.
+2. Use the thirteen scenarios in the final demonstration checklist for reviewer-led conversational QA.
+3. Add regression cases for any behavior issue discovered during that human demonstration without changing another owner's factual resources silently.
 
 ## Public sources consulted
 

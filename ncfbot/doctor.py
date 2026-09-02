@@ -45,6 +45,10 @@ REQUIRED_FILES = (
     "tools/poll_live_sections.py",
 )
 OWNED_RESOURCE_DIRS = {"shared", "students", "faculty", "outside", "courses", "inventory", "generated"}
+DERIVED_MARKDOWN_REPORTS = {
+    "courses/course-scan.md",
+    "courses/current-course-scan.md",
+}
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 PUBLIC_URL_RE = re.compile(r"https?://[^\s)>\]]+")
 COURSE_REQUIRED_FIELDS: dict[str, type | tuple[type, ...]] = {
@@ -133,10 +137,15 @@ def _check_resources(base: Path, issues: list[Issue]) -> None:
     for markdown in sorted(resources_dir.rglob("*.md")):
         if markdown.name.lower() == "readme.md":
             continue
-        relative_parts = markdown.relative_to(resources_dir).parts
+        relative_path = markdown.relative_to(resources_dir)
+        relative_parts = relative_path.parts
         if relative_parts and relative_parts[0] in {"inventory", "generated"}:
             continue
-        if markdown.relative_to(resources_dir).as_posix() == "shared/source-policy.md":
+        if relative_path.as_posix() in DERIVED_MARKDOWN_REPORTS:
+            # Agent 6 generates these views from provenance-bearing course
+            # records. They are reports, not independently authored resources.
+            continue
+        if relative_path.as_posix() == "shared/source-policy.md":
             # Project source-use governance, not an institutional fact.
             continue
         sidecar = markdown.with_name(markdown.stem + ".source.json")

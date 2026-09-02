@@ -81,6 +81,12 @@ def _complete_synthetic_repository(root: Path) -> Path:
 
     courses = root / "resources/courses"
     courses.mkdir(parents=True)
+    (courses / "course-scan.md").write_text(
+        "# Synthetic generated course scan\n", encoding="utf-8"
+    )
+    (courses / "current-course-scan.md").write_text(
+        "# Synthetic generated current scan\n", encoding="utf-8"
+    )
     (courses / "public-terms.json").write_text(
         json.dumps({"terms": [{"term_code": "202601", "complete": True}]}), encoding="utf-8"
     )
