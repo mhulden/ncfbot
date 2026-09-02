@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "tool_version": "1.0.0",
+  "generated_at": "2099-08-01T12:00:00Z",
+  "record_count": 4,
+  "complete": false,
+  "incomplete_term_count": 1,
+  "coverage": {
+    "earliest_term_code": "209902",
+    "latest_term_code": "209908"
+  }
+}

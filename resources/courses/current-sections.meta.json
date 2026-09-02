@@ -1,0 +1,17 @@
+{
+  "term_code": "202608",
+  "term_label": "Fall 2026 (View Only)",
+  "status": "success",
+  "complete": true,
+  "expected_count": 273,
+  "record_count": 273,
+  "page_count": 3,
+  "retrieved_at": "2026-08-31T18:19:17Z",
+  "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/searchResults",
+  "schema_version": "1.0",
+  "tool_version": "1.0.0",
+  "detail_level": "listing",
+  "detail_failure_count": 0,
+  "detail_failures": [],
+  "sha256": "cb992eeba7111aacc371e00f4fcf89c01d06516477d29ddcdddbf6b75890386c"
+}
