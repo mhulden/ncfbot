@@ -126,7 +126,7 @@ a faculty member cannot answer from public documents: which deadline binds for a
 term, whether a specific student's standing has changed, whether an override or late
 form was accepted, and which evaluation rule applies to a given cohort.
 
-Course offerings and section-level data are Agent 6's territory — use those tools
+Course offerings and section-level data live in `resources/courses/` — use the course tools
 rather than reading a schedule page by hand.
 
 ## Library, educational technology, and the Academic Resource Center
