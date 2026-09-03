@@ -60,9 +60,9 @@ name the system and the step, and must stop there.
 | ALC "Fast Facts for Faculty" and the ALC faculty FAQ | Not public — both link to the intranet | Accessible Learning Center |
 | Baccalaureate exam resources and announcements | Not public — the advising page's link requires myNCF | Office of the Registrar or the Provost's Office |
 | IRB submission mechanics and forms | Not public in this corpus | Office of Research Programs and Services |
-| Course offerings, seats, waitlist status | Out of scope for this file | Agent 6's course tools; live status requires a fresh public lookup |
-| Absolute deadline dates for a named term | Out of scope for this file | Official academic calendar and Agent 2's `resources/shared/academic-calendar.md` |
-| Degree requirements by catalog year | Out of scope for this file | Agent 2's catalog resources and the Registrar |
+| Course offerings, seats, waitlist status | Out of scope for this file | The course tools over `resources/courses/`; live status requires a fresh public lookup |
+| Absolute deadline dates for a named term | Out of scope for this file | Official academic calendar and `shared-academic-calendar` |
+| Degree requirements by catalog year | Out of scope for this file | `students-degree-planning` and the Registrar |
 
 ## Where a "gap" is smaller than it looks
 

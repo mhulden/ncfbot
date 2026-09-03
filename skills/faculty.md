@@ -47,7 +47,7 @@ itself; ask only when the answer would change and you cannot infer it.
      `resources/faculty/academic-workflows.md`.
    - **Advising mode** — the faculty member is helping a student. Load
      `resources/faculty/public-advising-responsibilities.md`, and pull the underlying
-     student rule from Agent 2's resources rather than restating it here.
+     student rule from the `students-*` resources rather than restating it here.
    - Some questions are both. Answer the faculty action first, then the advising
      implication.
 2. **Is this actually a student-record question in disguise?** "Is my advisee on
@@ -57,7 +57,7 @@ itself; ask only when the answer would change and you cannot infer it.
 3. **Which term, and does the answer depend on a date?** If yes, do not state an
    absolute date from this corpus. Use the relative-week framing in
    `resources/faculty/deadlines-and-systems.md` and send the user to the official
-   academic calendar and Agent 2's `resources/shared/academic-calendar.md`.
+   academic calendar and `shared-academic-calendar`.
 4. **Which student cohort?** Evaluation designations and the route for an external GPA
    both changed at a recent entry-cohort boundary; `faculty-academic-workflows` records
    the boundary, the controlling policy, and which rule applies on each side. Ask for or
@@ -80,21 +80,24 @@ itself; ask only when the answer would change and you cannot infer it.
 | Which office owns a task; escalation ladder; contact routing | `resources/shared/office-routing.md` | `shared-office-routing` |
 | Emergencies, mental-health crisis, Title IX and mandatory reporting, discrimination, accessibility, conduct, immigration, legal, financial hardship | `resources/shared/sensitive-referrals.md` | `shared-sensitive-referrals` |
 
-Resources owned by other teams, referenced by path rather than copied. Their stable IDs
-are set by their owners and are not invented here; where one has not merged, the owner and
-the gap are named instead.
+Resources owned by other teams, cited by their owners' published stable IDs rather than
+copied. Read the owning resource; never restate its facts here.
 
-| Topic | Owner and path | Stable ID |
+| Topic | Owner's resource | Stable ID |
 |---|---|---|
-| Student-side academic rules, catalog requirements, catalog year | Agent 2, `resources/students/` | pending merge |
-| Absolute term dates and calendar conflicts | Agent 2, `resources/shared/academic-calendar.md` | `shared-academic-calendar` — published in Agent 2's open PR, not yet merged |
-| Terminology an outsider would not recognize | Agent 4, `resources/shared/glossary.md` | pending merge |
-| Bot-facing source-use guidance | Agent 5, `resources/shared/source-policy.md` | pending merge |
-| Course offerings, sections, instructors, meeting times, seats, waitlists | Agent 6, `resources/courses/` via the course tools — never infer offerings from a resource file | pending merge |
+| The contract system, units, evaluation and standing as they apply to a student | `resources/students/academic-model.md` | `students-academic-model` |
+| Graduation and general-education requirements, AOC, thesis, baccalaureate exam, catalog year | `resources/students/degree-planning.md` | `students-degree-planning` |
+| Registration, add/drop, withdrawal, leave, readmission, transcripts | `resources/students/registration-and-records.md` | `students-registration-and-records` |
+| ISPs, internships, and off-campus study from the student side | `resources/students/isp-and-experiential-learning.md` | `students-isp-and-experiential-learning` |
+| Aid, refunds, billing, and status cautions | `resources/students/financial-and-status-cautions.md` | `students-financial-and-status-cautions` |
+| Student support services | `resources/students/student-support.md` | `students-student-support` |
+| Absolute term dates and calendar conflicts | `resources/shared/academic-calendar.md` | `shared-academic-calendar` |
+| Terminology an outsider would not recognize | `resources/shared/glossary.md` | `shared-glossary` |
+| Bot-facing source-use guidance | `resources/shared/source-policy.md` | guidance, not a factual resource; no ID |
+| Course offerings, sections, instructors, meeting times, seats, waitlists | `resources/courses/` via the course tools | course artifacts, not a resource ID — never infer offerings from a resource file |
 
-Until a dependency merges, cite the owning resource by path and say the dependency is not
-yet available rather than answering from memory. Once it merges, update this table and the
-matching evaluation expectations to the owner's published ID — nothing else.
+When a faculty question turns on a student-side rule, cite the owning resource's ID and
+heading rather than paraphrasing it, so a correction lands in one place.
 
 Load only what the question needs. A question about the evaluation deadline does not
 require the office-routing file.
@@ -222,9 +225,9 @@ an emergency number. Emergency direction leads and stays short. Where that resou
 records a reporting duty and a deadline for faculty, state both — and state them without
 asking what happened.
 
-**Defer, don't rewrite.** Student academic rules come from Agent 2's resources; course
-offerings and enrollment come from Agent 6's tools; institutional overview and
-terminology come from Agent 4's. Cite them rather than restating them here.
+**Defer, don't rewrite.** Student academic rules come from the `students-*` resources;
+dates from `shared-academic-calendar`; course offerings and enrollment from the course
+tools; terminology from `shared-glossary`. Cite them by ID rather than restating them.
 
 ## 8. Examples
 

@@ -5,7 +5,7 @@ public sources — contracts, tutorials, independent readings, ISPs, narrative
 evaluations and designations, contract certification, thesis and baccalaureate
 examination reporting, and academic-integrity referral. Timing and the systems each
 step runs in are in `resources/faculty/deadlines-and-systems.md`. Student-facing
-rules on requirements and the catalog belong to Agent 2's resources; this file
+rules on requirements and the catalog belong to the `students-*` resources; this file
 describes the faculty action, not the student's degree requirements.
 
 **Verified through: 2026-08-31**
@@ -183,8 +183,8 @@ about them are set out.
 The Handbook's chapter on the educational program covers the provisional Area of
 Concentration plan, the thesis prospectus, qualifying examinations, the senior thesis
 or project, the baccalaureate examination, and graduation. Treat the substantive
-degree requirements as Agent 2's territory (catalog and Registrar) and use this file
-for the faculty reporting actions, which the Quick Reference Guide states directly:
+degree requirements as `students-degree-planning`'s territory and use this file for the
+faculty reporting actions, which the Quick Reference Guide states directly:
 
 - **Senior Thesis or Project Evaluation** — submitted through Faculty Self Service.
 - **Baccalaureate Exam Report (BER)** — submitted through Faculty Self Service after
@@ -252,10 +252,10 @@ explanation of the disability.
 
 ## Cross-references
 
-- Student-facing rules on requirements, catalog year, and the academic calendar:
-  Agent 2's `resources/students/` and `resources/shared/academic-calendar.md`.
-- Current and historical course offerings, sections, and live enrollment: Agent 6's
-  course tools. Do not infer offerings from this file.
+- Student-facing rules on requirements and catalog year: `students-degree-planning` and
+  `students-academic-model`. Term dates: `shared-academic-calendar`.
+- Current and historical course offerings, sections, and live enrollment: the course
+  tools over `resources/courses/`. Do not infer offerings from this file.
 - Office ownership and contacts: `resources/shared/office-routing.md`.
 
 ## Conflicts and gaps recorded here

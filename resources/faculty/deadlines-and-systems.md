@@ -13,8 +13,8 @@ week-numbered timeline below is labeled by its source as the Fall 2025 / Spring 
 faculty guide.
 
 > **Get absolute dates from the calendar, not from here.** For any specific term, use
-> the official NCF academic calendar and Agent 2's
-> `resources/shared/academic-calendar.md`. Two public NCF sources disagree about
+> the official NCF academic calendar and `shared-academic-calendar`. Two public NCF
+> sources disagree about
 > several of the deadlines below; both readings are recorded rather than merged.
 
 ---
@@ -48,8 +48,8 @@ Fall 2025 / Spring 2026. Weeks are counted from the start of the semester.
 > **Scope limit.** Only the faculty-facing markers are summarized here. The same Guide
 > section also publishes refund percentages, housing and meal plan refund points, and
 > payment-plan deadlines. Those are tuition, billing, and calendar facts owned by other
-> resources — Agent 2's `resources/shared/academic-calendar.md` for dated Registrar
-> deadlines and Agent 4's cost resources for refund and billing amounts. Cite those
+> resources — `shared-academic-calendar` for dated Registrar deadlines and
+> `outside-cost-and-aid` for refund and billing amounts. Cite those
 > rather than repeating an amount from this file, and route a student's money question
 > to Student Accounts or Financial Aid via `resources/shared/office-routing.md`.
 
