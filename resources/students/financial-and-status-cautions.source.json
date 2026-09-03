@@ -170,10 +170,34 @@
       "academic_year": "2025-2026",
       "sha256": "b66ddd03f29be340cefb8aa882dc54afd1bb241916274c07478533322f920b9d",
       "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/departments/student-accounts-cashier/",
+      "publisher": "New College of Florida Student Accounts & Cashier",
+      "authority_type": "office",
+      "retrieved_at": "2026-09-03T17:42:33Z",
+      "last_modified": "2026-09-03T17:42:33Z",
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "327a9d1c919b82f2e5793ee59b0ad1aacfae2fce2f024704699b0063afae2939",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/wp-content/uploads/2026/07/FY27-Tuition-and-Fee.pdf",
+      "publisher": "New College of Florida Finance & Accounting Office",
+      "authority_type": "policy",
+      "retrieved_at": "2026-09-03T17:42:35Z",
+      "last_modified": "2026-07-01T14:26:25Z",
+      "effective_from": "2026-07-01",
+      "effective_through": "2027-06-30",
+      "academic_year": "2026-2027",
+      "sha256": "99ec2385e01acc24b73f49b7b0974bbdebddbcfb0acd8ed6ca28a2c8f63e73b1",
+      "public_access_verified": true
     }
   ],
   "status": "current",
   "volatility": "annual",
   "review_after": "2027-02-01",
-  "notes": "The undergraduate catalog references an external SAP policy rather than restating it, so undergraduate SAP rules are a coverage gap. The public international admission page states no F-1 full-time credit threshold, so none is asserted. Catalog refund language (100% through the second week) and calendar refund dates (25% deadlines) do not combine into a complete refund schedule and are not merged. sha256 is null for every source. Each page was located and read at its public URL on 2026-08-31, but the network egress available during collection could not re-download raw response bodies for hashing, so no digest is asserted rather than a fabricated one. Agent 5 owns hashing via tools/fetch_sources.py; digests must be populated by that pipeline (or an equivalent unrestricted re-fetch) before this sidecar can pass a schema that requires 64 hex characters. retrieved_at reflects the collection session on 2026-08-31."
+  "notes": "The undergraduate catalog references an external SAP policy rather than restating it, so undergraduate SAP rules are a coverage gap. The public international admission page states no F-1 full-time credit threshold, so none is asserted. Catalog refund language (100% through the second week) and calendar refund dates (25% deadlines) do not combine into a complete refund schedule and are not merged. The Student Accounts page was freshly retrieved on 2026-09-03 and supplies the registration-based billing bands, but its adjacent per-credit rate table is still labeled 2024-2025; this resource therefore uses rates only from the official FY 2026-2027 Finance & Accounting fee schedule and records the undated billing bands as an annual recheck item."
 }

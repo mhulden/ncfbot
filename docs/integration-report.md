@@ -55,7 +55,7 @@ Additional command checks:
 
 - `python -m ncfbot route "How do I sponsor an ISP?"`: routed to `faculty`, with `sponsor an isp` shown as the transparent matched signal and no fabricated numeric confidence.
 - `python -m ncfbot search "withdrawal deadline" --audience students`: returned ranked current student/calendar evidence with status, applicability, review state, and official URLs.
-- `python -m ncfbot evaluate`: validated and ran **217 merged cases; 217 passed, 0 failed**.
+- `python -m ncfbot evaluate`: validated and ran **218 merged cases; 218 passed, 0 failed**.
 - `python -m ncfbot doctor`: **passed** with no offline contract issues.
 - Review regressions confirm that `doctor` rejects incomplete historical metadata, inconsistent current snapshots, corrupted grouped history, schema-invalid provenance, and schema-invalid course rows.
 - Post-merge regressions also confirm exact per-term archive hashes and exact grouped-history derivation, including titles and the complete grouped course set.
