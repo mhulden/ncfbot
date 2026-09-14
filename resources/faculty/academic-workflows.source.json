@@ -34,7 +34,7 @@
       "canonical_url": "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
       "publisher": "Office of the Provost, New College of Florida",
       "authority_type": "policy",
-      "retrieved_at": "2026-08-31T17:18:14Z",
+      "retrieved_at": "2026-09-14T17:20:51Z",
       "last_modified": "2026-06-08T17:20:51Z",
       "effective_from": null,
       "effective_through": null,
@@ -118,12 +118,12 @@
       "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/",
       "publisher": "Accessible Learning Center, New College of Florida",
       "authority_type": "office",
-      "retrieved_at": "2026-08-31T17:16:07Z",
+      "retrieved_at": "2026-09-14T17:20:51Z",
       "last_modified": null,
       "effective_from": null,
       "effective_through": null,
       "academic_year": null,
-      "sha256": "9c17e471c66e4d0b7b46766fb19479fc46930af0128206366b0920423adce77d",
+      "sha256": "232e6b920e679acd2ebd0c5f2c6d808650acaa29182760107668f09d73e179e9",
       "public_access_verified": true
     },
     {
@@ -166,5 +166,5 @@
   "status": "current",
   "volatility": "annual",
   "review_after": "2027-08-31",
-  "notes": "Five conflicts recorded in the resource text: (1) evaluation designations under NCF Policy 4.1001 (Fall 2025) supersede the August 2023 Faculty Handbook description; (2) the policy's designation names and the Quick Reference Guide's Banner codes are not mapped to each other by any public source; (3) the Guide's Last Date of Attendance requirement for Unsatisfactory does not appear in the policy; (4) the Handbook's two-course teaching load is described there as an accepted norm, not a college-wide rule. The Honor Code reporting form sits behind the NCF Portal and is not publicly verifiable. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence. Exam lead time conflict recorded 2026-09-10: the Quick Reference Guide says faculty upload exams at least 48 hours ahead while the ALC Testing Services page says 24 hours; both agree students schedule 48 hours ahead. Found in human testing round 1 (HT-028)."
+  "notes": "Five conflicts recorded in the resource text: (1) evaluation designations under NCF Policy 4.1001 (Fall 2025) supersede the August 2023 Faculty Handbook description; (2) the policy's designation names and the Quick Reference Guide's Banner codes are not mapped to each other by any public source; (3) the Guide's Last Date of Attendance requirement for Unsatisfactory does not appear in the policy; (4) the Handbook's two-course teaching load is described there as an accepted norm, not a college-wide rule. The Honor Code reporting form sits behind the NCF Portal and is not publicly verifiable. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence. Faculty exam upload conflict (issue #16, from HT-028), re-verified 2026-09-14: the Quick Reference Guide, page 7, says faculty should upload exams at least 48 hours in advance; the ALC Testing Services page says faculty must upload exams 24 hours in advance. Both say students schedule 48 hours ahead. The two may be a recommendation and a minimum, but no public source says so, so the conflict is recorded as unresolved and Testing Services confirms the binding procedure. Neither figure is treated as fabricated or superseded. The Testing Services page's response bytes differ from the 2026-08-31 record and its sha256 is refreshed; the Guide's bytes are unchanged and only its retrieval time is refreshed."
 }
