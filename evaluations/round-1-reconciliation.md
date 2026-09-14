@@ -1,7 +1,9 @@
 # Round 1 Human-Test Reconciliation
 
-Status: evidence reconciliation for Issue #38  
-Prepared: 2026-09-14  
+Status: evidence reconciliation for Issue #38
+
+Prepared: 2026-09-14
+
 Scope: 35 classroom tests, HT-001 through HT-035
 
 ## Evidence boundary
