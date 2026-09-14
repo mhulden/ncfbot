@@ -202,12 +202,12 @@
       "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/",
       "publisher": "Accessible Learning Center, New College of Florida",
       "authority_type": "office",
-      "retrieved_at": "2026-08-31T17:16:07Z",
+      "retrieved_at": "2026-09-14T17:20:51Z",
       "last_modified": null,
       "effective_from": null,
       "effective_through": null,
       "academic_year": null,
-      "sha256": "9c17e471c66e4d0b7b46766fb19479fc46930af0128206366b0920423adce77d",
+      "sha256": "232e6b920e679acd2ebd0c5f2c6d808650acaa29182760107668f09d73e179e9",
       "public_access_verified": true
     },
     {
@@ -370,5 +370,5 @@
   "status": "current",
   "volatility": "annual",
   "review_after": "2027-08-31",
-  "notes": "Named office holders, phone numbers, and room numbers are annual-volatility facts verified 2026-08-31. The Provost's Office roster is internally inconsistent: at least one staff card's profile link resolves to a different person. Only the Academic Affairs Committee publishes notices, agendas, and minutes publicly; the August 2023 Faculty Handbook's committee structure is a 2023 description, not a current roster. Several Provost menu items and both ALC faculty deep links resolve to the intranet. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence."
+  "notes": "Named office holders, phone numbers, and room numbers are annual-volatility facts verified 2026-08-31. The Provost's Office roster is internally inconsistent: at least one staff card's profile link resolves to a different person. Only the Academic Affairs Committee publishes notices, agendas, and minutes publicly; the August 2023 Faculty Handbook's committee structure is a 2023 description, not a current roster. Several Provost menu items and both ALC faculty deep links resolve to the intranet. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence. The ALC Testing Services page was independently re-fetched on 2026-09-14; its response bytes differ from the 2026-08-31 record, and the page this resource points faculty to is still the published testing page."
 }
