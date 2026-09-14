@@ -244,11 +244,23 @@ faculty member needs:
 The Quick Reference Guide adds that instructors are only required to provide
 accommodations after receiving the Notification of Accommodations letter, that
 in-person testing at the ALC runs through Canvas and RegisterBlast (the course must be
-launched and an exam submitted for each exam), that students should schedule at least
-48 hours ahead and faculty should upload exams at least 48 hours ahead, and that for a
-flexibility accommodation the instructor follows the recommendations in the letter or
-completes a Flex Plan in AIM without requesting additional documentation or an
-explanation of the disability.
+launched and an exam submitted for each exam), and that for a flexibility accommodation
+the instructor follows the recommendations in the letter or completes a Flex Plan in
+AIM without requesting additional documentation or an explanation of the disability.
+
+**Exam lead time: two official sources disagree on the faculty figure.** Both agree
+students schedule at least **48 hours** ahead. They do not agree on faculty:
+
+| Source | Student scheduling | Faculty exam upload |
+|---|---|---|
+| Quick Reference Guide (Provost's Office, February 2026) | at least 48 hours ahead | at least **48 hours** ahead |
+| ALC Testing Services page | at least 48 hours before the testing date | **24 hours** in advance |
+
+Give both figures and say they differ; do not average them or pick one silently.
+Uploading at the earlier 48-hour mark satisfies either reading, so that is the safe
+planning figure — but the binding requirement belongs to Testing Services, which owns
+the process. The Testing Services page also asks faculty to tell students that all
+testing center reservations must be made at least 48 hours in advance.
 
 ## Cross-references
 
@@ -274,6 +286,10 @@ explanation of the disability.
 4. **Teaching load.** The Handbook's "two courses or seminars per semester" is
    described there as an accepted norm rather than a college-wide rule, and it dates
    from 2023. Do not state it as current policy.
+5. **Exam upload lead time.** The Quick Reference Guide says faculty upload exams at
+   least 48 hours ahead; the ALC Testing Services page says 24 hours in advance. Both
+   agree students schedule 48 hours ahead. Recorded above; Testing Services owns the
+   binding figure. Found in human testing round 1 (HT-028, issues #16 and #19).
 
 ## Sources
 
