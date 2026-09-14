@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mhulden/ncfbot/schemas/round-1-reconciliation.schema.json",
+  "title": "NCF Bot Round 1 reconciliation record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "test_id",
+    "source_row",
+    "focus",
+    "audience",
+    "scenario_type",
+    "conversation_mode",
+    "prompt",
+    "prior_context",
+    "prior_context_status",
+    "expected_behavior",
+    "expected_public_sources",
+    "answer",
+    "answer_status",
+    "scores",
+    "critical",
+    "source_verification",
+    "reviewer_explanation",
+    "model_runtime",
+    "issue_url",
+    "disposition",
+    "evidence_notes"
+  ],
+  "properties": {
+    "test_id": {"type": "string", "pattern": "^HT-[0-9]{3}$"},
+    "source_row": {"type": "integer", "minimum": 2},
+    "focus": {"type": "string", "minLength": 1},
+    "audience": {"enum": ["students", "faculty", "outside"]},
+    "scenario_type": {"type": "string", "minLength": 1},
+    "conversation_mode": {"enum": ["fresh", "multiturn"]},
+    "prompt": {"type": "string", "minLength": 1},
+    "prior_context": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "prior_context_status": {"enum": ["not-applicable", "complete", "incomplete"]},
+    "expected_behavior": {"type": ["string", "null"]},
+    "expected_public_sources": {"type": ["string", "null"]},
+    "answer": {"type": ["string", "null"]},
+    "answer_status": {"enum": ["matched", "missing", "mismatched"]},
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accuracy", "grounding", "applicability", "usefulness", "judgment", "total"],
+      "properties": {
+        "accuracy": {"type": "integer", "minimum": 0, "maximum": 2},
+        "grounding": {"type": "integer", "minimum": 0, "maximum": 2},
+        "applicability": {"type": "integer", "minimum": 0, "maximum": 2},
+        "usefulness": {"type": "integer", "minimum": 0, "maximum": 2},
+        "judgment": {"type": "integer", "minimum": 0, "maximum": 2},
+        "total": {"type": "integer", "minimum": 0, "maximum": 10}
+      }
+    },
+    "critical": {"enum": ["yes", "no", "not-recorded"]},
+    "source_verification": {"enum": ["yes", "no", "qualified"]},
+    "reviewer_explanation": {"type": ["string", "null"]},
+    "model_runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product", "model", "version", "runtime", "settings"],
+      "properties": {
+        "product": {"type": ["string", "null"]},
+        "model": {"type": ["string", "null"]},
+        "version": {"type": ["string", "null"]},
+        "runtime": {"type": ["string", "null"]},
+        "settings": {"type": ["string", "null"]}
+      }
+    },
+    "issue_url": {
+      "anyOf": [
+        {"type": "string", "pattern": "^https://github\\.com/mhulden/ncfbot/issues/[0-9]+$"},
+        {"type": "null"}
+      ]
+    },
+    "disposition": {
+      "enum": ["tracked-defect", "capability-enhancement", "evidence-gap", "no-actionable-defect"]
+    },
+    "evidence_notes": {"type": "string"}
+  }
+}
