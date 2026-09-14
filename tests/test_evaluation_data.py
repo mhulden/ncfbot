@@ -2,6 +2,8 @@ import json
 import re
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 from ncfbot.evaluation import duplicate_case_ids, read_cases, run_evaluation, validate_case
 
 
@@ -68,3 +70,49 @@ def test_invalid_source_metadata_returns_structured_failed_report(tmp_path):
     assert report["validation_errors"]
     assert report["failed"] == 0
     assert report["results"] == []
+
+
+def test_round_1_reconciliation_is_complete_and_self_consistent():
+    schema = json.loads((ROOT / "schemas/round-1-reconciliation.schema.json").read_text())
+    validator = Draft202012Validator(schema)
+    records = [
+        json.loads(line)
+        for line in (ROOT / "evaluations/round-1-reconciliation.jsonl").read_text().splitlines()
+        if line.strip()
+    ]
+
+    assert len(records) == 35
+    assert [record["test_id"] for record in records] == [f"HT-{number:03d}" for number in range(1, 36)]
+    assert all(not list(validator.iter_errors(record)) for record in records)
+    assert all(
+        sum(record["scores"][field] for field in ("accuracy", "grounding", "applicability", "usefulness", "judgment"))
+        == record["scores"]["total"]
+        for record in records
+    )
+    assert sum(record["scores"]["total"] for record in records) == 312
+    assert {record["test_id"] for record in records if record["critical"] == "yes"} == {
+        "HT-009", "HT-013", "HT-029", "HT-035",
+    }
+    assert all("tester" not in record and "peer_reviewer" not in record for record in records)
+
+
+def test_round_1_reconciliation_preserves_known_gaps_and_corrected_links():
+    records = {
+        record["test_id"]: record
+        for record in (
+            json.loads(line)
+            for line in (ROOT / "evaluations/round-1-reconciliation.jsonl").read_text().splitlines()
+            if line.strip()
+        )
+    }
+
+    assert records["HT-024"]["answer_status"] == "mismatched"
+    assert records["HT-024"]["disposition"] == "capability-enhancement"
+    assert records["HT-026"]["issue_url"].endswith("/issues/35")
+    assert len(records["HT-026"]["answer"]) == 2040
+    assert records["HT-027"]["scores"]["total"] == 9
+    assert records["HT-027"]["issue_url"].endswith("/issues/24")
+    assert {records[test_id]["answer_status"] for test_id in ("HT-021", "HT-023", "HT-025")} == {"missing"}
+    assert all(records[test_id]["disposition"] == "evidence-gap" for test_id in ("HT-031", "HT-032", "HT-033", "HT-034"))
+    assert all(records[test_id]["reviewer_explanation"] is None for test_id in ("HT-031", "HT-032", "HT-033", "HT-034"))
+    assert all(records[test_id]["prior_context_status"] == "incomplete" for test_id in ("HT-031", "HT-032"))
