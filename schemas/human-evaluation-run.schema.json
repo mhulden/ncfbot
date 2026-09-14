@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mhulden/ncfbot/schemas/human-evaluation-run.schema.json",
+  "title": "NCF Bot human evaluation run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "test_id",
+    "linked_issue",
+    "linked_pr",
+    "repository_revision",
+    "resource_manifest_hash",
+    "agent_product",
+    "model",
+    "model_version",
+    "runtime",
+    "settings",
+    "condition",
+    "prompt",
+    "prior_context",
+    "resources",
+    "tool_events",
+    "trace_reference",
+    "started_at",
+    "completed_at",
+    "time_to_first_actionable_seconds",
+    "time_to_final_answer_seconds",
+    "final_answer",
+    "scores",
+    "critical",
+    "priority",
+    "classification",
+    "source_verification",
+    "reviewer_note",
+    "disposition"
+  ],
+  "properties": {
+    "run_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "test_id": {"type": "string", "pattern": "^(HT-[0-9]{3}|CONTROL-[A-Z0-9]+(?:-[A-Z0-9]+)*)$"},
+    "linked_issue": {"type": ["string", "null"], "format": "uri"},
+    "linked_pr": {"type": ["string", "null"], "format": "uri"},
+    "repository_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "resource_manifest_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "agent_product": {"type": ["string", "null"], "minLength": 1},
+    "model": {"type": ["string", "null"], "minLength": 1},
+    "model_version": {"type": ["string", "null"]},
+    "runtime": {"type": ["string", "null"], "minLength": 1},
+    "settings": {"type": ["object", "null"]},
+    "condition": {"enum": ["fresh", "multiturn"]},
+    "prompt": {"type": "string", "minLength": 1},
+    "prior_context": {
+      "type": ["array", "null"],
+      "items": {"$ref": "#/$defs/message"}
+    },
+    "resources": {
+      "type": ["array", "null"],
+      "items": {"$ref": "#/$defs/resource_event"}
+    },
+    "tool_events": {
+      "type": ["array", "null"],
+      "items": {"$ref": "#/$defs/tool_event"}
+    },
+    "trace_reference": {"type": ["string", "null"]},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": ["string", "null"], "format": "date-time"},
+    "time_to_first_actionable_seconds": {"type": ["number", "null"], "minimum": 0},
+    "time_to_final_answer_seconds": {"type": ["number", "null"], "minimum": 0},
+    "final_answer": {"type": ["string", "null"]},
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accuracy", "grounding", "applicability", "usefulness", "judgment", "total"],
+      "properties": {
+        "accuracy": {"type": ["integer", "null"], "minimum": 0, "maximum": 2},
+        "grounding": {"type": ["integer", "null"], "minimum": 0, "maximum": 2},
+        "applicability": {"type": ["integer", "null"], "minimum": 0, "maximum": 2},
+        "usefulness": {"type": ["integer", "null"], "minimum": 0, "maximum": 2},
+        "judgment": {"type": ["integer", "null"], "minimum": 0, "maximum": 2},
+        "total": {"type": ["integer", "null"], "minimum": 0, "maximum": 10}
+      }
+    },
+    "critical": {"enum": ["yes", "no", "not-assessed"]},
+    "priority": {"enum": ["critical", "high", "medium", "low", "none", "not-assessed"]},
+    "classification": {
+      "enum": [
+        "accuracy",
+        "grounding",
+        "applicability",
+        "usefulness",
+        "judgment",
+        "routing",
+        "retrieval",
+        "answer-composition",
+        "source-content",
+        "scope",
+        "safety",
+        "runtime",
+        "no-defect",
+        "other",
+        "not-assessed"
+      ]
+    },
+    "source_verification": {"enum": ["checked-yes", "checked-no", "not-checked", "not-applicable"]},
+    "reviewer_note": {"type": ["string", "null"]},
+    "disposition": {"enum": ["passed", "failed", "needs-review", "not-run"]}
+  },
+  "$defs": {
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content"],
+      "properties": {
+        "role": {"enum": ["user", "assistant"]},
+        "content": {"type": "string", "minLength": 1}
+      }
+    },
+    "resource_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource_id", "delivery", "sequence"],
+      "properties": {
+        "resource_id": {"type": "string", "minLength": 1},
+        "delivery": {"enum": ["supplied", "retrieved"]},
+        "sequence": {"type": "integer", "minimum": 1}
+      }
+    },
+    "tool_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "event_type", "name", "elapsed_seconds", "actionable", "notes"],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1},
+        "event_type": {"enum": ["tool-call", "retrieval", "user-visible-output"]},
+        "name": {"type": "string", "minLength": 1},
+        "elapsed_seconds": {"type": ["number", "null"], "minimum": 0},
+        "actionable": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ from typing import Any, Sequence
 
 from .doctor import run_doctor
 from .evaluation import run_evaluation
+from .human_evaluation import export_jsonl, read_human_runs
 from .retrieval import search
 from .router import route
 from .sources import SourceError, load_resources, repository_root
@@ -51,6 +52,13 @@ def _build_parser() -> argparse.ArgumentParser:
     evaluate = subparsers.add_parser("evaluate", help="validate cases and run deterministic assertions")
     evaluate.add_argument("--export", type=Path, help="write the complete run record as JSON")
     evaluate.add_argument("--json", action="store_true")
+
+    human_evaluation = subparsers.add_parser(
+        "human-evaluation", help="validate or normalize human evaluation run records"
+    )
+    human_evaluation.add_argument("--input", type=Path, required=True, help="CSV or JSONL run record")
+    human_evaluation.add_argument("--export", type=Path, help="write validated normalized JSONL")
+    human_evaluation.add_argument("--json", action="store_true", help="emit a machine-readable summary")
 
     course = subparsers.add_parser("course", help="pass remaining arguments to tools/query_courses.py")
     course.add_argument("args", nargs=argparse.REMAINDER)
@@ -179,6 +187,29 @@ def _course(args: argparse.Namespace, root: Path) -> int:
     return completed.returncode
 
 
+def _human_evaluation(args: argparse.Namespace, root: Path) -> int:
+    records, errors = read_human_runs(args.input, root)
+    if args.export and not errors:
+        export_jsonl(records, args.export)
+    report = {
+        "input": str(args.input),
+        "record_count": len(records),
+        "valid": not errors,
+        "errors": errors,
+        "export": str(args.export) if args.export and not errors else None,
+    }
+    if args.json:
+        _print_json(report)
+    else:
+        print(f"Human evaluation records: {len(records)}")
+        print("Validation: " + ("PASS" if not errors else "FAIL"))
+        for error in errors:
+            print(f"[ERROR] {error}")
+        if report["export"]:
+            print(f"Exported normalized JSONL to {report['export']}")
+    return 0 if not errors else 1
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
@@ -193,6 +224,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _sources(args, root)
     if args.command == "evaluate":
         return _evaluate(args, root)
+    if args.command == "human-evaluation":
+        return _human_evaluation(args, root)
     if args.command == "course":
         return _course(args, root)
     parser.error(f"unknown command: {args.command}")
