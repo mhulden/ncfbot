@@ -198,12 +198,12 @@
       "canonical_url": "https://www.ncf.edu/departments/student-accounts-cashier/",
       "publisher": "New College of Florida",
       "authority_type": "office",
-      "retrieved_at": "2026-08-31T17:16:12Z",
-      "last_modified": null,
+      "retrieved_at": "2026-09-03T17:42:33Z",
+      "last_modified": "2026-09-03T17:42:33Z",
       "effective_from": null,
       "effective_through": null,
       "academic_year": null,
-      "sha256": "a2d264fef828ce98e57197159913513ffeb555b269b97953d997bbee3dc0e7de",
+      "sha256": "327a9d1c919b82f2e5793ee59b0ad1aacfae2fce2f024704699b0063afae2939",
       "public_access_verified": true
     },
     {
@@ -450,5 +450,5 @@
   "status": "current",
   "volatility": "annual",
   "review_after": "2027-08-31",
-  "notes": "Landing pages are stable; phone numbers, email aliases, room numbers, and office hours were verified 2026-08-31 and need annual re-verification. Routing quirks recorded in the resource: /cwc/ redirects to the Health and Wellness Services hub and the Campus Police emergency page labels two links pointing there as 'Counseling and Wellness Services' and 'Crisis Intervention and Victim Advocate'; /life-at-new/safety-conduct/title-ix/ redirects to the Title IX department page; Student Accounts and Parking Services share the START Center phone and room; the academic learning compacts page resolves at two paths. Office email aliases were recovered by decoding Cloudflare email obfuscation on the published pages; prefer aliases over individual addresses."
+  "notes": "Landing pages are stable; phone numbers, email aliases, room numbers, and office hours were verified 2026-08-31 and need annual re-verification. The Student Accounts page changed and was independently re-fetched on 2026-09-03; its published phone, STARTCenter@ncf.edu alias, room, hours, billing/refund ownership, and myNCF boundary still match the resource. Routing quirks recorded in the resource: /cwc/ redirects to the Health and Wellness Services hub and the Campus Police emergency page labels two links pointing there as 'Counseling and Wellness Services' and 'Crisis Intervention and Victim Advocate'; /life-at-new/safety-conduct/title-ix/ redirects to the Title IX department page; Student Accounts and Parking Services share the START Center phone and room; the academic learning compacts page resolves at two paths. Office email aliases were recovered by decoding Cloudflare email obfuscation on the published pages; prefer aliases over individual addresses."
 }

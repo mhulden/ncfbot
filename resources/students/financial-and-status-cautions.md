@@ -1,10 +1,10 @@
 # Financial and Status Cautions
 
-Scope: General public warnings about how academic decisions — dropping a course, withdrawing, taking a leave, studying off campus, ceasing to attend — can affect financial aid, veterans benefits, visa status, and graduation. This resource explains published rules and names the office that decides. It never decides an individual case.
+Scope: General public information about how course load and academic decisions — adding or dropping a course, withdrawing, taking a leave, studying off campus, ceasing to attend — can affect tuition and fees, financial aid, veterans benefits, visa status, and graduation. This resource explains published rules and names the office that decides. It never calculates or decides an individual case.
 
-Verified through: 2026-08-31
+Verified through: 2026-09-03
 
-Applies to: undergraduate students under catalog edition 2025-2026; dates are from the 2026-2027 public academic calendar.
+Applies to: undergraduate students under catalog edition 2025-2026; billing rates and dates are for 2026-2027 unless otherwise stated.
 
 Volatility: `annual` for aid program rules; `term` for the dates.
 
@@ -28,6 +28,38 @@ Two consequences students routinely miss:
 2. **Dropping one 4-credit course from a 12-credit contract drops the student below full time**, because 12 credits is the floor, not a cushion. The catalog warns that dropping below full-time enrollment may result in "cancellation and/or adjustment of all funding sources."
 
 Institutional scholarships and need-based grants require both full-time enrollment **and** active attendance.
+
+---
+
+## How registered credits change tuition and fees
+
+New College's public Student Accounts page says tuition and fee charges are based on
+registration, using these billing bands:
+
+- **1–16 registered credit hours:** billed per credit hour.
+- **17–20 registered credit hours:** billed as 16 credit hours.
+- **More than 20 registered credit hours:** billed as 16 credit hours only with an
+  approved Provost petition.
+- **ISP:** the equivalent of 4 credit hours is billed with the spring term.
+
+Answer course-load questions in **credit hours, not number of classes**. Courses can
+carry different credit values. If three, four, and five classes are each 4 credits,
+they represent 12, 16, and 20 registered hours. Under the published bands, the
+12-credit load has lower base tuition and fees than the 16-credit load, while the
+20-credit load is billed at the same 16-credit base as the four-course load.
+
+The official Finance & Accounting schedule for FY 2026-2027 publishes total
+undergraduate tuition and fees per student credit hour of **$191.10 for Florida
+residents** and **$926.74 for non-Florida residents**. Do not use the older rate table
+displayed on the Student Accounts page, which is labeled 2024-2025. The billing-band
+language on that page is not labeled with an academic year, so recheck it whenever the
+annual fee schedule changes.
+
+This explains base tuition and fee assessment, not a student's final statement.
+Course-specific material or laboratory fees, housing, meal plans, waivers, Florida
+Prepaid, financial aid, and other account activity can change the amount owed. The
+student's authenticated statement is private; Student Accounts must confirm an actual
+balance or an unusual load.
 
 ---
 
@@ -141,3 +173,5 @@ These are published consequences, not predictions. State them as what the source
 - [Graduate Catalog, Satisfactory Academic Progress Policy](https://catalog.ncf.edu/graduate/satisfactory-academic-progress-policy-financial-aid-purposes/)
 - [New College of Florida, Academic Calendars](https://www.ncf.edu/academics/academic-calendar/)
 - [Office of the Registrar](https://www.ncf.edu/departments/registrar/)
+- [Student Accounts & Cashier](https://www.ncf.edu/departments/student-accounts-cashier/)
+- [Tuition and Fee Schedule, FY 2026-2027](https://www.ncf.edu/wp-content/uploads/2026/07/FY27-Tuition-and-Fee.pdf)

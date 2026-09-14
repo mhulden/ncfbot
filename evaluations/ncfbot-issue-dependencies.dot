@@ -1,0 +1,190 @@
+digraph NCFBotIssueDependencies {
+  graph [
+    rankdir=LR,
+    compound=true,
+    newrank=true,
+    bgcolor="white",
+    fontname="Helvetica",
+    fontsize=18,
+    label="NCF Bot Round 1 Cleanup and Issue Dependency DAG",
+    labelloc=t,
+    pad=0.3,
+    nodesep=0.35,
+    ranksep=0.85,
+    splines=ortho
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    color="#334155",
+    fillcolor="white",
+    fontname="Helvetica",
+    fontsize=10,
+    margin="0.12,0.08"
+  ];
+
+  edge [
+    color="#64748b",
+    fontname="Helvetica",
+    fontsize=9,
+    arrowsize=0.7
+  ];
+
+  tracker [
+    shape=oval,
+    fillcolor="#e2e8f0",
+    label="Normalize tracker\nKeep #9, #12–15 closed\nClose #19 as duplicate of #16\nCorrect #11, #20, #24, #26"
+  ];
+  queue [shape=oval, fillcolor="#e2e8f0", label="Post 17-item work queue"];
+
+  subgraph cluster_agent1 {
+    label="Agent 1 — Global behavior";
+    color="#93c5fd";
+    style="rounded,filled";
+    fillcolor="#eff6ff";
+    a1_scope [fillcolor="#dbeafe", label="#10  NCF-only scope gate\nPreserve verified NCF referrals"];
+    a1_emergency [fillcolor="#dbeafe", label="#18 / HT-029\nEmergency action before retrieval"];
+  }
+
+  subgraph cluster_agent2 {
+    label="Agent 2 — Student guidance";
+    color="#86efac";
+    style="rounded,filled";
+    fillcolor="#f0fdf4";
+    a2_quote [fillcolor="#dcfce7", label="#24 / HT-027\nQuotation and source precision"];
+    a2_private [fillcolor="#dcfce7", label="#35 / HT-026\nConcise private-record answer"];
+    a2_history [fillcolor="#dcfce7", label="#26\nHistorical contract comparison route"];
+  }
+
+  subgraph cluster_agent3 {
+    label="Agent 3 — Faculty guidance";
+    color="#fdba74";
+    style="rounded,filled";
+    fillcolor="#fff7ed";
+    a3_alc [fillcolor="#ffedd5", label="#16 / HT-028\nRevise and merge PR #30\n48h/24h conflict + regressions"];
+    a3_systems [fillcolor="#ffedd5", label="#21 / HT-009\nEvidence gate for faculty systems"];
+  }
+
+  subgraph cluster_agent4 {
+    label="Agent 4 — Outside users";
+    color="#c4b5fd";
+    style="rounded,filled";
+    fillcolor="#f5f3ff";
+    a4_admissions [fillcolor="#ede9fe", label="#20 / HT-013\nExact no-score / Florida-AA pathway"];
+    a4_aid [fillcolor="#ede9fe", label="#22 / HT-030\nBound scholarship claims"];
+    a4_library [fillcolor="#ede9fe", label="#23 / HT-015\nCommunity-borrower wording"];
+  }
+
+  subgraph cluster_agent5 {
+    label="Agent 5 — Source tooling";
+    color="#fda4af";
+    style="rounded,filled";
+    fillcolor="#fff1f2";
+    a5_html [fillcolor="#ffe4e6", label="#11\nNested-boilerplate converter crash"];
+    a5_paths [fillcolor="#ffe4e6", label="#36\nPOSIX manifest paths on all OSes"];
+    a5_metadata [fillcolor="#ffe4e6", label="#37\nStructured constraint metadata prototype"];
+  }
+
+  subgraph cluster_agent6 {
+    label="Agent 6 — Course system";
+    color="#67e8f9";
+    style="rounded,filled";
+    fillcolor="#ecfeff";
+    a6_level [fillcolor="#cffafe", label="#25 / HT-022\nProgram-level-aware frequency workflow\nInvestigate Banner metadata first"];
+  }
+
+  subgraph cluster_agent7 {
+    label="Agent 7 — Integration and evaluation";
+    color="#facc15";
+    style="rounded,filled";
+    fillcolor="#fefce8";
+    a7_evidence [fillcolor="#fef9c3", label="#38\nReconcile Round 1 evidence\nHT-024, HT-026, HT-031–034"];
+    a7_record [fillcolor="#fef9c3", label="#39\nReproducible Round 2 run record"];
+    a7_pilot [fillcolor="#fef9c3", label="#40\nRequired-resource / conflict pilot\nHT-009 + HT-028"];
+  }
+
+  ambiguity [
+    shape=diamond,
+    fillcolor="#fef3c7",
+    label="Do HT-031–034 notes\nidentify actionable defects?"
+  ];
+  followups [
+    shape=box,
+    style="rounded,dashed,filled",
+    fillcolor="#fff7ed",
+    label="Create only evidence-backed\nfollow-up issues"
+  ];
+
+  integration [
+    shape=oval,
+    fillcolor="#e2e8f0",
+    label="Merge conflict-free PRs\nRun doctor, validators, evaluator, pytest"
+  ];
+  round2 [
+    shape=oval,
+    fillcolor="#dcfce7",
+    label="Focused Round 2 human reruns\nRecord model, tools, latency, answer, scores"
+  ];
+  closeout [
+    shape=doublecircle,
+    fillcolor="#bbf7d0",
+    label="Close only after\nmerge + behavioral pass"
+  ];
+
+  tracker -> queue;
+
+  queue -> a1_scope;
+  queue -> a1_emergency [label="link #14/#27/#29\nas related evidence"];
+  queue -> a2_quote [label="correct score to 9/10"];
+  queue -> a3_alc [label="fold #19 into #16"];
+  queue -> a3_systems;
+  queue -> a4_admissions [label="correct expected rule first"];
+  queue -> a4_aid;
+  queue -> a4_library;
+  queue -> a5_html [label="remove false HT-026 mapping"];
+  queue -> a5_paths;
+  queue -> a5_metadata;
+  queue -> a6_level;
+  queue -> a7_evidence;
+  queue -> a7_record;
+
+  a7_evidence -> a2_private [label="recover exact answer"];
+  a7_evidence -> a2_history [label="resolve mismatched row"];
+  a7_evidence -> ambiguity [label="recover notes + multiturn context"];
+  ambiguity -> integration [label="no distinct defect"];
+  ambiguity -> followups [label="yes"];
+  followups -> integration;
+
+  a5_metadata -> a7_pilot [label="metadata contract"];
+  a3_alc -> a7_pilot [label="HT-028 fixture"];
+  a3_systems -> a7_pilot [label="HT-009 fixture"];
+
+  a1_scope -> integration;
+  a1_emergency -> integration;
+  a2_quote -> integration;
+  a2_private -> integration;
+  a2_history -> integration;
+  a3_alc -> integration;
+  a3_systems -> integration;
+  a4_admissions -> integration;
+  a4_aid -> integration;
+  a4_library -> integration;
+  a5_html -> integration;
+  a5_paths -> integration;
+  a5_metadata -> integration;
+  a6_level -> integration;
+  a7_record -> integration;
+  a7_pilot -> integration;
+
+  integration -> round2;
+  round2 -> closeout;
+
+  legend [
+    shape=note,
+    fillcolor="#f8fafc",
+    fontsize=9,
+    label="Dependency rules\n→ solid: must finish first\nDashed box: conditional work\nAgent clusters: separate file ownership\nAll arrows flow left-to-right: graph is acyclic"
+  ];
+  legend -> tracker [style=invis];
+}
