@@ -8,6 +8,7 @@ import html
 import json
 import re
 import sys
+from urllib.parse import urlencode
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
@@ -78,6 +79,51 @@ def clean_detail(fragment: str, field: str) -> str | None:
     return text
 
 
+def parse_course_levels(fragment: str) -> tuple[list[dict[str, str]], str]:
+    """Read Banner's Levels block, never titles, divisions or restrictions."""
+    text = clean_detail(fragment, "catalog_details") or ""
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    if "Levels:" not in lines:
+        return [], "not_published"
+    start = lines.index("Levels:") + 1
+    try:
+        end = lines.index("Grading Modes:", start)
+    except ValueError:
+        return [], "unrecognized"
+    levels = []
+    for line in lines[start:end]:
+        match = re.fullmatch(r"(.+?)\s+([A-Za-z0-9]+)", line)
+        if not match or ":" in line:
+            return [], "unrecognized"
+        level = {"description": match[1], "code": match[2]}
+        if level not in levels:
+            levels.append(level)
+    return levels, "published" if levels else "not_published"
+
+
+def course_level_fields(details: dict[str, Any]) -> dict[str, Any]:
+    """Derive levels from new or legacy detail caches without refreshing listings."""
+    fragment = (details.get("_raw_fragments") or {}).get("catalog_details")
+    if fragment is None:
+        fragment = details.get("catalog_details")
+    if "catalog_details" in (details.get("failures") or {}):
+        levels, status = [], "failed"
+    elif fragment is None:
+        levels, status = [], "not_published"
+    else:
+        levels, status = parse_course_levels(fragment)
+    return {
+        "course_levels": levels,
+        "course_level_metadata": {
+            "status": status,
+            "source_url": DEFAULT_BASE_URL + "/searchResults/getSectionCatalogDetails?" + urlencode({
+                "term": details["term_code"], "courseReferenceNumber": details["crn"],
+            }),
+            "retrieved_at": details["retrieved_at"],
+        },
+    }
+
+
 def fetch_details(client: BannerSession, term: str, crn: str) -> dict[str, Any]:
     client.select_term(term)
     retrieved_at = utc_now()
@@ -99,7 +145,7 @@ def fetch_details(client: BannerSession, term: str, crn: str) -> dict[str, Any]:
             failures[field] = str(exc)
             normalized[field] = None
     status = "success" if not failures else "partial"
-    return {
+    result = {
         "schema_version": SCHEMA_VERSION,
         "tool_version": TOOL_VERSION,
         "term_code": term,
@@ -112,6 +158,8 @@ def fetch_details(client: BannerSession, term: str, crn: str) -> dict[str, Any]:
         "failures": failures,
         "_raw_fragments": raw_fragments,
     }
+    result.update(course_level_fields(result))
+    return result
 
 
 def cache_path(cache_dir: Path, term: str, crn: str) -> Path:
@@ -121,7 +169,7 @@ def cache_path(cache_dir: Path, term: str, crn: str) -> Path:
 
 
 def public_result(cached: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in cached.items() if key != "_raw_fragments"}
+    return {**{key: value for key, value in cached.items() if key != "_raw_fragments"}, **course_level_fields(cached)}
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -160,6 +208,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Details for term {args.term}, CRN {args.crn} ({visible['detail_status']})")
         for field in DETAIL_ENDPOINTS:
             print(f"{field.replace('_', ' ').title()}: {visible.get(field) or 'Not published'}")
+        print(f"Course levels: {visible['course_levels']} ({visible['course_level_metadata']['status']})")
     return 0 if result.get("detail_status") == "success" else 2
 
 

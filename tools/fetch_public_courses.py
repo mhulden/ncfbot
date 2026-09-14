@@ -177,6 +177,8 @@ def normalize_section(raw: Any, term_code: str, term_label: str, retrieved_at: s
         "meeting_summary": summarize_meetings(meeting_rows),
         "credits_or_units": credits(raw),
         "attributes": attributes,
+        "course_levels": [],
+        "course_level_metadata": {"status": "not_requested", "source_url": None, "retrieved_at": None},
         "description": None,
         "prerequisites": None,
         "corequisites": None,
@@ -414,7 +416,7 @@ def collect_one(args: argparse.Namespace) -> int:
     rows, metadata = fetch_term(BannerSession(args.base_url, args.timeout), args.term, matches[0]["description"], page_size=args.page_size, delay=args.delay)
     detail_failures: list[dict[str, str]] = []
     if args.enrich_details:
-        from fetch_course_details import cache_path, fetch_details
+        from fetch_course_details import cache_path, course_level_fields, fetch_details
 
         for index, row in enumerate(rows, 1):
             location = cache_path(args.detail_cache_dir, args.term, row["crn"])
@@ -426,6 +428,7 @@ def collect_one(args: argparse.Namespace) -> int:
                     atomic_write_json(location, details)
                 if details.get("term_code") != args.term or details.get("crn") != row["crn"]:
                     raise ValueError("detail cache identity mismatch")
+                row.update(course_level_fields(details))
                 for field in (
                     "description",
                     "prerequisites",
@@ -441,6 +444,8 @@ def collect_one(args: argparse.Namespace) -> int:
                 row["detail_status"] = details.get("detail_status", "partial")
             except (BannerError, OSError, ValueError, json.JSONDecodeError) as exc:
                 row["detail_status"] = "failed"
+                row["course_levels"] = []
+                row["course_level_metadata"] = {"status": "failed", "source_url": None, "retrieved_at": None}
                 detail_failures.append({"term_code": args.term, "crn": row["crn"], "error": str(exc)})
             if args.detail_delay and index < len(rows):
                 time.sleep(args.detail_delay)
