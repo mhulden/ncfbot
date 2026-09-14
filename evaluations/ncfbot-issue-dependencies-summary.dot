@@ -31,17 +31,17 @@ digraph NCFBotIssueDependenciesSummary {
 
   independent [
     fillcolor="#dbeafe",
-    label="Independent issue work can start in parallel\n\nA1: #10 scope; #18 emergency\nA2: #24 quotation precision\nA3: #16 ALC conflict; #21 faculty systems\nA4: #20 admissions; #22 scholarships; #23 library\nA5: #11 HTML converter; POSIX manifest paths\nA6: #25 program-level course frequency"
+    label="Independent issue work can start in parallel\n\nA1: #10 scope; #18 emergency\nA2: #24 quotation precision\nA3: #16 ALC conflict; #21 faculty systems\nA4: #20 admissions; #22 scholarships; #23 library\nA5: #11 HTML converter; #36 POSIX manifest paths\nA6: #25 program-level course frequency"
   ];
 
   evidence [
     fillcolor="#fef9c3",
-    label="A7: Reconcile Round 1 evidence\nRecover HT-024, HT-026, HT-031–034\nCorrect scores and test-to-issue links"
+    label="A7: #38 reconcile Round 1 evidence\nRecover HT-024, HT-026, HT-031–034\nCorrect scores and test-to-issue links"
   ];
 
   private_answer [
     fillcolor="#dcfce7",
-    label="A2: HT-026 private-record fix\nRequires matching transcript"
+    label="A2: #35 / HT-026 private-record fix\nRequires matching transcript"
   ];
   history_route [
     fillcolor="#dcfce7",
@@ -60,7 +60,7 @@ digraph NCFBotIssueDependenciesSummary {
 
   metadata [
     fillcolor="#ffe4e6",
-    label="A5: Structured metadata prototype\nRequired-resource + known-conflict fields"
+    label="A5: #37 structured metadata prototype\nRequired-resource + known-conflict fields"
   ];
   faculty_targets [
     fillcolor="#ffedd5",
@@ -68,12 +68,12 @@ digraph NCFBotIssueDependenciesSummary {
   ];
   enforcement [
     fillcolor="#fef9c3",
-    label="A7: Enforcement pilot\nConsume metadata using HT-009 + HT-028\nInclude missing-resource control"
+    label="A7: #40 enforcement pilot\nConsume metadata using HT-009 + HT-028\nInclude missing-resource control"
   ];
 
   run_record [
     fillcolor="#fef9c3",
-    label="A7: Round 2 run-record format\nRevision, model, resources, tools, latency,\nfull answer, scores, issue and PR"
+    label="A7: #39 Round 2 run-record format\nRevision, model, resources, tools, latency,\nfull answer, scores, issue and PR"
   ];
 
   integrate [

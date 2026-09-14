@@ -53,7 +53,7 @@ digraph NCFBotIssueDependencies {
     style="rounded,filled";
     fillcolor="#f0fdf4";
     a2_quote [fillcolor="#dcfce7", label="#24 / HT-027\nQuotation and source precision"];
-    a2_private [fillcolor="#dcfce7", label="NEW / HT-026\nConcise private-record answer"];
+    a2_private [fillcolor="#dcfce7", label="#35 / HT-026\nConcise private-record answer"];
     a2_history [fillcolor="#dcfce7", label="#26\nHistorical contract comparison route"];
   }
 
@@ -82,8 +82,8 @@ digraph NCFBotIssueDependencies {
     style="rounded,filled";
     fillcolor="#fff1f2";
     a5_html [fillcolor="#ffe4e6", label="#11\nNested-boilerplate converter crash"];
-    a5_paths [fillcolor="#ffe4e6", label="NEW\nPOSIX manifest paths on all OSes"];
-    a5_metadata [fillcolor="#ffe4e6", label="NEW\nStructured constraint metadata prototype"];
+    a5_paths [fillcolor="#ffe4e6", label="#36\nPOSIX manifest paths on all OSes"];
+    a5_metadata [fillcolor="#ffe4e6", label="#37\nStructured constraint metadata prototype"];
   }
 
   subgraph cluster_agent6 {
@@ -99,9 +99,9 @@ digraph NCFBotIssueDependencies {
     color="#facc15";
     style="rounded,filled";
     fillcolor="#fefce8";
-    a7_evidence [fillcolor="#fef9c3", label="NEW\nReconcile Round 1 evidence\nHT-024, HT-026, HT-031–034"];
-    a7_record [fillcolor="#fef9c3", label="NEW\nReproducible Round 2 run record"];
-    a7_pilot [fillcolor="#fef9c3", label="NEW\nRequired-resource / conflict pilot\nHT-009 + HT-028"];
+    a7_evidence [fillcolor="#fef9c3", label="#38\nReconcile Round 1 evidence\nHT-024, HT-026, HT-031–034"];
+    a7_record [fillcolor="#fef9c3", label="#39\nReproducible Round 2 run record"];
+    a7_pilot [fillcolor="#fef9c3", label="#40\nRequired-resource / conflict pilot\nHT-009 + HT-028"];
   }
 
   ambiguity [

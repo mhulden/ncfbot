@@ -194,7 +194,7 @@
 <g id="node14" class="node">
 <title>a5_paths</title>
 <path fill="#ffe4e6" stroke="#334155" d="M1354.46,-201C1354.46,-201 1196.46,-201 1196.46,-201 1190.46,-201 1184.46,-195 1184.46,-189 1184.46,-189 1184.46,-177 1184.46,-177 1184.46,-171 1190.46,-165 1196.46,-165 1196.46,-165 1354.46,-165 1354.46,-165 1360.46,-165 1366.46,-171 1366.46,-177 1366.46,-177 1366.46,-189 1366.46,-189 1366.46,-195 1360.46,-201 1354.46,-201"/>
-<text text-anchor="middle" x="1275.46" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">NEW</text>
+<text text-anchor="middle" x="1275.46" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">#36</text>
 <text text-anchor="middle" x="1275.46" y="-175" font-family="Helvetica,sans-Serif" font-size="10.00">POSIX manifest paths on all OSes</text>
 </g>
 <!-- queue&#45;&gt;a5_paths -->
@@ -207,7 +207,7 @@
 <g id="node15" class="node">
 <title>a5_metadata</title>
 <path fill="#ffe4e6" stroke="#334155" d="M1649.96,-201C1649.96,-201 1452.96,-201 1452.96,-201 1446.96,-201 1440.96,-195 1440.96,-189 1440.96,-189 1440.96,-177 1440.96,-177 1440.96,-171 1446.96,-165 1452.96,-165 1452.96,-165 1649.96,-165 1649.96,-165 1655.96,-165 1661.96,-171 1661.96,-177 1661.96,-177 1661.96,-189 1661.96,-189 1661.96,-195 1655.96,-201 1649.96,-201"/>
-<text text-anchor="middle" x="1551.46" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">NEW</text>
+<text text-anchor="middle" x="1551.46" y="-186" font-family="Helvetica,sans-Serif" font-size="10.00">#37</text>
 <text text-anchor="middle" x="1551.46" y="-175" font-family="Helvetica,sans-Serif" font-size="10.00">Structured constraint metadata prototype</text>
 </g>
 <!-- queue&#45;&gt;a5_metadata -->
@@ -234,7 +234,7 @@
 <g id="node17" class="node">
 <title>a7_evidence</title>
 <path fill="#fef9c3" stroke="#334155" d="M1101.96,-861.5C1101.96,-861.5 968.96,-861.5 968.96,-861.5 962.96,-861.5 956.96,-855.5 956.96,-849.5 956.96,-849.5 956.96,-828.5 956.96,-828.5 956.96,-822.5 962.96,-816.5 968.96,-816.5 968.96,-816.5 1101.96,-816.5 1101.96,-816.5 1107.96,-816.5 1113.96,-822.5 1113.96,-828.5 1113.96,-828.5 1113.96,-849.5 1113.96,-849.5 1113.96,-855.5 1107.96,-861.5 1101.96,-861.5"/>
-<text text-anchor="middle" x="1035.46" y="-847.5" font-family="Helvetica,sans-Serif" font-size="10.00">NEW</text>
+<text text-anchor="middle" x="1035.46" y="-847.5" font-family="Helvetica,sans-Serif" font-size="10.00">#38</text>
 <text text-anchor="middle" x="1035.46" y="-836.5" font-family="Helvetica,sans-Serif" font-size="10.00">Reconcile Round 1 evidence</text>
 <text text-anchor="middle" x="1035.46" y="-825.5" font-family="Helvetica,sans-Serif" font-size="10.00">HT&#45;024, HT&#45;026, HT&#45;031–034</text>
 </g>
@@ -248,7 +248,7 @@
 <g id="node18" class="node">
 <title>a7_record</title>
 <path fill="#fef9c3" stroke="#334155" d="M1112.46,-791C1112.46,-791 958.46,-791 958.46,-791 952.46,-791 946.46,-785 946.46,-779 946.46,-779 946.46,-767 946.46,-767 946.46,-761 952.46,-755 958.46,-755 958.46,-755 1112.46,-755 1112.46,-755 1118.46,-755 1124.46,-761 1124.46,-767 1124.46,-767 1124.46,-779 1124.46,-779 1124.46,-785 1118.46,-791 1112.46,-791"/>
-<text text-anchor="middle" x="1035.46" y="-776" font-family="Helvetica,sans-Serif" font-size="10.00">NEW</text>
+<text text-anchor="middle" x="1035.46" y="-776" font-family="Helvetica,sans-Serif" font-size="10.00">#39</text>
 <text text-anchor="middle" x="1035.46" y="-765" font-family="Helvetica,sans-Serif" font-size="10.00">Reproducible Round 2 run record</text>
 </g>
 <!-- queue&#45;&gt;a7_record -->
@@ -286,7 +286,7 @@
 <g id="node6" class="node">
 <title>a2_private</title>
 <path fill="#dcfce7" stroke="#334155" d="M1905.96,-950C1905.96,-950 1762.96,-950 1762.96,-950 1756.96,-950 1750.96,-944 1750.96,-938 1750.96,-938 1750.96,-926 1750.96,-926 1750.96,-920 1756.96,-914 1762.96,-914 1762.96,-914 1905.96,-914 1905.96,-914 1911.96,-914 1917.96,-920 1917.96,-926 1917.96,-926 1917.96,-938 1917.96,-938 1917.96,-944 1911.96,-950 1905.96,-950"/>
-<text text-anchor="middle" x="1834.46" y="-935" font-family="Helvetica,sans-Serif" font-size="10.00">NEW / HT&#45;026</text>
+<text text-anchor="middle" x="1834.46" y="-935" font-family="Helvetica,sans-Serif" font-size="10.00">#35 / HT&#45;026</text>
 <text text-anchor="middle" x="1834.46" y="-924" font-family="Helvetica,sans-Serif" font-size="10.00">Concise private&#45;record answer</text>
 </g>
 <!-- a2_private&#45;&gt;integration -->
@@ -312,7 +312,7 @@
 <g id="node19" class="node">
 <title>a7_pilot</title>
 <path fill="#fef9c3" stroke="#334155" d="M2137.96,-800.5C2137.96,-800.5 1984.96,-800.5 1984.96,-800.5 1978.96,-800.5 1972.96,-794.5 1972.96,-788.5 1972.96,-788.5 1972.96,-767.5 1972.96,-767.5 1972.96,-761.5 1978.96,-755.5 1984.96,-755.5 1984.96,-755.5 2137.96,-755.5 2137.96,-755.5 2143.96,-755.5 2149.96,-761.5 2149.96,-767.5 2149.96,-767.5 2149.96,-788.5 2149.96,-788.5 2149.96,-794.5 2143.96,-800.5 2137.96,-800.5"/>
-<text text-anchor="middle" x="2061.46" y="-786.5" font-family="Helvetica,sans-Serif" font-size="10.00">NEW</text>
+<text text-anchor="middle" x="2061.46" y="-786.5" font-family="Helvetica,sans-Serif" font-size="10.00">#40</text>
 <text text-anchor="middle" x="2061.46" y="-775.5" font-family="Helvetica,sans-Serif" font-size="10.00">Required&#45;resource / conflict pilot</text>
 <text text-anchor="middle" x="2061.46" y="-764.5" font-family="Helvetica,sans-Serif" font-size="10.00">HT&#45;009 + HT&#45;028</text>
 </g>
