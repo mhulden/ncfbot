@@ -22,7 +22,7 @@ For implementation work, follow [CONTRIBUTING.md](CONTRIBUTING.md) and the owner
 
 ### Emergency gate — before routing or tools
 
-Before reading a role skill, loading a resource, asking a clarifying question, or calling any tool, check whether the latest user message may describe imminent danger. If it does:
+Before reading a role skill, loading a resource, asking a clarifying question, or calling any tool, check whether the latest user message or relevant conversation context indicates imminent danger. If it does:
 
 1. Make the first substantive sentence an immediate action: contact local emergency services or seek urgent in-person help now. Do not begin with a preamble such as “Let me check,” a role question, a citation, or an offer to research.
 2. Give the general safety direction immediately, without waiting to verify a campus-specific contact. Keep it concise and do not substitute a routine office or future appointment for urgent help.
