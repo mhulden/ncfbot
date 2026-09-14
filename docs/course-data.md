@@ -90,7 +90,42 @@ python tools/fetch_course_details.py --term TERM --crn CRN --format json
 python tools/poll_live_sections.py --term TERM --crn CRN
 ```
 
-`query_courses.py` filters by term, subject, course, section, CRN, instructor, keyword, and attribute. Formats are `scan`, `table`, `history`, `full`, `json`, and `jsonl`. Human formats state match count, coverage, timestamp, and known incompleteness. `--input` makes the same tool work with a current snapshot or historical archive.
+`query_courses.py` filters by term, subject, course, section, CRN, instructor, keyword, attribute, and published course level. Formats are `scan`, `table`, `history`, `full`, `json`, and `jsonl`. Human formats state match count, coverage, timestamp, and known incompleteness. `--input` makes the same tool work with a current snapshot or historical archive.
+
+## Program-level-aware frequency workflow (HT-022)
+
+Investigated September 14, 2026; this check does not refresh the August 31 archive or its enrollment observations. The [evidence record](../resources/courses/program-level-evidence.json) preserves original URLs, exact section identities, response hashes and limits. The public listing JSON did not expose a level field. The separate `getSectionCatalogDetails` response does publish a **Levels** block with description/code pairs. The parser reads that block only, bounded by `Grading Modes`; an unrecognized layout stays unknown.
+
+The live comparison found `Undergraduate UG` for CAI 3105 / term 202608 / CRN 88748, `Undergraduate UG` for IDC 4210 / term 202602 / CRN 26700, and `Graduate GR` for IDC 5210 / term 202602 / CRN 26442. The two IDC sections have the same title and graduate-division label but different course levels. Titles, numbers, division names, attributes and grading modes must not substitute for the explicit Levels field. Course level alone does not establish applicability to a particular degree program.
+
+Reproduction against the committed archive:
+
+```sh
+python tools/query_courses.py --input resources/courses/historical-sections.jsonl --keyword 'Machine Learning' --format scan
+python tools/query_courses.py --input resources/courses/historical-sections.jsonl --keyword 'Machine Learning' --format history
+```
+
+At the investigation baseline this scan found 21 sections across 12 exact codes. Previously the history command returned those groups without requesting program context. It now exits 2 with `query_status: clarification_required`, no history groups, and a question asking for program level or an exact subject/course code. A scan is candidate discovery, not a frequency answer. The Round 1 record contains an unrelated transfer-credit answer; this reproduction establishes the tool ambiguity independently rather than reconstructing an unavailable original conversation.
+
+1. Ask which program level or exact course code the requester means before stating frequency. Use the scan to shortlist exact term/CRN identities.
+2. Fetch details only for those sections. Their published levels may differ across terms; never propagate a current level backwards through the archive.
+3. Query with an exact published level code or description (`--level UG`, `--level undergraduate`, `--level GR`, or `--level graduate`). Matching is exact and case-insensitive: `graduate` never matches `undergraduate`.
+4. If level metadata is absent, malformed or failed, obtain an exact subject/course code. Report its history as observations with **unknown level**, not evidence for a particular program. A bare number without a subject is insufficient. Mixed known/unknown levels for one code require explicit level selection and resolution of the missing evidence.
+5. Keep distinct course codes and level sets separate. Observed term/section counts do not promise future offerings or establish equivalency.
+
+For example, fetch two shortlisted historical sections using fresh public access, then reuse their exact-identity caches offline:
+
+```sh
+python tools/fetch_course_details.py --term 202602 --crn 26700 --refresh
+python tools/fetch_course_details.py --term 202602 --crn 26442 --refresh
+python tools/query_courses.py --input resources/courses/historical-sections.jsonl --term 202602 --keyword 'Applied Machine Learning' --details-dir resources/courses/.cache/details --level Graduate --format history
+```
+
+`--details-dir` overlays only level fields from matching `<term>/<crn>.json` caches. It does not make network requests, rewrite the archive or change listing/enrollment timestamps. A mismatched cache identity is an error. Legacy detail caches can be parsed from their catalog fragment; use `--refresh` if another source check is needed. `--enrich-details` also persists level fields in newly generated current snapshots using the existing atomic writer.
+
+The optional schema additions are `course_levels` (an array of published `{code, description}` objects) and `course_level_metadata` (`status`, exact `source_url`, `retrieved_at`). Status is `not_requested`, `published`, `not_published`, `unrecognized`, or `failed`. New listing rows begin unknown with `not_requested`; legacy rows missing both fields remain valid and unknown. A later level observation has its own timestamp. No bulk historical rewrite is required.
+
+With a level filter, unknown candidate rows are excluded and counted in `metadata.level_query.unknown_level_count`; exit 2 and `incomplete_level_evidence` prevent that exclusion from masquerading as a complete frequency result or proof of absence. JSON/history embed the query context, human formats print warnings, and JSONL writes warnings to stderr while preserving section-only stdout. Exit 1 is an input/retrieval error; exit 0 means the query completed, not that historical data predicts the future. History retains archive metadata and distinguishes known level sets from unknown ones without collapsing section identities.
 
 ## Completeness, freshness, and common mistakes
 
@@ -102,7 +137,7 @@ An archive is complete only when every discovered term reports success and its u
 
 Historical enrollment is an observation at `retrieved_at`, never current availability. A failed live poll returns `current: false`, no section values, and a nonzero exit. It does not fall back to cached numbers.
 
-Course history groups only exact subject/course-number pairs. A changed code does not prove a different course, and a matching title does not prove official equivalency or nonequivalency. Automated renumbering/equivalency inference is a stretch goal and is deliberately absent from Version 1.
+Newly built course history groups exact subject/course-number pairs and published level sets, keeping unknown levels separate. The existing pre-level history artifact remains an observation of the old archive; use the query workflow above for level-aware work. A changed code does not prove a different course, and a matching title does not prove official equivalency or nonequivalency. Automated renumbering/equivalency inference is a stretch goal and is deliberately absent from Version 1.
 
 ## Verification
 

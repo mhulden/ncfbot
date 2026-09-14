@@ -21,8 +21,16 @@ def unique(values: list[Any]) -> list[Any]:
     return result
 
 
+def published_levels(row: dict[str, Any]) -> list[dict[str, str]]:
+    """An absent level, failed detail fetch, or unproven value stays unknown."""
+    evidence = row.get("course_level_metadata") or {}
+    if evidence.get("status") != "published" or not evidence.get("source_url") or not evidence.get("retrieved_at"):
+        return []
+    return row.get("course_levels") or []
+
+
 def build_history(rows: list[dict[str, Any]], source: str) -> dict[str, Any]:
-    grouped: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    grouped: dict[tuple, list[dict[str, Any]]] = {}
     for index, row in enumerate(rows, 1):
         if not isinstance(row, dict):
             raise ValueError(f"record {index} must be an object")
@@ -32,21 +40,24 @@ def build_history(rows: list[dict[str, Any]], source: str) -> dict[str, Any]:
         crn = str(row.get("crn") or "").strip()
         if not all((subject, number, term, crn)):
             raise ValueError(f"record {index} is missing subject/course_number/term_code/crn")
-        grouped.setdefault((subject, number), []).append(row)
+        levels = tuple(sorted((level["code"], level["description"]) for level in published_levels(row)))
+        grouped.setdefault((subject, number, levels), []).append(row)
     courses: list[dict[str, Any]] = []
-    for (subject, number), sections in sorted(grouped.items()):
+    for (subject, number, levels), sections in sorted(grouped.items()):
         sections.sort(key=lambda row: (row["term_code"], row["crn"]))
         courses.append(
             {
                 "subject": subject,
                 "course_number": number,
+                "course_levels": [{"code": code, "description": description} for code, description in levels],
+                "course_level_status": "published" if levels else "unknown",
                 "course_display": next((row.get("course_display") for row in sections if row.get("course_display")), f"{subject} {number}"),
                 "titles": unique([row.get("title") for row in sections if row.get("title")]),
                 "terms": unique([{"term_code": row["term_code"], "term_label": row.get("term_label")} for row in sections]),
                 "instructors": sorted(set(name for row in sections for name in row.get("instructors", []) if name)),
                 "attributes": sorted(set(value for row in sections for value in row.get("attributes", []) if value)),
                 "section_count": len(sections),
-                "section_identities": [{"term_code": row["term_code"], "crn": row["crn"], "section": row.get("section")} for row in sections],
+                "section_identities": [{"term_code": row["term_code"], "crn": row["crn"], "section": row.get("section"), "course_level_metadata": row.get("course_level_metadata")} for row in sections],
             }
         )
     term_codes = sorted({str(row["term_code"]) for row in rows})
@@ -55,7 +66,8 @@ def build_history(rows: list[dict[str, Any]], source: str) -> dict[str, Any]:
         "tool_version": TOOL_VERSION,
         "generated_at": utc_now(),
         "source": source,
-        "grouping_rule": "exact normalized subject plus exact published course_number; similarity is not equivalency",
+        "grouping_rule": "exact normalized subject plus exact published course_number and published level set; unknown levels stay separate; similarity is not equivalency",
+        "limitations": "Observed sections only, not a future offering schedule or proof of program applicability/equivalency.",
         "course_count": len(courses),
         "section_count": len(rows),
         "coverage": {
