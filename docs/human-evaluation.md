@@ -37,10 +37,13 @@ Add a nearby passing control for each failure class. Keep the prompt, product, m
 Start both timers when the test prompt is submitted. Stop `time_to_first_actionable_seconds` at the first user-visible instruction that a person can act on. A preamble such as “Let me check” is not actionable. Stop `time_to_final_answer_seconds` when the complete final answer is visible.
 
 Record ordered tool and output events. For emergency tests, the immediate general safety direction must precede retrieval or clarification. Campus-specific contacts may follow only after verification.
+Only an actionable `user-visible-output` event can stop the first-action timer. Marking a retrieval or tool call actionable does not count. No event may occur after `time_to_final_answer_seconds`.
 
 ## Scoring and disposition
 
 Each score is an integer from 0 through 2. `total_0_10` must equal the five component scores. Leave all six score cells blank until review; do not convert missing scores to zero.
+
+A `passed` or `failed` disposition requires both timing measurements, all six scores, a completion timestamp, and the complete final answer. Use `needs-review` while any of those fields is missing.
 
 Use only the controlled values in the schema for critical status, priority, classification, source verification, and disposition. A critical failure is not erased by a high numerical total. Link the issue and PR when they exist.
 

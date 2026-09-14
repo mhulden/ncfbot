@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import csv
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from .schema_validation import load_validator, schema_errors
 from .sources import repository_root
@@ -103,8 +105,14 @@ def csv_row_to_record(row: dict[str, str], label: str = "row") -> tuple[dict[str
 
     errors: list[str] = []
     record: dict[str, Any] = {}
+    extra_cells = row.get(None)
+    if extra_cells:
+        errors.append(f"{label}: extra CSV cell(s): {extra_cells!r}")
     for field in CSV_FIELDS:
-        value = row.get(field, "")
+        value = row.get(field)
+        if value is None:
+            errors.append(f"{label}: missing CSV cell for {field}")
+            value = ""
         if field in JSON_COLUMNS:
             record[JSON_COLUMNS[field]] = _parse_json_cell(value, f"{label}.{field}", errors)
         elif field in INTEGER_COLUMNS:
@@ -117,10 +125,34 @@ def csv_row_to_record(row: dict[str, str], label: str = "row") -> tuple[dict[str
             record[field] = value.strip()
 
     record["scores"] = {
-        target: _parse_number(row.get(source, ""), f"{label}.{source}", int, errors)
+        target: _parse_number(row.get(source) or "", f"{label}.{source}", int, errors)
         for source, target in INTEGER_COLUMNS.items()
     }
     return record, errors
+
+
+def _validate_uri(value: Any, label: str, errors: list[str]) -> None:
+    if value is None:
+        return
+    if not isinstance(value, str):
+        return
+    parsed = urlsplit(value)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc or parsed.username or parsed.password:
+        errors.append(f"{label}: expected an absolute HTTP(S) URL")
+
+
+def _parse_aware_datetime(value: Any, label: str, errors: list[str]) -> datetime | None:
+    if value is None or not isinstance(value, str):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        errors.append(f"{label}: expected an ISO 8601 date-time")
+        return None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        errors.append(f"{label}: date-time must include a UTC offset")
+        return None
+    return parsed
 
 
 def validate_human_run(record: Any, root: str | Path | None = None, label: str = "record") -> list[str]:
@@ -133,6 +165,13 @@ def validate_human_run(record: Any, root: str | Path | None = None, label: str =
     errors.extend(schema_errors(validator, record, label))
     if not isinstance(record, dict):
         return errors
+
+    _validate_uri(record.get("linked_issue"), f"{label}.linked_issue", errors)
+    _validate_uri(record.get("linked_pr"), f"{label}.linked_pr", errors)
+    started = _parse_aware_datetime(record.get("started_at"), f"{label}.started_at", errors)
+    completed = _parse_aware_datetime(record.get("completed_at"), f"{label}.completed_at", errors)
+    if started is not None and completed is not None and completed < started:
+        errors.append(f"{label}: completed_at cannot precede started_at")
 
     scores = record.get("scores")
     if isinstance(scores, dict):
@@ -174,18 +213,35 @@ def validate_human_run(record: Any, root: str | Path | None = None, label: str =
             event.get("elapsed_seconds")
             for event in events
             if isinstance(event, dict) and event.get("actionable") is True
+            and event.get("event_type") == "user-visible-output"
             and isinstance(event.get("elapsed_seconds"), (int, float))
         ]
         if not actionable:
             errors.append(f"{label}: first actionable time requires an actionable event")
         elif min(actionable) != first:
             errors.append(f"{label}: first actionable time does not match the earliest actionable event")
+    if isinstance(final, (int, float)) and isinstance(events, list):
+        after_final = [
+            event.get("sequence")
+            for event in events
+            if isinstance(event, dict) and isinstance(event.get("elapsed_seconds"), (int, float))
+            and event["elapsed_seconds"] > final
+        ]
+        if after_final:
+            errors.append(f"{label}: tool event(s) occur after the final answer: {after_final}")
 
     if record.get("disposition") in {"passed", "failed"}:
         if not record.get("completed_at"):
             errors.append(f"{label}: completed disposition requires completed_at")
         if not record.get("final_answer"):
             errors.append(f"{label}: completed disposition requires the full final answer")
+        if not isinstance(first, (int, float)) or not isinstance(final, (int, float)):
+            errors.append(f"{label}: completed disposition requires both timing measurements")
+        if not isinstance(scores, dict) or not all(
+            isinstance(scores.get(field), int)
+            for field in ("accuracy", "grounding", "applicability", "usefulness", "judgment", "total")
+        ):
+            errors.append(f"{label}: completed disposition requires all six scores")
     return errors
 
 

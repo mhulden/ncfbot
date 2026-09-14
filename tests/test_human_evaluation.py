@@ -110,3 +110,65 @@ def test_cli_validates_example_and_exports_jsonl(tmp_path, capsys):
     assert status == 0
     assert exported.is_file()
     assert "Validation: PASS" in capsys.readouterr().out
+
+
+def test_actionable_retrieval_does_not_count_as_visible_guidance():
+    record = _example_record()
+    record["tool_events"][0]["event_type"] = "retrieval"
+
+    errors = validate_human_run(record, ROOT)
+
+    assert any("first actionable time does not match" in error for error in errors)
+
+
+def test_completed_run_requires_timings_and_scores():
+    record = _example_record()
+    record["time_to_first_actionable_seconds"] = None
+    record["time_to_final_answer_seconds"] = None
+    record["scores"] = {field: None for field in record["scores"]}
+
+    errors = validate_human_run(record, ROOT)
+
+    assert any("requires both timing measurements" in error for error in errors)
+    assert any("requires all six scores" in error for error in errors)
+
+
+def test_invalid_urls_and_timestamps_are_rejected_without_optional_format_packages():
+    record = _example_record()
+    record["linked_issue"] = "not a URL"
+    record["linked_pr"] = "relative/path"
+    record["started_at"] = "September 14"
+    record["completed_at"] = "2026-09-14T16:00:02"
+
+    errors = validate_human_run(record, ROOT)
+
+    assert sum("absolute HTTP(S) URL" in error for error in errors) == 2
+    assert any("expected an ISO 8601 date-time" in error for error in errors)
+    assert any("date-time must include a UTC offset" in error for error in errors)
+
+
+def test_short_and_extra_csv_rows_return_errors_instead_of_crashing(tmp_path):
+    short = tmp_path / "short.csv"
+    with short.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(CSV_FIELDS)
+        writer.writerow(["short-run"])
+    _, short_errors = read_human_runs(short, ROOT)
+    assert any("missing CSV cell" in error for error in short_errors)
+
+    extra = tmp_path / "extra.csv"
+    with extra.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(CSV_FIELDS)
+        writer.writerow(list(_csv_row(_example_record()).values()) + ["unexpected"])
+    _, extra_errors = read_human_runs(extra, ROOT)
+    assert any("extra CSV cell" in error for error in extra_errors)
+
+
+def test_event_after_final_answer_is_rejected():
+    record = _example_record()
+    record["tool_events"][1]["elapsed_seconds"] = 99.0
+
+    errors = validate_human_run(record, ROOT)
+
+    assert any("occur after the final answer" in error for error in errors)
