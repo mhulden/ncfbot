@@ -1,6 +1,6 @@
 # Admissions
 
-Verified through: 2026-08-31
+Verified through: 2026-09-14
 
 ## Scope
 
@@ -28,15 +28,59 @@ The currently published Fall first-year cycle says applications opened **August 
 
 ### First-year application materials
 
-The public first-year page currently asks applicants to choose the **Common Application or New College Application** and lists:
+For an **ordinary first-year applicant**, the current first-year page lists the
+Common Application or New College Application, a personal statement or essay,
+**ACT, CLT, or SAT scores** (self-reported or official), a transcript or STAR,
+and optional letters of recommendation. Do not describe New College as
+universally test-optional.
 
-- no application fee;
-- a personal statement or essay;
-- ACT, CLT, or SAT scores, self-reported or official;
-- a transcript or STAR (Student Self-reported Transcripts & Academic Record);
-- letters of recommendation as **optional**.
+### Simultaneous Florida public A.A. + high-school diploma pathway
 
-The page also describes a special testing option for students completing a Florida public A.A. at the same time as the high-school diploma. Do not generalize that exception to other applicants.
+For the current first-year page serving the **Fall 2027** cycle, New College
+publishes a special testing pathway for a student who is completing a
+**Florida public Associate in Arts (A.A.) degree and high-school diploma at the
+same time**. This is not a general no-score policy.
+
+The first-year page currently states:
+
+- **Application stage, with scores:** the student may submit ACT, CLT, or SAT
+  scores and be considered for freshman admission and, if otherwise eligible,
+  freshman scholarship funding.
+- **Application stage, without scores:** the student may apply without exam
+  scores under this specific pathway. The page says Admissions can waive the
+  admissions score requirement and asks the student to submit an **official
+  college transcript** for review.
+- **Enrollment conditions for the no-score route:** if admitted, the student
+  must complete both the **high-school diploma** and the **Florida public
+  A.A.** as conditions of enrollment.
+- If the student does not complete the A.A., the page says to notify the Office
+  of Admissions by the final posted enrollment deadline.
+- The page states that **completion of the A.A. or submission of official ACT,
+  CLT, or SAT scores is required for enrollment**.
+
+Do not apply this exception to an ordinary first-year applicant, to a
+non-Florida associate degree, to a different associate credential, or to a
+student whose timing/pathway differs without checking the applicable official
+guidance.
+
+### Current official-source conflict for the Florida public A.A. pathway
+
+A separate current NCF page, **Applying with a Florida Public AA**, gives
+different instructions for a student earning the A.A. at the same time as high
+school graduation with no post-high-school college credits. It says that the
+student may choose first-year or transfer admission, but says:
+
+- the **first-year** route requires self-reported or official SAT/ACT scores
+  and high-school transcripts; and
+- the **transfer** route makes SAT/ACT scores optional by request to waive and
+  requires official college and high-school transcripts.
+
+That conflicts with the current first-year page's statement that the
+simultaneous Florida-public-A.A. student may use a no-score **first-year**
+application route. Do not silently choose one page, manufacture a combined
+rule, or call NCF universally test-optional. State the conflict and direct a
+student whose application route depends on it to **New College Admissions** for
+confirmation of the rule that applies to the current cycle.
 
 ### Spring 2027 first-year entry
 
@@ -120,6 +164,7 @@ The public Admitted Students page routes students to post-admission steps such a
 ## Sources
 
 - [First-Year Students](https://www.ncf.edu/admissions/first-year-students/)
+- [Applying with a Florida Public AA](https://www.ncf.edu/admissions/applying-with-a-florida-public-aa/)
 - [Transfer Students](https://www.ncf.edu/admissions/transfer-students/)
 - [International Students](https://www.ncf.edu/admissions/international-students/)
 - [Graduate Admissions](https://www.ncf.edu/admissions/graduate/)
