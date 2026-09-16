@@ -18,12 +18,24 @@
       "canonical_url": "https://www.ncf.edu/admissions/first-year-students/",
       "publisher": "New College of Florida Admissions",
       "authority_type": "office",
-      "retrieved_at": "2026-08-31T17:45:23Z",
+      "retrieved_at": "2026-09-14T17:35:04Z",
       "last_modified": null,
       "effective_from": null,
       "effective_through": null,
       "academic_year": null,
-      "sha256": "f79b83e6fe58713154ad248b4a507cfd0a668221dec7d974294828a0f1a46e17",
+      "sha256": "71cc589b92623fcb138e7596c9644cbfbb7ec33755fd84fb5c07fe0055dc9dbc",
+      "public_access_verified": true
+    },
+    {
+      "canonical_url": "https://www.ncf.edu/admissions/applying-with-a-florida-public-aa/",
+      "publisher": "New College of Florida Admissions",
+      "authority_type": "office",
+      "retrieved_at": "2026-09-14T17:35:05Z",
+      "last_modified": null,
+      "effective_from": null,
+      "effective_through": null,
+      "academic_year": null,
+      "sha256": "33f59a22ad65a686f6ccb63510552d1f8d03e1b719cefa51b229b0ae393cb098",
       "public_access_verified": true
     },
     {
@@ -89,6 +101,6 @@
   ],
   "status": "current",
   "volatility": "annual",
-  "review_after": "2026-10-01",
-  "notes": "At verification, the central international admissions page showed a newer cycle than at least one international freshman subpage. Do not silently merge conflicting deadline tables; verify the applicant type/cycle and current central admissions source."
+  "review_after": "2026-10-15",
+  "notes": "Reverified 2026-09-14 for HT-013. The current First-Year Students page says a student completing a Florida public A.A. and high-school diploma at the same time may apply through a specific first-year no-score pathway, with an official college transcript and enrollment conditions. The separate Applying with a Florida Public AA page says the same-time-A.A. first-year route requires SAT/ACT scores while the transfer route may request a waiver. Preserve this official-source conflict, distinguish ordinary first-year applicants from the special pathway, and route application-route questions to Admissions."
 }
