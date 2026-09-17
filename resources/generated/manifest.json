@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-09-17T17:16:17Z",
+  "generated_at": "2026-09-17T17:26:34Z",
   "tool": "validate_sources.py",
   "total_resources": 21,
   "resources": [
@@ -1605,11 +1605,14 @@
       ],
       "status": "current",
       "volatility": "annual",
-      "review_after": "2027-06-01",
-      "notes": "Published 2026-2027 undergraduate budget figures are estimates, not personalized bills or aid awards. Residency and individual eligibility are not determined by this resource.",
+      "review_after": "2026-10-15",
+      "notes": "Reverified 2026-09-17 for HT-030. The Financial Aid page guarantees scholarship funding to virtually all admitted first-time-in-college and transfer students who apply for the fall class by the February 1 priority deadline, but does not state one universal guaranteed individual dollar amount. Its $11,886 figure is an average student financial aid award including scholarships and grants and must not be converted into an individual guarantee or used alone to infer individual variation. The Foundation Scholarship Application is separate and currently labels a January 9, 2026 opening and March 31, 2026 consideration deadline.",
       "source_urls": [
         "https://www.ncf.edu/admissions/first-year-students/tuition-fees/",
-        "https://www.ncf.edu/admissions/financial-aid/"
+        "https://www.ncf.edu/admissions/financial-aid/",
+        "https://www.ncf.edu/admissions/financial-aid/scholarships/",
+        "https://www.ncf.edu/admissions/first-year-students/scholarships/",
+        "https://www.ncf.edu/admissions/financial-aid/scholarships/foundation-scholarship/"
       ],
       "sidecar_file": "resources/outside/cost-and-aid.source.json",
       "record": {
@@ -1645,19 +1648,55 @@
             "canonical_url": "https://www.ncf.edu/admissions/financial-aid/",
             "publisher": "New College of Florida Financial Aid",
             "authority_type": "office",
-            "retrieved_at": "2026-08-31T17:45:23Z",
-            "last_modified": "2026-08-31T17:41:36Z",
+            "retrieved_at": "2026-09-17T17:05:17Z",
+            "last_modified": null,
             "effective_from": null,
             "effective_through": null,
             "academic_year": null,
-            "sha256": "4bbbf7a11fc05509b52dbc4397c0d69dee1a40135914952afbb616a4f25e08b1",
+            "sha256": "cd2a94ad279c1bb18ce80c3bc2ff13308495c3697ac1bc4acc31c5bb4055f0c6",
+            "public_access_verified": true
+          },
+          {
+            "canonical_url": "https://www.ncf.edu/admissions/financial-aid/scholarships/",
+            "publisher": "New College of Florida Financial Aid",
+            "authority_type": "office",
+            "retrieved_at": "2026-09-17T17:05:17Z",
+            "last_modified": null,
+            "effective_from": null,
+            "effective_through": null,
+            "academic_year": null,
+            "sha256": "d7761c039a3de20701b5d458bb763e21741421dd18fb9cab363cc408154cd3b8",
+            "public_access_verified": true
+          },
+          {
+            "canonical_url": "https://www.ncf.edu/admissions/first-year-students/scholarships/",
+            "publisher": "New College of Florida Admissions and Financial Aid",
+            "authority_type": "office",
+            "retrieved_at": "2026-09-17T17:05:17Z",
+            "last_modified": null,
+            "effective_from": null,
+            "effective_through": null,
+            "academic_year": null,
+            "sha256": "da16addcd83195f9386a8b39700631df516f9d67cbf98b0326de262f51814cfe",
+            "public_access_verified": true
+          },
+          {
+            "canonical_url": "https://www.ncf.edu/admissions/financial-aid/scholarships/foundation-scholarship/",
+            "publisher": "New College Foundation / New College of Florida Financial Aid",
+            "authority_type": "office",
+            "retrieved_at": "2026-09-17T17:05:18Z",
+            "last_modified": null,
+            "effective_from": null,
+            "effective_through": null,
+            "academic_year": null,
+            "sha256": "33ce8ab4c7c871f3eb467ea86b32cfe1ebb6c28822a354b8d41202b00334382a",
             "public_access_verified": true
           }
         ],
         "status": "current",
         "volatility": "annual",
-        "review_after": "2027-06-01",
-        "notes": "Published 2026-2027 undergraduate budget figures are estimates, not personalized bills or aid awards. Residency and individual eligibility are not determined by this resource."
+        "review_after": "2026-10-15",
+        "notes": "Reverified 2026-09-17 for HT-030. The Financial Aid page guarantees scholarship funding to virtually all admitted first-time-in-college and transfer students who apply for the fall class by the February 1 priority deadline, but does not state one universal guaranteed individual dollar amount. Its $11,886 figure is an average student financial aid award including scholarships and grants and must not be converted into an individual guarantee or used alone to infer individual variation. The Foundation Scholarship Application is separate and currently labels a January 9, 2026 opening and March 31, 2026 consideration deadline."
       }
     },
     {
