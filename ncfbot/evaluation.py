@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterator
 
+from .enforcement import run_enforcement_pilot
 from .retrieval import search
 from .router import route
 from .schema_validation import load_validator, schema_errors
@@ -144,6 +145,7 @@ def _revision(root: Path) -> str:
 
 def run_evaluation(root: str | Path | None = None) -> dict[str, Any]:
     base = repository_root(root)
+    enforcement_pilot = run_enforcement_pilot(base)
     cases, validation_errors = read_cases(base)
     duplicates = duplicate_case_ids(cases)
     validation_errors.extend(f"duplicate evaluation id: {identifier}" for identifier in duplicates)
@@ -191,6 +193,7 @@ def run_evaluation(root: str | Path | None = None) -> dict[str, Any]:
         "passed": sum(item.passed for item in results),
         "failed": sum(not item.passed for item in results),
         "validation_errors": validation_errors,
+        "enforcement_pilot": enforcement_pilot,
         "by_audience": dict(sorted(by_audience.items())),
         "by_topic": dict(sorted(by_topic.items())),
         "cases": [

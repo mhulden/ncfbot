@@ -165,6 +165,11 @@ def _evaluate(args: argparse.Namespace, root: Path) -> int:
     else:
         print(f"Evaluation cases: {report['case_count']}")
         print(f"Deterministic assertions: {report['passed']} passed, {report['failed']} failed")
+        pilot = report["enforcement_pilot"]
+        print(
+            "Required-resource pilot: "
+            f"{pilot['passed']} passed, {pilot['failed']} failed"
+        )
         print("By audience: " + json.dumps(report["by_audience"], sort_keys=True))
         print("By topic: " + json.dumps(report["by_topic"], sort_keys=True))
         for error in report["validation_errors"]:
@@ -172,9 +177,25 @@ def _evaluate(args: argparse.Namespace, root: Path) -> int:
         for result in report["results"]:
             for failure in result["failures"]:
                 print(f"[FAIL] {result['id']}: {failure}")
+        for error in pilot["validation_errors"]:
+            print(f"[ERROR] required-resource pilot: {error}")
+        for result in pilot["results"]:
+            if not result["passed"]:
+                print(
+                    f"[FAIL] required-resource pilot {result['id']}: "
+                    f"expected {result['expected_decision']}, got {result['decision']}"
+                )
         if args.export:
             print(f"Exported run record to {args.export}")
-    return 0 if not report["validation_errors"] and report["failed"] == 0 else 1
+    pilot = report["enforcement_pilot"]
+    return (
+        0
+        if not report["validation_errors"]
+        and report["failed"] == 0
+        and not pilot["validation_errors"]
+        and pilot["failed"] == 0
+        else 1
+    )
 
 
 def _course(args: argparse.Namespace, root: Path) -> int:

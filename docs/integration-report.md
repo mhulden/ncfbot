@@ -88,6 +88,16 @@ The 46 Agent 7 cases cover:
 
 The evaluation export records its version, UTC timestamp, repository revision, resource-manifest hash, audience/topic summary, per-case checks, and failures. It is suitable for later human or model-answer scoring without requiring a model provider API.
 
+## Required-resource enforcement pilot (#40)
+
+The bounded, provider-neutral pilot consumes the exact optional `required_resources` and `conflicts` field shapes proposed in issue #37 without changing Agent 5's schema. It records the required resource IDs and the resources actually supplied or loaded before the first claim, then combines that telemetry with final-answer content assertions.
+
+The six controls cover missing and successful resource loading, a deliberately invented interface claim after a successful load, an unresolved conflict with both distinct claims and applicability, the HT-028 privacy/referral response without irrelevant exam logistics, and a nearby contact-only routing case. The pilot result is **6/6 expected decisions passed**.
+
+Recommendation: **revise**. Adopt the optional metadata only together with runtime resource-order telemetry and final-answer content assertions; a load event alone does not prove compliance. Issue #37's Agent 5 schema change must still reach `main` before repository-wide use. The pilot introduces no model-provider or production-service dependency and makes no new public-source request.
+
+Issue #40 verification on 2026-09-17: **231/231** deterministic evaluation cases, **6/6** pilot controls, and **159 tests plus 2 subtests** passed. Doctor, all 21 source sidecars, the offline freshness check, and `git diff --check` also passed.
+
 ## Known limitations
 
 - Search and routing are deterministic aids; they do not generate a final natural-language answer or make an official decision.
