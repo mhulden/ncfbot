@@ -1,7 +1,7 @@
 # Visits, Maps, Alumni, and Community Information
 
 Scope: Public orientation for campus visits, maps/directions, alumni/community access, and transcript/record routing for former students. Event schedules and operating details are volatile.
-Verified through: 2026-08-31
+Verified through: 2026-09-17
 Applies to: Visitors, prospective students, families, alumni, and community members.
 
 ## Campus visits
@@ -20,7 +20,18 @@ The primary published college address is 5800 Bay Shore Road, Sarasota, FL 34243
 
 The Foundation & Alumni page provides public alumni/community information, events, giving, and involvement routes.
 
-The Jane Bancroft Cook Library page states that New College alumni are eligible for community borrower cards and describes categories of other visitors who may use the library with appropriate identification/approval. Access conditions may change, so confirm current library rules before a visit.
+### Jane Bancroft Cook Library visitor and borrower eligibility
+
+The current Jane Bancroft Cook Library page separates **New College alumni** from **unaffiliated community members**. Do not collapse them into a vague "appropriate identification or approval" rule.
+
+- **New College of Florida alumni:** the library page says alumni are **eligible for community borrower cards**.
+- **Unaffiliated community members:** the library page says community members may use the library **with an academic need, with the Dean's approval, and a community borrower card**.
+
+The page also says visitors are welcomed under listed patron categories with proof of identification. That general visitor language does not erase the additional academic-need and Dean-approval conditions published for unaffiliated community members.
+
+The public page does **not** describe a step-by-step application procedure for obtaining the Dean's approval or a community borrower card. Do not invent a form, sequence, turnaround time, or approval standard. For confirmation of current eligibility or how to request a borrower card, direct the user to the **Jane Bancroft Cook Library** using the current Contact Us information on the library page.
+
+Library visitor rules are operational and can change, so recheck the live page for a current visit.
 
 ## Alumni transcripts and records
 
