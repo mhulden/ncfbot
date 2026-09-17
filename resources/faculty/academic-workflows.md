@@ -242,25 +242,63 @@ faculty member needs:
   privately and do not announce a disability or accommodation in class.
 
 The Quick Reference Guide adds that instructors are only required to provide
-accommodations after receiving the Notification of Accommodations letter, that
-in-person testing at the ALC runs through Canvas and RegisterBlast (the course must be
-launched and an exam submitted for each exam), and that for a flexibility accommodation
-the instructor follows the recommendations in the letter or completes a Flex Plan in
-AIM without requesting additional documentation or an explanation of the disability.
+accommodations after receiving the Notification of Accommodations letter, and that for
+a flexibility accommodation the instructor follows the recommendations in the letter or
+completes a Flex Plan in AIM without requesting additional documentation or an
+explanation of the disability.
 
-**Exam lead time: two official sources disagree on the faculty figure.** Both agree
-students schedule at least **48 hours** ahead. They do not agree on faculty:
+**Answering a documentation or eligibility question.** When a faculty member asks
+whether to accept or review medical documentation, or which accommodations to grant,
+the answer is the rules above: do not collect or evaluate records, the ALC determines
+eligibility, and accommodations are not denied without consulting the ALC. Testing
+logistics — exam scheduling, uploads, lead times — are a separate topic below and do
+not belong in that answer unless the faculty member asks about them.
+
+## Accommodated testing logistics
+
+This section is only for questions about running an exam through the ALC Testing
+Center. It is not part of the answer to a documentation, privacy, or eligibility
+question.
+
+The Quick Reference Guide states that in-person accommodated testing runs through Canvas
+and RegisterBlast: the instructor launches the course and submits a testing request for
+each exam, and students cannot schedule until that is done.
+
+### Exam lead time: the faculty figure is unresolved between two official sources
+
+Both sources give students the same instruction — schedule at least **48 hours** ahead.
+They differ on the faculty side, and neither source acknowledges the other:
 
 | Source | Student scheduling | Faculty exam upload |
 |---|---|---|
-| Quick Reference Guide (Provost's Office, February 2026) | at least 48 hours ahead | at least **48 hours** ahead |
-| ALC Testing Services page | at least 48 hours before the testing date | **24 hours** in advance |
+| Quick Reference Guide, Provost's Office, updated February 2026, labeled "NCF FACULTY GUIDE (FALL 2025/SPRING 2026)", page 7 | "Students should schedule exams at least 48 hours in advance" | "Faculty should upload exams at least 48 hours in advance" |
+| ALC Testing Services page | "Students must schedule exams 48 hours in advance" | "Faculty must upload exams 24 hours in advance" |
 
-Give both figures and say they differ; do not average them or pick one silently.
-Uploading at the earlier 48-hour mark satisfies either reading, so that is the safe
-planning figure — but the binding requirement belongs to Testing Services, which owns
-the process. The Testing Services page also asks faculty to tell students that all
-testing center reservations must be made at least 48 hours in advance.
+The wording differs as well as the number: the Guide says faculty *should* upload 48
+hours ahead, and Testing Services says faculty *must* upload 24 hours ahead. One
+plausible reading is a recommendation alongside a minimum requirement, which would make
+the two compatible. No public source states that reading, so it is not settled here.
+
+**Applicability differs too.** The Guide labels itself for Fall 2025/Spring 2026, so
+for a later term it may be out of date. The Testing Services page carries no term label
+and is the page of the office that runs the process. That makes the Guide's figure worth
+flagging as possibly dated — but no public source says it was replaced, so do not
+present it as superseded either.
+
+When the faculty upload deadline is the question:
+
+- State both figures with their sources. Public sources do not establish which one is
+  correct or controlling, so do not call either one right, wrong, or superseded.
+- Give the Guide's Fall 2025/Spring 2026 label with its figure, so the faculty member can
+  see it may not cover the current term.
+- Keep the student scheduling figure separate from the faculty upload figure.
+- Uploading at least 48 hours ahead satisfies both readings, which is why it is the
+  safer planning choice — say that this is the reason, not that 48 hours is the rule.
+- Name Testing Services as the office that confirms the binding procedure. Contact
+  details are in `shared-office-routing`.
+
+The Testing Services page also asks faculty to tell students that all testing center
+reservations must be made at least 48 hours in advance.
 
 ## Cross-references
 
@@ -286,10 +324,14 @@ testing center reservations must be made at least 48 hours in advance.
 4. **Teaching load.** The Handbook's "two courses or seminars per semester" is
    described there as an accepted norm rather than a college-wide rule, and it dates
    from 2023. Do not state it as current policy.
-5. **Exam upload lead time.** The Quick Reference Guide says faculty upload exams at
-   least 48 hours ahead; the ALC Testing Services page says 24 hours in advance. Both
-   agree students schedule 48 hours ahead. Recorded above; Testing Services owns the
-   binding figure. Found in human testing round 1 (HT-028, issues #16 and #19).
+5. **Faculty exam upload lead time.** The Quick Reference Guide (page 7) says faculty
+   *should* upload at least 48 hours ahead; the ALC Testing Services page says faculty
+   *must* upload 24 hours ahead. Both give students 48 hours. They may be a
+   recommendation and a minimum, but no public source says so, so the conflict stays
+   open and Testing Services confirms the binding procedure. The Guide is labeled Fall
+   2025/Spring 2026 and may be dated for later terms; no public source establishes that
+   either figure is wrong or was replaced. Recorded under "Accommodated testing logistics"; found
+   in human testing round 1 (HT-028, issue #16).
 
 ## Sources
 

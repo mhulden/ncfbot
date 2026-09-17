@@ -270,12 +270,12 @@
       "canonical_url": "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/",
       "publisher": "Accessible Learning Center, New College of Florida",
       "authority_type": "office",
-      "retrieved_at": "2026-08-31T17:16:07Z",
+      "retrieved_at": "2026-09-14T17:20:51Z",
       "last_modified": null,
       "effective_from": null,
       "effective_through": null,
       "academic_year": null,
-      "sha256": "9c17e471c66e4d0b7b46766fb19479fc46930af0128206366b0920423adce77d",
+      "sha256": "232e6b920e679acd2ebd0c5f2c6d808650acaa29182760107668f09d73e179e9",
       "public_access_verified": true
     },
     {
@@ -450,5 +450,5 @@
   "status": "current",
   "volatility": "annual",
   "review_after": "2027-08-31",
-  "notes": "Landing pages are stable; phone numbers, email aliases, room numbers, and office hours were verified 2026-08-31 and need annual re-verification. The Student Accounts page changed and was independently re-fetched on 2026-09-03; its published phone, STARTCenter@ncf.edu alias, room, hours, billing/refund ownership, and myNCF boundary still match the resource. Routing quirks recorded in the resource: /cwc/ redirects to the Health and Wellness Services hub and the Campus Police emergency page labels two links pointing there as 'Counseling and Wellness Services' and 'Crisis Intervention and Victim Advocate'; /life-at-new/safety-conduct/title-ix/ redirects to the Title IX department page; Student Accounts and Parking Services share the START Center phone and room; the academic learning compacts page resolves at two paths. Office email aliases were recovered by decoding Cloudflare email obfuscation on the published pages; prefer aliases over individual addresses."
+  "notes": "Landing pages are stable; phone numbers, email aliases, room numbers, and office hours were verified 2026-08-31 and need annual re-verification. The Student Accounts page changed and was independently re-fetched on 2026-09-03; its published phone, STARTCenter@ncf.edu alias, room, hours, billing/refund ownership, and myNCF boundary still match the resource. Routing quirks recorded in the resource: /cwc/ redirects to the Health and Wellness Services hub and the Campus Police emergency page labels two links pointing there as 'Counseling and Wellness Services' and 'Crisis Intervention and Victim Advocate'; /life-at-new/safety-conduct/title-ix/ redirects to the Title IX department page; Student Accounts and Parking Services share the START Center phone and room; the academic learning compacts page resolves at two paths. Office email aliases were recovered by decoding Cloudflare email obfuscation on the published pages; prefer aliases over individual addresses. The ALC Testing Services page was independently re-fetched on 2026-09-14; its sha256 is refreshed to that fetch. The page's raw sha256 changes on every fetch because Cloudflare re-randomizes its encoded email addresses, so a hash difference here does not indicate a content change. Its published testing hours, HCL 5 location, and testingcenter@ncf.edu alias still match the resource."
 }
