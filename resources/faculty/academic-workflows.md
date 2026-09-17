@@ -271,7 +271,7 @@ They differ on the faculty side, and neither source acknowledges the other:
 
 | Source | Student scheduling | Faculty exam upload |
 |---|---|---|
-| Quick Reference Guide, Provost's Office, updated February 2026, page 7 | "Students should schedule exams at least 48 hours in advance" | "Faculty should upload exams at least 48 hours in advance" |
+| Quick Reference Guide, Provost's Office, updated February 2026, labeled "NCF FACULTY GUIDE (FALL 2025/SPRING 2026)", page 7 | "Students should schedule exams at least 48 hours in advance" | "Faculty should upload exams at least 48 hours in advance" |
 | ALC Testing Services page | "Students must schedule exams 48 hours in advance" | "Faculty must upload exams 24 hours in advance" |
 
 The wording differs as well as the number: the Guide says faculty *should* upload 48
@@ -279,10 +279,18 @@ hours ahead, and Testing Services says faculty *must* upload 24 hours ahead. One
 plausible reading is a recommendation alongside a minimum requirement, which would make
 the two compatible. No public source states that reading, so it is not settled here.
 
+**Applicability differs too.** The Guide labels itself for Fall 2025/Spring 2026, so
+for a later term it may be out of date. The Testing Services page carries no term label
+and is the page of the office that runs the process. That makes the Guide's figure worth
+flagging as possibly dated — but no public source says it was replaced, so do not
+present it as superseded either.
+
 When the faculty upload deadline is the question:
 
-- State both figures with their sources. Both are published by NCF; neither is an error
-  and neither has been withdrawn.
+- State both figures with their sources. Public sources do not establish which one is
+  correct or controlling, so do not call either one right, wrong, or superseded.
+- Give the Guide's Fall 2025/Spring 2026 label with its figure, so the faculty member can
+  see it may not cover the current term.
 - Keep the student scheduling figure separate from the faculty upload figure.
 - Uploading at least 48 hours ahead satisfies both readings, which is why it is the
   safer planning choice — say that this is the reason, not that 48 hours is the rule.
@@ -320,8 +328,9 @@ reservations must be made at least 48 hours in advance.
    *should* upload at least 48 hours ahead; the ALC Testing Services page says faculty
    *must* upload 24 hours ahead. Both give students 48 hours. They may be a
    recommendation and a minimum, but no public source says so, so the conflict stays
-   open and Testing Services confirms the binding procedure. Neither figure is treated
-   as fabricated or superseded. Recorded under "Accommodated testing logistics"; found
+   open and Testing Services confirms the binding procedure. The Guide is labeled Fall
+   2025/Spring 2026 and may be dated for later terms; no public source establishes that
+   either figure is wrong or was replaced. Recorded under "Accommodated testing logistics"; found
    in human testing round 1 (HT-028, issue #16).
 
 ## Sources
