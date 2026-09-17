@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-09-17T17:05:43Z",
+  "generated_at": "2026-09-17T17:22:16Z",
   "tool": "validate_sources.py",
   "total_resources": 21,
   "resources": [
@@ -1823,8 +1823,8 @@
       ],
       "status": "current",
       "volatility": "term",
-      "review_after": "2026-12-15",
-      "notes": "Tour schedules, event capacity, parking/access details and library visitor rules are operationally volatile and should be freshly checked for a specific visit.",
+      "review_after": "2026-10-15",
+      "notes": "Reverified 2026-09-17 for HT-015. The current Jane Bancroft Cook Library page distinguishes New College alumni, who are eligible for community borrower cards, from unaffiliated community members, who need an academic need, the Dean's approval, and a community borrower card. The public page does not publish a step-by-step Dean-approval or borrower-card application procedure; route procedural questions to the library's current public contact information.",
       "source_urls": [
         "https://www.ncf.edu/visit/",
         "https://www.ncf.edu/campus-map/",
@@ -1902,19 +1902,19 @@
             "canonical_url": "https://www.ncf.edu/library/",
             "publisher": "Jane Bancroft Cook Library, New College of Florida",
             "authority_type": "office",
-            "retrieved_at": "2026-08-31T17:45:26Z",
+            "retrieved_at": "2026-09-17T17:21:51Z",
             "last_modified": null,
             "effective_from": null,
             "effective_through": null,
             "academic_year": null,
-            "sha256": "635fb2587d5767821b9edc386dcab76a75bc0bfa6fc2c5386635c6d03583222c",
+            "sha256": "fdeec8e5833cef7b3ce7206d45049420c1a2877b8262bf312704ebca57e8c415",
             "public_access_verified": true
           }
         ],
         "status": "current",
         "volatility": "term",
-        "review_after": "2026-12-15",
-        "notes": "Tour schedules, event capacity, parking/access details and library visitor rules are operationally volatile and should be freshly checked for a specific visit."
+        "review_after": "2026-10-15",
+        "notes": "Reverified 2026-09-17 for HT-015. The current Jane Bancroft Cook Library page distinguishes New College alumni, who are eligible for community borrower cards, from unaffiliated community members, who need an academic need, the Dean's approval, and a community borrower card. The public page does not publish a step-by-step Dean-approval or borrower-card application procedure; route procedural questions to the library's current public contact information."
       }
     },
     {
