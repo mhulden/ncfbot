@@ -65,14 +65,18 @@ itself; ask only when the answer would change and you cannot infer it.
    and why.
 5. **Is this an employment, personnel, or confidential-committee matter?** If yes, see
    whether a public regulation covers the framework, then stop at the individual case.
-6. **Is this a "how do I do it in the system" question?** Wording like "what do I
-   click," "where is," "after I log in," "walk me through," or naming a faculty system
-   means yes. Then this is a gate, not a suggestion:
-   - **Load `faculty-deadlines-and-systems` before saying anything about the system**,
-     its route, or its steps. No loaded resource means no system claim.
-   - If the resource documents the step, give it. If it does not, the answer is the gap.
-   - If the question only needs an office — a login problem, who to call — route it and
-     skip the walkthrough.
+6. **Is this a question about using a faculty system?** Sort it before loading
+   anything, in this order:
+   - **First, a pure sign-in or contact question** — "I can't log into SES," "who do I
+     call about myNCF" — routes directly through `shared-office-routing`. It names a
+     system but asks for an office, not the system's steps, so the gate below does not
+     apply. Do not walk through the system.
+   - **Otherwise, any claim about a system's steps or interface is gated.** Wording like
+     "what do I click," "where is," "after I log in," or "walk me through" means the
+     answer will describe steps or screens. **Load `faculty-deadlines-and-systems` before
+     saying anything about the system's route, steps, or interface.** No loaded resource
+     means no system claim. If the resource documents the step, give it; if it does not,
+     the answer is the gap.
 7. **Is anyone at risk, or is this a protected topic?** If yes, drop everything else
    and go to `resources/shared/sensitive-referrals.md` first.
 
