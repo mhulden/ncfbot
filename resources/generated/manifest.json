@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-09-17T17:26:34Z",
+  "generated_at": "2026-09-17T17:35:10Z",
   "tool": "validate_sources.py",
   "total_resources": 21,
   "resources": [
@@ -231,7 +231,7 @@
       "status": "current",
       "volatility": "term",
       "review_after": "2026-12-15",
-      "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence.",
+      "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence. Faculty-system evidence gate (issue #21, from HT-009), re-verified 2026-09-14: the narrative evaluation steps and the interface-wording table quote the Quick Reference Guide verbatim (pages 2, 3, 5 and 7), the override instruction sheet, and the Faculty Handbook's SES address; every quoted string was matched against its page. No approved public source describes a dashboard, a tile or menu for SES, or SES save/draft/submit controls, and the resource says so. The Guide's and override sheet's bytes are unchanged. The Handbook is a Google Docs page whose editor response varies by request, so its hash changes without implying a content change; its cited SES address was re-read from the document's text export.",
       "source_urls": [
         "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
         "https://www.ncf.edu/wp-content/uploads/2025/10/Override-Instructions_SP26.pdf",
@@ -267,7 +267,7 @@
             "canonical_url": "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
             "publisher": "Office of the Provost, New College of Florida",
             "authority_type": "policy",
-            "retrieved_at": "2026-08-31T17:18:14Z",
+            "retrieved_at": "2026-09-14T18:01:35Z",
             "last_modified": "2026-06-08T17:20:51Z",
             "effective_from": null,
             "effective_through": null,
@@ -279,7 +279,7 @@
             "canonical_url": "https://www.ncf.edu/wp-content/uploads/2025/10/Override-Instructions_SP26.pdf",
             "publisher": "Office of the Provost, New College of Florida",
             "authority_type": "policy",
-            "retrieved_at": "2026-08-31T17:18:13Z",
+            "retrieved_at": "2026-09-14T18:01:32Z",
             "last_modified": "2025-10-23T15:02:41Z",
             "effective_from": null,
             "effective_through": null,
@@ -303,12 +303,12 @@
             "canonical_url": "https://docs.google.com/document/d/18Wl5R61YKbjP0_izenKc1b6CrHsWDBbQaUbywPkqdmE/edit",
             "publisher": "Office of the Provost, New College of Florida",
             "authority_type": "policy",
-            "retrieved_at": "2026-08-31T17:18:23Z",
+            "retrieved_at": "2026-09-14T18:01:35Z",
             "last_modified": null,
             "effective_from": "2023-08-01",
             "effective_through": null,
             "academic_year": "2023-2024",
-            "sha256": "449202f824e73642d3bcfc15c199327de135dd77ca2054a970bdecd0dbefe086",
+            "sha256": "88db7a3274516f20e9bc5bafd714552c9621d523ced0f410115fdf8338d5f19e",
             "public_access_verified": true
           },
           {
@@ -411,7 +411,7 @@
         "status": "current",
         "volatility": "term",
         "review_after": "2026-12-15",
-        "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence."
+        "notes": "Two documented deadline conflicts: narrative evaluations due Wednesday of the 16th week (Quick Reference Guide, February 2026) versus late after 5:00 p.m. Wednesday of the 18th week (Faculty Handbook, August 2023); and contract submission at the end of Week 1 (Guide) versus 5:00 p.m. the second Wednesday with a late window to the second Friday (Handbook). Neither is resolved here. Two source defects recorded: the Guide heads its Weeks 5-13 block 'Deadlines (End of Week 4)', and the override sheet published under a Spring 2026 filename carries an 'Updated 02/08/2024' footer. No absolute calendar date is asserted anywhere in this resource; dates belong to the academic calendar. Authenticated entry points are deliberately absent from sources[]: docs/integration-contracts.md states a login response cannot count as public verification. Verified 2026-08-31 by anonymous request, every intranet.ncf.edu path tested returned the myNCF login portal and ses.ncf.edu redirected to single sign-on; that boundary is described in the resource prose instead of cited as evidence. Faculty-system evidence gate (issue #21, from HT-009), re-verified 2026-09-14: the narrative evaluation steps and the interface-wording table quote the Quick Reference Guide verbatim (pages 2, 3, 5 and 7), the override instruction sheet, and the Faculty Handbook's SES address; every quoted string was matched against its page. No approved public source describes a dashboard, a tile or menu for SES, or SES save/draft/submit controls, and the resource says so. The Guide's and override sheet's bytes are unchanged. The Handbook is a Google Docs page whose editor response varies by request, so its hash changes without implying a content change; its cited SES address was re-read from the document's text export."
       }
     },
     {

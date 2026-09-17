@@ -40,6 +40,70 @@ is* for any of these, and can be walked all the way through the two Maxient repo
 but the inside of the authenticated systems is not public and must not be described
 from memory. See `resources/faculty/public-coverage-gaps.md`.
 
+## Submitting narrative evaluations after logging into myNCF: the published steps
+
+This section answers "what do I click to submit my narrative evaluations." It gives
+everything public sources say, and marks where they stop.
+
+**Which system.** The Provost's Office Quick Reference Guide, updated February 2026,
+page 2, lists SES as the system for narrative evaluations.
+
+**Entry point.** The August 2023 Faculty Handbook gives the evaluation system's address
+as `ses.ncf.edu/faculty_schedule.php`. On 2026-08-31, `ses.ncf.edu` redirected to myNCF
+single sign-on, so you log in there first.
+
+**The published steps.** The Guide, page 2, lists three steps for narrative evaluations,
+in this order: "My Course Schedule", "Select Term", "Select Course".
+
+The performance designation is a separate step in a different system. The Guide lists
+it under Faculty Self Service (Banner): "Enter Grades", then "Select Course". See
+`faculty-academic-workflows` for the designation scheme itself.
+
+**Where the public record stops.** No approved public source describes:
+
+- what you see after logging into myNCF, or where SES appears in it;
+- a dashboard, tile, tab, sidebar, or menu for reaching SES;
+- the SES screen layout, its buttons, or how to save, preview, draft, or submit an
+  evaluation.
+
+Leave all of that out. A hedged guess — "usually on your faculty dashboard," "typically
+under the evaluations tab" — is still a guess and is treated exactly like an invented
+click path. Say the remaining steps are behind login and not in public sources.
+
+**If the menus do not match.** Ask the Office of the Registrar, which owns the student
+assessment policy. Contact details are in `shared-office-routing`.
+
+**If you cannot log in at all.** That is a sign-on problem, not an evaluation question:
+route it to the IT Help Desk through `shared-office-routing` and skip the steps above,
+since SES is reached through myNCF sign-on.
+
+**When evaluations are due.** Two public sources disagree; see "Evaluation and
+certification deadlines" below.
+
+## Interface wording that has public evidence
+
+A description of where something is on screen — a tile, menu, button, tab, sidebar,
+dashboard, or link location — is only supported when a public source uses that wording.
+This is the complete list found in approved public sources. Quote it exactly, with its
+source.
+
+| Task | Published wording, verbatim | Source |
+|---|---|---|
+| Narrative evaluations | "My Course Schedule", "Select Term", "Select Course" | Quick Reference Guide, page 2 |
+| Course designations | "Enter Grades", "Select Course" | Quick Reference Guide, page 2 |
+| Forms you are named on | "Online Forms tile"; faculty "must be actively logged in at myncf.ncf.edu prior to clicking the link or they will see an error" | Quick Reference Guide, page 3 |
+| Honor code report | "NCF Portal", "Maxient Tile" | Quick Reference Guide, page 5 |
+| Accommodated testing in Canvas | "Open your course"; Click "ALC Testing Center" in the left course menu | Quick Reference Guide, page 7 |
+| Registration overrides | "Click the purple Self Service Faculty tile"; under "Faculty Tools" select "Registration Overrides" | Override instruction sheet — its footer reads "Updated 02/08/2024", so screens may have moved |
+
+**Anything not in this table is not in approved public sources.** That includes any
+dashboard, any tile or menu for SES, Navigate 360 or AIM, and any button name. Do not
+supply one, hedged or not. State the published steps that exist, say the rest is behind
+login, and name the office that can help.
+
+The arrows in the "Faculty-side reporting actions" table further down summarize the
+order of these steps. When exact screen wording matters, use this table.
+
 ## Term timeline as published by the Provost's Office
 
 From the Quick Reference Guide, "Registration and Financial Aid Timeline," labeled
@@ -209,7 +273,7 @@ must tell the student to go register.
 
 | Action | System | Public? |
 |---|---|---|
-| Narrative evaluation | SES → My Course Schedule → term → course | No |
+| Narrative evaluation | SES → My Course Schedule → Select Term → Select Course | No |
 | Course designation (Sat+/Sat/Sat-/Unsat/Incomplete) | Banner Faculty Self Service → Enter Grades | No |
 | Contract review and signature | Faculty Self Service → Review and Sign Contracts, or the emailed per-student link | No |
 | Contract certification | Banner → Enter Grades → certification status | No |
