@@ -1,0 +1,35 @@
+{
+  "issue": "https://github.com/mhulden/ncfbot/issues/25",
+  "investigated_at": "2026-09-14T17:35:36Z",
+  "public_entry_point": "https://www.ncf.edu/departments/registrar/class-schedule-registration/",
+  "method": "Fresh anonymous BannerSession; discover public terms; select exact term; inspect listing JSON and shortlisted getSectionCatalogDetails fragments. No saved cookies or authenticated systems.",
+  "listing_observation": {
+    "term_code": "202608",
+    "section_count": 274,
+    "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/searchResults?txt_term=202608&pageOffset=0&pageMaxSize=500&sortColumn=subjectDescription&sortDirection=asc",
+    "sha256": "1ec5a30b8ed3629ffb57ea38c87c892f5c3bf92591b56687e1360df6dd07717a",
+    "finding": "No level or program field in the inspected listing response; level metadata is in the separate catalog detail fragment. This current observation does not refresh the committed August snapshot."
+  },
+  "catalog_observations": [
+    {
+      "term_code": "202608", "crn": "88748", "course_display": "CAI 3105", "title": "Machine Learning",
+      "course_levels": [{"code": "UG", "description": "Undergraduate"}],
+      "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/getSectionCatalogDetails?term=202608&courseReferenceNumber=88748",
+      "sha256": "d23f8a3daf1d3ef1c4f21c234dc5abeba739229657dbf11549893ba0f00edacf"
+    },
+    {
+      "term_code": "202602", "crn": "26700", "course_display": "IDC 4210", "title": "Applied Machine Learning",
+      "course_levels": [{"code": "UG", "description": "Undergraduate"}],
+      "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/getSectionCatalogDetails?term=202602&courseReferenceNumber=26700",
+      "sha256": "be6dd2a80de8a9784bc7e508dc6e82d4babcea955d9ca38e3273e6622f400898"
+    },
+    {
+      "term_code": "202602", "crn": "26442", "course_display": "IDC 5210", "title": "Applied Machine Learning",
+      "course_levels": [{"code": "GR", "description": "Graduate"}],
+      "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/getSectionCatalogDetails?term=202602&courseReferenceNumber=26442",
+      "sha256": "b4ecd4e2c6354efccb1b3cda5514b188069908819da25f36760b8f4e69c425d3"
+    }
+  ],
+  "negative_control": "IDC 4210 and IDC 5210 share the title Applied Machine Learning and the Data Science - Graduate division, yet the Levels block differs. Neither title nor division determines course level.",
+  "limits": "A course's published level does not establish its applicability to a particular degree program, equivalency with another code, or future offering frequency. Observations are scoped to these exact sections; historical listing rows without detail evidence remain unknown."
+}

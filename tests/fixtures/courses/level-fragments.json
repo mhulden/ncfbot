@@ -1,0 +1,9 @@
+{
+  "undergraduate": "<section><span>Title:</span> Synthetic Machine Learning<br/><span>Division:</span>Graduate Studies DSG<br/><span>Levels:</span><br/><div>Undergraduate UG</div><span>Grading Modes:</span><div>Letter Grades H</div></section>",
+  "graduate": "<section><span>Title:</span>Synthetic Machine Learning<br/><span>Levels:</span><br/><div>Graduate GR</div><span>Grading Modes:</span><div>Letter Grades A</div></section>",
+  "multiple": "<section><span>Levels:</span><br/><div>Undergraduate UG<br/>Graduate GR</div><span>Grading Modes:</span><div>Standard A</div></section>",
+  "absent": "<section><span>Title:</span>Graduate Machine Learning<br/><span>Division:</span>Graduate Studies DSG<br/><span>Grading Modes:</span><div>Undergraduate Grades H</div></section>",
+  "empty": "<section><span>Levels:</span><br/><div></div><span>Grading Modes:</span><div>Standard A</div></section>",
+  "unrecognized": "<section><span>Levels:</span><br/><div>Graduate</div><span>Grading Modes:</span><div>Standard A</div></section>",
+  "unbounded": "<section><span>Levels:</span><br/><div>Graduate GR</div><span>Restrictions:</span><div>Undergraduate UG</div></section>"
+}
