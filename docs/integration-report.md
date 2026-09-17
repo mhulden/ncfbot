@@ -96,7 +96,7 @@ The six controls cover missing and successful resource loading, a deliberately i
 
 Recommendation: **revise**. Adopt the optional metadata only together with runtime resource-order telemetry and final-answer content assertions; a load event alone does not prove compliance. Issue #37's Agent 5 schema change must still reach `main` before repository-wide use. The pilot introduces no model-provider or production-service dependency and makes no new public-source request.
 
-Issue #40 verification on 2026-09-17: **231/231** deterministic evaluation cases, **6/6** pilot controls, and **153 tests plus 2 subtests** passed. Doctor, all 21 source sidecars, the offline freshness check, and `git diff --check` also passed.
+Issue #40 verification on 2026-09-17: **231/231** deterministic evaluation cases, **6/6** pilot controls, and **159 tests plus 2 subtests** passed. Doctor, all 21 source sidecars, the offline freshness check, and `git diff --check` also passed.
 
 ## Known limitations
 

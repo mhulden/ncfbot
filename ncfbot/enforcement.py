@@ -87,7 +87,8 @@ def _validate_conflicts(value: Any, label: str) -> list[str]:
             r"[a-z0-9]+(?:-[a-z0-9]+)*", item["conflict_id"]
         ):
             errors.append(f"{prefix}.conflict_id: must be kebab-case")
-        if item["status"] not in {"unresolved", "resolved", "deferred"}:
+        status = item["status"]
+        if not isinstance(status, str) or status not in {"unresolved", "resolved", "deferred"}:
             errors.append(f"{prefix}.status: invalid status")
         if not _nonempty_strings(item["sources"]) or len(item["sources"]) < 2:
             errors.append(f"{prefix}.sources: must contain at least two URLs")
@@ -116,10 +117,12 @@ def validate_pilot(data: Any, label: str = "pilot") -> list[str]:
     recommendation = data["recommendation"]
     if not isinstance(recommendation, dict) or set(recommendation) != {"decision", "reason"}:
         errors.append(f"{label}: recommendation must contain decision and reason")
-    elif recommendation["decision"] not in {"adopt", "revise", "reject"}:
-        errors.append(f"{label}: recommendation decision must be adopt, revise, or reject")
-    elif not isinstance(recommendation["reason"], str) or not recommendation["reason"]:
-        errors.append(f"{label}: recommendation reason must be non-empty")
+    else:
+        decision = recommendation["decision"]
+        if not isinstance(decision, str) or decision not in {"adopt", "revise", "reject"}:
+            errors.append(f"{label}: recommendation decision must be adopt, revise, or reject")
+        if not isinstance(recommendation["reason"], str) or not recommendation["reason"]:
+            errors.append(f"{label}: recommendation reason must be non-empty")
     cases = data["cases"]
     if not isinstance(cases, list) or not cases:
         errors.append(f"{label}: cases must be a non-empty array")
@@ -143,7 +146,8 @@ def validate_pilot(data: Any, label: str = "pilot") -> list[str]:
             errors.append(f"{prefix}.id: must be kebab-case")
         elif identifier in identifiers:
             errors.append(f"{prefix}.id: duplicate id {identifier}")
-        identifiers.add(identifier)
+        else:
+            identifiers.add(identifier)
         for field in ("question", "response"):
             if not isinstance(case[field], str) or not case[field]:
                 errors.append(f"{prefix}.{field}: must be non-empty")
@@ -154,7 +158,8 @@ def validate_pilot(data: Any, label: str = "pilot") -> list[str]:
                 errors.append(f"{prefix}.{field}: must be an array of strings")
         if not isinstance(case["maximum_resource_events"], int) or case["maximum_resource_events"] < 0:
             errors.append(f"{prefix}.maximum_resource_events: must be a non-negative integer")
-        if case["expected_decision"] not in DECISIONS:
+        expected_decision = case["expected_decision"]
+        if not isinstance(expected_decision, str) or expected_decision not in DECISIONS:
             errors.append(f"{prefix}.expected_decision: invalid decision")
         events = case["resource_events"]
         if not isinstance(events, list):
@@ -170,9 +175,10 @@ def validate_pilot(data: Any, label: str = "pilot") -> list[str]:
                 errors.append(f"{event_label}.sequence: must be a positive integer")
             else:
                 sequences.append(event["sequence"])
-            if event.get("event_type") not in EVENT_TYPES:
+            event_type = event.get("event_type")
+            if not isinstance(event_type, str) or event_type not in EVENT_TYPES:
                 errors.append(f"{event_label}.event_type: invalid event type")
-            if event.get("event_type") != "claim":
+            if event_type != "claim":
                 resource_id = event.get("resource_id")
                 if not isinstance(resource_id, str) or not resource_id:
                     errors.append(f"{event_label}.resource_id: required for resource events")

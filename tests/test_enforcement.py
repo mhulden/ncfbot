@@ -1,6 +1,8 @@
 import copy
 import json
 
+import pytest
+
 from ncfbot.enforcement import (
     PILOT_PATH,
     evaluate_pilot_case,
@@ -115,3 +117,52 @@ def test_structured_conflict_contract_rejects_unpaired_claims():
     errors = validate_pilot(data)
 
     assert any("sources and claims must have equal length" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    ("mutation", "expected_error"),
+    [
+        (lambda data: data["cases"][0].__setitem__("id", []), ".id: must be kebab-case"),
+        (
+            lambda data: data["cases"][3]["conflicts"][0].__setitem__("status", []),
+            ".status: invalid status",
+        ),
+        (
+            lambda data: data["cases"][0].__setitem__("expected_decision", []),
+            ".expected_decision: invalid decision",
+        ),
+        (
+            lambda data: data["cases"][1]["resource_events"][0].__setitem__(
+                "event_type", []
+            ),
+            ".event_type: invalid event type",
+        ),
+        (
+            lambda data: data["recommendation"].__setitem__("decision", []),
+            "recommendation decision must be adopt, revise, or reject",
+        ),
+    ],
+)
+def test_malformed_enum_and_identifier_types_return_structured_errors(
+    mutation, expected_error
+):
+    data = _pilot_data()
+    mutation(data)
+
+    errors = validate_pilot(data)
+
+    assert any(expected_error in error for error in errors)
+
+
+def test_malformed_pilot_file_returns_failed_report_instead_of_raising(tmp_path):
+    data = _pilot_data()
+    data["cases"][0]["id"] = []
+    path = tmp_path / PILOT_PATH
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(data), encoding="utf-8")
+
+    report = run_enforcement_pilot(tmp_path)
+
+    assert report["passed"] == 0
+    assert report["results"] == []
+    assert any(".id: must be kebab-case" in error for error in report["validation_errors"])
