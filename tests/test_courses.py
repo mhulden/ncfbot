@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+import copy
 import io
 import json
 import sys
@@ -210,6 +211,10 @@ class CourseTests(unittest.TestCase):
         self.assertEqual(len(client.paths), 8)
         self.assertEqual(result["description"], "A synthetic description.")
         self.assertEqual(result["detail_status"], "success")
+        self.assertEqual(
+            result["course_level_metadata"]["source_url"],
+            "https://example.edu/searchResults/getSectionCatalogDetails?term=209908&courseReferenceNumber=90001",
+        )
 
     def test_query_filters(self):
         parser = query_courses.build_parser()
@@ -282,6 +287,156 @@ class CourseTests(unittest.TestCase):
         result = poll_live_sections.poll(client, "209908", ["90001"])
         self.assertTrue(result["current"])
         self.assertEqual(result["sections"][0]["enrollment"]["freshness"], "live")
+
+    def level_details(self, name, row=None):
+        row = row or self.rows[0]
+        fragments = json.loads((FIXTURES / "level-fragments.json").read_text())
+        return {
+            "term_code": row["term_code"], "crn": row["crn"],
+            "retrieved_at": "2099-09-01T00:00:00Z",
+            "_raw_fragments": {"catalog_details": fragments[name]}, "failures": {},
+        }
+
+    def level_row(self, name, **changes):
+        row = copy.deepcopy(self.rows[0])
+        row.update(changes)
+        row.update(fetch_course_details.course_level_fields(self.level_details(name, row)))
+        return row
+
+    def query_rows(self, rows, *flags):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sections.jsonl"
+            discover_public_terms.atomic_write_jsonl(path, rows)
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                status = query_courses.main(["--input", str(path), *flags])
+            return status, output.getvalue()
+
+    def test_level_parser_uses_only_published_levels_block(self):
+        ug = fetch_course_details.course_level_fields(self.level_details("undergraduate"))
+        self.assertEqual(ug["course_levels"], [{"code": "UG", "description": "Undergraduate"}])
+        gr = fetch_course_details.course_level_fields(self.level_details("graduate"))
+        self.assertEqual(gr["course_levels"], [{"code": "GR", "description": "Graduate"}])
+        both = fetch_course_details.course_level_fields(self.level_details("multiple"))
+        self.assertEqual([level["code"] for level in both["course_levels"]], ["UG", "GR"])
+        self.assertIn("getSectionCatalogDetails?term=", gr["course_level_metadata"]["source_url"])
+        self.assertEqual(gr["course_level_metadata"]["retrieved_at"], "2099-09-01T00:00:00Z")
+
+    def test_missing_malformed_and_failed_level_detail_stays_unknown(self):
+        for name, expected in [("absent", "not_published"), ("empty", "not_published"), ("unrecognized", "unrecognized"), ("unbounded", "unrecognized")]:
+            result = fetch_course_details.course_level_fields(self.level_details(name))
+            self.assertEqual(result["course_levels"], [], name)
+            self.assertEqual(result["course_level_metadata"]["status"], expected, name)
+        details = self.level_details("graduate")
+        details["failures"] = {"catalog_details": "synthetic outage"}
+        result = fetch_course_details.course_level_fields(details)
+        self.assertEqual(result["course_levels"], [])
+        self.assertEqual(result["course_level_metadata"]["status"], "failed")
+
+    def test_level_parser_accepts_public_cleaned_detail_json(self):
+        details = self.level_details("graduate")
+        fragment = details.pop("_raw_fragments")["catalog_details"]
+        details["catalog_details"] = fetch_course_details.clean_detail(fragment, "catalog_details")
+        self.assertEqual(fetch_course_details.course_level_fields(details)["course_levels"], [{"code": "GR", "description": "Graduate"}])
+
+    def test_level_filter_is_exact_and_never_guesses_numbering(self):
+        rows = [self.level_row("undergraduate", course_number="9000"), self.level_row("graduate", crn="90002", course_number="1000")]
+        for flag in ["GR", "graduate", "Graduate"]:
+            status, output = self.query_rows(rows, "--level", flag, "--format", "json")
+            self.assertEqual(status, 0)
+            self.assertEqual([r["crn"] for r in json.loads(output)["records"]], ["90002"])
+        status, output = self.query_rows(rows, "--level", "grad", "--format", "json")
+        self.assertEqual(json.loads(output)["match_count"], 0)
+
+    def test_unknown_level_is_excluded_but_reported_not_as_absence(self):
+        rows = [self.level_row("absent", course_number="5000", title="Graduate Machine Learning")]
+        status, output = self.query_rows(rows, "--level", "Graduate", "--format", "json")
+        result = json.loads(output)
+        self.assertEqual(status, 2)
+        self.assertEqual(result["match_count"], 0)
+        self.assertEqual(result["metadata"]["level_query"]["unknown_level_count"], 1)
+        self.assertEqual(result["metadata"]["level_query"]["status"], "incomplete_level_evidence")
+
+    def test_history_requires_level_or_exact_code_before_frequency(self):
+        for selector in [["--subject", "SYN"], ["--course", "1000"]]:
+            status, output = self.query_rows(self.rows, *selector, "--format", "history")
+            result = json.loads(output)
+            self.assertEqual(status, 2)
+            self.assertEqual(result["courses"], [])
+            self.assertEqual(result["query_status"], "clarification_required")
+        status, output = self.query_rows(self.rows, "--course", "SYN1000", "--format", "history")
+        self.assertEqual(status, 0)
+        result = json.loads(output)
+        self.assertEqual(result["courses"][0]["course_level_status"], "unknown")
+        self.assertTrue(result["metadata"]["level_query"]["warnings"])
+
+    def test_history_separates_known_and_unknown_levels_for_same_code(self):
+        rows = [self.level_row("undergraduate"), self.level_row("graduate", crn="90002"), self.level_row("absent", crn="90003")]
+        result = build_course_history.build_history(rows, "synthetic")
+        self.assertEqual(result["course_count"], 3)
+        self.assertEqual([c["section_count"] for c in result["courses"]], [1, 1, 1])
+        self.assertEqual(sum(len(c["section_identities"]) for c in result["courses"]), 3)
+        status, output = self.query_rows(rows, "--course", "SYN1000", "--format", "history")
+        self.assertEqual(status, 2)
+        self.assertEqual(json.loads(output)["query_status"], "clarification_required")
+
+    def test_same_title_different_codes_are_not_merged_after_level_filter(self):
+        rows = [self.level_row("graduate"), self.level_row("graduate", crn="90002", subject="OTHER", course_display="OTHER 1000")]
+        status, output = self.query_rows(rows, "--level", "GR", "--format", "history")
+        self.assertEqual(status, 0)
+        self.assertEqual(json.loads(output)["course_count"], 2)
+
+    def test_offline_detail_overlay_preserves_archive_and_enrollment_time(self):
+        row = self.rows[0]
+        with tempfile.TemporaryDirectory() as directory:
+            path = fetch_course_details.cache_path(Path(directory), row["term_code"], row["crn"])
+            discover_public_terms.atomic_write_json(path, self.level_details("graduate"))
+            original = copy.deepcopy(row)
+            overlaid = query_courses.with_cached_levels(row, Path(directory))
+            self.assertEqual(row, original)
+            self.assertEqual(overlaid["retrieved_at"], original["retrieved_at"])
+            self.assertEqual(overlaid["enrollment"], original["enrollment"])
+            self.assertEqual(overlaid["course_levels"][0]["code"], "GR")
+            details = self.level_details("graduate")
+            details["crn"] = "wrong"
+            discover_public_terms.atomic_write_json(path, details)
+            with self.assertRaisesRegex(ValueError, "identity mismatch"):
+                query_courses.with_cached_levels(row, Path(directory))
+
+    def test_new_level_fields_validate_without_invalidating_legacy_rows(self):
+        import jsonschema
+        schema = json.loads((ROOT / "schemas/course-section.schema.json").read_text())
+        for row in [self.rows[0], self.level_row("graduate"), self.level_row("absent")]:
+            jsonschema.validate(row, schema)
+
+    def test_level_aware_human_formats_show_published_level(self):
+        for output_format in ["scan", "table", "full"]:
+            status, output = self.query_rows([self.level_row("undergraduate")], "--format", output_format)
+            self.assertEqual(status, 0)
+            self.assertIn("Undergraduate (UG)", output)
+
+    def test_enriched_snapshot_persists_levels_without_refreshing_listing_time(self):
+        for fail in [False, True]:
+            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as directory:
+                output = Path(directory)
+                row = copy.deepcopy(self.rows[0])
+                term = row["term_code"]
+                discover_public_terms.atomic_write_json(output / "public-terms.json", {"terms": [{"code": term, "description": "Synthetic term"}]})
+                args = fetch_public_courses.build_parser().parse_args(["--term", term, "--enrich-details", "--output", directory, "--detail-cache-dir", str(output / "details")])
+                metadata = {"term_label": "Synthetic term", "retrieved_at": row["retrieved_at"]}
+                details = self.level_details("graduate", row)
+                details["detail_status"] = "success"
+                with mock.patch.object(fetch_public_courses, "fetch_term", return_value=([row], metadata)), mock.patch.object(fetch_course_details, "fetch_details", return_value=details, side_effect=discover_public_terms.BannerError("synthetic outage") if fail else None), contextlib.redirect_stdout(io.StringIO()):
+                    fetch_public_courses.collect_one(args)
+                persisted = fetch_public_courses.read_jsonl(output / "current-sections.jsonl")[0]
+                self.assertEqual(persisted["retrieved_at"], self.rows[0]["retrieved_at"])
+                self.assertEqual(persisted["enrollment"], self.rows[0]["enrollment"])
+                if fail:
+                    self.assertEqual(persisted["course_levels"], [])
+                    self.assertEqual(persisted["course_level_metadata"]["status"], "failed")
+                else:
+                    self.assertEqual(persisted["course_levels"][0]["code"], "GR")
+                    self.assertEqual(persisted["course_level_metadata"]["retrieved_at"], details["retrieved_at"])
 
     def test_live_failure_never_returns_cached_current_value(self):
         class Broken:
