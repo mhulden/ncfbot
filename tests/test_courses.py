@@ -211,6 +211,10 @@ class CourseTests(unittest.TestCase):
         self.assertEqual(len(client.paths), 8)
         self.assertEqual(result["description"], "A synthetic description.")
         self.assertEqual(result["detail_status"], "success")
+        self.assertEqual(
+            result["course_level_metadata"]["source_url"],
+            "https://example.edu/searchResults/getSectionCatalogDetails?term=209908&courseReferenceNumber=90001",
+        )
 
     def test_query_filters(self):
         parser = query_courses.build_parser()

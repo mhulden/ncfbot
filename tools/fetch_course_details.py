@@ -112,11 +112,17 @@ def course_level_fields(details: dict[str, Any]) -> dict[str, Any]:
         levels, status = [], "not_published"
     else:
         levels, status = parse_course_levels(fragment)
+    source_url = str(details.get("source_url") or "")
+    catalog_base_url = (
+        source_url.rsplit("/", 1)[0]
+        if source_url
+        else DEFAULT_BASE_URL + "/searchResults"
+    )
     return {
         "course_levels": levels,
         "course_level_metadata": {
             "status": status,
-            "source_url": DEFAULT_BASE_URL + "/searchResults/getSectionCatalogDetails?" + urlencode({
+            "source_url": catalog_base_url + "/getSectionCatalogDetails?" + urlencode({
                 "term": details["term_code"], "courseReferenceNumber": details["crn"],
             }),
             "retrieved_at": details["retrieved_at"],
