@@ -48,6 +48,7 @@ Cross-role dependencies are owned elsewhere. When available, use `resources/stud
 - Treat admission deadlines, costs, aid programs, leadership, contacts, housing, dining, events, and current program offerings as freshness-sensitive.
 - Label the applicable cycle or academic year for deadlines and money.
 - A marketing or overview statement cannot override a controlling catalog, policy, or responsible-office source.
+- For scholarship claims, distinguish a population-level funding guarantee, a named program's eligibility/amount rules, and aggregate statistics such as average aid. An average does not establish an individual award. If a source does not establish an individual amount, say that rather than asserting the amount can never be guaranteed by any program.
 - If official sources disagree, keep the claims separate, identify the conflict and applicability, and direct the user to the responsible office when it cannot be resolved.
 - Never generalize a testing exception into a universal test-optional rule. For Florida-public-A.A. cases, resolve the student's timing and first-year/transfer pathway first; if current official admissions pages disagree, state both claims and route the applicant to Admissions rather than silently picking one.
 - Do not repeat a stale price, deadline, office holder, event, or housing detail without a current check.
@@ -74,6 +75,7 @@ Do not:
 - predict whether a person will be admitted;
 - guarantee transfer credit, housing, scholarships, aid, residency classification, or eligibility;
 - calculate a personalized financial-aid award, bill, or net price;
+- turn a scholarship average, percentage, or marketing statistic into a personalized award promise;
 - compare NCF to competitors as an institutional endorsement;
 - repeat rankings as objective quality judgments;
 - speak on behalf of NCF;
