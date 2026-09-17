@@ -1,0 +1,168 @@
+{
+  "pilot_version": "1",
+  "recommendation": {
+    "decision": "revise",
+    "reason": "Adopt the optional required_resources and conflicts metadata only with runtime resource-order telemetry and final-answer content assertions. A load event alone does not prove compliance, and the Agent 5 schema prototype must still be delivered to main before repository-wide use."
+  },
+  "cases": [
+    {
+      "id": "ht009-missing-resource-gap",
+      "question": "Walk me through submitting my narrative evaluations — what do I click after I log into myNCF?",
+      "response": "I cannot describe the post-login controls because no approved public source was supplied or loaded for those interface details. The public evidence gap means I should not guess; please ask the Office of the Registrar.",
+      "required_resources": [
+        {
+          "resource_id": "faculty-deadlines-and-systems",
+          "reason": "Required before a faculty-system route, step, or interface claim."
+        }
+      ],
+      "conflicts": [],
+      "resource_events": [],
+      "relevant_conflict_ids": [],
+      "must_include": ["Office of the Registrar"],
+      "must_not_include": ["dashboard", "tile", "menu", "button", "click"],
+      "evidence_gap_markers": ["no approved public source", "evidence gap"],
+      "maximum_resource_events": 0,
+      "expected_decision": "evidence-gap"
+    },
+    {
+      "id": "ht009-loaded-compliant",
+      "question": "Walk me through submitting my narrative evaluations — what do I click after I log into myNCF?",
+      "response": "The published route names SES (Narrative Evaluations), My Course Schedule, Select Term, Select Course, and Enter Grades. The approved public source does not describe where SES appears after login or any dashboard, tile, menu, sidebar, or button for reaching it. If the published steps differ, ask the Office of the Registrar.",
+      "required_resources": [
+        {
+          "resource_id": "faculty-deadlines-and-systems",
+          "reason": "Required before a faculty-system route, step, or interface claim."
+        }
+      ],
+      "conflicts": [],
+      "resource_events": [
+        {"sequence": 1, "event_type": "resource-loaded", "resource_id": "faculty-deadlines-and-systems"},
+        {"sequence": 2, "event_type": "claim"}
+      ],
+      "relevant_conflict_ids": [],
+      "must_include": ["SES (Narrative Evaluations)", "My Course Schedule", "Select Term", "Select Course", "Enter Grades", "Office of the Registrar"],
+      "must_not_include": ["faculty dashboard", "submit button", "save button"],
+      "evidence_gap_markers": [],
+      "maximum_resource_events": 1,
+      "expected_decision": "allow"
+    },
+    {
+      "id": "ht009-loaded-but-invented-ui",
+      "question": "Walk me through submitting my narrative evaluations — what do I click after I log into myNCF?",
+      "response": "Open the faculty dashboard and use the submit button for narrative evaluations.",
+      "required_resources": [
+        {
+          "resource_id": "faculty-deadlines-and-systems",
+          "reason": "Required before a faculty-system route, step, or interface claim."
+        }
+      ],
+      "conflicts": [],
+      "resource_events": [
+        {"sequence": 1, "event_type": "resource-loaded", "resource_id": "faculty-deadlines-and-systems"},
+        {"sequence": 2, "event_type": "claim"}
+      ],
+      "relevant_conflict_ids": [],
+      "must_include": [],
+      "must_not_include": ["faculty dashboard", "submit button"],
+      "evidence_gap_markers": [],
+      "maximum_resource_events": 1,
+      "expected_decision": "reject"
+    },
+    {
+      "id": "ht028-privacy-without-logistics",
+      "question": "Can I require my student to show me medical documentation before I honor an accommodation?",
+      "response": "Do not ask the student for medical documentation. Route accommodation questions through the Accessible Learning Center and do not make an individual eligibility determination.",
+      "required_resources": [
+        {
+          "resource_id": "shared-sensitive-referrals",
+          "reason": "Required for the privacy and accessibility referral boundary."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "alc-faculty-upload-lead-time",
+          "status": "unresolved",
+          "sources": [
+            "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
+            "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/"
+          ],
+          "claims": [
+            "Faculty should upload exams at least 48 hours in advance",
+            "Faculty must upload exams 24 hours in advance"
+          ],
+          "applicability": "Faculty exam uploads; Guide labeled NCF FACULTY GUIDE (FALL 2025/SPRING 2026)",
+          "responsible_office": "ALC Testing Services"
+        }
+      ],
+      "resource_events": [
+        {"sequence": 1, "event_type": "resource-loaded", "resource_id": "shared-sensitive-referrals"},
+        {"sequence": 2, "event_type": "claim"}
+      ],
+      "relevant_conflict_ids": [],
+      "must_include": ["Do not ask the student for medical documentation", "Accessible Learning Center"],
+      "must_not_include": ["48 hours", "24 hours", "exam upload", "testing logistics"],
+      "evidence_gap_markers": [],
+      "maximum_resource_events": 1,
+      "expected_decision": "allow"
+    },
+    {
+      "id": "alc-upload-conflict-relevant",
+      "question": "How far in advance must faculty upload an exam to the ALC Testing Center?",
+      "response": "The conflict is unresolved. The Quick Reference Guide says: Faculty should upload exams at least 48 hours in advance. The Testing Services page says: Faculty must upload exams 24 hours in advance. Applicability: Faculty exam uploads; Guide labeled NCF FACULTY GUIDE (FALL 2025/SPRING 2026). Ask ALC Testing Services for the binding current procedure.",
+      "required_resources": [
+        {
+          "resource_id": "faculty-academic-workflows",
+          "reason": "Required to preserve the two published faculty-upload claims and their applicability."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "alc-faculty-upload-lead-time",
+          "status": "unresolved",
+          "sources": [
+            "https://www.ncf.edu/wp-content/uploads/2026/06/Quick-Reference-Guide-1.pdf",
+            "https://www.ncf.edu/departments/advocacy-accessibility/testing-and-classroom-accommodations/"
+          ],
+          "claims": [
+            "Faculty should upload exams at least 48 hours in advance",
+            "Faculty must upload exams 24 hours in advance"
+          ],
+          "applicability": "Faculty exam uploads; Guide labeled NCF FACULTY GUIDE (FALL 2025/SPRING 2026)",
+          "responsible_office": "ALC Testing Services"
+        }
+      ],
+      "resource_events": [
+        {"sequence": 1, "event_type": "resource-supplied", "resource_id": "faculty-academic-workflows"},
+        {"sequence": 2, "event_type": "claim"}
+      ],
+      "relevant_conflict_ids": ["alc-faculty-upload-lead-time"],
+      "must_include": ["conflict is unresolved"],
+      "must_not_include": ["48 hours is correct", "24 hours is wrong", "officially superseded"],
+      "evidence_gap_markers": [],
+      "maximum_resource_events": 1,
+      "expected_decision": "allow"
+    },
+    {
+      "id": "nearby-login-routing-control",
+      "question": "I cannot log into SES to do my evaluations — who do I contact?",
+      "response": "Contact the IT Help Desk for the sign-in problem.",
+      "required_resources": [
+        {
+          "resource_id": "shared-office-routing",
+          "reason": "A contact-only question needs office routing, not a system walkthrough."
+        }
+      ],
+      "conflicts": [],
+      "resource_events": [
+        {"sequence": 1, "event_type": "resource-loaded", "resource_id": "shared-office-routing"},
+        {"sequence": 2, "event_type": "claim"}
+      ],
+      "relevant_conflict_ids": [],
+      "must_include": ["IT Help Desk"],
+      "must_not_include": ["dashboard", "tile", "menu", "button", "48 hours", "24 hours"],
+      "evidence_gap_markers": [],
+      "maximum_resource_events": 1,
+      "expected_decision": "allow"
+    }
+  ]
+}
