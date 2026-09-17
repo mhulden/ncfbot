@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 convert_sources.py — Agent 5: source body converter
 
@@ -91,14 +91,20 @@ def convert_html(body: bytes, source_url: str = "") -> str:
                       "aside", "form", "noscript", "iframe", "svg", "button"]):
         tag.decompose()
 
-    # Also remove common boilerplate by class/id heuristics
-    for tag in soup.find_all(True):
-        classes = " ".join(tag.get("class", []))
-        id_ = tag.get("id", "")
-        if any(kw in classes.lower() or kw in id_.lower()
-               for kw in ["nav", "menu", "sidebar", "footer", "header",
-                           "breadcrumb", "skip", "cookie", "banner", "search-bar"]):
-            tag.decompose()
+    # Also remove common boilerplate by class/id heuristics.
+    # Two-pass: collect first, then decompose. Decomposing a parent during
+    # find_all(True) iteration invalidates its child nodes, causing
+    # AttributeError when the iterator reaches them (issue #11).
+    _boilerplate_kws = ["nav", "menu", "sidebar", "footer", "header",
+                        "breadcrumb", "skip", "cookie", "banner", "search-bar"]
+    _to_decompose = [
+        tag for tag in soup.find_all(True)
+        if any(kw in " ".join(tag.get("class", [])).lower()
+               or kw in tag.get("id", "").lower()
+               for kw in _boilerplate_kws)
+    ]
+    for tag in _to_decompose:
+        tag.decompose()
 
     lines = []
     if source_url:
