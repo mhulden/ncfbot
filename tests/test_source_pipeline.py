@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_source_pipeline.py — Agent 5: unit tests for the source pipeline tools
 
 All tests are offline by default — no network access, no NCF site contact.
@@ -536,29 +536,40 @@ class TestHtmlConversion:
         assert "[catalog](https://www.ncf.edu/catalog/)" in result
 
     def test_nested_boilerplate_does_not_crash(self):
-        """
-        Regression for issue #11: decomposing a boilerplate parent tag during
-        find_all(True) iteration invalidated child nodes, raising AttributeError
-        on the next iteration when the child's .get() was called on NoneType.
-
-        The fix collects all matching tags in a first pass, then decomposes in
-        a second pass so no live iterator is active during decompose().
-        """
         html = (
             b"<html><body>"
-            b'<nav id="site-nav">'
-            b'  <ul class="menu"><li><a href="/">Home</a></li></ul>'
-            b"</nav>"
-            b"<main><h1>Deadlines</h1><p>Add/drop ends August 21.</p></main>"
+            b'<div class="menu"><span>Menu</span></div>'
+            b"<main><p>Keep this.</p></main>"
             b"</body></html>"
         )
-        # Must not raise AttributeError
         result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
-        assert "Deadlines" in result
-        assert "Add/drop ends August 21." in result
-        # The nav and its child menu must be stripped
-        assert "site-nav" not in result
-        assert "Home" not in result
+
+        assert "UNTRUSTED EVIDENCE" in result
+        assert "https://www.ncf.edu/test/" in result
+        assert "Menu" not in result
+        assert "Keep this." in result
+
+    def test_nested_matching_boilerplate_nodes_do_not_crash(self):
+        html = (
+            b"<html><body>"
+            b'<div class="menu"><span class="nav">Menu</span></div>'
+            b"<main><p>Keep this.</p></main>"
+            b"</body></html>"
+        )
+        result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
+
+        assert "Menu" not in result
+        assert "Keep this." in result
+
+    def test_non_boilerplate_nested_content_is_preserved(self):
+        html = (
+            b"<html><body>"
+            b'<div class="content"><span>Keep nested content.</span></div>'
+            b"</body></html>"
+        )
+        result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
+
+        assert "Keep nested content." in result
 
 
 # ---------------------------------------------------------------------------
