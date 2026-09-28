@@ -18,7 +18,7 @@ import json
 import subprocess
 import sys
 import textwrap
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from unittest.mock import MagicMock, patch, PropertyMock
 
 import pytest
@@ -688,6 +688,77 @@ class TestValidatorCrossReferences:
         )
         assert result.returncode == 2
         assert not output.exists()
+
+
+class TestManifestPosixPaths:
+    def setup_method(self):
+        import validate_sources as vs
+        self.vs = vs
+        self.record = {
+            "id": "shared-sample",
+            "resource_file": "resources/shared/sample.md",
+        }
+
+    def test_windows_sidecar_path_is_serialized_as_posix(self):
+        manifest = self.vs.build_manifest([
+            (PureWindowsPath(r"resources\shared\sample.source.json"), self.record)
+        ])
+
+        assert manifest["resources"][0]["sidecar_file"] == (
+            "resources/shared/sample.source.json"
+        )
+
+    def test_posix_sidecar_path_remains_repository_relative(self):
+        manifest = self.vs.build_manifest([
+            (Path("resources/shared/sample.source.json"), self.record)
+        ])
+
+        assert manifest["resources"][0]["sidecar_file"] == (
+            "resources/shared/sample.source.json"
+        )
+
+    @pytest.mark.parametrize(
+        "path",
+        [
+            Path("../outside.source.json"),
+            Path("other/sample.source.json"),
+            PureWindowsPath(r"C:\repo\resources\shared\sample.source.json"),
+            PureWindowsPath(r"resources\..\outside.source.json"),
+        ],
+    )
+    def test_manifest_rejects_paths_outside_resources(self, path):
+        with pytest.raises(ValueError, match="repository-relative|under resources"):
+            self.vs.build_manifest([(path, self.record)])
+
+    def test_generated_path_round_trips_through_doctor(self, tmp_path):
+        from ncfbot.doctor import _check_manifest
+        from ncfbot.sources import Resource
+
+        resource_dir = tmp_path / "resources" / "shared"
+        generated_dir = tmp_path / "resources" / "generated"
+        resource_dir.mkdir(parents=True)
+        generated_dir.mkdir(parents=True)
+        resource_path = resource_dir / "sample.md"
+        sidecar_path = resource_dir / "sample.source.json"
+        resource_path.write_text("# Sample\n", encoding="utf-8")
+        sidecar_path.write_text(json.dumps(self.record), encoding="utf-8")
+        manifest = self.vs.build_manifest([
+            (PureWindowsPath(r"resources\shared\sample.source.json"), self.record)
+        ])
+        (generated_dir / "manifest.json").write_text(
+            json.dumps(manifest), encoding="utf-8"
+        )
+        resource = Resource(
+            path=resource_path,
+            sidecar_path=sidecar_path,
+            markdown="# Sample\n",
+            metadata=self.record,
+        )
+        issues = []
+
+        _check_manifest(tmp_path, [resource], issues)
+
+        assert issues == []
 
 
 class TestDuplicateIdCheck:
