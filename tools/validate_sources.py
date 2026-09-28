@@ -24,7 +24,7 @@ import re
 import sys
 import tempfile
 from datetime import date, datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePath, PurePosixPath
 from typing import Any
 
 try:
@@ -234,7 +234,16 @@ def check_duplicate_ids(sidecars: list[tuple[Path, dict]]) -> list[str]:
 MANIFEST_SCHEMA_VERSION = "1"
 
 
-def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
+def _manifest_sidecar_file(path: PurePath) -> str:
+    if path.is_absolute() or path.anchor or ".." in path.parts:
+        raise ValueError(f"sidecar path must be repository-relative: {path}")
+    normalized = PurePosixPath(*path.parts)
+    if not normalized.parts or normalized.parts[0] != RESOURCES_DIR.as_posix():
+        raise ValueError(f"sidecar path must remain under resources/: {path}")
+    return normalized.as_posix()
+
+
+def build_manifest(sidecars: list[tuple[PurePath, dict]]) -> dict:
     """
     Build a combined machine-readable manifest of all corpus sources.
     Shape matches integration-contracts.md: top-level metadata + resources array.
@@ -260,7 +269,7 @@ def build_manifest(sidecars: list[tuple[Path, dict]]) -> dict:
                 for s in data.get("sources", [])
                 if s.get("canonical_url")
             ],
-            "sidecar_file": str(path),
+            "sidecar_file": _manifest_sidecar_file(path),
             "record": data,
         })
 
