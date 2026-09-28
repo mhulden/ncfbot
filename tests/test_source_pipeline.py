@@ -535,6 +535,42 @@ class TestHtmlConversion:
         result = self.cs.convert_html(html)
         assert "[catalog](https://www.ncf.edu/catalog/)" in result
 
+    def test_nested_boilerplate_does_not_crash(self):
+        html = (
+            b"<html><body>"
+            b'<div class="menu"><span>Menu</span></div>'
+            b"<main><p>Keep this.</p></main>"
+            b"</body></html>"
+        )
+        result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
+
+        assert "UNTRUSTED EVIDENCE" in result
+        assert "https://www.ncf.edu/test/" in result
+        assert "Menu" not in result
+        assert "Keep this." in result
+
+    def test_nested_matching_boilerplate_nodes_do_not_crash(self):
+        html = (
+            b"<html><body>"
+            b'<div class="menu"><span class="nav">Menu</span></div>'
+            b"<main><p>Keep this.</p></main>"
+            b"</body></html>"
+        )
+        result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
+
+        assert "Menu" not in result
+        assert "Keep this." in result
+
+    def test_non_boilerplate_nested_content_is_preserved(self):
+        html = (
+            b"<html><body>"
+            b'<div class="content"><span>Keep nested content.</span></div>'
+            b"</body></html>"
+        )
+        result = self.cs.convert_html(html, "https://www.ncf.edu/test/")
+
+        assert "Keep nested content." in result
+
 
 # ---------------------------------------------------------------------------
 # validate_sources tests
