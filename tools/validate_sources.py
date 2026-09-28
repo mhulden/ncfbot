@@ -27,6 +27,10 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 try:
     import jsonschema
     from jsonschema import Draft202012Validator
@@ -36,6 +40,8 @@ except ImportError:
         "Missing dependency: pip install jsonschema\n"
         "Install all dev dependencies with: pip install -e '.[dev]'"
     )
+
+from ncfbot.sources import structured_constraint_errors
 
 logging.basicConfig(
     level=logging.INFO,
@@ -99,6 +105,8 @@ def validate_sidecar(sidecar_path: Path, validator: Draft202012Validator) -> lis
 
     if errors:
         return errors  # No point continuing if schema is broken
+
+    errors.extend(structured_constraint_errors(data, str(sidecar_path)))
 
     # 3. resource_file is a safe neighboring resource path and exists
     repository_root = Path.cwd().resolve()
