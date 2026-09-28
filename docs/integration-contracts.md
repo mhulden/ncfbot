@@ -94,6 +94,20 @@ Schema owner: Agent 5, `schemas/source-record.schema.json`.
 | `sha256` | string | 64 lowercase hexadecimal characters; hash of the retrieved source body bytes, not the authored summary |
 | `public_access_verified` | boolean | Must be true for usable public evidence; a login response cannot count as verification |
 
+### Optional structured constraints
+
+Issue #37 adds two optional, backward-compatible resource-level arrays. Existing
+sidecars do not need either field.
+
+| Key | Shape | Rule |
+|---|---|---|
+| `required_resources` | objects with `resource_id`, `reason` | Each resource ID is kebab-case and unique within the array; the reason is nonempty. This metadata states a dependency but does not prove that an agent loaded it. |
+| `conflicts` | objects with `conflict_id`, `status`, `sources`, `claims`, `applicability`, `responsible_office` | IDs are kebab-case and unique; status is `unresolved`, `resolved`, or `deferred`; every source is a canonical URL already present in top-level `sources`; source and claim arrays contain at least two positionally paired entries; applicability and responsible office are nonempty. |
+
+Consumers use the schema and manifest record directly; they do not import the
+source-pipeline validator. Enforcement also requires runtime resource-order
+telemetry and final-answer checks, as demonstrated by Agent 7's bounded pilot.
+
 Required nullable keys must remain present. Inverted effective dates, duplicate IDs, unsafe paths, false public verification, missing hashes, and source-footer mismatches are validation failures. Source reachability/factual currency require separate checks; syntactically valid metadata is not proof of correctness.
 
 Illustrative shape only; placeholder strings must be replaced through real collection:
