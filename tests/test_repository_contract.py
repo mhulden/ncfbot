@@ -94,6 +94,12 @@ def _complete_synthetic_repository(root: Path) -> Path:
         "meeting_summary": None, "credits_or_units": None, "attributes": [], "description": None,
         "prerequisites": None, "corequisites": None, "restrictions": None, "mutual_exclusions": None,
         "catalog_details": None, "linked_sections": None, "cross_listed_sections": None,
+        "course_levels": [{"code": "UG", "description": "Undergraduate"}],
+        "course_level_metadata": {
+            "status": "published",
+            "source_url": "https://example.edu/public-course-search/catalog-details",
+            "retrieved_at": "2026-08-31T12:01:00Z",
+        },
         "detail_level": "listing", "detail_status": "not_requested",
         "source_url": "https://example.edu/public-course-search", "retrieved_at": "2026-08-31T12:00:00Z",
         "enrollment": None,
@@ -121,10 +127,13 @@ def _complete_synthetic_repository(root: Path) -> Path:
     (courses / "course-history.json").write_text(json.dumps({
         "source": "resources/courses/historical-sections.jsonl", "course_count": 1, "section_count": 1,
         "coverage": {"earliest_term_code": "202601", "latest_term_code": "202601"},
-        "courses": [{"subject": "TST", "course_number": "1000", "course_display": "TST 1000",
+        "courses": [{"subject": "TST", "course_number": "1000",
+                     "course_levels": [{"code": "UG", "description": "Undergraduate"}],
+                     "course_level_status": "published", "course_display": "TST 1000",
                      "titles": ["Synthetic Course"], "terms": [{"term_code": "202601", "term_label": "Synthetic Term"}],
                      "instructors": [], "attributes": [], "section_count": 1,
-                     "section_identities": [{"term_code": "202601", "crn": "12345", "section": "001"}]}],
+                     "section_identities": [{"term_code": "202601", "crn": "12345", "section": "001",
+                                              "course_level_metadata": record["course_level_metadata"]}]}],
     }), encoding="utf-8")
     return root
 
