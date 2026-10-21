@@ -1,40 +1,50 @@
 # Public Course Archive Scan
 
-Generated: 2026-08-31T18:24:35Z
-Sections: 5103
+Generated: 2026-10-21T19:32:43Z
+Sections: 5343
 
 | Course | Title | Term | Sections |
 |---|---|---|---:|
 | ACG 2001 | Introduction to Accounting and Finance | Fall 2025 | 1 |
 | ACG 2001 | Introduction to Accounting and Finance | Fall 2026 | 1 |
 | ACG 2001 | Introduction to Accounting and Finance | Spring 2026 | 1 |
+| ACG 2001 | Introduction to Accounting and Finance | Spring 2027 | 1 |
 | AMH 2010 | American History to 1877 | Fall 2026 | 1 |
 | AMH 2010 | US History Precolonial to 1877 | Fall 2024 | 1 |
 | AMH 2010 | US History Precolonial to 1877 | Fall 2025 | 1 |
 | AMH 2020 | American History Since 1877 | Spring 2025 | 1 |
 | AMH 2020 | American History Since 1877 | Spring 2026 | 1 |
+| AMH 2020 | American History Since 1877 | Spring 2027 | 1 |
 | AMH 3343 | History of Individual Rights | Fall 2026 | 1 |
 | AMH 3420 | Florida History | Fall 2025 | 1 |
 | AMH 3420 | Florida History | Fall 2026 | 1 |
+| AMH 3551 | American Constitutional History | Spring 2027 | 1 |
 | AMH 3558 | American Legal History | Spring 2026 | 1 |
 | AMH 3643 | Fiction in History and Historical Fiction | Fall 2025 | 1 |
 | AMH 3930 | The Civil War and the Transformation of American Democracy | Spring 2026 | 1 |
+| AML 2070 | Environmental Imagination in American Literature | Spring 2027 | 1 |
 | AML 3300 | Eros and Betrayal in American Literature and Film | Fall 2026 | 1 |
+| AMS 3312 | Democracy in America | Spring 2027 | 1 |
+| ANS 2008 | Introduction to Animal Wellbeing | Spring 2027 | 1 |
 | ANT 2100 | Introduction to Archaeology | Fall 2026 | 1 |
 | ANT 2105 | Heritage: History and the Past Today | Fall 2025 | 1 |
+| ANT 2105 | Heritage: History and the Past Today | Spring 2027 | 1 |
 | ANT 2405 | Game Changers | Fall 2026 | 1 |
 | ANT 2410 | Introduction to Cultural Anthropology | Fall 2025 | 1 |
 | ANT 2514 | Introduction to Biological Anthropology | Spring 2026 | 1 |
 | ANT 2703 | Business Anthropology | Fall 2025 | 1 |
 | ANT 2703 | Business Anthropology | Fall 2026 | 1 |
 | ANT 2931 | Visions of America: Film and the American Dream | Fall 2025 | 1 |
+| ANT 2932 | Sports and War | Spring 2027 | 1 |
 | ANT 2933 | The World Cup | Spring 2026 | 2 |
 | ANT 3053 | Human and Animal Health in a Changing World | Fall 2026 | 1 |
 | ANT 3158 | Archaeology of Florida | Fall 2026 | 1 |
 | ANT 3194 | Clockwork, Slow Living, and Planetary Futures: The Social Life of Time | Spring 2026 | 1 |
 | ANT 3274 | Culture and Politics | Fall 2026 | 1 |
+| ANT 3405 | Diamonds and Squares | Spring 2027 | 1 |
 | ANT 3442 | Expert Knowledge, Design Thinking, and Posthumanism: Anthropology of Tomorrow | Fall 2026 | 1 |
 | ANT 3464 | Medical Anthropology | Fall 2025 | 1 |
+| ANT 3464 | Medical Anthropology | Spring 2027 | 1 |
 | ANT 3482 | Global Mental Health | Spring 2026 | 1 |
 | ANT 3931 | Archaeology of the Holy Land | Spring 2026 | 1 |
 | ANT 3932 | Cults and Fraternities: Ritual, Myth and Symbolism | Spring 2026 | 1 |
@@ -43,6 +53,8 @@ Sections: 5103
 | ANT 3940 | Classical Archaeology &amp; Art: Greek and Roman Culture | Fall 2025 | 1 |
 | ANT 4034 | History of Anthropological Theory | Fall 2025 | 1 |
 | ANT 4114 | Method and Theory in Archaeology | Spring 2026 | 1 |
+| ANT 4495 | Ethnography: Theory and Practice | Spring 2027 | 1 |
+| ANT 4824 | Next Generation Archaeological Field School | Spring 2027 | 1 |
 | ANTH 2000 | Introduction to Anthropology | Fall 2024 | 1 |
 | ANTH 2100 | Introduction to Cultural Anthropology* | Fall 2017 | 1 |
 | ANTH 2100 | Introduction to Cultural Anthropology* | Fall 2019 | 1 |
@@ -152,17 +164,23 @@ Sections: 5103
 | ANTH 4820 | Anthropology of Humanitarianism | Fall 2024 | 1 |
 | ARH 2011 | From Caves to Cathedrals: A Global Introduction to Art History of the Ancient and Medieval World | Fall 2025 | 1 |
 | ARH 2050 | Intro to Art History I: From Caves to Cathedrals | Fall 2026 | 1 |
+| ARH 2050 | Introduction to Art History I: From Caves to Cathedrals | Spring 2027 | 1 |
 | ARH 2051 | From Michelangelo to Mass Culture: A Global Introduction to Art History of the Modern World | Spring 2026 | 1 |
 | ARH 2355 | Pleasure and Power: Art in the 18th Century | Spring 2026 | 1 |
 | ARH 2405 | Public Art and Its Public(s) in the United States | Fall 2026 | 1 |
 | ARH 2430 | Revolution, Empire, Modernity: Art in Nineteenth-Century Europe and the United States | Fall 2026 | 1 |
 | ARH 2470 | Art Since 1945: Modernity, Postmodernity, and Contemporaneity | Fall 2025 | 1 |
 | ARH 2850 | Worlds of Wonder: A History of Museums | Spring 2026 | 1 |
+| ARH 2850 | Worlds of Wonder: A History of Museums | Spring 2027 | 1 |
+| ARH 2857 | Museum Studies in Theory and Practice | Spring 2027 | 1 |
+| ARH 3450 | Modern Art in and Beyond the West, 1900-1940 | Spring 2027 | 1 |
+| ARH 3572 | Islamic Art and Architecture | Spring 2027 | 1 |
 | ARH 3801 | Monsters and Miracles in the Middle Ages | Fall 2026 | 1 |
 | ARH 3871 | Women&rsquo;s (Art)Work: Modern Women as Patrons and Producers in the Visual Arts | Fall 2025 | 1 |
 | ARH 3930 | Picturing Landscape: Nature and Art from the 15th to the 20th Centuries in Europe, England, and the | Fall 2025 | 1 |
 | ARH 3930 | The Role of the Artist from the 15th to the 21st Centuries in Europe and America | Spring 2026 | 1 |
 | ARH 4864 | Ways of Seeing: Theory and Methods in Art History | Spring 2026 | 1 |
+| ART 1053 | Art in Action: Exploration &amp; Preparation for Creative Careers | Spring 2027 | 1 |
 | ART 2000 | Beginning Digital Photography | Fall 2024 | 2 |
 | ART 2030 | Painting Principles: Color to Form | Fall 2025 | 1 |
 | ART 2030 | Painting Principles: Color to Form | Fall 2026 | 1 |
@@ -197,6 +215,7 @@ Sections: 5103
 | ART 2305 | Perceptual Drawing Methods | Fall 2025 | 1 |
 | ART 2305 | Perceptual Drawing Methods | Fall 2026 | 1 |
 | ART 2305 | Perceptual Drawing Methods | Spring 2026 | 1 |
+| ART 2305 | Perceptual Drawing Methods | Spring 2027 | 1 |
 | ART 2320 | Metal Sculpture | Spring 2024 | 1 |
 | ART 2320 | Metal Sculpture | Spring 2025 | 1 |
 | ART 2340 | Collage: Process and Ideation | Fall 2020 | 1 |
@@ -220,6 +239,8 @@ Sections: 5103
 | ART 2665 | 3D Design: Tools &amp; Techniques: An Intro to Materials, Processes, &amp; History of 3D Artistic Practice | Fall 2025 | 1 |
 | ART 2665 | 3D Design: Tools &amp; Techniques: An Intro to Materials, Processes, &amp; History of 3D Artistic Practice | Fall 2026 | 1 |
 | ART 2665 | 3D Design: Tools &amp; Techniques: An Intro to Materials, Processes, &amp; History of 3D Artistic Practice | Spring 2026 | 1 |
+| ART 2665 | 3D Design: Tools &amp; Techniques: An Intro to Materials, Processes, &amp; History of 3D Artistic Practice | Spring 2027 | 1 |
+| ART 2670 | Techne: AI and Art | Spring 2027 | 1 |
 | ART 3000 | Sculpture II | Fall 2018 | 1 |
 | ART 3010 | Non-Traditional Sculpture Practices | Fall 2024 | 1 |
 | ART 3010 | Sculpture Practice | Spring 2025 | 1 |
@@ -247,6 +268,7 @@ Sections: 5103
 | ART 3702 | Sculpture Practice | Fall 2025 | 1 |
 | ART 3702 | Sculpture Practice | Fall 2026 | 1 |
 | ART 3702 | Sculpture Practice | Spring 2026 | 1 |
+| ART 3702 | Sculpture Practice | Spring 2027 | 1 |
 | ART 4000 | Filmmaking as Art | Spring 2025 | 1 |
 | ART 4006 | Filmmaking as Art | Fall 2025 | 1 |
 | ART 4006 | Filmmaking as Art | Fall 2026 | 1 |
@@ -255,10 +277,12 @@ Sections: 5103
 | ART 4300 | Sculpture II | Fall 2017 | 1 |
 | ART 4340 | Collage: Painting and Ideation | Spring 2025 | 1 |
 | ART 4400 | Moldmaking and Casting | Spring 2018 | 1 |
+| ART 4513 | Painting, Collage and Ideation | Spring 2027 | 1 |
 | ART 4709 | Sculpture and the Found Object | Spring 2026 | 1 |
 | ART 4897 | Art Senior Seminar I | Fall 2025 | 1 |
 | ART 4897 | Art Senior Seminar I | Fall 2026 | 1 |
 | ART 4897 | Art Senior Seminar I | Spring 2026 | 1 |
+| ART 4897 | Art Senior Seminar I | Spring 2027 | 1 |
 | ART 4998 | Art Senior Seminar | Fall 2019 | 1 |
 | ART 4998 | Art Senior Seminar | Fall 2020 | 1 |
 | ART 4998 | Art Senior Seminar | Fall 2021 | 1 |
@@ -340,15 +364,20 @@ Sections: 5103
 | ARTH 4998 | Art History Senior Seminar | Fall 2019 | 1 |
 | ARTH 4998 | Art History Senior Seminar | Fall 2020 | 1 |
 | ASH 2021 | East Asian Civilization | Spring 2026 | 1 |
+| ASH 2041 | Chinese History Since 1800 | Spring 2027 | 1 |
 | ASH 2402 | Chinese History to 1800 | Fall 2026 | 1 |
 | ASH 2930 | Age of Openness: China Before Mao (1912-1949) | Spring 2026 | 1 |
+| ASH 2934 | History of Food in China | Spring 2027 | 1 |
 | ASH 3934 | Environmental History of China | Fall 2026 | 1 |
+| ASH 3937 | Genghis Khan and the Mongol Empire | Spring 2027 | 1 |
 | AST 2002 | Descriptive Astronomy | Spring 2026 | 1 |
+| AST 3005 | Biology in Space | Spring 2027 | 1 |
 | BCH 3024 | MOLECULAR BIOLOGY | Fall 2025 | 1 |
 | BCH 3703 | Physics II through the lens of Biophysics | Spring 2026 | 1 |
 | BCH 4025 | Biochemistry I: The Molecular Basis of Life and Health | Fall 2025 | 1 |
 | BCH 4025 | Biochemistry I: The Molecular Basis of Life and Health | Fall 2026 | 1 |
 | BCH 4026 | Biochemistry II: Advanced Metabolism and Applications in Health and Nutrition | Spring 2026 | 1 |
+| BCH 4026 | Biochemistry II: Advanced Metabolism and Applications in Health and Nutrition | Spring 2027 | 1 |
 | BCH 4103 | Biochemistry and Molecular Biology Laboratory | Fall 2025 | 1 |
 | BCH 4103 | Biochemistry and Molecular Biology Laboratory | Fall 2026 | 1 |
 | BIOL 2012 | Horticulture Methods: Theory and Practice | Spring 2025 | 1 |
@@ -613,19 +642,24 @@ Sections: 5103
 | BOT 2010 | Introduction to Botany | Fall 2026 | 1 |
 | BOT 3402 | Aquatic Botany | Fall 2025 | 1 |
 | BOT 3802 | Ethnobotany | Spring 2026 | 1 |
+| BOT 3802 | Ethnobotany | Spring 2027 | 1 |
 | BSC 2005 | Foundations of Biology I | Fall 2024 | 3 |
 | BSC 2005L | Foundations of Biology Laboratory | Fall 2024 | 2 |
 | BSC 2010 | Foundations of Biology I | Fall 2025 | 4 |
 | BSC 2010 | Foundations of Biology I | Fall 2026 | 4 |
 | BSC 2010 | Foundations of Biology I | Spring 2025 | 1 |
 | BSC 2010 | Foundations of Biology I | Spring 2026 | 1 |
+| BSC 2010 | Foundations of Biology I | Spring 2027 | 1 |
 | BSC 2010L | Foundations of Biology Laboratory | Fall 2025 | 2 |
 | BSC 2010L | Foundations of Biology Laboratory | Fall 2026 | 2 |
 | BSC 2010L | Foundations of Biology Laboratory | Spring 2025 | 2 |
 | BSC 2010L | Foundations of Biology Laboratory | Spring 2026 | 2 |
+| BSC 2010L | Foundations of Biology Laboratory | Spring 2027 | 2 |
 | BSC 2011 | Foundations of Biology II | Spring 2025 | 2 |
 | BSC 2011 | Foundations of Biology II | Spring 2026 | 3 |
+| BSC 2011 | Foundations of Biology II | Spring 2027 | 2 |
 | BSC 2025 | Nutrition in Sport &amp; Exercise | Spring 2026 | 1 |
+| BSC 2025 | Nutrition in Sport &amp; Exercise | Spring 2027 | 1 |
 | BSC 2085 | Anatomy &amp; Physiology | Fall 2024 | 2 |
 | BSC 2085 | Anatomy and Physiology 1 Theory | Fall 2026 | 1 |
 | BSC 2085L | Anatomy &amp; Physiology Lab | Fall 2025 | 1 |
@@ -633,6 +667,8 @@ Sections: 5103
 | BSC 2089L | Anatomy and Physiology II Lab | Spring 2026 | 1 |
 | BSC 2930 | Epidemiology Matters: An Introduction | Spring 2026 | 1 |
 | BSC 3052 | Conservation Biology | Spring 2026 | 1 |
+| BSC 3284 | Symbiosis | Spring 2027 | 1 |
+| BSC 3444 | Topics in Genomics | Spring 2027 | 1 |
 | BSC 3453 | Research Methodology | Spring 2026 | 1 |
 | BSC 3932 | Biophysical Ecology Field Methods | Spring 2026 | 1 |
 | BSC 5913 | The Art of Thesis Proposal | Spring 2025 | 1 |
@@ -641,6 +677,7 @@ Sections: 5103
 | CAI 3105 | Machine Learning | Fall 2026 | 1 |
 | CAI 3827 | AI Agent Programming Techniques | Fall 2026 | 1 |
 | CAI 3863 | AI - Deep Learning | Spring 2026 | 1 |
+| CAP 3027 | 2D Game Development with C++ | Spring 2027 | 1 |
 | CAP 3118 | Introduction to Virtual Reality Systems | Spring 2026 | 1 |
 | CAP 3327 | Distributed Computing for Computer Science | Spring 2026 | 1 |
 | CAP 3328 | Algorithms | Spring 2026 | 1 |
@@ -697,6 +734,7 @@ Sections: 5103
 | CAP 5940 | Practicum | Spring 2022 | 1 |
 | CDA 2109 | Introduction to Computer Systems, Architecture and Digital Hardware | Fall 2026 | 1 |
 | CEN 3020 | Software Engineering | Spring 2026 | 1 |
+| CEN 3020 | Software Engineering | Spring 2027 | 1 |
 | CEN 3213 | Embedded Systems | Fall 2025 | 1 |
 | CEN 3352 | Front-End Web Design and Development | Fall 2026 | 1 |
 | CEN 3722 | Foundations of Human Centered Computing | Fall 2025 | 1 |
@@ -829,13 +867,17 @@ Sections: 5103
 | CHI 1100 | First-Year Modern Chinese I | Fall 2025 | 1 |
 | CHI 1100 | First-Year Modern Chinese I | Fall 2026 | 1 |
 | CHI 1101 | First-Year Modern Chinese II | Spring 2026 | 1 |
+| CHI 1101 | First-Year Modern Chinese II | Spring 2027 | 1 |
 | CHI 2200 | Second-Year Modern Chinese I | Fall 2025 | 1 |
 | CHI 2200 | Second-Year Modern Chinese I | Fall 2026 | 1 |
 | CHI 2201 | Second-Year Modern Chinese II | Spring 2026 | 1 |
+| CHI 2201 | Second-Year Modern Chinese II | Spring 2027 | 1 |
 | CHI 3240 | Third Year Modern Chinese II | Spring 2026 | 1 |
+| CHI 3240 | Third Year Modern Chinese II | Spring 2027 | 1 |
 | CHI 3410 | Third-Year Modern Chinese I | Fall 2025 | 1 |
 | CHI 3410 | Third-Year Modern Chinese I | Fall 2026 | 1 |
 | CHI 4151 | Fourth-Year Modern Chinese II | Spring 2026 | 1 |
+| CHI 4151 | Fourth-Year Modern Chinese II | Spring 2027 | 1 |
 | CHI 4443 | Fourth-Year Modern Chinese 1 | Fall 2025 | 1 |
 | CHI 4443 | Fourth-Year Modern Chinese 1 | Fall 2026 | 1 |
 | CHIN 2100 | First Year Modern Chinese I | Fall 2017 | 1 |
@@ -851,26 +893,35 @@ Sections: 5103
 | CHM 2045 | General Chemistry I | Spring 2026 | 1 |
 | CHM 2046 | General Chemistry II | Spring 2025 | 1 |
 | CHM 2046 | General Chemistry II | Spring 2026 | 2 |
+| CHM 2046 | General Chemistry II | Spring 2027 | 3 |
 | CHM 2046L | General Chemistry Lab | Spring 2025 | 2 |
+| CHM 2054 | General Chemistry Lab | Spring 2027 | 4 |
 | CHM 2054 | General Chemistry Laboratory | Spring 2026 | 4 |
 | CHM 2081 | Introduction to Environmental Chemistry | Fall 2025 | 1 |
 | CHM 2081 | Introduction to Environmental Chemistry | Fall 2026 | 1 |
 | CHM 3210 | Organic Chemistry I: Structure &amp; Reactivity I | Fall 2026 | 2 |
 | CHM 3210 | Organic Chemistry I: Structure and Reactivity | Fall 2025 | 2 |
 | CHM 3211 | Organic Chemistry II: Structure and Reactivity | Spring 2026 | 1 |
+| CHM 3211 | Organic Chemistry II: Structure and Reactivity | Spring 2027 | 1 |
 | CHM 3212 | Organic Chemistry I Laboratory | Fall 2025 | 2 |
 | CHM 3212 | Organic Chemistry I Laboratory | Fall 2026 | 2 |
 | CHM 3610 | Inorganic Chemistry | Fall 2026 | 1 |
+| CHM 3611 | Inorganic Chemistry Laboratory | Spring 2027 | 1 |
 | CHM 3930 | Shaping Future Medicines: The Power of Molecular Modeling | Spring 2026 | 1 |
+| CHM 3930 | Shaping Future Medicines: The Power of Molecular Modeling | Spring 2027 | 1 |
 | CHM 4100 | Analytical Chemistry | Spring 2026 | 1 |
 | CHM 4212 | Organic Chemistry II Laboratory | Spring 2026 | 2 |
+| CHM 4212 | Organic Chemistry II Laboratory | Spring 2027 | 2 |
 | CHM 4411 | Physical Chemistry: Thermodynamics | Spring 2026 | 1 |
+| CHM 4411 | Physical Chemistry: Thermodynamics | Spring 2027 | 1 |
 | CHM 4412 | Physical Chemistry: Quantum Mechanics | Fall 2025 | 1 |
 | CHM 4412 | Physical Chemistry: Quantum Mechanics | Fall 2026 | 1 |
 | CHM 4416 | Physical Chemistry Laboratory | Spring 2026 | 1 |
+| CHM 4416 | Physical Chemistry Laboratory | Spring 2027 | 1 |
 | CHM 4905 | Chemical Research, Communication and Careers | Fall 2025 | 1 |
 | CHT 2124 | Modern Chinese Literature and Film | Fall 2025 | 1 |
 | CHT 2930 | Humans and Nature in Chinese Literature and Film | Spring 2026 | 1 |
+| CHT 2931 | Mulan, Monkey King, and Beyond: Heroes in Chinese Literature | Spring 2027 | 1 |
 | CHT 2934 | Chinese Science Fiction | Fall 2026 | 1 |
 | CIS 2204 | Hacking | Spring 2026 | 1 |
 | CIS 3303 | Object Oriented Design | Fall 2025 | 1 |
@@ -892,24 +943,35 @@ Sections: 5103
 | CLAS 4425 | Advanced Latin: Satyrica of Petronius | Fall 2017 | 1 |
 | CLAS 4440 | Advanced Latin: Ovid, Metamorphoses | Spring 2018 | 1 |
 | CLT 2100 | Greek Monsters and Marvels | Fall 2025 | 1 |
+| CLT 2930 | Ancient Greek and Roman Medici | Spring 2027 | 1 |
 | COP 2047 | Introduction to Programming in Python | Fall 2025 | 1 |
 | COP 2047 | Introduction to Programming in Python | Fall 2026 | 1 |
+| COP 2222 | Programming in C | Spring 2027 | 1 |
 | COP 2331 | Object Oriented Programming | Spring 2026 | 1 |
+| COP 2331 | Object Oriented Programming | Spring 2027 | 1 |
 | COP 2810 | Web Programming | Fall 2025 | 1 |
 | COP 2930 | Functional Programming in Haskell | Spring 2026 | 1 |
 | COP 3041 | Intermediate Python | Fall 2025 | 1 |
 | COP 3521 | Building Data Science Systems: Cloud Models &amp; Distributed Computing | Spring 2026 | 1 |
+| COP 3533 | Algorithms | Spring 2027 | 1 |
 | COP 3535 | Data Structures | Fall 2025 | 1 |
 | COP 3535 | Data Structures | Fall 2026 | 1 |
 | COT 4519 | Topics in Algorithms: Graphs | Spring 2026 | 1 |
+| COT 4560 | Topics In Algorithms: Graph Mining | Spring 2027 | 1 |
+| CPO 2002 | Introduction to Comparative Politics | Spring 2027 | 1 |
 | CPO 3055 | Modern Authoritarianism | Fall 2026 | 1 |
+| CPO 3643 | Politics of Russia | Spring 2027 | 1 |
 | CPO 4731 | Transitions to Democracy in Comparative Perspective | Fall 2026 | 1 |
 | CRW 2000 | Imaginary Writing: An Intro to Creative Writing in Fiction, Creative Nonfiction, and Poetry | Spring 2026 | 1 |
 | CRW 2000 | Imaginary Writing: An Intro to Creative Writing in the Fiction, Creative nonfiction &amp; Poetry | Fall 2025 | 1 |
 | CRW 2000 | Imaginary Writing: An Introduction to Creative Writing | Fall 2026 | 1 |
+| CRW 2100 | Introduction to Short Story Workshop | Spring 2027 | 1 |
+| CRW 2201 | Intro to Creative Nonfiction | Spring 2027 | 1 |
 | CRW 2320 | Introduction to Reading and Writing Poetry: Workshop | Fall 2025 | 1 |
 | CRW 2320 | Introduction to Reading and Writing Poetry: Workshop | Fall 2026 | 1 |
+| CRW 3010 | Intermediate/Advanced Poetry Workshop | Spring 2027 | 1 |
 | CRW 3015 | Alternative Forms of the Short Story: Writing the Short-Short Story and the Novella | Fall 2025 | 1 |
+| CRW 3120 | Intermediate/Advanced Short Story Workshop | Spring 2027 | 1 |
 | CRW 3120 | Intermediate/Advanced Writing the Short Story | Fall 2026 | 1 |
 | CRW 3120 | Intermediate/Advanced Writing the Short Story: Short Story Workshop | Spring 2026 | 1 |
 | CRW 3320 | Advanced Creative Nonfiction Workshop | Fall 2025 | 1 |
@@ -1040,6 +1102,8 @@ Sections: 5103
 | CSCI 4800 | Robot Kinematics and Learning | Spring 2022 | 1 |
 | CSSC 4975 | Career Success Seminar | Summer 2017 | 1 |
 | CSSC 4975 | Career Success Seminar | Summer 2018 | 2 |
+| CST 2935 | Eighteenth-Century Aesthetics: Aesthetics and Ethics | Spring 2027 | 1 |
+| DAA 1100 | Contemporary Flow - Foundations of Contemporary Dance &amp; Movement Exploration | Spring 2027 | 1 |
 | DAA 1200 | Ballet Flow | Fall 2026 | 1 |
 | DAA 1743 | Body Tool Kit 1 | Fall 2025 | 1 |
 | DAA 1743 | Body Tool Kit 1 | Fall 2026 | 1 |
@@ -1048,6 +1112,7 @@ Sections: 5103
 | DAA 2573 | Tap/Jazz Dance &amp; Performance | Fall 2025 | 1 |
 | DAA 3101 | Contemporary Dance &amp; Community | Spring 2026 | 1 |
 | DAA 3573 | Jazz and Tap Dance Combo II | Spring 2026 | 1 |
+| DAN 1743 | BODY TOOL KIT SPRING - Pilates, Stretch, and Strength Training | Spring 2027 | 1 |
 | DANC 2090 | The Elements of Dance* | Fall 2021 | 1 |
 | DANC 2100 | Contemporary Dance I* | Fall 2019 | 1 |
 | DANC 2100 | Introduction to Contemporary Dance* | Fall 2020 | 1 |
@@ -1106,17 +1171,22 @@ Sections: 5103
 | ECO 2017 | Principles of Macroeconomics | Fall 2025 | 1 |
 | ECO 2017 | Principles of Macroeconomics | Fall 2026 | 1 |
 | ECO 2017 | Principles of Macroeconomics | Spring 2026 | 1 |
+| ECO 2017 | Principles of Macroeconomics | Spring 2027 | 1 |
 | ECO 2023 | Principles of Microeconomics | Fall 2025 | 1 |
 | ECO 2023 | Principles of Microeconomics | Fall 2026 | 1 |
 | ECO 2023 | Principles of Microeconomics | Spring 2026 | 1 |
+| ECO 2023 | Principles of Microeconomics | Spring 2027 | 1 |
 | ECO 2023 | Principles of Microeconomics | Summer 2026 | 1 |
 | ECO 2106 | Behavioral Economics | Spring 2026 | 1 |
 | ECO 2303 | Clash of Economic Ideas | Spring 2026 | 1 |
 | ECO 3101 | Intermediate Microeconomics | Spring 2026 | 1 |
+| ECO 3101 | Intermediate Microeconomics | Spring 2027 | 1 |
 | ECO 3203 | Intermediate Macroeconomics | Fall 2025 | 1 |
 | ECO 3203 | Intermediate Macroeconomics | Fall 2026 | 1 |
 | ECO 3421 | Introduction to Econometrics | Spring 2026 | 1 |
+| ECO 3421 | Introduction to Econometrics | Spring 2027 | 1 |
 | ECO 3708 | International Economics | Spring 2026 | 1 |
+| ECO 3708 | International Economics | Spring 2027 | 1 |
 | ECO 4422 | Econometrics | Fall 2025 | 2 |
 | ECO 4422 | Econometrics | Fall 2026 | 1 |
 | ECO 4900 | Economics Internship Capstone | Fall 2025 | 1 |
@@ -1248,11 +1318,16 @@ Sections: 5103
 | EDA 5503 | Leadership: Emotional Intelligence, Presence, and Communication | Fall 2026 | 2 |
 | EDA 5508 | Champion Instruction - Pedagogical Methods that Lead to Outlier Outcomes | Fall 2026 | 2 |
 | EDF 5520 | Philosophical and Historical Foundations of Education | Fall 2026 | 2 |
+| EDF 5544 | Instructional Leadership as a Liberal Art | Spring 2027 | 2 |
+| EDF 5545 | Philosophy of Education | Spring 2027 | 2 |
 | EDG 2078 | Pathways to Education: Internship Readiness for Future Educators | Fall 2026 | 1 |
+| EDG 3211 | Course Design Elements &amp; Approaches | Spring 2027 | 1 |
 | EDG 3211 | Seminar: Course Design Elements and Approaches | Fall 2026 | 1 |
+| EDP 5216 | Science of Learning, Cognitive Science, Positive Psychology | Spring 2027 | 2 |
 | ENC 1101 | English Composition | Fall 2025 | 9 |
 | ENC 1101 | English Composition | Fall 2026 | 3 |
 | ENC 1101 | English Composition | Spring 2026 | 5 |
+| ENC 1101 | English Composition | Spring 2027 | 5 |
 | ENC 1101 | English Composition | Summer 2026 | 1 |
 | ENC 1101 | English Composition: Introduction to Rhetoric &amp; Writing | Spring 2025 | 5 |
 | ENC 1101 | QUEST: Introduction to Rhetoric and Writing | Fall 2024 | 1 |
@@ -1262,15 +1337,19 @@ Sections: 5103
 | ENC 2355 | The Rhetoric of Myth Making: How the Movies Created the American West | Spring 2026 | 1 |
 | ENC 2372 | Rhetoric and Writing: A Linguistic Approach to Writing | Fall 2025 | 1 |
 | ENC 2375 | The Rhetoric of Walt Disney World | Spring 2026 | 1 |
+| ENC 2375 | The Rhetoric of Walt Disney World | Spring 2027 | 1 |
 | ENC 2431 | From Aristotle to the Algorithm: Rhetoric and Social Media | Fall 2026 | 1 |
 | ENC 2434 | Pop Culture and the Big Easy: The Rhetoric of Space and Place in Representations of New Orleans | Spring 2026 | 1 |
 | ENC 2494 | Writing Center Theory and Practice | Spring 2026 | 1 |
+| ENC 2494 | Writing Center Theory and Practice | Spring 2027 | 1 |
 | ENC 3252 | Writing in the Community | Fall 2026 | 1 |
 | ENC 3313 | Research Design for Disciplinary Writing | Fall 2026 | 1 |
 | ENC 3330 | The Rhetorical Tradition From the Pre-Socratics to the Present | Spring 2026 | 1 |
 | ENC 3331 | Writing Curriculum For The High School Classroom | Fall 2025 | 1 |
 | ENC 3473 | Stylish Writing in Your AOC | Spring 2026 | 1 |
+| ENC 3473 | Stylish Writing in Your AOC | Spring 2027 | 1 |
 | ENC 4313 | Advanced Research Writing | Spring 2026 | 1 |
+| ENC 4313 | Advanced Research Writing | Spring 2027 | 1 |
 | ENGL 2270 | Introductory Creative Writing Class: Writing for Performance | Fall 2017 | 1 |
 | ENGL 2285 | Understanding Poetry | Fall 2017 | 1 |
 | ENGL 2300 | Poetry, Performance, and Intersectional Politics | Spring 2018 | 1 |
@@ -1292,8 +1371,10 @@ Sections: 5103
 | ENGL 4200 | Modernisms/Modernities* | Spring 2018 | 1 |
 | ENGL 4440 | Advanced Creative Writing Class: Hybrid Poetry | Fall 2017 | 1 |
 | ENL 2122 | The 19th Century English Novel | Spring 2026 | 1 |
+| ENL 2323 | Introduction to Shakespeare: Bodies Natural and Politic | Spring 2027 | 1 |
 | ENL 2323 | Introduction to Shakespeare: Language and Identity | Fall 2025 | 1 |
 | ENL 3161 | Performing Gender, Class, and Identity in Early Modern Drama | Fall 2025 | 1 |
+| ENV 2705 | Technology and Society | Spring 2027 | 1 |
 | ENV 3006 | Web Maps | Spring 2017 | 1 |
 | ENV 4007 | Environmental Studies Capstone Seminar | Spring 2017 | 1 |
 | ENVS 2120 | Spatial Ecologies | Fall 2019 | 1 |
@@ -1334,27 +1415,41 @@ Sections: 5103
 | EVR 2001 | Intro to Environmental Studies | Fall 2025 | 1 |
 | EVR 2001 | Introduction to Environmental Studies | Summer 2026 | 1 |
 | EVR 2035 | Environmental Law | Spring 2026 | 1 |
+| EVR 2035 | Environmental Law | Spring 2027 | 1 |
+| EVR 3435 | Resilient Cities | Spring 2027 | 1 |
 | EVS 4920 | Environmental Studies Capstone | Spring 2026 | 1 |
+| EVS 4920 | Environmental Studies Capstone | Spring 2027 | 1 |
 | EXP 2002 | Intro to Experimental Psychology: Bias | Fall 2025 | 1 |
 | EXP 2002 | Introduction to Experimental Psychology: Animal Senses | Fall 2026 | 1 |
 | EXP 2002 | Introduction to Experimental Psychology: Bias | Fall 2026 | 1 |
 | EXP 2002 | Introduction to Experimental Psychology: Employee Well-Being | Fall 2025 | 1 |
 | EXP 2002 | Introduction to Experimental Psychology: Minds and Brains | Fall 2025 | 1 |
+| EXP 2002 | Introductory Psychology Seminar: Employee Well-Being | Spring 2027 | 1 |
 | EXP 3680 | Cognitive Psychology | Spring 2026 | 1 |
+| EXP 3680 | Cognitive Psychology | Spring 2027 | 1 |
+| EXP 4420L | Animal Learning Laboratory | Spring 2027 | 1 |
 | FAS 3010L | Marine Aquaculture Methods Lab | Spring 2026 | 1 |
+| FAS 3202 | Biology of Fishes Lecture | Spring 2027 | 1 |
+| FAS 3202L | Biology of Fishes Laboratory | Spring 2027 | 1 |
 | FAS 3366 | Fisheries Ecology and Sustaina | Fall 2026 | 1 |
+| FIL 2006 | Film Appreciation | Spring 2027 | 1 |
 | FIL 2006 | Film Appreciation | Summer 2026 | 1 |
 | FIN 3009 | Corporate Finance | Spring 2026 | 1 |
+| FIN 3009 | Corporate Finance | Spring 2027 | 1 |
 | FIN 3233 | Money, Banking, and Financial Markets | Fall 2025 | 2 |
 | FIN 3233 | Money, Banking, and Financial Markets | Fall 2026 | 2 |
+| FIN 3233 | Money, Banking, and Financial Markets | Spring 2027 | 1 |
 | FIN 4414 | Business Valuation and Financing | Spring 2026 | 1 |
+| FIN 4414 | Business Valuation and Financing | Spring 2027 | 1 |
 | FIN 4504 | Portfolio Management | Fall 2025 | 1 |
 | FIN 4504 | Portfolio Management | Fall 2026 | 1 |
 | FIN 4533 | Fixed Income and Derivatives | Spring 2026 | 1 |
 | FRE 1100 | Elementary French I | Fall 2025 | 1 |
 | FRE 1100 | Elementary French I | Fall 2026 | 1 |
 | FRE 1101 | Elementary French II | Spring 2026 | 1 |
+| FRE 1101 | Elementary French II | Spring 2027 | 1 |
 | FRE 2220 | Intermediate French I | Fall 2026 | 1 |
+| FRE 2221 | Intermediate French II | Spring 2027 | 1 |
 | FRE 3300 | Advanced French I | Fall 2025 | 1 |
 | FRE 3320 | Advanced French II | Spring 2025 | 1 |
 | FRE 3320 | Advanced French II | Spring 2026 | 1 |
@@ -1478,6 +1573,7 @@ Sections: 5103
 | GER 1120 | Elementary German I | Fall 2025 | 1 |
 | GER 1120 | Elementary German I : German for Travelers | Fall 2026 | 1 |
 | GER 1121 | Elementary German II | Spring 2026 | 1 |
+| GER 1121 | German for Travelers: Elementary German II | Spring 2027 | 1 |
 | GET 2931 | Lost in the Woods: Hansel and Gretel in Text &amp; Film | Fall 2025 | 1 |
 | GIS 5113 | Introduction to GIS technology | Spring 2026 | 1 |
 | GLY 3660 | Paleoecology | Fall 2025 | 1 |
@@ -1493,6 +1589,7 @@ Sections: 5103
 | GRE 1110 | Elementary Ancient Greek I | Fall 2025 | 1 |
 | GRE 1110 | Elementary Ancient Greek I | Fall 2026 | 1 |
 | GRE 1111 | Elementary Ancient Greek II | Spring 2026 | 1 |
+| GRE 1111 | Elementary Ancient Greek II | Spring 2027 | 1 |
 | GRE 4220 | Advd Greek: Plato&#39;s Symposium | Fall 2026 | 1 |
 | GRMN 2100 | Elementary German I | Fall 2017 | 1 |
 | GRMN 2700 | Seduction &amp; Gender in English, French, &amp; German Bourgeois Drama: Late 16th - Early 19th Century* | Fall 2017 | 1 |
@@ -1503,6 +1600,7 @@ Sections: 5103
 | GRMN 4400 | Advanced German: Berlin Metropolis: Stadt als Text | Spring 2018 | 1 |
 | GRMN 4500 | German Conversation and Composition | Fall 2017 | 1 |
 | GRW 2934 | Dreaming in Ancient Greek Literature: Theory, Interpretation, and Poetics | Spring 2026 | 1 |
+| GRW 4330 | Advanced Greek: Anacreon | Spring 2027 | 1 |
 | GRW 4930 | Advanced Greek: Cyclops Stories | Fall 2025 | 1 |
 | GRW 4931 | Advanced Greek: Herodotus&#39; Histories | Spring 2026 | 1 |
 | HAA 2001 | Drawing I* | Spring 2017 | 1 |
@@ -1525,6 +1623,7 @@ Sections: 5103
 | HEBR 3100 | Elementary Hebrew II | Spring 2018 | 1 |
 | HEBR 4100 | Hebrew III* | Fall 2017 | 1 |
 | HIS 3052 | Historical Methods | Spring 2026 | 1 |
+| HIS 3052 | Historical Methods | Spring 2027 | 1 |
 | HIST 2000 | Colonial and Revolutionary Latin America | Fall 2024 | 1 |
 | HIST 2020 | American History Survey: 1865 to the Present* | Spring 2023 | 1 |
 | HIST 2020 | American History Survey: 1865 to the Present* | Spring 2024 | 1 |
@@ -1709,11 +1808,14 @@ Sections: 5103
 | HUM 1020 | Homer&#39;s Odyssey - Introduction to Humanities | Fall 2025 | 13 |
 | HUM 1020 | Homer&#39;s Odyssey - Introduction to Humanities | Fall 2026 | 13 |
 | HUM 1020 | Homer&#39;s Odyssey - Introduction to Humanities | Spring 2026 | 4 |
+| HUM 1020 | Homer&#39;s Odyssey - Introduction to Humanities | Spring 2027 | 3 |
 | HUM 2020 | Homer&#39;s Odyssey | Fall 2024 | 13 |
 | HUM 2020 | Homer&#39;s Odyssey | Spring 2025 | 5 |
 | HUM 2210 | Introduction to the Great Books I: Antiquity to Renaissance | Fall 2025 | 1 |
 | HUM 2210 | Introduction to the Great Books I: Antiquity to Renaissance | Fall 2026 | 1 |
 | HUM 2230 | Great Books II: Renaissance to the 20th Century | Spring 2026 | 1 |
+| HUM 2230 | Introduction to the Great Books II: Renaissance to 20th Century | Spring 2027 | 1 |
+| HUM 2541 | What Is Truth? What is Reality? | Spring 2027 | 1 |
 | HUM 2935 | Genghis Khan and the Mongol Empire | Spring 2026 | 1 |
 | HUM 3418 | Islamic Civilization 500-1500 CE | Fall 2025 | 1 |
 | HUM 3934 | Seminar: Course Design: Elements and Approaches | Spring 2026 | 1 |
@@ -1773,6 +1875,7 @@ Sections: 5103
 | IDC 5110 | Data Munging and Exploratory Data Analysis | Fall 2024 | 1 |
 | IDC 5110 | Data Munging and Exploratory Data Analysis | Fall 2025 | 1 |
 | IDC 5110 | Data Munging and Exploratory Data Analysis | Fall 2026 | 1 |
+| IDC 5112 | Communications and Applied Domains in Data Science | Spring 2027 | 1 |
 | IDC 5112 | Data Visualization | Fall 2023 | 1 |
 | IDC 5112 | Data Visualization | Spring 2022 | 1 |
 | IDC 5112 | Data Visualization | Spring 2024 | 1 |
@@ -1795,6 +1898,7 @@ Sections: 5103
 | IDC 5131 | Distributed Computing | Spring 2023 | 1 |
 | IDC 5131 | Distributed Computing | Spring 2024 | 1 |
 | IDC 5131 | Distributed Computing | Spring 2025 | 1 |
+| IDC 5131 | Distributed Computing | Spring 2027 | 1 |
 | IDC 5204 | Applied Statistics I | Fall 2021 | 1 |
 | IDC 5204 | Applied Statistics I | Fall 2022 | 1 |
 | IDC 5204 | Applied Statistics I | Fall 2023 | 1 |
@@ -1806,11 +1910,13 @@ Sections: 5103
 | IDC 5205 | Applied Statistics II | Spring 2024 | 1 |
 | IDC 5205 | Applied Statistics II | Spring 2025 | 1 |
 | IDC 5205 | Applied Statistics II | Spring 2026 | 1 |
+| IDC 5205 | Applied Statistics II | Spring 2027 | 1 |
 | IDC 5210 | Applied Machine Learning | Spring 2022 | 1 |
 | IDC 5210 | Applied Machine Learning | Spring 2023 | 1 |
 | IDC 5210 | Applied Machine Learning | Spring 2024 | 1 |
 | IDC 5210 | Applied Machine Learning | Spring 2025 | 1 |
 | IDC 5210 | Applied Machine Learning | Spring 2026 | 1 |
+| IDC 5210 | Applied Machine Learning | Spring 2027 | 1 |
 | IDC 5251 | Industrial Seminar Series | Fall 2021 | 1 |
 | IDC 5251 | Industrial Seminar Series I | Fall 2022 | 1 |
 | IDC 5251 | Industrial Seminar Series I | Fall 2023 | 1 |
@@ -1845,11 +1951,15 @@ Sections: 5103
 | IDC 6294 | Industry Practicum | Spring 2024 | 1 |
 | IDC 6294 | Industry Practicum | Spring 2025 | 1 |
 | IDC 6294 | Industry Practicum II | Spring 2026 | 1 |
+| IDC 6294 | Industry Practicum II | Spring 2027 | 1 |
 | IDC 6294 | Industry Practicum II | Summer 2026 | 1 |
 | IDH 2703 | Honors Leadership Development: Rhetoric and the American Way of Life | Spring 2026 | 1 |
+| IDH 2703 | Leadership Development: Rhetoric and the American Way of Life | Spring 2027 | 1 |
 | IDS 2161 | What Is a Good Life? | Fall 2025 | 1 |
+| IDS 2183 | Health Culture and Societies: Interdisciplinary Explorations | Spring 2027 | 1 |
 | IDS 2304 | Intro to Environmental Studies | Fall 2026 | 1 |
 | IDS 2439 | Human Flourishing (Micro) | Fall 2026 | 2 |
+| IDS 2440 | Human Flourishing II | Spring 2027 | 2 |
 | IDS 3941 | Pathways to Health Internship | Fall 2026 | 1 |
 | IDS 4957 | Study Abroad | Summer 2026 | 1 |
 | IDS 4957 | Study Abroad: Coral Reef Issue | Summer 2026 | 1 |
@@ -1871,15 +1981,18 @@ Sections: 5103
 | INDV 3105 | The Roof is on Fire: The Climate Change Crisis in History and Literature | Spring 2023 | 1 |
 | INDV 3195 | Dealing with Data II | Fall 2017 | 1 |
 | INP 3054 | Intermediate Industrial/Organizational Psychology | Spring 2026 | 1 |
+| INP 3054 | Intermediate Industrial/Organizational Psychology | Spring 2027 | 1 |
 | INP 3930 | Organizational Development | Spring 2026 | 1 |
 | INP 4210 | Tests &amp; Measures | Fall 2025 | 1 |
 | INP 4930 | Humanitarian Work Psychology | Spring 2026 | 1 |
 | INR 2001 | Introduction to World Politics | Fall 2025 | 1 |
 | INR 2001 | Introduction to World Politics | Fall 2026 | 2 |
+| INR 2412 | Governing the Marine Environment | Spring 2027 | 1 |
 | INR 2708 | Sustainable Development | Fall 2026 | 1 |
 | INR 2930 | Introduction to International Political Geography | Spring 2026 | 1 |
 | INR 2936 | Climate Change: Science, Politics, Media and Policy | Fall 2025 | 1 |
 | INR 3035 | International Political Economy | Fall 2025 | 1 |
+| INR 3035 | International Political Economy | Spring 2027 | 1 |
 | INR 3062 | Transition from War to Peace | Fall 2025 | 1 |
 | INR 3062 | Transition from War to Peace | Fall 2026 | 1 |
 | INR 3102 | U.S. Foreign Policy | Spring 2026 | 1 |
@@ -1898,6 +2011,8 @@ Sections: 5103
 | ISC 2076 | Introduction to Techne | Fall 2026 | 4 |
 | ISC 2076 | Introduction to Techne | Spring 2026 | 8 |
 | ISC 2076 | Introduction to Techne: Data Science and AI | Fall 2026 | 4 |
+| ISC 2076 | Techne: AI and Data | Spring 2027 | 3 |
+| ISC 2076 | Techne: Statistical Literacy | Spring 2027 | 4 |
 | ISP 2920 | A Grant Proposal to Study the Genetic and Molecular Basis of Laryngeal Muscle Fiber in Xenopus | Fall 2018 | 1 |
 | ISP 2920 | Billiard Physics Modeling | Fall 2021 | 1 |
 | ISP 2920 | Birding New College | Fall 2023 | 1 |
@@ -2310,9 +2425,12 @@ Sections: 5103
 | LANG 4720 | Third Year Modern Russian II | Spring 2023 | 1 |
 | LANG 4720 | Third Year Modern Russian II | Spring 2025 | 1 |
 | LAS 2000 | Introduction to the Study of the Caribbean and Latin America | Fall 2026 | 1 |
+| LAS 2020 | Passionate Citizens: Sports in Latin-American Cultures | Spring 2027 | 1 |
+| LAS 3323 | Representations of Power &amp; Society in Latin American Literature | Spring 2027 | 1 |
 | LAT 1101 | Elementary Latin I | Fall 2025 | 1 |
 | LAT 1101 | Elementary Latin I | Fall 2026 | 1 |
 | LAT 1102 | Elementary Latin II | Spring 2026 | 1 |
+| LAT 1102 | Elementary Latin II | Spring 2027 | 1 |
 | LAT 4930 | Advanced Latin: Augustine, Confessions | Spring 2026 | 1 |
 | LAT 4930 | Vergil&#39;s Aeneid | Fall 2025 | 1 |
 | LCRS 2000 | Sports in Latin-American Cultures | Spring 2025 | 1 |
@@ -2336,21 +2454,27 @@ Sections: 5103
 | LIT 2030 | Introduction to Poetry | Fall 2025 | 1 |
 | LIT 2030 | Introduction to Poetry | Fall 2026 | 1 |
 | LIT 2030 | Introduction to Poetry | Spring 2026 | 1 |
+| LIT 2030 | Introduction to Poetry | Spring 2027 | 1 |
 | LIT 2040 | Introduction to Theatre and Drama | Fall 2026 | 1 |
 | LIT 2070 | Forms of Attention: Hybrid Essays | Fall 2025 | 1 |
 | LIT 2132 | Arthurian Tradition | Fall 2026 | 1 |
+| LIT 2383 | Secret Beyond the Door: Bluebeard in Text &amp; Film | Spring 2027 | 1 |
 | LIT 2383A | Through the Looking Glass: Snow White in Text &amp; Film | Fall 2026 | 1 |
 | LIT 2460 | Straying from the Path: Red Riding Hood in Text and Film | Fall 2025 | 1 |
 | LIT 2930 | What&#39;s Love Got to Do with It: Marriage, Money, and Murder in Early Modern Drama | Spring 2026 | 1 |
 | LIT 2931 | If the Shoe Fits: Cinderella in Text &amp; Film | Spring 2026 | 1 |
+| LIT 3034 | Post-War American Poetry | Spring 2027 | 1 |
 | LIT 3034 | Uncreative Writing/Conceptual | Spring 2026 | 1 |
 | LIT 3036 | Ecopoetics | Fall 2026 | 1 |
 | LIT 3037 | Hybrids and Collaborations | Fall 2026 | 1 |
+| LIT 3121 | How to Read a Novel: Austen and James | Spring 2027 | 1 |
 | LIT 3219 | Aesthetics: Kant, Hegel, Adorn | Fall 2025 | 1 |
 | LIT 3344 | Whodunit? Crime, Corruption and Terror in Modern Literature | Spring 2026 | 1 |
 | LIT 3393 | Trauma Fiction: From the Holocaust to the Ibero-American Dictatorships | Fall 2026 | 1 |
+| LIT 3701 | Renaissance Epic | Spring 2027 | 1 |
 | LIT 4003 | Narrative and Architectural Theories | Spring 2026 | 1 |
 | LIT 4013 | Modern Novel | Spring 2026 | 1 |
+| LIT 4463 | Lines of Sight: Poetry and the Visual Arts | Spring 2027 | 1 |
 | LITR 2000 | British Nineteenth Century Novels: Power and Freedom in the Cultural Imaginary | Fall 2023 | 1 |
 | LITR 2010 | Ancient Epic* | Fall 2018 | 1 |
 | LITR 2010 | Ancient Epic* | Fall 2022 | 1 |
@@ -2579,19 +2703,24 @@ Sections: 5103
 | LITR 4620 | Postcolonial Literature and Theory | Spring 2024 | 1 |
 | LITR 4660 | The City in World Literature: Globalized Gentrification | Fall 2022 | 1 |
 | LNW 4630 | Advanced Latin: Catullus, Poems | Fall 2026 | 1 |
+| LNW 4680 | Advanced Latin: Pliny, Letters | Spring 2027 | 1 |
 | MAA 4226 | Real Analysis I | Fall 2025 | 1 |
+| MAA 4402 | Complex Analysis | Spring 2027 | 1 |
 | MAC 2105 | College Algebra: Precalculus (Algebra and Trigonometry) | Fall 2025 | 2 |
 | MAC 2105 | College Algebra: Precalculus (Algebra and Trigonometry) | Fall 2026 | 2 |
 | MAC 2105 | College Algebra: Precalculus (Algebra and Trigonometry) | Spring 2026 | 2 |
+| MAC 2105 | College Algebra: Precalculus (Algebra and Trigonometry) | Spring 2027 | 2 |
 | MAC 2105 | College Algebra: Precalculus (Algebra and Trigonometry) | Summer 2026 | 1 |
 | MAC 2105 | Introduction to Mathematics for the Sciences | Fall 2024 | 1 |
 | MAC 2233 | Math Tools for the Social Sciences | Fall 2026 | 1 |
 | MAC 2233 | Math Tools for the Social Sciences | Spring 2026 | 1 |
+| MAC 2233 | Math Tools for the Social Sciences | Spring 2027 | 1 |
 | MAC 2311 | Calculus I | Fall 2024 | 1 |
 | MAC 2311 | Calculus I | Fall 2025 | 2 |
 | MAC 2311 | Calculus I | Fall 2026 | 2 |
 | MAC 2311 | Calculus I | Spring 2025 | 1 |
 | MAC 2311 | Calculus I | Spring 2026 | 2 |
+| MAC 2311 | Calculus I | Spring 2027 | 2 |
 | MAC 2311 | Calculus with Theory I | Fall 2024 | 1 |
 | MAC 2312 | Calculus II | Spring 2025 | 1 |
 | MAC 2312 | Calculus II | Spring 2026 | 1 |
@@ -2599,17 +2728,21 @@ Sections: 5103
 | MAC 2313 | Calculus III | Fall 2026 | 1 |
 | MAC 4930 | Advanced Topics: Algebra | Fall 2025 | 1 |
 | MAD 2104 | Discrete Mathematics | Spring 2026 | 1 |
+| MAD 2104 | Discrete Mathematics | Spring 2027 | 1 |
 | MAD 4400 | Introduction to Numerical Methods | Spring 2026 | 1 |
 | MAP 3302 | Ordinary Differential Equation | Fall 2025 | 1 |
 | MAP 3302 | Ordinary Differential Equations | Fall 2026 | 1 |
 | MAP 3341 | Partial Differential Equations | Fall 2026 | 1 |
+| MAP 3481 | Mathematical Modeling | Spring 2027 | 1 |
 | MAP 3486 | Computational Methods in Biology | Spring 2026 | 1 |
+| MAS 2103 | Linear Algebra | Spring 2027 | 1 |
 | MAS 3103 | Introduction to Linear Algebra | Spring 2026 | 1 |
 | MAS 3105 | Advanced Linear Algebra | Fall 2025 | 1 |
 | MAS 3105 | Linear Algebra with Theory | Fall 2026 | 1 |
 | MAS 3214 | Introduction to Number Theory | Spring 2026 | 1 |
 | MAS 4301 | Abstract Algebra I | Fall 2026 | 1 |
 | MAT 3930 | Mathematics Seminar | Fall 2026 | 1 |
+| MAT 3930 | Mathematics Seminar | Spring 2027 | 1 |
 | MAT 4930 | Mathematics Seminar | Fall 2025 | 1 |
 | MAT 4930 | Mathematics Seminar | Spring 2026 | 1 |
 | MATH 2050 | MBES: To Infinity and Beyond | Summer 2024 | 1 |
@@ -2793,17 +2926,21 @@ Sections: 5103
 | MCB 3010 | Introduction to Microbiology | Fall 2025 | 1 |
 | MCB 3010 | Introduction to Microbiology | Fall 2026 | 1 |
 | MCB 3010L | Introduction to Microbiology Laboratory | Spring 2026 | 1 |
+| MCB 3010L | Introduction to Microbiology Laboratory | Spring 2027 | 1 |
 | MCB 4936 | Tropical Disease Epidemiology | Spring 2026 | 1 |
 | MEM 2931 | Living the Bible: Monasticism, Spirituality and Community in the Middle Ages | Spring 2026 | 1 |
 | MGF 2130 | Mathematical Thinking | Fall 2025 | 1 |
 | MGF 2130 | Mathematical Thinking | Fall 2026 | 1 |
 | MGF 2130 | Mathematical Thinking | Spring 2026 | 1 |
+| MGF 2130 | Mathematical Thinking | Spring 2027 | 1 |
 | MGF 2130 | QUEST: Mathematical Thinking: Patterns, Puzzles, and Exploration | Fall 2024 | 1 |
 | MGF 2131 | To Infinity and Beyond | Spring 2026 | 1 |
+| MGF 2131 | To Infinity and Beyond | Spring 2027 | 1 |
 | MMS 4000 | Research Methods: Cognition and Neuroscience | Fall 2026 | 1 |
 | MMS 4014 | Marine Mammal Biology | Fall 2026 | 1 |
 | MMS 4015 | Seminar in Marine Mammal Science | Fall 2026 | 1 |
 | MMS 4015 | Seminar in Marine Mammal Science | Spring 2025 | 1 |
+| MMS 4015 | Seminar in Marine Mammal Science | Spring 2027 | 1 |
 | MMS 4030 | Laboratory in Field of Study: Marine Mammal Cognition | Spring 2025 | 1 |
 | MMS 4058 | Networks &amp; Complexity in Marin | Spring 2026 | 1 |
 | MMS 4060 | Developing and Deploying a Rhythm Game for Navy Sea Lions: Theory and Application | Spring 2025 | 1 |
@@ -2817,18 +2954,22 @@ Sections: 5103
 | MMS 5015 | Seminar in Marine Mammal Science | Fall 2026 | 1 |
 | MMS 5015 | Seminar in Marine Mammal Science | Spring 2025 | 1 |
 | MMS 5015 | Seminar in Marine Mammal Science | Spring 2026 | 1 |
+| MMS 5015 | Seminar in Marine Mammal Science | Spring 2027 | 1 |
 | MMS 5020 | Laboratory in Field of Study: Marine Mammal Behavior &amp; Neuroscience | Fall 2025 | 1 |
 | MMS 5020 | Laboratory in Field of Study: Marine Mammal Behavior &amp; Neuroscience | Fall 2026 | 1 |
 | MMS 5020 | Laboratory in Field of Study: Marine Mammal Behavior &amp; Neuroscience | Spring 2025 | 1 |
 | MMS 5020 | Laboratory in Field of Study: Marine Mammal Behavior &amp; Neuroscience | Spring 2026 | 1 |
+| MMS 5020 | Laboratory in Field of Study: Marine Mammal Behavior &amp; Neuroscience | Spring 2027 | 1 |
 | MMS 5025 | Laboratory in Field of Study: Manatee Behavior &amp; Conservation | Fall 2025 | 1 |
 | MMS 5025 | Laboratory in Field of Study: Manatee Behavior &amp; Conservation | Fall 2026 | 1 |
 | MMS 5025 | Laboratory in Field of Study: Manatee Behavior &amp; Conservation | Spring 2025 | 1 |
 | MMS 5025 | Laboratory in Field of Study: Manatee Behavior &amp; Conservation | Spring 2026 | 1 |
+| MMS 5025 | Laboratory in Field of Study: Manatee Behavior &amp; Conservation | Spring 2027 | 1 |
 | MMS 5030 | Laboratory in Field of Study: Marine Mammal Cognition | Fall 2025 | 1 |
 | MMS 5030 | Laboratory in Field of Study: Marine Mammal Cognition | Fall 2026 | 1 |
 | MMS 5030 | Laboratory in Field of Study: Marine Mammal Cognition | Spring 2025 | 1 |
 | MMS 5030 | Laboratory in Field of Study: Marine Mammal Cognition | Spring 2026 | 1 |
+| MMS 5030 | Laboratory in Field of Study: Marine Mammal Cognition | Spring 2027 | 1 |
 | MMS 5035 | BioStatistics | Spring 2025 | 1 |
 | MMS 5037 | Analyzing Data | Fall 2025 | 1 |
 | MMS 5037 | Analyzing Data | Fall 2026 | 1 |
@@ -2841,9 +2982,11 @@ Sections: 5103
 | MMS 5913 | Graduate Research Statistics | Spring 2026 | 1 |
 | MUC 2201 | Music Composition I | Fall 2025 | 1 |
 | MUC 2202 | Music Composition II | Spring 2026 | 1 |
+| MUC 2202 | Music Composition II | Spring 2027 | 1 |
 | MUC 2301 | Electronic Music I | Fall 2025 | 1 |
 | MUC 2301 | Electronic Music I | Fall 2026 | 1 |
 | MUC 3302 | Electronic Music II | Spring 2026 | 1 |
+| MUC 3302 | Electronic Music II | Spring 2027 | 1 |
 | MUC 3634 | Game Music and Interactive Composition | Fall 2026 | 1 |
 | MUH 2007 | Music and the Environment | Fall 2026 | 1 |
 | MUH 2110 | The Western Art Music Tradition | Fall 2026 | 1 |
@@ -2858,7 +3001,10 @@ Sections: 5103
 | MUN 1220 | Chamber Music Group | Fall 2026 | 1 |
 | MUN 1220 | Chamber Music Group | Spring 2026 | 1 |
 | MUN 1480 | Introduction to Music: Guitar Ensemble | Spring 2026 | 1 |
+| MUN 1480 | Introduction to Music: Guitar Ensemble | Spring 2027 | 1 |
 | MUN 3480 | Guitar Ensemble II | Fall 2026 | 1 |
+| MUS 2308 | Music &amp; AI | Spring 2027 | 1 |
+| MUS 3930 | Introduction to Sound Studies | Spring 2027 | 1 |
 | MUSC 2000 | New College Chamber Orchestra Ensemble | Fall 2024 | 1 |
 | MUSC 2000 | New College Chamber Orchestra Ensemble | Spring 2025 | 1 |
 | MUSC 2050 | Voice Lessons | Fall 2023 | 1 |
@@ -3007,9 +3153,11 @@ Sections: 5103
 | MUSC 4100 | Music Theory II* | Spring 2019 | 1 |
 | MUSC 4100 | Music Theory II* | Spring 2020 | 1 |
 | MUSC 4200 | Game Scores* | Fall 2021 | 1 |
+| MUT 2001 | Introduction to Music: Piano Keyboard through Midi | Spring 2027 | 1 |
 | MUT 2111 | Music Theory I | Fall 2025 | 1 |
 | MUT 2111 | Music Theory I | Fall 2026 | 1 |
 | MUT 3112 | Music Theory II | Spring 2026 | 1 |
+| MUT 3112 | Music Theory II | Spring 2027 | 1 |
 | MUT 3126 | Music Theory III | Fall 2025 | 1 |
 | MVK 1092 | Private Piano Lessons For Music Majors | Fall 2025 | 1 |
 | MVK 1092 | Private Piano Lessons For Music Majors | Fall 2026 | 1 |
@@ -3076,10 +3224,12 @@ Sections: 5103
 | PAZ 5234 | Zoo and Aquarium Management | Spring 2026 | 1 |
 | PCB 2316 | Introduction to Coastal Marine Systems | Fall 2026 | 1 |
 | PCB 3043 | Ecology Lecture | Fall 2025 | 1 |
+| PCB 3043L | Ecology Laboratory | Spring 2027 | 1 |
 | PCB 3060 | Introduction to Genetics | Spring 2026 | 1 |
 | PCB 3103 | Cell Biology | Fall 2025 | 1 |
 | PCB 3103 | Cell Biology | Fall 2026 | 1 |
 | PCB 3103L | Cell Biology Laboratory | Fall 2025 | 1 |
+| PCB 3103L | Cell Biology Laboratory | Spring 2027 | 1 |
 | PCB 3315 | Marine Ecology Lecture | Fall 2026 | 1 |
 | PCB 3315L | Marine Ecology Laboratory | Fall 2026 | 1 |
 | PCB 3461 | Molecular Ecology Lecture | Spring 2026 | 1 |
@@ -3102,13 +3252,19 @@ Sections: 5103
 | PHI 2640 | Environmental Ethics | Fall 2025 | 1 |
 | PHI 2640 | Environmental Ethics | Fall 2026 | 1 |
 | PHI 2641 | Business Ethics | Spring 2026 | 1 |
+| PHI 2641 | Business Ethics | Spring 2027 | 1 |
 | PHI 2672 | Animal Ethics: How Are We to Live Together? | Spring 2026 | 1 |
 | PHI 2680 | The Ethics of Artificial Intelligence | Fall 2026 | 1 |
 | PHI 2701 | Philosophy of Religion | Fall 2025 | 1 |
 | PHI 2930 | Philosophy of Work | Spring 2026 | 1 |
 | PHI 3123 | Topics in Feminist Philosophy | Spring 2026 | 1 |
 | PHI 3220 | Language, Thought, and the World | Fall 2026 | 1 |
+| PHI 3330 | Agency Autonomy Freedom | Spring 2027 | 1 |
+| PHI 3402 | Introduction to Philosophy, Politics &amp; Economics | Spring 2027 | 1 |
+| PHI 3420 | Early Modern Philosophy | Spring 2027 | 1 |
+| PHI 3450 | Philosophy of Science | Spring 2027 | 1 |
 | PHI 3552 | Social Reality | Fall 2026 | 1 |
+| PHI 3750 | Problems of Evil | Spring 2027 | 1 |
 | PHI 4320 | Philosophy of Mind | Spring 2026 | 1 |
 | PHIL 2010 | The Good Life: Happiness, Meaning, and Ethics in a Complex World* | Spring 2022 | 1 |
 | PHIL 2025 | Religious Existentialism | Fall 2024 | 1 |
@@ -3204,17 +3360,21 @@ Sections: 5103
 | PHIL 4600 | Seminar: Kant&#39;s Critique of Pure Reason | Spring 2018 | 1 |
 | PHIL 4998 | Philosophy Proseminar | Fall 2021 | 1 |
 | PHP 3930 | Kierkegaard | Fall 2025 | 1 |
+| PHP 4522 | Nietzsche Seminar | Spring 2027 | 1 |
 | PHP 4783 | The Philosophy of Martin Heidegger | Fall 2026 | 1 |
 | PHY 2033 | Science of Light and Color | Fall 2025 | 1 |
 | PHY 2048 | Physics I (Calculus-Based) | Fall 2024 | 1 |
 | PHY 2048 | Physics I (Calculus-Based) | Fall 2025 | 1 |
 | PHY 2048 | Physics I (Calculus-Based) | Fall 2026 | 1 |
 | PHY 2049 | Physics II (Calculus-Based) | Spring 2026 | 1 |
+| PHY 2049 | Physics II (Calculus-Based) | Spring 2027 | 1 |
 | PHY 2053 | Physics I (Algebra-Based) | Fall 2024 | 1 |
 | PHY 2053 | Physics I (Algebra-Based) | Fall 2025 | 1 |
 | PHY 2053 | Physics I - Through the Lens of Biophysics | Fall 2026 | 1 |
 | PHY 2054 | Physics II (Algebra-Based) | Spring 2025 | 1 |
 | PHY 2054 | Physics II (Algebra-Based) | Spring 2026 | 1 |
+| PHY 2054 | Physics II through the Lens of Biophysics (Algebra based) | Spring 2027 | 1 |
+| PHY 2064 | Physics Lab I &amp; II Combined | Spring 2027 | 3 |
 | PHY 2071 | Physics I Laboratory | Fall 2025 | 2 |
 | PHY 2105 | Modern Physics | Fall 2025 | 1 |
 | PHY 3054 | Physics II (Calculus-Based) | Spring 2025 | 1 |
@@ -3225,6 +3385,8 @@ Sections: 5103
 | PHY 3822 | Modern Physics Laboratory | Fall 2025 | 1 |
 | PHY 4220 | Classical Mechanics | Spring 2026 | 1 |
 | PHY 4326 | Electricity and Magnetism | Fall 2026 | 1 |
+| PHY 4327 | Advanced Electricity and Magnetism | Spring 2027 | 1 |
+| PHY 4424 | Optics | Spring 2027 | 1 |
 | PHY 4610 | Quantum Mechanics | Spring 2026 | 1 |
 | PHYS 2050 | Descriptive Astronomy | Spring 2025 | 1 |
 | PHYS 2050 | Descriptive Astronomy* | Spring 2018 | 1 |
@@ -3477,19 +3639,28 @@ Sections: 5103
 | POS 2041 | American Government and Civics | Fall 2026 | 2 |
 | POS 2041 | American Government and Civics | Spring 2025 | 2 |
 | POS 2041 | American Government and Civics | Spring 2026 | 3 |
+| POS 2041 | American Government and Civics | Spring 2027 | 1 |
 | POS 3182 | Florida Politics and Government* | Fall 2026 | 1 |
 | POS 3413 | The American Presidency | Fall 2025 | 1 |
 | POS 3425 | Politics of Congress | Fall 2026 | 1 |
+| POS 3603 | U.S. Constitutional Law: Structures and Powers | Spring 2027 | 1 |
 | POS 3703 | Quantitative Political Analysis I | Fall 2026 | 1 |
+| POS 3715 | Game Theory and Strategic Thinking | Spring 2027 | 1 |
 | POS 3729 | Introduction to Social Network Analysis: Concepts, Data, and Visual | Fall 2026 | 1 |
 | POS 3734 | Research Design Workshop in Political Science | Spring 2026 | 1 |
+| POS 3734 | Research Design Workshop in Political Science | Spring 2027 | 1 |
+| POS 3740 | Quantitative Political Analysis II | Spring 2027 | 1 |
 | POS 3930 | The American Common Law: Contracts | Spring 2026 | 1 |
+| POS 3930 | The American Common Law: Criminal Law | Spring 2027 | 1 |
 | POS 3930 | The American Common Law: Torts | Spring 2026 | 1 |
+| POS 3931 | Mental Health and Law | Spring 2027 | 1 |
 | POS 4048 | American Political Development | Fall 2025 | 1 |
 | POS 4606 | American Constitutional Regimes Seminar | Fall 2026 | 1 |
 | POS 4729 | Social Networks and the Context of Political Behavior | Fall 2025 | 1 |
 | POT 2002 | Introduction to Political Theory | Spring 2026 | 1 |
+| POT 2002 | Introduction to Political Theory | Spring 2027 | 1 |
 | POT 3514 | War in Political Thought | Fall 2026 | 1 |
+| POT 4208 | American Political Thought | Spring 2027 | 1 |
 | PPE 3002 | Personality Psychology | Fall 2026 | 1 |
 | PPE 3002 | Personality Psychology | Spring 2026 | 1 |
 | PRSC 2000 | Western Civilization: The Good, the Bad, and the Ugly | Spring 2024 | 1 |
@@ -3506,21 +3677,28 @@ Sections: 5103
 | PSB 3004 | Biological Psychology | Fall 2025 | 1 |
 | PSB 3004 | Biological Psychology | Fall 2026 | 1 |
 | PSB 3930 | Animal Personality | Fall 2025 | 1 |
+| PSB 3930 | Animal Personality | Spring 2027 | 1 |
 | PSB 4112 | Human Neurophysiology Methods Laboratory | Spring 2026 | 1 |
 | PSB 4240 | Neurological Disorders | Spring 2026 | 1 |
+| PSB 4323 | Electrophysiology of Cognition | Spring 2027 | 1 |
+| PSB 4343 | FNIRS Laboratory | Spring 2027 | 1 |
 | PSB 4344 | Cognitive Neuroscience | Fall 2025 | 1 |
 | PSB 4930 | Advanced Seminar in Animal Personality | Fall 2025 | 1 |
 | PSB 4930L | Animal Personality Laboratory | Spring 2026 | 1 |
 | PSB 4931 | Marine Mammal Behavior, Conservation, and the Human Dimension | Spring 2026 | 1 |
 | PSB 4932 | Neuroscience of Social Development | Fall 2026 | 1 |
+| PSB 4933 | Interpersonal Synchrony (Behavioral, Neural, Physiological) | Spring 2027 | 1 |
 | PSY 2013 | Introductory Psychology: General | Fall 2026 | 1 |
 | PSY 4030 | The Metascience Lab: Controversies and Debates in Psychology | Spring 2026 | 1 |
 | PSY 4210 | Research Methods in Psychology | Spring 2026 | 1 |
+| PSY 4210 | Research Methods in Psychology | Spring 2027 | 1 |
 | PSY 4774 | Close Relationships | Fall 2026 | 1 |
+| PSY 4801 | Metascience Lab: Debates and Controversies in Psychology | Spring 2027 | 1 |
 | PSY 4870 | Conservation Psychology | Fall 2026 | 1 |
 | PSY 4911 | Psychology Senior Seminar 1 | Fall 2025 | 1 |
 | PSY 4911 | Psychology Senior Seminar 1 | Fall 2026 | 1 |
 | PSY 4938 | Psychology Senior Seminar 2 | Spring 2026 | 1 |
+| PSY 4938 | Psychology Senior Seminar 2 | Spring 2027 | 1 |
 | PSYC 2030 | Introductory Psychology Seminar: Minds &amp; Brains | Fall 2024 | 1 |
 | PSYC 2050 | Introduction to Psychology: General Psychological Science* | Fall 2019 | 1 |
 | PSYC 2050 | Introductory Psychology Seminar: General* | Fall 2020 | 1 |
@@ -3697,9 +3875,12 @@ Sections: 5103
 | PSYC 4998 | Psychology Senior Seminar | Spring 2023 | 1 |
 | PSYC 4999 | Psychology Senior Seminar II | Spring 2024 | 1 |
 | PSYC 4999 | Psychology Senior Seminar II | Spring 2025 | 1 |
+| PUP 3033 | Public Leadership | Spring 2027 | 1 |
 | REE 3006 | Real Estate Economics | Spring 2026 | 1 |
+| REL 2040 | Intro to Study of Religion | Spring 2027 | 1 |
 | REL 2040 | Introduction to the Study of Religion | Spring 2026 | 1 |
 | REL 2210 | Jewish Scriptures | Fall 2025 | 1 |
+| REL 2210 | Jewish Scriptures | Spring 2027 | 1 |
 | REL 2240 | Introduction to the New Testament | Spring 2026 | 1 |
 | REL 2266 | Storytelling in the Gospel of John | Fall 2026 | 1 |
 | REL 2300 | Introduction to World Religions | Fall 2025 | 1 |
@@ -3710,8 +3891,10 @@ Sections: 5103
 | REL 2502 | Introduction to Christianity | Fall 2026 | 1 |
 | REL 2600 | Introduction to Judaism | Spring 2026 | 1 |
 | REL 2613 | Modern Jewish History | Fall 2026 | 1 |
+| REL 2933 | History of Judaism I | Spring 2027 | 1 |
 | REL 2936 | Medicine and Healing from the Islamic Golden Age to Today | Spring 2026 | 1 |
 | REL 3130 | Religion and American Culture | Spring 2026 | 1 |
+| REL 3130 | Religion and American Culture | Spring 2027 | 1 |
 | REL 3160 | Religion and Science | Fall 2025 | 1 |
 | REL 3160 | Religion and Science | Fall 2026 | 1 |
 | REL 3269 | Rhetoric and the New Testament | Spring 2026 | 1 |
@@ -3820,11 +4003,13 @@ Sections: 5103
 | RELI 4350 | Religion and the Forms of Rationality* | Spring 2020 | 1 |
 | RUS 2220 | Intermediate Russian I | Fall 2025 | 1 |
 | RUS 2221 | Intermediate Russian II | Spring 2026 | 1 |
+| RUS 4000 | Third-Year Russian I | Spring 2027 | 1 |
 | RUSS 3100 | Intermediate Russian I* | Fall 2017 | 1 |
 | RUSS 3200 | Intermediate Russian II | Spring 2018 | 1 |
 | RUSS 4650 | Dostoevsky: The Major Novels | Fall 2017 | 1 |
 | RUSS 4680 | The Russian Short Story* | Spring 2018 | 1 |
 | RUT 3930 | Dostoevsky: the Major Novels | Fall 2025 | 1 |
+| RUT 3930 | Nabokov&rsquo;s Early Novels: Resident and Stranger | Spring 2027 | 1 |
 | RUT 3930 | Women in Russian and East European Literature | Spring 2026 | 1 |
 | SAN 2005 | Historical Archaeology | Spring 2017 | 1 |
 | SAN 2009 | Human Origins and Evolution* | Spring 2017 | 1 |
@@ -3849,6 +4034,7 @@ Sections: 5103
 | SHI 3003 | Historical Methods | Spring 2017 | 1 |
 | SHI 3015 | The Rise of Urban America: How Race, Region, Gender, and Class have shaped the Modern American City | Spring 2017 | 1 |
 | SLS 1109 | Engaging the Mind | Fall 2026 | 1 |
+| SLS 1109 | Engaging the Mind | Spring 2027 | 1 |
 | SLS 1109 | Engaging the Mind | Summer 2026 | 1 |
 | SLS 1305 | Designing Your LIfe: Career &amp; Professional Development for the College Student. | Fall 2025 | 2 |
 | SLS 1305 | Designing Your Life: Career Exploration &amp; Professional Development for the College Student | Fall 2026 | 1 |
@@ -3949,6 +4135,7 @@ Sections: 5103
 | SOP 3004 | Social Psychology | Fall 2026 | 1 |
 | SOP 3004 | Social Psychology | Spring 2026 | 1 |
 | SOP 3218 | Advanced Laboratory in Social Psychology | Spring 2026 | 1 |
+| SOP 4702 | Sex Differences and Similarities | Spring 2027 | 1 |
 | SPAN 2100 | Elementary Spanish I | Fall 2017 | 2 |
 | SPAN 2200 | Blacks and National Discourse in Spanish America | Fall 2017 | 1 |
 | SPAN 3050 | Elementary Spanish II | Spring 2018 | 1 |
@@ -3965,10 +4152,12 @@ Sections: 5103
 | SPN 2200 | Intermediate Spanish I | Fall 2025 | 1 |
 | SPN 2200 | Intermediate Spanish I | Fall 2026 | 1 |
 | SPN 2201 | Intermediate Spanish II | Spring 2026 | 2 |
+| SPN 2201 | Intermediate Spanish II | Spring 2027 | 1 |
 | SPN 3340 | Spanish for Native Speakers: Advanced Writing and Oral Skills | Fall 2025 | 1 |
 | SPN 3422 | Spanish Oral and Written Expression | Fall 2025 | 1 |
 | SPN 3422 | Spanish Oral and Written Expression | Fall 2026 | 1 |
 | SPN 3451 | A Practical Introduction to Translation and Cultural Translation | Fall 2026 | 1 |
+| SPN 4930 | Adv Spanish: Prose, Verse and | Spring 2027 | 1 |
 | SPN 4930 | Spanish Seminar | Spring 2026 | 1 |
 | SPO 2001 | Introduction to American Politics | Spring 2017 | 1 |
 | SPO 2003 | Sustainable Development | Spring 2017 | 1 |
@@ -4001,10 +4190,12 @@ Sections: 5103
 | SSO 3034 | Sustainable Cities | Spring 2017 | 1 |
 | SSO 3035 | Practicum in Community Building: Public Space | Spring 2017 | 1 |
 | SSO 4007 | Latin American Social Theory | Spring 2017 | 1 |
+| STA 2023 | Introduction to Applied Statistics | Spring 2027 | 1 |
 | STA 2023 | Introduction to Statistics: Dealing With Data 1 | Fall 2026 | 1 |
 | STA 2023 | Introduction to Statistics: Dealing with Data 1 | Fall 2025 | 2 |
 | STA 2023 | Introduction to Statistics: Dealing with Data 1 | Fall 2026 | 2 |
 | STA 2023 | Introduction to Statistics: Dealing with Data 1 | Spring 2025 | 2 |
+| STA 2023 | Introduction to Statistics: Dealing with Data 1 | Spring 2027 | 1 |
 | STA 2023 | Introduction to Statistics: Dealing with Data I | Fall 2024 | 2 |
 | STA 2023 | Introduction to Statistics: Dealing with Data I | Spring 2026 | 2 |
 | STA 2023 | Introduction to Statistics: Statistics for Economics and the Social Sciences | Fall 2024 | 1 |
@@ -4013,17 +4204,23 @@ Sections: 5103
 | STA 2122 | Introduction to Applied Statistics | Fall 2025 | 1 |
 | STA 2122 | Introduction to Applied Statistics | Fall 2026 | 1 |
 | STA 2122 | Introduction to Applied Statistics | Spring 2026 | 1 |
+| STA 2122 | Introduction to Applied Statistics | Spring 2027 | 1 |
 | STA 2171 | Biological Data Analysis | Fall 2025 | 1 |
+| STA 2195 | Biostatistics | Spring 2027 | 1 |
 | STA 2442 | Probability I | Fall 2025 | 1 |
 | STA 2442 | Probability I | Fall 2026 | 1 |
 | STA 2443 | Probability II | Fall 2025 | 1 |
 | STA 2443 | Probability II | Fall 2026 | 1 |
 | STA 3024 | Dealing with Data II | Fall 2025 | 1 |
 | STA 3024 | Dealing with Data II | Spring 2026 | 1 |
+| STA 3024 | Dealing with Data II | Spring 2027 | 1 |
 | STA 3100 | R for Data Science | Fall 2025 | 1 |
 | STA 3100 | R for Data Science | Fall 2026 | 1 |
 | STA 3207 | Linear Models | Fall 2026 | 1 |
 | STA 3362 | Statistical Learning and Modeling | Spring 2026 | 1 |
+| STA 3852 | Applied Time Series Analysis | Spring 2027 | 1 |
+| STA 3932 | Financial Markets Modeling using Machine Learning | Spring 2027 | 1 |
+| STA 3938 | Sports Analytics Seminar | Spring 2027 | 1 |
 | STA 6934 | Topics in Statistical Inference for Data Science | Fall 2018 | 1 |
 | STA 6934 | Topics in Statistical Inference for Data Science | Fall 2020 | 1 |
 | STA 6934 | Topics in Statistical Inference for Data Science | Fall 2021 | 1 |
@@ -4101,11 +4298,13 @@ Sections: 5103
 | SYA 3018 | Social Theory | Fall 2026 | 1 |
 | SYA 3300 | Sociological Research Methodology | Fall 2026 | 1 |
 | SYA 4011 | Latin American Social Theory | Spring 2026 | 1 |
+| SYA 4930 | Anti-Social Media: Self, (Dis)Connection, and Culture in the Age of Social Media | Spring 2027 | 1 |
 | SYA 4971 | Sociology Senior Seminar | Fall 2025 | 1 |
 | SYA 4971 | Sociology Senior Seminar | Fall 2026 | 1 |
 | SYD 2510 | Environmental Sociology | Fall 2026 | 1 |
 | SYD 2930 | Sociology of Wealth | Spring 2026 | 1 |
 | SYD 3410 | Urban Sociology | Spring 2026 | 1 |
+| SYD 3707 | Sociology of Race and Ethnicity | Spring 2027 | 1 |
 | SYG 2001 | Introduction to Sociology | Fall 2025 | 1 |
 | SYG 2001 | Introduction to Sociology | Fall 2026 | 1 |
 | SYG 2221 | Women in Society | Fall 2025 | 1 |
@@ -4115,12 +4314,17 @@ Sections: 5103
 | SYG 3014 | The Sociology of Cool | Spring 2026 | 1 |
 | SYG 3300 | Sociological Research Methodology | Fall 2025 | 1 |
 | SYO 2120 | Sociology of the Family: Facts and Fables | Spring 2026 | 1 |
+| SYO 2201 | Sociology of Religion | Spring 2027 | 1 |
 | SYO 3250 | Sociology of Education | Spring 2026 | 1 |
 | SYO 3372 | Alternatives to Capitalism &amp; Socialism | Spring 2026 | 1 |
 | SYO 3930 | Space, Place and Community | Fall 2025 | 1 |
+| SYP 2422 | Living With AI: Navigating a World We&#39;re Still Making | Spring 2027 | 1 |
 | SYP 3300 | Crowds, Cults, and Crazes | Spring 2026 | 1 |
 | SYP 3350 | Social Movements | Fall 2026 | 1 |
+| SYP 3440 | Divided World: Sociology and the Political Economy of Development | Spring 2027 | 1 |
 | SYP 3714 | Sociology of Children and Youth | Spring 2026 | 1 |
+| SYP 3714 | Understanding Children and Youth - A Sociocultural Perspective | Spring 2027 | 1 |
+| SYP 3930 | The Words We Live By: How Language Makes the World | Spring 2027 | 1 |
 | TDPS 2000 | Introduction to Dance | Fall 2024 | 1 |
 | TDPS 2005 | MBES Program: Film Appreciatio | Summer 2024 | 1 |
 | TDPS 2010 | Technical Theatre Production: Dance on Campus | Fall 2023 | 1 |
@@ -4163,6 +4367,7 @@ Sections: 5103
 | TDPS 3750 | Performance Practicum: Theater | Fall 2024 | 1 |
 | TDPS 4050 | Bodies, Space, and Meaning-Making: Advanced Concepts in Contemporary Movement for the Stage | Spring 2023 | 1 |
 | TDPS 4600 | Theater/Performance: History and Theory | Fall 2023 | 1 |
+| THE 2214 | Theatre History II: 1800s to Present | Spring 2027 | 1 |
 | THE 2303 | Play Analysis | Fall 2025 | 1 |
 | THE 2311 | Theater History I: 500 BCE - 1700 | Fall 2026 | 1 |
 | THE 2549 | Introduction to Performance Studies | Fall 2025 | 1 |
@@ -4230,14 +4435,18 @@ Sections: 5103
 | TPA 2000 | Basics of Theater Production | Fall 2025 | 1 |
 | TPA 2283 | Technical Theatre Production: &quot;Dance on Campus 2025&quot; | Fall 2025 | 1 |
 | TPA 2283 | Technical Theatre Production: Eurydice | Fall 2026 | 1 |
+| TPA 2283 | Technical Theatre Production: Reefer Madness the Musical | Spring 2027 | 1 |
 | TPA 2283 | Technical Theatre Production: The Witch of Edmonton | Spring 2026 | 1 |
 | TPA 2405 | Arts Management | Fall 2026 | 1 |
+| TPA 3040 | Theatrical Costuming and Construction | Spring 2027 | 1 |
 | TPP 1110 | Acting I | Fall 2025 | 1 |
 | TPP 1110 | Acting I | Fall 2026 | 1 |
+| TPP 3103 | Acting II: Advanced Scene Studies | Spring 2027 | 1 |
 | TPP 3143 | Acting 2: Demidov Technique | Spring 2026 | 1 |
 | TPP 3424 | Devised Theatre: Performance and the Environment | Fall 2025 | 1 |
 | TPP 3940 | Performance Practicum: Theater | Fall 2026 | 1 |
 | TPP 3940 | Performance Practicum: Theater | Spring 2026 | 1 |
+| TPP 3940 | Performance Practicum: Theater | Spring 2027 | 1 |
 | TUTR 2095 | 3D Scanning &amp; Virtualization of Material Culture | Spring 2024 | 1 |
 | TUTR 2095 | A Study of the Forecasting Power of Yield Curves | Fall 2024 | 2 |
 | TUTR 2095 | Advance Research in Economics | Spring 2025 | 1 |
@@ -4614,6 +4823,7 @@ Sections: 5103
 | TUTR 2095 | Zoshchenko in the Original | Spring 2024 | 1 |
 | TUTR 2095 | biomechanics and movement | Spring 2024 | 1 |
 | WIS 3401 | Wildlife Ecology and Management | Fall 2025 | 1 |
+| WOH 2012 | Introduction to World History | Spring 2027 | 1 |
 | WRTG 2100 | Rhetoric and Writing: Writing about Writing | Fall 2020 | 1 |
 | WRTG 2100 | Rhetoric and Writing: Writing about Writing | Fall 2021 | 1 |
 | WRTG 2100 | Rhetoric and Writing: Writing about Writing | Fall 2022 | 1 |
@@ -4700,3 +4910,6 @@ Sections: 5103
 | ZOO 3713 | Comparative Vertebrate Anatomy | Fall 2026 | 1 |
 | ZOO 3744 | Neurobiology Laboratory | Fall 2026 | 1 |
 | ZOO 3785 | Molecular Neurobiology | Spring 2026 | 1 |
+| ZOO 3785 | Molecular Neurobiology | Spring 2027 | 1 |
+| ZOO 4205 | Invertebrate Zoology | Spring 2027 | 1 |
+| ZOO 4205L | Invertebrate Zoology Laboratory | Spring 2027 | 1 |

@@ -1,8 +1,21 @@
 {
   "schema_version": "1.0",
-  "tool_version": "1.0.0",
-  "updated_at": "2026-08-31T18:24:35Z",
+  "tool_version": "1.0.1",
+  "updated_at": "2026-10-21T19:32:43Z",
   "terms": {
+    "202702": {
+      "term_code": "202702",
+      "term_label": "Spring 2027 (View Only)",
+      "status": "success",
+      "complete": true,
+      "expected_count": 240,
+      "record_count": 240,
+      "page_count": 3,
+      "retrieved_at": "2026-10-21T19:32:35Z",
+      "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/searchResults",
+      "sha256": "35db7ca47111803ad83b5832a7d997fa971dfc7380b9f253f9b83c3c288ef5c0",
+      "resumed": false
+    },
     "202608": {
       "term_code": "202608",
       "term_label": "Fall 2026 (View Only)",
@@ -14,7 +27,7 @@
       "retrieved_at": "2026-08-31T18:24:26Z",
       "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/searchResults",
       "sha256": "495bea3b0eafe3a38b828f4fcf1f7f362b4ed2be80648e542b303192c1bd938f",
-      "resumed": false
+      "resumed": true
     },
     "202605": {
       "term_code": "202605",
