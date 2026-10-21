@@ -63,6 +63,54 @@ def _require_type(data: dict[str, Any], key: str, expected: type) -> None:
         raise SourceError(f"{key} must be {expected.__name__}")
 
 
+def structured_constraint_errors(data: dict[str, Any], label: str = "sidecar") -> list[str]:
+    """Return cross-field errors for optional structured source constraints."""
+
+    errors: list[str] = []
+    required_ids: set[str] = set()
+    for index, requirement in enumerate(data.get("required_resources", [])):
+        if not isinstance(requirement, dict):
+            continue
+        resource_id = requirement.get("resource_id")
+        if not isinstance(resource_id, str):
+            continue
+        if resource_id in required_ids:
+            errors.append(
+                f"{label}: required_resources[{index}].resource_id is duplicated: "
+                f"{resource_id}"
+            )
+        required_ids.add(resource_id)
+
+    canonical_urls = {
+        source.get("canonical_url")
+        for source in data.get("sources", [])
+        if isinstance(source, dict) and isinstance(source.get("canonical_url"), str)
+    }
+    conflict_ids: set[str] = set()
+    for index, conflict in enumerate(data.get("conflicts", [])):
+        if not isinstance(conflict, dict):
+            continue
+        prefix = f"{label}: conflicts[{index}]"
+        conflict_id = conflict.get("conflict_id")
+        if isinstance(conflict_id, str):
+            if conflict_id in conflict_ids:
+                errors.append(f"{prefix}.conflict_id is duplicated: {conflict_id}")
+            conflict_ids.add(conflict_id)
+        sources = conflict.get("sources")
+        claims = conflict.get("claims")
+        if not isinstance(sources, list) or not isinstance(claims, list):
+            continue
+        if len(sources) != len(claims):
+            errors.append(f"{prefix}.sources and claims must have equal length")
+        for source in sources:
+            if isinstance(source, str) and source not in canonical_urls:
+                errors.append(
+                    f"{prefix}.sources references URL absent from top-level sources: "
+                    f"{source}"
+                )
+    return errors
+
+
 def validate_sidecar(data: Any, sidecar_path: Path | None = None) -> list[str]:
     """Return contract errors for one parsed provenance sidecar."""
 
@@ -94,6 +142,7 @@ def validate_sidecar(data: Any, sidecar_path: Path | None = None) -> list[str]:
             errors.append(f"{label}: {exc}")
     if errors:
         return errors
+    errors.extend(structured_constraint_errors(data, label))
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", data["id"]):
         errors.append(f"{label}: id must be non-empty kebab-case")
     if data["status"] not in VALID_STATUSES:

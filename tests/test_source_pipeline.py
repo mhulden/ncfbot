@@ -13,6 +13,7 @@ Network smoke tests (opt-in):
     pytest tests/test_source_pipeline.py -v -m network
 """
 
+import copy
 import hashlib
 import json
 import subprocess
@@ -641,6 +642,165 @@ class TestSchemaValidation:
         data["sources"][0][field] = "not-a-date"
         errors = list(self.validator.iter_errors(data))
         assert errors
+
+
+class TestStructuredConstraints:
+    def setup_method(self):
+        import validate_sources as vs
+        self.vs = vs
+        self.validator = vs.make_validator(vs.load_schema())
+
+    def _base(self):
+        return json.loads((FIXTURES / "valid.source.json").read_text())
+
+    def _errors(self, data):
+        schema_errors = list(self.validator.iter_errors(data))
+        if schema_errors:
+            return [str(error) for error in schema_errors]
+        return self.vs.structured_constraint_errors(data)
+
+    def _conflict(self):
+        return {
+            "conflict_id": "published-deadline-conflict",
+            "status": "unresolved",
+            "sources": [
+                "https://catalog.ncf.edu/undergraduate/",
+                "https://www.ncf.edu/registrar/",
+            ],
+            "claims": ["The deadline is Monday", "The deadline is Tuesday"],
+            "applicability": "Fall 2026 undergraduate registration",
+            "responsible_office": "NCF Registrar",
+        }
+
+    def _add_second_source(self, data):
+        source = copy.deepcopy(data["sources"][0])
+        source["canonical_url"] = "https://www.ncf.edu/registrar/"
+        source["publisher"] = "NCF Registrar"
+        data["sources"].append(source)
+
+    def test_existing_sidecar_remains_valid_without_optional_fields(self):
+        assert self._errors(self._base()) == []
+
+    def test_valid_required_resource_record(self):
+        data = self._base()
+        data["required_resources"] = [{
+            "resource_id": "shared-academic-calendar",
+            "reason": "Provides the controlling term dates.",
+        }]
+
+        assert self._errors(data) == []
+
+    def test_required_resource_missing_reason_fails(self):
+        data = self._base()
+        data["required_resources"] = [{"resource_id": "shared-academic-calendar"}]
+
+        assert self._errors(data)
+
+    def test_duplicate_required_resource_id_fails(self):
+        data = self._base()
+        data["required_resources"] = [
+            {"resource_id": "shared-academic-calendar", "reason": "First use."},
+            {"resource_id": "shared-academic-calendar", "reason": "Second use."},
+        ]
+
+        errors = self._errors(data)
+
+        assert any("resource_id is duplicated" in error for error in errors)
+
+    def test_valid_unresolved_conflict(self):
+        data = self._base()
+        self._add_second_source(data)
+        data["conflicts"] = [self._conflict()]
+
+        assert self._errors(data) == []
+
+    def test_conflict_with_unknown_source_reference_fails(self):
+        data = self._base()
+        data["conflicts"] = [self._conflict()]
+
+        errors = self._errors(data)
+
+        assert any("absent from top-level sources" in error for error in errors)
+
+    def test_sidecar_validator_rejects_unknown_conflict_source(
+        self, tmp_path, monkeypatch
+    ):
+        data = self._base()
+        data["conflicts"] = [self._conflict()]
+        resource_dir = tmp_path / "resources" / "students"
+        resource_dir.mkdir(parents=True)
+        resource = resource_dir / "academic-model.md"
+        resource.write_text(
+            "# NCF Academic Model\n\n"
+            "Verified through: 2026-09-28\n\n"
+            "## Sources\n\n"
+            "- https://catalog.ncf.edu/undergraduate/\n",
+            encoding="utf-8",
+        )
+        sidecar = resource_dir / "academic-model.source.json"
+        sidecar.write_text(json.dumps(data), encoding="utf-8")
+        monkeypatch.chdir(tmp_path)
+
+        errors = self.vs.validate_sidecar(sidecar, self.validator)
+
+        assert any("absent from top-level sources" in error for error in errors)
+
+    def test_conflict_with_missing_applicability_fails(self):
+        data = self._base()
+        self._add_second_source(data)
+        conflict = self._conflict()
+        conflict.pop("applicability")
+        data["conflicts"] = [conflict]
+
+        assert self._errors(data)
+
+    def test_conflict_with_invalid_status_fails(self):
+        data = self._base()
+        self._add_second_source(data)
+        conflict = self._conflict()
+        conflict["status"] = "maybe"
+        data["conflicts"] = [conflict]
+
+        assert self._errors(data)
+
+    def test_conflict_sources_and_claims_must_align(self):
+        data = self._base()
+        self._add_second_source(data)
+        conflict = self._conflict()
+        conflict["claims"].append("An unpaired claim")
+        data["conflicts"] = [conflict]
+
+        errors = self._errors(data)
+
+        assert any("equal length" in error for error in errors)
+
+    def test_duplicate_conflict_id_fails(self):
+        data = self._base()
+        self._add_second_source(data)
+        second_conflict = self._conflict()
+        second_conflict["applicability"] = "Spring 2027 undergraduate registration"
+        data["conflicts"] = [self._conflict(), second_conflict]
+
+        errors = self._errors(data)
+
+        assert any("conflict_id is duplicated" in error for error in errors)
+
+    def test_agent_7_pilot_uses_the_published_contract(self):
+        pilot = json.loads(
+            (ROOT / "evaluations" / "required-resource-pilot.json").read_text()
+        )
+        pilot_case = pilot["cases"][3]
+        data = self._base()
+        source_template = data["sources"][0]
+        data["sources"] = []
+        for url in pilot_case["conflicts"][0]["sources"]:
+            source = copy.deepcopy(source_template)
+            source["canonical_url"] = url
+            data["sources"].append(source)
+        data["required_resources"] = pilot_case["required_resources"]
+        data["conflicts"] = pilot_case["conflicts"]
+
+        assert self._errors(data) == []
 
 
 class TestValidatorCrossReferences:

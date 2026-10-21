@@ -155,6 +155,87 @@
     "notes": {
       "type": "string",
       "description": "Known conflicts, coverage gaps, ambiguities, or empty string if none. Required field; do not omit even if empty."
+    },
+    "required_resources": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Optional resources that must be loaded before this resource can support a class of answer. Runtime telemetry is still required to establish that loading occurred.",
+      "items": {
+        "type": "object",
+        "required": ["resource_id", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "resource_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Stable kebab-case ID of the resource that must be loaded first."
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why the named resource is required."
+          }
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Optional structured conflicts between public sources. Source URLs must also appear in the resource's top-level sources array.",
+      "items": {
+        "type": "object",
+        "required": [
+          "conflict_id",
+          "status",
+          "sources",
+          "claims",
+          "applicability",
+          "responsible_office"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "conflict_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Stable kebab-case identifier for this conflict."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["unresolved", "resolved", "deferred"]
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "description": "Canonical source URLs, positionally paired with claims.",
+            "items": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            }
+          },
+          "claims": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "description": "Distinct source claims in the same order as sources.",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "applicability": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Population, term, workflow, or other context where the conflict applies."
+          },
+          "responsible_office": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Office that can clarify an unresolved conflict."
+          }
+        }
+      }
     }
   }
 }

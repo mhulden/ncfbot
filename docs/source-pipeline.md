@@ -244,8 +244,13 @@ Every resource Markdown file must have a neighboring `<name>.source.json`. Requi
 | `volatility` | enum | `daily`, `term`, `annual`, `stable` |
 | `review_after` | date | ISO 8601 YYYY-MM-DD |
 | `notes` | string | Known conflicts or gaps; empty string if none |
+| `required_resources` | optional array | `{resource_id, reason}` dependencies; loading still needs runtime evidence |
+| `conflicts` | optional array | Structured source/claim pairs with applicability, status, and responsible office |
 
 See `schemas/source-record.schema.json` for the full schema with all optional fields.
+Conflict source URLs must also occur in top-level `sources`, and each conflict's
+`sources` and `claims` arrays must have equal lengths. The validator rejects
+unknown references, duplicate structured IDs, and malformed optional records.
 
 ---
 
