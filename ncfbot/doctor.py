@@ -338,7 +338,10 @@ def _unique(values: list[Any]) -> list[Any]:
 
 
 def _grouped_course_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    grouped: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    grouped: dict[
+        tuple[str, str, tuple[tuple[str, str], ...]],
+        list[dict[str, Any]],
+    ] = {}
     for record in records:
         subject = str(record.get("subject") or "").strip().upper()
         course_number = str(record.get("course_number") or "").strip().upper()
@@ -346,15 +349,40 @@ def _grouped_course_records(records: list[dict[str, Any]]) -> list[dict[str, Any
         crn = str(record.get("crn") or "").strip()
         if not all((subject, course_number, term_code, crn)):
             continue
-        grouped.setdefault((subject, course_number), []).append(record)
+        level_metadata = record.get("course_level_metadata") or {}
+        published_levels: tuple[tuple[str, str], ...] = ()
+        if (
+            isinstance(level_metadata, dict)
+            and level_metadata.get("status") == "published"
+            and level_metadata.get("source_url")
+            and level_metadata.get("retrieved_at")
+        ):
+            levels = record.get("course_levels") or []
+            published_levels = tuple(
+                sorted(
+                    (str(level["code"]), str(level["description"]))
+                    for level in levels
+                    if isinstance(level, dict)
+                    and "code" in level
+                    and "description" in level
+                )
+            )
+        grouped.setdefault((subject, course_number, published_levels), []).append(
+            record
+        )
 
     courses: list[dict[str, Any]] = []
-    for (subject, course_number), sections in sorted(grouped.items()):
+    for (subject, course_number, published_levels), sections in sorted(grouped.items()):
         sections.sort(key=lambda record: (str(record.get("term_code")), str(record.get("crn"))))
         courses.append(
             {
                 "subject": subject,
                 "course_number": course_number,
+                "course_levels": [
+                    {"code": code, "description": description}
+                    for code, description in published_levels
+                ],
+                "course_level_status": "published" if published_levels else "unknown",
                 "course_display": next(
                     (record.get("course_display") for record in sections if record.get("course_display")),
                     f"{subject} {course_number}",
@@ -388,6 +416,7 @@ def _grouped_course_records(records: list[dict[str, Any]]) -> list[dict[str, Any
                         "term_code": record.get("term_code"),
                         "crn": record.get("crn"),
                         "section": record.get("section"),
+                        "course_level_metadata": record.get("course_level_metadata"),
                     }
                     for record in sections
                 ],
