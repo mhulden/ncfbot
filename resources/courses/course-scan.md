@@ -1,7 +1,7 @@
 # Public Course Archive Scan
 
-Generated: 2026-10-21T19:32:43Z
-Sections: 5343
+Generated: 2026-10-22T19:41:39Z
+Sections: 5348
 
 | Course | Title | Term | Sections |
 |---|---|---|---:|
@@ -1429,8 +1429,6 @@ Sections: 5343
 | EXP 3680 | Cognitive Psychology | Spring 2027 | 1 |
 | EXP 4420L | Animal Learning Laboratory | Spring 2027 | 1 |
 | FAS 3010L | Marine Aquaculture Methods Lab | Spring 2026 | 1 |
-| FAS 3202 | Biology of Fishes Lecture | Spring 2027 | 1 |
-| FAS 3202L | Biology of Fishes Laboratory | Spring 2027 | 1 |
 | FAS 3366 | Fisheries Ecology and Sustaina | Fall 2026 | 1 |
 | FIL 2006 | Film Appreciation | Spring 2027 | 1 |
 | FIL 2006 | Film Appreciation | Summer 2026 | 1 |
@@ -2011,7 +2009,7 @@ Sections: 5343
 | ISC 2076 | Introduction to Techne | Fall 2026 | 4 |
 | ISC 2076 | Introduction to Techne | Spring 2026 | 8 |
 | ISC 2076 | Introduction to Techne: Data Science and AI | Fall 2026 | 4 |
-| ISC 2076 | Techne: AI and Data | Spring 2027 | 3 |
+| ISC 2076 | Techne: AI and Data | Spring 2027 | 2 |
 | ISC 2076 | Techne: Statistical Literacy | Spring 2027 | 4 |
 | ISP 2920 | A Grant Proposal to Study the Genetic and Molecular Basis of Laryngeal Muscle Fiber in Xenopus | Fall 2018 | 1 |
 | ISP 2920 | Billiard Physics Modeling | Fall 2021 | 1 |
@@ -2426,7 +2424,6 @@ Sections: 5343
 | LANG 4720 | Third Year Modern Russian II | Spring 2025 | 1 |
 | LAS 2000 | Introduction to the Study of the Caribbean and Latin America | Fall 2026 | 1 |
 | LAS 2020 | Passionate Citizens: Sports in Latin-American Cultures | Spring 2027 | 1 |
-| LAS 3323 | Representations of Power &amp; Society in Latin American Literature | Spring 2027 | 1 |
 | LAT 1101 | Elementary Latin I | Fall 2025 | 1 |
 | LAT 1101 | Elementary Latin I | Fall 2026 | 1 |
 | LAT 1102 | Elementary Latin II | Spring 2026 | 1 |
@@ -3167,6 +3164,7 @@ Sections: 5343
 | MVV 1870 | Private Voice Lessons | Fall 2025 | 1 |
 | MVV 1870 | Private Voice Lessons | Fall 2026 | 1 |
 | MVV 1870 | Private Voice Lessons | Spring 2026 | 1 |
+| MVV 1870 | Private Voice Lessons | Spring 2027 | 1 |
 | NATS 3050 | MCAT Essentials Live Online | Fall 2020 | 1 |
 | NBI 2001 | Introduction to Botany Lecture* | Spring 2017 | 1 |
 | NBI 2003 | Organismic Biology Lecture | Spring 2017 | 1 |
@@ -3220,6 +3218,9 @@ Sections: 5343
 | NPH 4008 | Optics | Spring 2017 | 1 |
 | NPH 4014 | Honors Physics II | Spring 2017 | 1 |
 | OCB 2000 | What Can Marine Life Teach Us About Being Human? | Fall 2026 | 1 |
+| OCB 3068 | Biology of Fishes Lecture | Spring 2027 | 1 |
+| OCB 3068L | Biology of Fishes Laboratory | Spring 2027 | 1 |
+| OCB 4104 | Methods in Field Ecology | Spring 2027 | 1 |
 | OCE 2001 | Introduction to Oceanography | Fall 2024 | 1 |
 | PAZ 5234 | Zoo and Aquarium Management | Spring 2026 | 1 |
 | PCB 2316 | Introduction to Coastal Marine Systems | Fall 2026 | 1 |
@@ -3685,6 +3686,7 @@ Sections: 5343
 | PSB 4344 | Cognitive Neuroscience | Fall 2025 | 1 |
 | PSB 4930 | Advanced Seminar in Animal Personality | Fall 2025 | 1 |
 | PSB 4930L | Animal Personality Laboratory | Spring 2026 | 1 |
+| PSB 4931 | Marine Mammal &amp; Human Conservation Behavior | Spring 2027 | 1 |
 | PSB 4931 | Marine Mammal Behavior, Conservation, and the Human Dimension | Spring 2026 | 1 |
 | PSB 4932 | Neuroscience of Social Development | Fall 2026 | 1 |
 | PSB 4933 | Interpersonal Synchrony (Behavioral, Neural, Physiological) | Spring 2027 | 1 |
@@ -4149,6 +4151,7 @@ Sections: 5343
 | SPN 1100 | Elementary Spanish I | Fall 2025 | 1 |
 | SPN 1100 | Elementary Spanish I | Fall 2026 | 1 |
 | SPN 1101 | Elementary Spanish II | Spring 2026 | 1 |
+| SPN 1101 | Elementary Spanish II | Spring 2027 | 1 |
 | SPN 2200 | Intermediate Spanish I | Fall 2025 | 1 |
 | SPN 2200 | Intermediate Spanish I | Fall 2026 | 1 |
 | SPN 2201 | Intermediate Spanish II | Spring 2026 | 2 |
@@ -4181,6 +4184,7 @@ Sections: 5343
 | SPS 4024 | Advanced Statistics for Psychology | Spring 2017 | 1 |
 | SPT 3130 | A Latin American Gothic? | Fall 2026 | 1 |
 | SPT 3130 | Latin American Literature in Translation | Fall 2025 | 1 |
+| SPT 3130 | Representations of Power &amp; Society in Latin American Literature | Spring 2027 | 1 |
 | SPW 4498 | Advanced Spanish: Themes and Ideas in Contemporary Latin America | Fall 2025 | 1 |
 | SSO 2019 | Sociology of Gender and the Body | Spring 2017 | 1 |
 | SSO 2033 | Culture and Qualitative Methods | Spring 2017 | 1 |
@@ -4207,6 +4211,7 @@ Sections: 5343
 | STA 2122 | Introduction to Applied Statistics | Spring 2027 | 1 |
 | STA 2171 | Biological Data Analysis | Fall 2025 | 1 |
 | STA 2195 | Biostatistics | Spring 2027 | 1 |
+| STA 2360 | Techne: AI and Data (Not GE) | Spring 2027 | 1 |
 | STA 2442 | Probability I | Fall 2025 | 1 |
 | STA 2442 | Probability I | Fall 2026 | 1 |
 | STA 2443 | Probability II | Fall 2025 | 1 |
@@ -4902,6 +4907,7 @@ Sections: 5343
 | ZOO 2203L | Invertebrate Zoology Lab | Spring 2026 | 1 |
 | ZOO 2272 | Ornithology | Fall 2025 | 1 |
 | ZOO 2272L | Ornithology Lab | Fall 2025 | 1 |
+| ZOO 2472 | Field Ornithology | Spring 2027 | 1 |
 | ZOO 2503 | Animal Behavior | Fall 2025 | 1 |
 | ZOO 3407 | Biology of Sharks &amp; Rays | Spring 2026 | 1 |
 | ZOO 3480 | Mammalogy | Fall 2026 | 1 |

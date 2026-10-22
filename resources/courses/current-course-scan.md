@@ -1,7 +1,7 @@
 # Current Snapshot Scan — Spring 2027 (View Only)
 
-Generated: 2026-10-21T19:32:47Z
-Sections: 240
+Generated: 2026-10-22T19:41:42Z
+Sections: 245
 
 | Course | Title | Term | Sections |
 |---|---|---|---:|
@@ -92,8 +92,6 @@ Sections: 240
 | EXP 2002 | Introductory Psychology Seminar: Employee Well-Being | Spring 2027 | 1 |
 | EXP 3680 | Cognitive Psychology | Spring 2027 | 1 |
 | EXP 4420L | Animal Learning Laboratory | Spring 2027 | 1 |
-| FAS 3202 | Biology of Fishes Lecture | Spring 2027 | 1 |
-| FAS 3202L | Biology of Fishes Laboratory | Spring 2027 | 1 |
 | FIL 2006 | Film Appreciation | Spring 2027 | 1 |
 | FIN 3009 | Corporate Finance | Spring 2027 | 1 |
 | FIN 3233 | Money, Banking, and Financial Markets | Spring 2027 | 1 |
@@ -118,10 +116,9 @@ Sections: 240
 | INP 3054 | Intermediate Industrial/Organizational Psychology | Spring 2027 | 1 |
 | INR 2412 | Governing the Marine Environment | Spring 2027 | 1 |
 | INR 3035 | International Political Economy | Spring 2027 | 1 |
-| ISC 2076 | Techne: AI and Data | Spring 2027 | 3 |
+| ISC 2076 | Techne: AI and Data | Spring 2027 | 2 |
 | ISC 2076 | Techne: Statistical Literacy | Spring 2027 | 4 |
 | LAS 2020 | Passionate Citizens: Sports in Latin-American Cultures | Spring 2027 | 1 |
-| LAS 3323 | Representations of Power &amp; Society in Latin American Literature | Spring 2027 | 1 |
 | LAT 1102 | Elementary Latin II | Spring 2027 | 1 |
 | LIT 2030 | Introduction to Poetry | Spring 2027 | 1 |
 | LIT 2383 | Secret Beyond the Door: Bluebeard in Text &amp; Film | Spring 2027 | 1 |
@@ -153,6 +150,10 @@ Sections: 240
 | MUS 3930 | Introduction to Sound Studies | Spring 2027 | 1 |
 | MUT 2001 | Introduction to Music: Piano Keyboard through Midi | Spring 2027 | 1 |
 | MUT 3112 | Music Theory II | Spring 2027 | 1 |
+| MVV 1870 | Private Voice Lessons | Spring 2027 | 1 |
+| OCB 3068 | Biology of Fishes Lecture | Spring 2027 | 1 |
+| OCB 3068L | Biology of Fishes Laboratory | Spring 2027 | 1 |
+| OCB 4104 | Methods in Field Ecology | Spring 2027 | 1 |
 | PCB 3043L | Ecology Laboratory | Spring 2027 | 1 |
 | PCB 3103L | Cell Biology Laboratory | Spring 2027 | 1 |
 | PHI 2641 | Business Ethics | Spring 2027 | 1 |
@@ -179,6 +180,7 @@ Sections: 240
 | PSB 3930 | Animal Personality | Spring 2027 | 1 |
 | PSB 4323 | Electrophysiology of Cognition | Spring 2027 | 1 |
 | PSB 4343 | FNIRS Laboratory | Spring 2027 | 1 |
+| PSB 4931 | Marine Mammal &amp; Human Conservation Behavior | Spring 2027 | 1 |
 | PSB 4933 | Interpersonal Synchrony (Behavioral, Neural, Physiological) | Spring 2027 | 1 |
 | PSY 4210 | Research Methods in Psychology | Spring 2027 | 1 |
 | PSY 4801 | Metascience Lab: Debates and Controversies in Psychology | Spring 2027 | 1 |
@@ -192,12 +194,15 @@ Sections: 240
 | RUT 3930 | Nabokov&rsquo;s Early Novels: Resident and Stranger | Spring 2027 | 1 |
 | SLS 1109 | Engaging the Mind | Spring 2027 | 1 |
 | SOP 4702 | Sex Differences and Similarities | Spring 2027 | 1 |
+| SPN 1101 | Elementary Spanish II | Spring 2027 | 1 |
 | SPN 2201 | Intermediate Spanish II | Spring 2027 | 1 |
 | SPN 4930 | Adv Spanish: Prose, Verse and | Spring 2027 | 1 |
+| SPT 3130 | Representations of Power &amp; Society in Latin American Literature | Spring 2027 | 1 |
 | STA 2023 | Introduction to Applied Statistics | Spring 2027 | 1 |
 | STA 2023 | Introduction to Statistics: Dealing with Data 1 | Spring 2027 | 1 |
 | STA 2122 | Introduction to Applied Statistics | Spring 2027 | 1 |
 | STA 2195 | Biostatistics | Spring 2027 | 1 |
+| STA 2360 | Techne: AI and Data (Not GE) | Spring 2027 | 1 |
 | STA 3024 | Dealing with Data II | Spring 2027 | 1 |
 | STA 3852 | Applied Time Series Analysis | Spring 2027 | 1 |
 | STA 3932 | Financial Markets Modeling using Machine Learning | Spring 2027 | 1 |
@@ -215,6 +220,7 @@ Sections: 240
 | TPP 3103 | Acting II: Advanced Scene Studies | Spring 2027 | 1 |
 | TPP 3940 | Performance Practicum: Theater | Spring 2027 | 1 |
 | WOH 2012 | Introduction to World History | Spring 2027 | 1 |
+| ZOO 2472 | Field Ornithology | Spring 2027 | 1 |
 | ZOO 3785 | Molecular Neurobiology | Spring 2027 | 1 |
 | ZOO 4205 | Invertebrate Zoology | Spring 2027 | 1 |
 | ZOO 4205L | Invertebrate Zoology Laboratory | Spring 2027 | 1 |

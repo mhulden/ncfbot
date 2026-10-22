@@ -2,11 +2,11 @@
 
 Scope: Agent 6's independently collected, anonymous public course-listing subsystem. It supports section discovery and historical observations; it does not perform registration or decide eligibility.
 
-Verified through: 2026-10-21
+Verified through: 2026-10-22
 
 ## Public source and access boundary
 
-The NCF Office of the Registrar's public [Class Schedule & Registration](https://www.ncf.edu/departments/registrar/class-schedule-registration/) page links directly to the [Banner Select a Term page](https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/term/termSelection?mode=search). Both were reachable without an account on October 21, 2026. Banner issued a transient `Secure`, `HttpOnly`, `SameSite=None` `JSESSIONID`; the tools keep that cookie only in an in-memory cookie jar for one retrieval session.
+The NCF Office of the Registrar's public [Class Schedule & Registration](https://www.ncf.edu/departments/registrar/class-schedule-registration/) page links directly to the [Banner Select a Term page](https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/term/termSelection?mode=search). Both were reachable without an account on October 22, 2026. Banner issued a transient `Secure`, `HttpOnly`, `SameSite=None` `JSESSIONID`; the tools keep that cookie only in an in-memory cookie jar for one retrieval session.
 
 The Banner page displays Ellucian's privacy/analytics notice. No root `robots.txt` was published at `https://banapps02.ncf.edu/robots.txt` when checked (HTTP 404). The direct Registrar link establishes the intended public class-search entry point; it is not permission to access authenticated registration functions. These tools identify themselves, use bounded pages and configurable delays, never accept credentials, and never persist cookies.
 
@@ -94,7 +94,7 @@ python tools/poll_live_sections.py --term TERM --crn CRN
 
 ## Program-level-aware frequency workflow (HT-022)
 
-Investigated September 14, 2026; the [evidence record](../resources/courses/program-level-evidence.json) preserves original URLs, exact section identities, response hashes and limits. That bounded level investigation remains separate from the October 21 listing refresh and its enrollment observations. The public listing JSON did not expose a level field. The separate `getSectionCatalogDetails` response does publish a **Levels** block with description/code pairs. The parser reads that block only, bounded by `Grading Modes`; an unrecognized layout stays unknown.
+Investigated September 14, 2026; the [evidence record](../resources/courses/program-level-evidence.json) preserves original URLs, exact section identities, response hashes and limits. That bounded level investigation remains separate from the October 22 listing refresh and its enrollment observations. The public listing JSON did not expose a level field. The separate `getSectionCatalogDetails` response does publish a **Levels** block with description/code pairs. The parser reads that block only, bounded by `Grading Modes`; an unrecognized layout stays unknown.
 
 The live comparison found `Undergraduate UG` for CAI 3105 / term 202608 / CRN 88748, `Undergraduate UG` for IDC 4210 / term 202602 / CRN 26700, and `Graduate GR` for IDC 5210 / term 202602 / CRN 26442. The two IDC sections have the same title and graduate-division label but different course levels. Titles, numbers, division names, attributes and grading modes must not substitute for the explicit Levels field. Course level alone does not establish applicability to a particular degree program.
 
@@ -129,9 +129,9 @@ With a level filter, unknown candidate rows are excluded and counted in `metadat
 
 ## Completeness, freshness, and common mistakes
 
-The observed selector count and coverage are not constants. On October 21, 2026 it exposed 27 exact codes from Spring 2017 through Spring 2027, all labeled view-only. Rebuilds rediscover the selector; tools do not probe guessed term codes. A substring such as `2008` may be part of a term code or a course number and must not be interpreted as a year without exact selector evidence.
+The observed selector count and coverage are not constants. On October 22, 2026 it exposed 27 exact codes from Spring 2017 through Spring 2027, all labeled view-only. Rebuilds rediscover the selector; tools do not probe guessed term codes. A substring such as `2008` may be part of a term code or a course number and must not be interpreted as a year without exact selector evidence.
 
-The committed October 21, 2026 collection contains 5,343 distinct section records. All 27 discovered terms completed with their unique record counts equal to Banner's reported `totalCount`; the companion metadata records zero incomplete terms. The committed explicit Spring 2027 listing snapshot contains 240 sections and remains a timestamped snapshot of an upcoming view-only term, not a promise of present enrollment status.
+The committed October 22, 2026 collection contains 5,348 distinct section records. All 27 discovered terms completed with their unique record counts equal to Banner's reported `totalCount`; the companion metadata records zero incomplete terms. The committed explicit Spring 2027 listing snapshot contains 245 sections and remains a timestamped snapshot of an upcoming view-only term, not a promise of present enrollment status.
 
 An archive is complete only when every discovered term reports success and its unique record count equals Banner's `totalCount`. Failures remain in metadata and cause the all-term command to exit 2 after preserving all successfully collected rows. No result proves only that no matching section appears inside the documented coverage; it does not prove a course never existed.
 
