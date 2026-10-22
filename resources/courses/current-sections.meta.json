@@ -3,15 +3,15 @@
   "term_label": "Spring 2027 (View Only)",
   "status": "success",
   "complete": true,
-  "expected_count": 240,
-  "record_count": 240,
+  "expected_count": 245,
+  "record_count": 245,
   "page_count": 3,
-  "retrieved_at": "2026-10-21T19:32:47Z",
+  "retrieved_at": "2026-10-22T19:41:42Z",
   "source_url": "https://banapps02.ncf.edu/StudentRegistrationSsb/ssb/searchResults/searchResults",
   "schema_version": "1.0",
   "tool_version": "1.0.1",
   "detail_level": "listing",
   "detail_failure_count": 0,
   "detail_failures": [],
-  "sha256": "cdb9900ca2bd023ca917cbf32f1304dc764485002c2a1eeffcde453ecc3635a8"
+  "sha256": "b2ab0850b15d7b43483a8abe9fb4a4c42ab078fd99619f41bf0c645e3146c5ea"
 }

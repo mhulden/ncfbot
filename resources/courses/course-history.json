@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "tool_version": "1.0.1",
-  "generated_at": "2026-10-21T19:32:54Z",
+  "generated_at": "2026-10-22T19:42:23Z",
   "source": "resources/courses/historical-sections.jsonl",
   "grouping_rule": "exact normalized subject plus exact published course_number and published level set; unknown levels stay separate; similarity is not equivalency",
   "limitations": "Observed sections only, not a future offering schedule or proof of program applicability/equivalency.",
-  "course_count": 2267,
-  "section_count": 5343,
+  "course_count": 2269,
+  "section_count": 5348,
   "coverage": {
     "earliest_term_code": "201702",
     "latest_term_code": "202702"
@@ -298,7 +298,6 @@
       ],
       "attributes": [
         "History",
-        "Political Science",
         "Social Sciences"
       ],
       "section_count": 1,
@@ -9080,7 +9079,8 @@
       ],
       "attributes": [
         "Asian Studies",
-        "Data Science",
+        "CYC Breadth - Social Sciences",
+        "CYC Breadth-Diverse Perspectvs",
         "History",
         "International and Area Studies"
       ],
@@ -9191,9 +9191,12 @@
       ],
       "attributes": [
         "Asian Studies",
+        "CYC Breadth - Social Sciences",
+        "CYC Breadth-Diverse Perspectvs",
         "Health, Culture, and Societies",
         "History",
-        "International and Area Studies"
+        "International and Area Studies",
+        "Social Sciences"
       ],
       "section_count": 1,
       "section_identities": [
@@ -9265,6 +9268,7 @@
       "attributes": [
         "Asian Studies",
         "History",
+        "Humanities",
         "International and Area Studies",
         "Medieval &amp; Renaissance Studies",
         "Religion"
@@ -33179,6 +33183,7 @@
         "Biopsychology",
         "Environmental Studies",
         "Health, Culture, and Societies",
+        "Neuroscience",
         "Psychology",
         "Social Sciences",
         "Wellbeing of Humans/Animals"
@@ -33275,84 +33280,6 @@
           "crn": "26213",
           "section": "001",
           "course_level_metadata": null
-        }
-      ]
-    },
-    {
-      "subject": "FAS",
-      "course_number": "3202",
-      "course_levels": [],
-      "course_level_status": "unknown",
-      "course_display": "FAS 3202",
-      "titles": [
-        "Biology of Fishes Lecture"
-      ],
-      "terms": [
-        {
-          "term_code": "202702",
-          "term_label": "Spring 2027"
-        }
-      ],
-      "instructors": [
-        "Levell, Samantha"
-      ],
-      "attributes": [
-        "Biology",
-        "Environmental Studies",
-        "Marine Biology",
-        "Natural Sciences",
-        "Wellbeing of Humans/Animals"
-      ],
-      "section_count": 1,
-      "section_identities": [
-        {
-          "term_code": "202702",
-          "crn": "26961",
-          "section": "001",
-          "course_level_metadata": {
-            "retrieved_at": null,
-            "source_url": null,
-            "status": "not_requested"
-          }
-        }
-      ]
-    },
-    {
-      "subject": "FAS",
-      "course_number": "3202L",
-      "course_levels": [],
-      "course_level_status": "unknown",
-      "course_display": "FAS 3202L",
-      "titles": [
-        "Biology of Fishes Laboratory"
-      ],
-      "terms": [
-        {
-          "term_code": "202702",
-          "term_label": "Spring 2027"
-        }
-      ],
-      "instructors": [
-        "Levell, Samantha"
-      ],
-      "attributes": [
-        "Biology",
-        "Environmental Studies",
-        "Marine Biology",
-        "Natural Sciences",
-        "Wellbeing of Humans/Animals"
-      ],
-      "section_count": 1,
-      "section_identities": [
-        {
-          "term_code": "202702",
-          "crn": "26962",
-          "section": "001",
-          "course_level_metadata": {
-            "retrieved_at": null,
-            "source_url": null,
-            "status": "not_requested"
-          }
         }
       ]
     },
@@ -43075,6 +43002,7 @@
       "instructors": [
         "Flakne, April",
         "Harvey, David",
+        "Mercado-Harvey, Alicia",
         "Mikics, David"
       ],
       "attributes": [
@@ -43130,6 +43058,7 @@
         "CYC Breadth - Humanities",
         "Enduring Human Questions",
         "General Education",
+        "Great Books",
         "Humanities",
         "Socratic Experience"
       ],
@@ -47550,7 +47479,7 @@
         "Natural Sciences",
         "Statistics"
       ],
-      "section_count": 31,
+      "section_count": 30,
       "section_identities": [
         {
           "term_code": "202508",
@@ -47730,16 +47659,6 @@
           "term_code": "202702",
           "crn": "27041",
           "section": "004",
-          "course_level_metadata": {
-            "retrieved_at": null,
-            "source_url": null,
-            "status": "not_requested"
-          }
-        },
-        {
-          "term_code": "202702",
-          "crn": "27042",
-          "section": "005",
           "course_level_metadata": {
             "retrieved_at": null,
             "source_url": null,
@@ -54429,46 +54348,6 @@
       ]
     },
     {
-      "subject": "LAS",
-      "course_number": "3323",
-      "course_levels": [],
-      "course_level_status": "unknown",
-      "course_display": "LAS 3323",
-      "titles": [
-        "Representations of Power &amp; Society in Latin American Literature"
-      ],
-      "terms": [
-        {
-          "term_code": "202702",
-          "term_label": "Spring 2027"
-        }
-      ],
-      "instructors": [
-        "Portugal, Jose"
-      ],
-      "attributes": [
-        "Caribbean &amp; Latin Amer Studies",
-        "Humanities",
-        "Interdivisional",
-        "International and Area Studies",
-        "Languages",
-        "Spanish"
-      ],
-      "section_count": 1,
-      "section_identities": [
-        {
-          "term_code": "202702",
-          "crn": "27160",
-          "section": "001",
-          "course_level_metadata": {
-            "retrieved_at": null,
-            "source_url": null,
-            "status": "not_requested"
-          }
-        }
-      ]
-    },
-    {
       "subject": "LAT",
       "course_number": "1101",
       "course_levels": [],
@@ -55606,6 +55485,7 @@
       ],
       "attributes": [
         "English",
+        "Great Books",
         "Humanities",
         "Literature"
       ],
@@ -69323,9 +69203,12 @@
         }
       ],
       "instructors": [
+        "Hulden, Mans",
         "Tabatabaie, Ashkan"
       ],
       "attributes": [
+        "CYC Breadth - Humanities",
+        "CYC Breadth - Natural Sciences",
         "Computer Science",
         "Humanities",
         "Interdisciplinary Studies",
@@ -72579,6 +72462,10 @@
         {
           "term_code": "202608",
           "term_label": "Fall 2026"
+        },
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
         }
       ],
       "instructors": [
@@ -72589,7 +72476,7 @@
         "Music",
         "Theater, Dance, Perf Studies"
       ],
-      "section_count": 3,
+      "section_count": 4,
       "section_identities": [
         {
           "term_code": "202508",
@@ -72608,6 +72495,16 @@
           "crn": "88633",
           "section": "001",
           "course_level_metadata": null
+        },
+        {
+          "term_code": "202702",
+          "crn": "27172",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
@@ -74407,6 +74304,120 @@
           "crn": "88693",
           "section": "001",
           "course_level_metadata": null
+        }
+      ]
+    },
+    {
+      "subject": "OCB",
+      "course_number": "3068",
+      "course_levels": [],
+      "course_level_status": "unknown",
+      "course_display": "OCB 3068",
+      "titles": [
+        "Biology of Fishes Lecture"
+      ],
+      "terms": [
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
+        }
+      ],
+      "instructors": [
+        "Levell, Samantha"
+      ],
+      "attributes": [
+        "Biology",
+        "Environmental Studies",
+        "Marine Biology",
+        "Wellbeing of Humans/Animals"
+      ],
+      "section_count": 1,
+      "section_identities": [
+        {
+          "term_code": "202702",
+          "crn": "27169",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
+        }
+      ]
+    },
+    {
+      "subject": "OCB",
+      "course_number": "3068L",
+      "course_levels": [],
+      "course_level_status": "unknown",
+      "course_display": "OCB 3068L",
+      "titles": [
+        "Biology of Fishes Laboratory"
+      ],
+      "terms": [
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
+        }
+      ],
+      "instructors": [
+        "Levell, Samantha"
+      ],
+      "attributes": [
+        "Biology",
+        "Environmental Studies",
+        "Marine Biology",
+        "Wellbeing of Humans/Animals"
+      ],
+      "section_count": 1,
+      "section_identities": [
+        {
+          "term_code": "202702",
+          "crn": "27170",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
+        }
+      ]
+    },
+    {
+      "subject": "OCB",
+      "course_number": "4104",
+      "course_levels": [],
+      "course_level_status": "unknown",
+      "course_display": "OCB 4104",
+      "titles": [
+        "Methods in Field Ecology"
+      ],
+      "terms": [
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
+        }
+      ],
+      "instructors": [
+        "Rose, Emily"
+      ],
+      "attributes": [
+        "Biology",
+        "Environmental Studies",
+        "Marine Biology",
+        "Wellbeing of Humans/Animals"
+      ],
+      "section_count": 1,
+      "section_identities": [
+        {
+          "term_code": "202702",
+          "crn": "27167",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
@@ -85137,7 +85148,7 @@
       ],
       "attributes": [
         "Biopsychology",
-        "Marine Biology",
+        "Marine Mammal Science - UG",
         "Neuroscience",
         "Psychology",
         "Wellbeing of Humans/Animals"
@@ -85304,12 +85315,17 @@
       "course_level_status": "unknown",
       "course_display": "PSB 4931",
       "titles": [
-        "Marine Mammal Behavior, Conservation, and the Human Dimension"
+        "Marine Mammal Behavior, Conservation, and the Human Dimension",
+        "Marine Mammal &amp; Human Conservation Behavior"
       ],
       "terms": [
         {
           "term_code": "202602",
           "term_label": "Spring 2026"
+        },
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
         }
       ],
       "instructors": [
@@ -85318,18 +85334,29 @@
       "attributes": [
         "Biopsychology",
         "Environmental Studies",
+        "Interdisciplinary Studies",
         "Marine Biology",
         "Psychology",
         "Social Sciences",
         "Wellbeing of Humans/Animals"
       ],
-      "section_count": 1,
+      "section_count": 2,
       "section_identities": [
         {
           "term_code": "202602",
           "crn": "26427",
           "section": "001",
           "course_level_metadata": null
+        },
+        {
+          "term_code": "202702",
+          "crn": "27173",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
@@ -90057,6 +90084,7 @@
         "Altshuler, Stuart"
       ],
       "attributes": [
+        "Great Books",
         "History",
         "Humanities",
         "Philosophy"
@@ -96723,6 +96751,10 @@
         {
           "term_code": "202602",
           "term_label": "Spring 2026"
+        },
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
         }
       ],
       "instructors": [
@@ -96734,13 +96766,23 @@
         "Languages",
         "Spanish"
       ],
-      "section_count": 1,
+      "section_count": 2,
       "section_identities": [
         {
           "term_code": "202602",
           "crn": "26119",
           "section": "001",
           "course_level_metadata": null
+        },
+        {
+          "term_code": "202702",
+          "crn": "27174",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
@@ -97669,7 +97711,8 @@
       "course_display": "SPT 3130",
       "titles": [
         "Latin American Literature in Translation",
-        "A Latin American Gothic?"
+        "A Latin American Gothic?",
+        "Representations of Power &amp; Society in Latin American Literature"
       ],
       "terms": [
         {
@@ -97679,6 +97722,10 @@
         {
           "term_code": "202608",
           "term_label": "Fall 2026"
+        },
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
         }
       ],
       "instructors": [
@@ -97688,10 +97735,11 @@
         "CYC Breadth-Diverse Perspectvs",
         "Caribbean &amp; Latin Amer Studies",
         "Humanities",
+        "International and Area Studies",
         "Literature",
         "Spanish"
       ],
-      "section_count": 2,
+      "section_count": 3,
       "section_identities": [
         {
           "term_code": "202508",
@@ -97704,6 +97752,16 @@
           "crn": "88704",
           "section": "001",
           "course_level_metadata": null
+        },
+        {
+          "term_code": "202702",
+          "crn": "27171",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
@@ -98311,6 +98369,43 @@
         {
           "term_code": "202702",
           "crn": "27157",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
+        }
+      ]
+    },
+    {
+      "subject": "STA",
+      "course_number": "2360",
+      "course_levels": [],
+      "course_level_status": "unknown",
+      "course_display": "STA 2360",
+      "titles": [
+        "Techne: AI and Data (Not GE)"
+      ],
+      "terms": [
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
+        }
+      ],
+      "instructors": [
+        "Kane, David"
+      ],
+      "attributes": [
+        "Data Science",
+        "Interdisciplinary Studies",
+        "Natural Sciences"
+      ],
+      "section_count": 1,
+      "section_identities": [
+        {
+          "term_code": "202702",
+          "crn": "27175",
           "section": "001",
           "course_level_metadata": {
             "retrieved_at": null,
@@ -109398,6 +109493,44 @@
           "crn": "87517",
           "section": "001",
           "course_level_metadata": null
+        }
+      ]
+    },
+    {
+      "subject": "ZOO",
+      "course_number": "2472",
+      "course_levels": [],
+      "course_level_status": "unknown",
+      "course_display": "ZOO 2472",
+      "titles": [
+        "Field Ornithology"
+      ],
+      "terms": [
+        {
+          "term_code": "202702",
+          "term_label": "Spring 2027"
+        }
+      ],
+      "instructors": [
+        "Hatch, Kent"
+      ],
+      "attributes": [
+        "Biology",
+        "Environmental Studies",
+        "Natural Sciences",
+        "Wellbeing of Humans/Animals"
+      ],
+      "section_count": 1,
+      "section_identities": [
+        {
+          "term_code": "202702",
+          "crn": "27168",
+          "section": "001",
+          "course_level_metadata": {
+            "retrieved_at": null,
+            "source_url": null,
+            "status": "not_requested"
+          }
         }
       ]
     },
